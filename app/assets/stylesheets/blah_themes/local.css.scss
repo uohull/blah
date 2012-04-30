@@ -1,0 +1,67 @@
+#homeright {
+  .mainstory {
+    h1 {
+        padding-top:40px;
+        padding-left:195px;
+    }
+    h3 {
+        letter-spacing: 0.2em;
+        color: white;
+        padding-left:200px;
+    }
+  }
+}
+
+
+#uni-nav-links {
+  height: 35px;
+  background-color: #91A23D;
+
+  ul {
+	  margin-left: 0px;
+	  margin-top: 0px;
+	  width:400px;
+	  float: left;
+	  height: 15px;
+	  padding-top: 5px;
+  }
+
+  li {
+	  display: inline;
+	  list-style-type: none;
+	  padding-right: 12px;
+	  padding-left: 0px;
+	  padding-top: 0px;
+	  font-size: 1em;
+    font-weight: bold;
+  }
+}
+
+#search {
+  padding-top:25px;
+  padding-left:125px;
+  #q {
+    width: 350px;
+    height:24px;
+    border-width: 1px 1px 1px 1px;
+    font-family:Arial, Georgia;
+    font-size:17px;
+    padding-left:0.25em;
+    padding-right:0.25em;
+    box-shadow: 2px 2px 2px #d9e2e8 inset;
+    -moz-box-shadow: 2px 2px 2px #d9e2e8 inset;
+    -webkit-box-shadow: 2px 2px 2px #d9e2e8 inset;
+  }
+  #submit {
+    margin: 0 0em;
+    padding: 0 0em;
+    cursor:pointer;
+    background: url("/assets/blah/button-bg.png") no-repeat scroll 0 0;
+    height:30px;
+    border-width: 0px 1px 1px 1px;
+    padding-left:0.75em;
+    padding-right:0.75em;
+	  vertical-align: top;
+  }
+}
+
