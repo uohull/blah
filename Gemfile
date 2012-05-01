@@ -24,6 +24,7 @@ end
 gem 'jquery-rails'
 gem 'blacklight', '~> 3.4.0'
 gem 'devise'
+gem "devise_cas_authenticatable", "~> 1.1.1"
 
 #therubyracer Javacript runtime needed by the asset pipeline
 gem 'therubyracer'
@@ -43,6 +44,5 @@ gem 'therubyracer'
 # To use debugger
 # gem 'ruby-debug'
 
-gem "devise"
 gem "compass-rails", "~> 1.0.0", :group => :assets
 gem "compass-susy-plugin", "~> 0.9.0", :group => :assets
