@@ -1,7 +1,10 @@
 Blah::Application.routes.draw do
+
   Blacklight.add_routes(self)
 
   root :to => "catalog#index"
+
+  match "holdings_record" => "holdings_record#show"
 
   devise_for :users
 

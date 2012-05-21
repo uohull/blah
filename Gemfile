@@ -26,6 +26,10 @@ gem 'blacklight', '~> 3.4.0'
 gem 'devise'
 gem "devise_cas_authenticatable", "~> 1.1.1"
 
+
+#Zoom Ruby binding to Z40.50 http://rubygems.org/gems/zoom
+gem 'zoom', '~> 0.4.1'
+
 #therubyracer Javacript runtime needed by the asset pipeline
 gem 'therubyracer'
 
