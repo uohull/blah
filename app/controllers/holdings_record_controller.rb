@@ -1,7 +1,10 @@
 class HoldingsRecordController < ApplicationController
-  def show
-      @message = "test"
-      flash[:message] = "Test message"
-     #@holdings_record = HoldingsRecord
+  def index
+    bib_no = params["bib_no"]
+    if bib_no
+       holdings_service = HoldingsService.new
+       @holdings_records = holdings_service.find_holdings( bib_no )
+    end
   end
+
 end

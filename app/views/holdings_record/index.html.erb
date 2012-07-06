@@ -1,0 +1,16 @@
+<h1>Holdings Record</h1>
+
+<table>
+  <tr>
+    <td>Location</td>
+    <td>Call number</td>
+    <td>Availability</td>
+  </tr>
+<% @holdings_records.each do |holding_record| %>
+  <tr>
+    <td><%= holding_record.local_location %></td>
+    <td><%= holding_record.call_number %></td>
+    <td><%= holding_record.availability %></td>   
+  </tr>
+<% end %>
+</table>

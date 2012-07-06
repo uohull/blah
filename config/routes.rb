@@ -4,7 +4,7 @@ Blah::Application.routes.draw do
 
   root :to => "catalog#index"
 
-  match "holdings_record" => "holdings_record#show"
+  match "holdings_record/:bib_no" => "holdings_record#index"
 
   devise_for :users
 
