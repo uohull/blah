@@ -520,13 +520,16 @@
    <!-- default, catch all search field -->
    <field name="text" type="text" indexed="true" stored="false" multiValued="true"/>
    
+
+    <!-- These files have been localised to be multi-valued -->
+   <field name="title_display" type="string" indexed="false" stored="true" multiValued="true"/>
+   <field name="subtitle_display" type="string" indexed="false" stored="true" multiValued="true"/>
+   <field name="author_display" type="string" indexed="false" stored="true" multiValued="true"/>
+
    <!-- these display fields are NOT multi-valued -->
    <field name="marc_display" type="string" indexed="false" stored="true" multiValued="false"/>
-   <field name="title_display" type="string" indexed="false" stored="true" multiValued="false"/>
    <field name="title_vern_display" type="string" indexed="false" stored="true" multiValued="false"/>
-   <field name="subtitle_display" type="string" indexed="false" stored="true" multiValued="false"/>
    <field name="subtitle_vern_display" type="string" indexed="false" stored="true" multiValued="false"/>
-   <field name="author_display" type="string" indexed="false" stored="true" multiValued="false"/>
    <field name="author_vern_display" type="string" indexed="false" stored="true" multiValued="false"/>
    
    <!-- these fields are also used for display, so they must be stored -->
@@ -545,7 +548,10 @@
    <field name="format" type="string" indexed="true" stored="true"/>
 
    <!-- field used to store any marc_error information -->
-   <field name="marc_error" type="string" indexed="true" stored="true"/>
+   <field name="marc_error" type="string" indexed="true" stored="true" multiValued="true"/>
+
+   <!-- libary is used for facet, and display - stored and indexed -->
+   <field name="library" type="string" indexed="true" stored="true" multiValued="true"/>
    
 
    <!-- Dynamic field definitions.  If a field name is not found, dynamicFields
