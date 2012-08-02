@@ -1,10 +1,18 @@
 Blah::Application.routes.draw do
 
+  #Overide the feedback controller of Blacklight to our Contact view
+  match 'feedback' => 'contact#new'
+
   Blacklight.add_routes(self)
 
   root :to => "catalog#index"
 
   match "holdings_record/:bib_no" => "holdings_record#index"
+
+  match 'contact' => 'contact#new', :as => 'contact', :via => :get
+  match 'contact' => 'contact#create', :as => 'contact', :via => :post
+ 
+
 
   devise_for :users
 

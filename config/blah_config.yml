@@ -1,0 +1,8 @@
+development:
+  contact_form_email: s.lamb@hull.ac.uk
+
+test:
+  contact_form_email: s.lamb@hull.ac.uk
+
+production:
+  contact_form_email: s.lamb@hull.ac.uk

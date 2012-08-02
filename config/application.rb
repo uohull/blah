@@ -56,8 +56,14 @@ module Blah
     config.assets.compress = !Rails.env.development?
 
 
-
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    #Configure ActionMailer for smtp.hull..
+    config.action_mailer.smtp_settings = {
+     :address	=> "mservers.hull.ac.uk"
+    }
+
+
   end
 end

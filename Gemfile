@@ -9,6 +9,11 @@ gem 'sqlite3'
 
 gem 'json'
 
+group :development do
+  gem 'ruby-debug'
+end
+
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -29,6 +34,13 @@ gem "devise_cas_authenticatable", "~> 1.1.1"
 
 #Zoom Ruby binding to Z40.50 http://rubygems.org/gems/zoom
 gem 'zoom', '~> 0.4.1'
+
+#delayed_job used for comments queuing - https://github.com/collectiveidea/delayed_job
+gem 'delayed_job_active_record'
+gem 'daemons' 
+
+#Honeypot captcha - See https://github.com/curtis/honeypot-captcha
+gem 'honeypot-captcha'
 
 #therubyracer Javacript runtime needed by the asset pipeline
 gem 'therubyracer'
