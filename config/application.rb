@@ -61,7 +61,7 @@ module Blah
 
     #Configure ActionMailer for smtp.hull..
     config.action_mailer.smtp_settings = {
-     :address	=> "mservers.hull.ac.uk"
+     :address	=> ""
     }
 
 
