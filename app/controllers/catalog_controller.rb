@@ -5,6 +5,9 @@ class CatalogController < ApplicationController
 
   include Blacklight::Catalog
 
+  before_filter :retrieve_holdings, :only => :show
+
+
   configure_blacklight do |config|
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = { 
@@ -169,6 +172,20 @@ class CatalogController < ApplicationController
     config.spell_max = 5
   end
 
+
+
+  private
+
+  def retrieve_holdings
+   
+    id = params[:id]  
+
+    if id 
+      holdings_service = HoldingsService.new
+      @holdings_records = holdings_service.find_holdings( id )
+    end
+ 
+  end
 
 
 end 
