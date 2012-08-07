@@ -16,6 +16,7 @@
 /tmp/*
 /tmp/test_app
 *.log
+*~
 
 # Other App specific ignores.
 .DS_Store

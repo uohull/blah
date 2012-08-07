@@ -1,12 +1,19 @@
 $(document).ready(function() {
-  var id = $("#doc_id").text();
-  if (id.length > 0) {
-    $.ajax({
-      url:  "/holdings_record/" + id,
-      cache: false, 
-      success: function(html) {
-       $("#holdings-record-element").append(html);
-      }
-    });
-  }
+  //Iterate through the document classes on search results
+  $('.document').each(function(index, element) {
+     //get the document#id from the doc_id div
+     var id = $(element).find('#doc-id').text();
+      if (id.length > 0) {
+        //If it exists, retrieve holdings and add to #holdings-record-element     
+        $.ajax({
+          url:  "/holdings_record/" + id,
+          cache: false, 
+          success: function(html) {
+            $(element).find("#holdings-record-element").append(html);
+          }
+        });
+      } 
+  });
 });
+  
+
