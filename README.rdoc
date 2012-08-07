@@ -51,3 +51,11 @@ To run in the production environment:
 	$ RAILS_ENV=production script/delayed_job start
 	$ RAILS_ENV=production script/delayed_job stop
 
+== Indexing test data
+
+
+  e-resources are indexed into solr from a locally produced csv file. A sample file is located in test/fixtures/e-resource.csv - To index this into the local solr instance, execute:
+
+  $ curl "http://localhost:8983/solr/update/csv?f.subject_topic_facet.split=true&f.subject_topic_facet.separator=%5E" --data-binary @eresources-csv-edit.csv -H 'Content-type:text/plain; charset=utf-8' 
+
+  This utilises the solr csv update manager, and splits the subject_topic_facet column based upon the %5E char (^). 
