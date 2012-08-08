@@ -1,0 +1,45 @@
+<%# default partial to display solr document fields in catalog show view -%>
+<dl class="defList">
+	    <dt class="blacklight-format">Format:</dt>
+	    <dd class="blacklight-format">Electronic resource</dd>
+
+      <% if document.has? 'description_display' %>
+        <dt class="blacklight-format">Description:</dt>
+	      <dd class="blacklight-format"><%= render_index_field_value :document => document, :field => 'description_display' %></dd>
+      <% end %>
+
+      <% if document.has? 'subject_t' %>
+        <dt class="blacklight-format">Subject:</dt>
+	      <dd class="blacklight-format"><%= render_index_field_value :document => document, :field => 'subject_t' %></dd>
+      <% end %>
+
+      <% if document.has? 'access_info_display' %>
+        <dt class="blacklight-format">Access information:</dt>
+	      <dd class="blacklight-format"><%= render_index_field_value :document => document, :field => 'access_info_display' %></dd>
+      <% end %>
+
+      <% if document.has? 'auth_users_display' %>
+        <dt class="blacklight-format">Authorised users:</dt>
+	      <dd class="blacklight-format"><%= render_index_field_value :document => document, :field => 'auth_users_display' %></dd>
+      <% end %>
+
+      <% if document.has? 'coverage_display' %>
+        <dt class="blacklight-format">Coverage:</dt>
+	      <dd class="blacklight-format"><%= render_index_field_value :document => document, :field => 'coverage_display' %></dd>
+      <% end %>
+
+      <% if document.has? 'additional_info_display' %>
+        <dt class="blacklight-format">Additional info:</dt>
+	      <dd class="blacklight-format"><%= render_index_field_value :document => document, :field => 'additional_info_display' %></dd>
+      <% end %>
+
+      <% if document.has? 'terms_display' %>
+        <dt class="blacklight-format">Terms of use:</dt>
+        <dd class="blacklight-format"><%= display_terms_of_use( document ) %></dd>
+      <% end %>	  
+
+      <% if document.has? 'url_fulltext_display' %>
+        <dt class="blacklight-format">Link:</dt>
+        <dd class="blacklight-format"><a target="_blank" href="<%= render_index_field_value :document => document, :field => 'url_fulltext_display' %>"><%= render_index_field_value :document => document, :field => 'title_display' %></dd>
+     <% end %>
+</dl>

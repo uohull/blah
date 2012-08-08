@@ -1,0 +1,9 @@
+<%# default partial to display solr document fields in catalog index view -%>
+<dl class="defList">
+  <dt class="blacklight-format">Format:</dt>
+  <dd class="blacklight-format"><%= render_index_field_value :document => document, :field => "format" %></dd>
+  <dt class="blacklight-format">Link:</dt>
+  <dd class="blacklight-format"><a target="_blank" href="<%= render_index_field_value :document => document, :field => 'url_fulltext_display' %>">Connect</dd>
+</dl>
+
+

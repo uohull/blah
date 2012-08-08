@@ -6,7 +6,7 @@ class CatalogController < ApplicationController
   include Blacklight::Catalog
 
   before_filter :retrieve_holdings, :only => :show
-
+ 
 
   configure_blacklight do |config|
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
@@ -69,7 +69,6 @@ class CatalogController < ApplicationController
     #use this instead if you don't want to query facets marked :show=>false
     #config.default_solr_params[:'facet.field'] = config.facet_fields.select{ |k, v| v[:show] != false}.keys
 
-
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display 
     config.add_index_field 'title_display', :label => 'Title:' 
@@ -82,6 +81,7 @@ class CatalogController < ApplicationController
     config.add_index_field 'published_vern_display', :label => 'Published:'
     config.add_index_field 'lc_callnum_display', :label => 'Call number:'
 
+  
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display 
     config.add_show_field 'title_display', :label => 'Title:' 
