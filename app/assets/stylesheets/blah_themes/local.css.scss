@@ -35,6 +35,12 @@
 }
 
 
+.document {
+	padding: 1em 1em 1.5em 1em;
+	border: none;
+}
+
+
 
 footer {
   
@@ -53,6 +59,18 @@ footer {
     }
   }
 
+}
+
+div#feedback {
+    a {
+					color:#FFF;
+				}
+    bottom: -2px;
+    float: right;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 100000;
 }
 
 /*

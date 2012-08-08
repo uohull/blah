@@ -7,7 +7,7 @@ en:
     
     contact_form:
       title: 'Contact us'
-      description: 'You can use this form for any comments or questions about the Library catalogue interface'
+      description: 'You can use this form to make comments or ask questions about the Library catalogue interface.'
       name: 'Name:'
       email: 'E-mail:'
       subject: 'Subject:'

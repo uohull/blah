@@ -1,5 +1,16 @@
   <% # header bar for doc items in index view -%>
-      <div class="documentHeader">        
+      <div class="documentHeader"> 
+							<%= link_to document, :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) do %>
+     		<span class="label label-success"><i class="icon-info-sign icon-white"></i>View Record</span> 
+ 		<% end %>
+
+
+
+         <% #link_to_document document, :label=>document_show_link_field, :data-counter => (document_counter + 1 + @response.params[:start].to_i) -%>
+			     
         <% # bookmark/folder functions for items/docs -%>
         <%= render_index_doc_actions document %>    
       </div>
+
+
+
