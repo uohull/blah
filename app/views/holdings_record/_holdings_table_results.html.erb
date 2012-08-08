@@ -1,0 +1,18 @@
+<dl class="defList">  
+  <% @holdings_records.each do |holding_record| %>
+    <% if @holdings_records.first == holding_record %>
+      <dt>Location</dt>
+    <% else %>
+      <dt></dt>
+    <% end %>
+    <dd>
+        <% if holding_record.availability == "AVAILABLE" then %>
+          <i class="icon-ok-sign"></i>
+        <% else %>
+          <i class="icon-remove-sign"></i>
+        <% end %>
+        &nbsp;<%= holding_record.local_location %>
+    </dd>
+<% end %>
+</dl>
+

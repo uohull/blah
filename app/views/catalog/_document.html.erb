@@ -1,0 +1,18 @@
+<% # container for a single doc -%>
+<div class="document <%= render_document_class document %> row-fluid">
+
+      <div class="span2 hidden-phone">
+        <div id="cover-art">
+          <img src="http://bks5.books.google.com/books?id=HVL4QwAACAAJ&printsec=frontcover&img=1&zoom=1">
+        </div>
+      </div>
+      <div class="span7">
+        <% # main container for doc partial view -%>
+        <%= render_document_partial document, :index, :document_counter => document_counter  %>
+      </div>
+         
+      <div class="span2">
+        <%= render :partial => 'document_tools', :locals => { :document => document } %>
+      </div>     
+    
+</div>

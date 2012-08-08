@@ -19,7 +19,7 @@ end
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
+  gem 'bootstrap-sass', '~> 2.0.4.0'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platform => :ruby
 
@@ -27,7 +27,9 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'blacklight', '~> 3.5.0'
+
+#Point to the Bootstrap version of Blacklight at https://github.com/projectblacklight/blacklight/tree/bootstrap
+gem 'blacklight', :git => "git://github.com/projectblacklight/blacklight.git", :ref => "ff3ab" 
 gem 'blacklight_advanced_search'
 gem 'devise'
 gem "devise_cas_authenticatable", "~> 1.1.1"

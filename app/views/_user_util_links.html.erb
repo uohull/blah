@@ -1,18 +1,33 @@
+<% # User util links are now are list items to fit in the Bootstrap Nav bar menu -%>
+
 <% if has_user_authentication_provider? %>
   <% if current_user%>
-  <%= link_to t('blacklight.header_links.logout'), destroy_user_session_path %>
-    | 
-    <%= link_to t('blacklight.header_links.bookmarks'), bookmarks_path %>
-    |
-    <%= link_to t('blacklight.header_links.saved_searches'), saved_searches_path %>
+    <li>
+      <%= link_to t('blacklight.header_links.logout'), destroy_user_session_path %>
+    </li>
+     <li>
+      <%= link_to t('blacklight.header_links.bookmarks'), bookmarks_path %>
+    </li>
+    <li>
+      <%= link_to t('blacklight.header_links.saved_searches'), saved_searches_path %>
+    </li>
 <% else %>
-  <%= link_to t('blacklight.header_links.login'), new_user_session_path %>
+    <li>
+      <%= link_to t('blacklight.header_links.login'), new_user_session_path %>
+    </li>
 <% end %>
-| 
+ 
 <% end %>
-<%= link_to t('blacklight.header_links.selected_items'), folder_index_path %> (<span id="folder_number"><%= "#{session[:folder_document_ids] ? session[:folder_document_ids].length : 0}" %></span>)
-|
-<%= link_to t('blacklight.header_links.search_history'), search_history_path %>
 
-<%= link_to t('blah.header_links.feedback'), contact_path %>
 
+<li id="selected-items">
+  <%= link_to t('blacklight.header_links.selected_items'), folder_index_path, {:id=>'desktop-folder-link', :class => 'visible-desktop'} %>
+  <%= link_to t('blacklight.header_links.selected_items'), folder_index_path, :class => 'hidden-desktop' %>
+  <div id="folder" class="visible-desktop">(<span id="folder_number"><%= "#{session[:folder_document_ids] ? session[:folder_document_ids].length : 0}" %></span>)</div>
+</li>
+<li>
+  <%= link_to t('blacklight.header_links.search_history'), search_history_path %>
+</li>
+<li>
+  <%= link_to t('blah.header_links.feedback'), contact_path %>
+</li>

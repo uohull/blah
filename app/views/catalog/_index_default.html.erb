@@ -1,13 +1,32 @@
-<%# default partial to display solr document fields in catalog index view -%>
-<dl class="defList">
-  
-  <% index_fields.each do |solr_fname, field| -%>
-    <% if document.has? solr_fname %>
-<dt class="blacklight-<%= solr_fname.parameterize %>"><%= render_index_field_label :field => solr_fname %></dt>
-<dd class="blacklight-<%= solr_fname.parameterize %>"><%= render_index_field_value :document => document, :field => solr_fname %></dd>
-    <% end -%>
-  <% end -%>
+<h3 class="index_title"><%= t('blacklight.search.documents.counter', :counter => (document_counter + 1 + @response.params[:start].to_i)) %><%= link_to_document document, :label=>document_show_link_field, :counter => (document_counter + 1 + @response.params[:start].to_i) %></h3>
 
+<% if document.has? 'title_series_t' %>
+  <h5><%= render_index_field_value :document => document, :field => "title_series_t" %></h5>
+<% end %>
+
+<% if document.has? 'author_display' %>
+  <h5><%= render_index_field_value :document => document, :field => "author_display" %></h5>
+<% end %>
+
+<% if document.has? 'author_addl_t' %>
+  <h5><%= render_index_field_value :document => document, :field => "author_addl_t" %></h5>
+<% end %>
+
+<% if document.has? 'pub_date' %>
+  <h5><%= render_index_field_value :document => document, :field => "pub_date" %></h5>
+<% end %>
+
+
+<dl class="defList">  
+      <% if document.has? 'format' %>
+        <dt class="blacklight-format">Format</dt>
+	      <dd class="blacklight-format"><%= render_index_field_value :document => document, :field => 'format' %></dd>
+      <% end %>
+
+      <% if document.has? 'lc_callnum_display' %>
+        <dt class="blacklight-format">Shelved:</dt>
+	      <dd class="blacklight-format"><%= render_index_field_value :document => document, :field => 'lc_callnum_display' %></dd>
+      <% end %>
 </dl>
 <%= jquery_holdings_display(document.id) %>
 
