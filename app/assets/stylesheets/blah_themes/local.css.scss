@@ -102,3 +102,53 @@ div#feedback {
 #top-spacer {
     height: 9em;
 }
+
+
+
+/* Search results */
+.documentFunctions {
+    float: none;
+    margin-bottom: 0.5em;
+    margin-left: 0em;
+}
+
+.table-container {
+    padding: 0 1em 0.5em;
+}
+
+/* Record show */
+
+#document h1 {
+    padding: 0;
+}
+
+#document-header {
+    padding: 0 0 1.5em;
+}
+
+
+#sidebar-title {
+    background-color: transparent;
+    margin-bottom: 1em;
+    padding: 1em;
+}
+
+
+.availability-table {
+    background-color: #E3E3E3;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 0 0 0 0;
+    margin: 0 0 1em;
+    max-width: 300px;
+
+  thead {
+    background-color: #E3E3E3;
+  }
+
+  tbody tr {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #E9E9E9;
+    border-right: 1px solid #E9E9E9;
+  }
+
+}

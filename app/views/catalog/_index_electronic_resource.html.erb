@@ -1,9 +1,12 @@
+<h3 class="index_title"><%= t('blacklight.search.documents.counter', :counter => (document_counter + 1 + @response.params[:start].to_i)) %><%= link_to_document document, :label=>document_show_link_field, :counter => (document_counter + 1 + @response.params[:start].to_i) %></h3>
+
 <%# default partial to display solr document fields in catalog index view -%>
 <dl class="defList">
   <dt class="blacklight-format">Format:</dt>
   <dd class="blacklight-format"><%= render_index_field_value :document => document, :field => "format" %></dd>
-  <dt class="blacklight-format">Link:</dt>
-  <dd class="blacklight-format"><a target="_blank" href="<%= render_index_field_value :document => document, :field => 'url_fulltext_display' %>">Connect</dd>
+
+  <%= display_field(document, 'url_fulltext_display', 'Online', 'online', {:display_as_link => true, :link_text => 'Access this resource online'}) %>
+  
 </dl>
 
 

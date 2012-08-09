@@ -1,9 +1,21 @@
 <h3 class="index_title"><%= t('blacklight.search.documents.counter', :counter => (document_counter + 1 + @response.params[:start].to_i)) %><%= link_to_document document, :label=>document_show_link_field, :counter => (document_counter + 1 + @response.params[:start].to_i) %></h3>
 
-<%= display_field_within_element(document, 'title_series_t' , element='h5') %>
-<%= display_field_within_element(document, 'author_display' , element='h5') %>
-<%= display_field_within_element(document, 'author_addl_t' , element='h5') %>
-<%= display_field_within_element(document, 'pub_date' , element='h5') %>
+<% if document.has? 'title_series_t' %>
+  <h5><%= render_index_field_value :document => document, :field => "title_series_t" %></h5>
+<% end %>
+
+<% if document.has? 'author_display' %>
+  <h5><%= render_index_field_value :document => document, :field => "author_display" %></h5>
+<% end %>
+
+<% if document.has? 'author_addl_t' %>
+  <h5><%= render_index_field_value :document => document, :field => "author_addl_t" %></h5>
+<% end %>
+
+<% if document.has? 'pub_date' %>
+  <h5><%= render_index_field_value :document => document, :field => "pub_date" %></h5>
+<% end %>
+
 
 <dl class="defList">  
       <% if document.has? 'format' %>

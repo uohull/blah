@@ -1,10 +1,43 @@
-<%# default partial to display solr document fields in catalog show view -%>
-<dl class="defList">
-  <% document_show_fields.each do |solr_fname, field| -%>
-    <% if document.has? solr_fname %>
-	    <dt class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_label :field => solr_fname %></dt>
-	    <dd class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_value :document => document, :field => solr_fname %></dd>
-    <% end -%>
-  <% end -%>
-</dl>
-<%= render_holdings_html_partial %>
+<div class="row-fluid">
+  <div id="document-header" class="span12">
+    <%= render_document_heading.html_safe %>
+    <%= display_field_within_element(document, 'subtitle_display' , element='h5') %>
+    <%= display_field_within_element(document, 'title_series_t' , element='h5') %>
+    <%= display_field_within_element(document, 'author_display' , element='h5') %>
+    <%= display_field_within_element(document, 'author_addl_t' , element='h5') %>
+    <%= display_field_within_element(document, 'author_vern_display' , element='h5') %>
+    <%= display_field_within_element(document, 'corporate_author_display' , element='h5') %>
+    <%= display_field_within_element(document, 'pub_date' , element='h5') %>
+  </div>
+</div>
+<div class="row-fluid">
+            <div class="span3 hidden-phone">
+              <div id="cover-art">
+                <img src="/book_cover.jpeg">              
+              </div>
+            </div><!--/span-->
+            
+            <div class="span1 visible-phone">
+              <div id="cover-art-phone">
+                <span class="cover-art-image"><img width="200px" src="/book_cover.jpeg"></span>
+              </div>
+            </div><!--/span-->
+
+            <div class="span9">
+              <h4>Record</h4>
+              <dl class="defList">
+                <%= display_field(document, 'subject_t', 'Subject', 'subject') %>
+                <%= display_field(document, 'language_facet', 'Language', 'language') %>
+                <%= display_field(document, 'lc_callnum_display', 'Call number', 'call') %>
+              </dl>
+              <h4>Publication information</h4>
+              <dl class="defList">
+                <%= display_field(document, 'format', 'Call number', 'call') %>
+                <%= display_field(document, 'published_display', 'Published', 'pub') %>
+                <%= display_field(document, 'published_vern_display', 'Published', 'pub') %>
+                <%= display_field(document, 'isbn_t', 'ISBN', 'isbn') %>
+              </dl>
+           </div>
+</div>
+
+

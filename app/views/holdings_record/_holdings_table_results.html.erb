@@ -7,9 +7,10 @@
     <% end %>
     <dd>
         <% if holding_record.availability == "AVAILABLE" then %>
-          <i class="icon-ok-sign"></i>
+          <i title="Available" class="icon-ok-sign"></i>
         <% else %>
-          <i class="icon-remove-sign"></i>
+          <i title="Not available" class="icon-remove-sign"></i>
+          &nbsp;<%= holding_record.availability %>
         <% end %>
         &nbsp;<%= holding_record.local_location %>
     </dd>

@@ -5,16 +5,14 @@
 <%= display_field_within_element(document, 'author_addl_t' , element='h5') %>
 <%= display_field_within_element(document, 'pub_date' , element='h5') %>
 
-<dl class="defList">  
+<dl class="defList"> 
       <% if document.has? 'format' %>
         <dt class="blacklight-format">Format</dt>
 	      <dd class="blacklight-format"><%= render_format_icon( document ) %>&nbsp;<%= render_index_field_value :document => document, :field => "format" %> </dd>
       <% end %>
 
-      <% if document.has? 'lc_callnum_display' %>
-        <dt class="blacklight-format">Shelved:</dt>
-	      <dd class="blacklight-format"><%= render_shelved_icon %>&nbsp;<%= render_index_field_value :document => document, :field => 'lc_callnum_display' %></dd>
-      <% end %>
+     <%= display_field(document, 'url_fulltext_display', 'Online', 'online', {:display_as_link => true, :link_text => 'Access this resource online'}) %>
+   
 </dl>
 <%= jquery_holdings_display(document.id) %>
 
