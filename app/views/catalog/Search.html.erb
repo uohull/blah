@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <title><%= h(@page_title || application_name) %></title>
+    <link href="<%= opensearch_catalog_path(:format => 'xml', :only_path => false) %>" title="<%= application_name%>" type="application/opensearchdescription+xml" rel="search"/>
+    <%= favicon_link_tag asset_path('favicon.ico') %>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <%= raw(render_head_content) %>
+
+    <!-- consider moving -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <!-- consider moving -->
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Library Catalogue</a>
+          <div class="brand-logo pull-right hidden-phone">
+<img src="http://www2.hull.ac.uk/lli/images/logo.gif" alt="Logo" />
+          </div>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><a href="#about">Login</a></li>
+              <li><a href="#contact">Help</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+          
+      
+      </div>
+
+      </div>
+    </div>
+<!-- /container -->
+<div id="background-container">
+    <div id="main-container" class="container">
+      <div class="inner-container">
+        <!-- Main hero unit for a primary marketing message or call to action -->
+<div class="row">
+  
+
+<div class="span8 offset2 visible-desktop">
+    <div id="search-tile-layout" class="hero-unit">
+      <div id="search-tile">
+        <h2>Search the catalog...</h2>
+        <p>Search the library's holdings for books, e-books and other electronic resources, images, journals and other periodicals, plus more: </p>
+        <div id="main-search" class="search">                  
+          <form action="results.html" class="form-inline">
+            <input type="text" class="input-large search-query">
+            
+              <select id="select01" class="input-small">
+                <option>All</option>
+                <option>Title</option>
+                <option>Author</option>
+                <option>ISBN</option>
+              </select>
+
+            <button type="submit" class="btn">Search</button>
+          </form>
+           <p>
+            <a href="#">
+              <i class="icon-search icon-white"></i>
+              Advanced search
+            </a>
+           </p>
+
+       </div>
+    </div>  
+  </div>
+</div>
+
+<!-- tablet -->
+<div class="span12 visible-tablet">
+    <div id="search-tile-layout" class="hero-unit">
+      <div id="search-tile">
+        <h2>Search the catalog...</h2>
+        <p>Search the library's holdings for books, e-books and other electronic resources, images, journals and other periodicals, plus more: </p>
+        <div id="main-search" class="search">                  
+          <form class="form-inline">
+            <input type="text" class="input-large search-query">
+            
+              <select id="select01" class="input-small">
+                <option>All</option>
+                <option>Title</option>
+                <option>Author</option>
+                <option>ISBN</option>
+              </select>
+
+            <button type="submit" class="btn">Search</button>
+          </form>
+           <p>
+            <a href="#">
+              <i class="icon-search icon-white"></i>
+              Advanced search
+            </a>
+           </p>
+
+       </div>
+    </div>  
+  </div>
+</div>
+
+<!-- pherrrn -->
+
+<div class="span12 visible-phone">
+<div class="row">
+    <div class="generic-tile-layout-phone" id="search-tile-layout-phone" class="">
+      <div id="search-tile">
+        <h2>Search the catalog...</h2>
+        <div id="main-search" class="search">                  
+          <form action="results.html" class="form-inline">
+            <input type="text" class="pull-left input search-query">
+          
+    <div class="btn-group pull-left">
+        <button class="btn"><i class="icon-search icon"></i></button>
+        <button class="btn dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="#">All</a></li>
+          <li><a href="#">Title</a></li>
+          <li><a href="#">Author</a></li>
+          <li><a href="#">ISBN</a></li>
+        </ul>
+    </div>
+</div>
+<!--    
+
+<select id="select01" class="input-small">
+                <option>All</option>
+                <option>Title</option>
+                <option>Author</option>
+                <option>ISBN</option>
+              </select>
+
+            <button type="submit" class="btn"><i class="icon-search icon"></i></button> -->
+
+
+          </form>
+
+       </div>
+    </div>  
+  </div>
+</div>
+
+
+</div>
+
+<!-- Desktop -->
+
+      <div id="tile-row1" class="row visible-desktop">
+        <div class="span4 offset2">
+        <div id="browse-tile">
+          <div id="browse-tile-container">
+          <h2>Browse the catalog</h2>
+           <p>You can browse the catalog by...</p>
+           <p>
+            <a href="#">
+              <i class="icon-tags"></i>
+              Topic
+            </a>
+           </p>
+           <p>
+              <a href="#">
+                <i class="icon-user"></i>
+              Author
+             </a>
+          </p>
+          <p>
+            <a href="#">
+                <i class="icon-book"></i>
+              Format
+            </a>
+          </p>
+<p>
+            <a href="#">
+                &nbsp;
+            </a>
+          </p>
+<p>
+            <a href="#">
+                &nbsp;
+            </a>
+          </p>
+</div>
+</div>
+        </div>
+       
+<div  class="span4">
+<div id="links-tile">
+          <h2>Quick links</h2>
+          <p>Links to useful resources...
+            <p>
+            <a href="#">
+              <i class="icon-eye-open"></i>
+              My Library account
+            </a>
+           </p>
+          <p>
+              <a href="#">
+                <i class="icon-question-sign"></i>
+              Help and feedback
+             </a>
+          </p>
+           <p>
+              <a href="#">
+                <i class="icon-pencil"></i>
+              Libguides
+             </a>
+          </p>
+          <p>
+              <a href="#">
+                <i class="icon-bullhorn"></i>
+                Library News
+             </a>
+          </p>
+          <p>
+              <a href="#">
+                <i class="icon-time"></i>
+              Opening hours
+             </a>
+          </p>
+       </div>  
+
+    </div>
+</div>
+<!-- EOF Desktop -->
+
+<!-- Tablet -->
+
+      <div id="tile-row1" class="row visible-tablet">
+        <div class="span6">
+        <div id="browse-tile">
+          <div id="browse-tile-container">
+          <h2>Browse the catalog</h2>
+           <p>You can browse the catalog by...</p>
+           <p>
+            <a href="#">
+              <i class="icon-tags"></i>
+              Topic
+            </a>
+           </p>
+           <p>
+              <a href="#">
+                <i class="icon-user"></i>
+              Author
+             </a>
+          </p>
+          <p>
+            <a href="#">
+                <i class="icon-book"></i>
+              Format
+            </a>
+          </p>
+<p>
+            <a href="#">
+                &nbsp;
+            </a>
+          </p>
+<p>
+            <a href="#">
+                &nbsp;
+            </a>
+          </p>
+</div>
+</div>
+        </div>
+ 
+<!-- Phone browse tile -->
+      
+<div  class="span6">
+  <div id="links-tile" class="visible-tablet">
+          <h2>Quick links</h2>
+          <p>Links to useful resources...
+            <p>
+            <a href="#">
+              <i class="icon-eye-open"></i>
+              My Library account
+            </a>
+           </p>
+          <p>
+              <a href="#">
+                <i class="icon-question-sign"></i>
+              Help and feedback
+             </a>
+          </p>
+           <p>
+              <a href="#">
+                <i class="icon-pencil"></i>
+              Libguides
+             </a>
+          </p>
+          <p>
+              <a href="#">
+                <i class="icon-bullhorn"></i>
+                Library News
+             </a>
+          </p>
+          <p>
+              <a href="#">
+                <i class="icon-time"></i>
+              Opening hours
+             </a>
+          </p>
+       </div>  
+
+    </div>
+</div>
+
+<!-- EOF Desktop -->
+
+<!-- phone -->
+
+
+        <div class="span6">
+        <div class="generic-tile-layout-phone visible-phone" id="browse-tile">
+          <div id="browse-tile-container">
+          <h2>Browse the catalog</h2>
+           <p>You can browse the catalog by...</p>
+           <p>
+            <a href="#">
+              <i class="icon-tags"></i>
+              Topic
+            </a>
+           </p>
+           <p>
+              <a href="#">
+                <i class="icon-user"></i>
+              Author
+             </a>
+          </p>
+          <p>
+            <a href="#">
+                <i class="icon-book"></i>
+              Format
+            </a>
+          </p>
+<p>
+            <a href="#">
+                &nbsp;
+            </a>
+          </p>
+<p>
+            <a href="#">
+                &nbsp;
+            </a>
+          </p>
+</div>
+</div>
+        </div>
+
+
+<div  class="span6">
+  <div class="generic-tile-layout-phone links-tile-phone visible-phone" id="links-tile">
+          <h2>Quick links</h2>
+          <p>Links to useful resources...
+            <p>
+            <a href="#">
+              <i class="icon-eye-open"></i>
+              My Library account
+            </a>
+           </p>
+          <p>
+              <a href="#">
+                <i class="icon-question-sign"></i>
+              Help and feedback
+             </a>
+          </p>
+           <p>
+              <a href="#">
+                <i class="icon-pencil"></i>
+              Libguides
+             </a>
+          </p>
+          <p>
+              <a href="#">
+                <i class="icon-bullhorn"></i>
+                Library News
+             </a>
+          </p>
+          <p>
+              <a href="#">
+                <i class="icon-time"></i>
+              Opening hours
+             </a>
+          </p>
+       </div>  
+
+    </div>
+</div>
+
+
+
+
+
+    <div id="tile-row2" class="row">
+
+      <div class="span8 offset2 visible-desktop">
+      <div id="social-tile">
+                <h2>Library twitter</h2>
+                <script type="text/javascript">new TWTR.Widget({  version: 2,  type: 'profile',  rpp: 3,  interval: 6000,  width: '575',  height: 400,  theme: {    shell: {   background:'none',   color: '#fff'   },    tweets: {  background:'none',  color: '#fff',      links: '#fff'    }  },  features: {    scrollbar: false,    loop: false,    live: false,    hashtags: true,    timestamp: true,    avatars: true,    behavior: 'all'  }}).render().setUser('HullUni_Library').start();</script>
+      <noscript><div>Browser does not support script.</div></noscript>
+      </div>
+
+    </div> <!-- /container -->
+
+<div class="span12  visible-tablet">
+      <div id="social-tile">
+                <h2>Library twitter</h2>
+                <script type="text/javascript">new TWTR.Widget({  version: 2,  type: 'profile',  rpp: 3,  interval: 6000,  width: '575',  height: 400,  theme: {    shell: {   background:'none',   color: '#fff'   },    tweets: {  background:'none',  color: '#fff',      links: '#fff'    }  },  features: {    scrollbar: false,    loop: false,    live: false,    hashtags: true,    timestamp: true,    avatars: true,    behavior: 'all'  }}).render().setUser('HullUni_Library').start();</script>
+      <noscript><div>Browser does not support script.</div></noscript>
+      </div>
+
+    </div> <!-- /container -->
+
+<div class="span12  visible-phone">
+      <div id="social-tile" class="generic-tile-layout-phone">
+                <h2>Library twitter</h2>
+                <script type="text/javascript">new TWTR.Widget({  version: 2,  type: 'profile',  rpp: 1,  interval: 6000,  width: '220',  height: 400,  theme: {    shell: {   background:'none',   color: '#fff'   },    tweets: {  background:'none',  color: '#fff',      links: '#fff'    }  },  features: {    scrollbar: false,    loop: false,    live: false,    hashtags: true,    timestamp: false,    avatars: false,    behavior: 'all'  }}).render().setUser('HullUni_Library').start();</script>
+      <noscript><div>Browser does not support script.</div></noscript>
+      </div>
+
+    </div> <!-- /container -->
+
+
+
+
+      </div>
+      
+    </div> 
+</div>
+    <footer>
+        <div class="navbar navbar-fixed-bottom">
+<div id="footer-container-top" class="navbar-inner">
+  <div class="container">
+  <h4 id="footer-title-top" class="hidden-phone">
+    <a href="#">University of Hull - Library and Learning Innovation</a></h4>
+    <div class="brand-logo pull-right visible-phone">
+    <img src="http://www2.hull.ac.uk/lli/images/logo.gif" alt="Logo"></img>
+          </div>
+</div>
+</div>
+          <div id="footer-container" class="navbar-inner">
+          <div class="container">
+            
+            <div  class="row-fluid">
+<div id="footer-row">
+              <div class="span3">
+<div id="footer-column">
+                <h4>Section</h4>
+                <ul>
+                 <li><a href="#">Link</a></li>
+                 <li>
+                    <ul>
+                       <li><a href="#">Sub-link</a></li>
+                       <li><a href="#">Sub-link</a></liv>
+                    </ul>
+                </li>
+                 <li><a href="#">Link</a></li>
+                 <li><a href="#">Link</a></li>
+                 <li><a href="#">Link</a></li>
+                </ul>
+</div>
+              </div>
+              <div class="span3">
+<div id="footer-column">
+               <h4>Section</h4>
+               <ul>
+                 <li><a href="#">Link</a></li>
+                 <li><a href="#">Link</a></li>
+                 <li><a href="#">Link</a></li>
+                 <li><a href="#">Link</a></li>
+                 <li><a href="#">Link</a></li>
+                </ul>
+</div>
+              </div>
+              <div class="span3 hidden-phone">
+<div id="footer-column">
+                <h4>Section hidden on phone</h4>
+                <ul>
+                 <li><a href="#">Link</a></li>
+                 <li><a href="#">Link</a></li>
+                 <li><a href="#">Link</a></li>
+                 <li><a href="#">Link</a></li>
+                 <li><a href="#">Link</a></li>
+                </ul>
+</div>
+              </div>
+              <div class="span3 visible-desktop">
+<div id="footer-column">
+              <h4>Section hidden on phone and tablet</h4>
+               <ul>
+                 <li><a href="#">Link</a></li>
+                 <li><a href="#">Link</a></li>
+                 <li><a href="#">Link</a></li>
+                 <li><a href="#">Link</a></li>
+                 <li><a href="#">Link</a></li>
+                </ul>
+</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="span12">
+                  <p class="pull-right">&copy; The University of Hull 2012</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+</div>
+       </div>
+
+
+      
+      </footer>  
+  </body>
+</html>
+
