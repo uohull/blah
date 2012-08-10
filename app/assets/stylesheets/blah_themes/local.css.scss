@@ -1,3 +1,6 @@
+
+$home_background_image: '/background.jpg' !default;
+
 .brand-logo {
     height: 40px;
     margin: 0;
@@ -10,6 +13,9 @@
     color: #FFF;
 }
 
+.navbar {
+    font-family: inherit;
+}
 
 .navbar-inner {
     background-color: #000;
@@ -41,8 +47,108 @@
 }
 
 
+/* Home page */
+
+#home-background-container {
+    background-image: url($home_background_image);
+    width: 100%;
+}
+
+#header-navbar-fixed-top { 
+    opacity: 0.8;
+}
+
+#search-tile-layout {
+    background-color: rgba(81, 163, 81, 0.98);
+    border-radius: 0 0 0 0;
+    margin: 0 0.5em 0.5em;
+    padding: 60px;
+
+    h2 {
+      font-size: 24px;
+      line-height: 36px;
+      color:#FFFFFF
+    }
+
+    select {     
+      width: 120px;
+    }
+   
+    a {
+      color: #FFF !important;
+    }
+}
+
+#search-tile p {
+    color: #FFFFFF;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+#links-tile {
+    background-color: rgba(255, 255, 255, 0.96);
+}
+
+#browse-tile, #links-tile, #social-tile {
+    margin: 0.5em;
+    padding: 1em;
+}
+	
+
+#browse-tile {
+    background-color: rgba(255, 255, 255, 0.96);
+}
+
+#social-tile {
+    background-color: rgba(91, 192, 222, 0.98);
+    margin-bottom: 0;
+}
+
+#footer-title-top a {
+    color: #FFFFFF;
+    padding: 0 40px;
+}
+#search-tile, #social-tile h2 {
+    color: #FFFFFF;
+}
+#main-search.search p a {
+    color: #FFFFFF;
+}
+
+#links-tile, #browse-tile  {
+    h2 {
+      font-size: 24px !important;
+      color: #000 !important;
+    }
+}
+
+
+.links-tile-phone {
+    background-color: rgba(235, 235, 235, 0.98) !important;
+}
+.generic-tile-layout-phone {
+    margin: 0 0 0 !important;
+}
+
+#search-tile-layout-phone {
+    background-color: rgba(81, 163, 81, 0.98);
+    border-radius: 0 0 0 0;
+    margin: 0 0 0.5em;
+    padding: 3em 0.5em 8em 1.25em;
+}
+.generic-tile-layout-phone {
+    margin: 0 0 0 !important;
+}
+
+
+#documents {
+  min-height: 425px;
+}
+
 
 footer {
+
   
   h4 {
     font-size: 14px;
@@ -90,6 +196,10 @@ div#feedback {
     padding: 0 40px;
 }
 
+#footer-container-top {
+    padding-top: 0.75em;
+}
+
 #desktop-search-bar.navbar-inner {
     box-shadow: none;
 }
@@ -102,7 +212,6 @@ div#feedback {
 #top-spacer {
     height: 9em;
 }
-
 
 
 /* Search results */
@@ -151,6 +260,10 @@ div#feedback {
     border-right: 1px solid #E9E9E9;
   }
 
+}
+
+form.form-inline {
+  margin: 0;
 }
 
 

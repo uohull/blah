@@ -5,14 +5,15 @@ Blah::Application.routes.draw do
 
   Blacklight.add_routes(self)
 
-  root :to => "catalog#index"
+  #root :to => "catalog#index"
+  root :to => "catalog#home"
 
   match "holdings_record/:bib_no" => "holdings_record#index"
 
   match 'contact' => 'contact#new', :as => 'contact', :via => :get
   match 'contact' => 'contact#create', :as => 'contact', :via => :post
  
-
+  match 'home' => 'catalog#home'
 
   devise_for :users
 

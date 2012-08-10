@@ -172,6 +172,9 @@ class CatalogController < ApplicationController
     config.spell_max = 5
   end
 
+  def home
+    render :layout => false
+  end
 
 
   private

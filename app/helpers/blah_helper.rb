@@ -174,4 +174,18 @@ module BlahHelper
     content_tag(:i, '', :class => 'icon-map-marker') 
   end 
 
+
+  #Helper for use with display links
+  #opts[:i_class] for display icon from the usual glyph classes
+  def render_home_page_link(path, link, opts = {}) 
+    if opts[:i_class]
+      content_tag :a, :href => path do 
+        content_tag(:i, '', :class => opts[:i_class]) <<  " " << link
+      end
+    else
+      content_tag(:a, link, :href => path) 
+    end
+  end
+
+
 end

@@ -9,6 +9,7 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= raw(render_head_content) %>
+    <script src="http://widgets.twimg.com/j/2/widget.js" type="text/javascript"></script>
 
     <!-- consider moving -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +32,7 @@
 
 
   <body>
-
+<!--
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -51,13 +52,17 @@
             </ul>
           </div><!--/.nav-collapse -->
           
-      
+      <!--
       </div>
 
       </div>
     </div>
+
+-->
+<%= render :partial => 'shared/header_navbar' %>
+
 <!-- /container -->
-<div id="background-container">
+<div id="home-background-container">
     <div id="main-container" class="container">
       <div class="inner-container">
         <!-- Main hero unit for a primary marketing message or call to action -->
@@ -69,28 +74,8 @@
       <div id="search-tile">
         <h2>Search the catalog...</h2>
         <p>Search the library's holdings for books, e-books and other electronic resources, images, journals and other periodicals, plus more: </p>
-        <div id="main-search" class="search">                  
-          <form action="results.html" class="form-inline">
-            <input type="text" class="input-large search-query">
-            
-              <select id="select01" class="input-small">
-                <option>All</option>
-                <option>Title</option>
-                <option>Author</option>
-                <option>ISBN</option>
-              </select>
-
-            <button type="submit" class="btn">Search</button>
-          </form>
-           <p>
-            <a href="#">
-              <i class="icon-search icon-white"></i>
-              Advanced search
-            </a>
-           </p>
-
-       </div>
-    </div>  
+        <%= render :partial => 'home_search_form' %>
+     </div>  
   </div>
 </div>
 
@@ -100,27 +85,7 @@
       <div id="search-tile">
         <h2>Search the catalog...</h2>
         <p>Search the library's holdings for books, e-books and other electronic resources, images, journals and other periodicals, plus more: </p>
-        <div id="main-search" class="search">                  
-          <form class="form-inline">
-            <input type="text" class="input-large search-query">
-            
-              <select id="select01" class="input-small">
-                <option>All</option>
-                <option>Title</option>
-                <option>Author</option>
-                <option>ISBN</option>
-              </select>
-
-            <button type="submit" class="btn">Search</button>
-          </form>
-           <p>
-            <a href="#">
-              <i class="icon-search icon-white"></i>
-              Advanced search
-            </a>
-           </p>
-
-       </div>
+          <%= render :partial => 'home_search_form' %>
     </div>  
   </div>
 </div>
@@ -132,39 +97,9 @@
     <div class="generic-tile-layout-phone" id="search-tile-layout-phone" class="">
       <div id="search-tile">
         <h2>Search the catalog...</h2>
-        <div id="main-search" class="search">                  
-          <form action="results.html" class="form-inline">
-            <input type="text" class="pull-left input search-query">
-          
-    <div class="btn-group pull-left">
-        <button class="btn"><i class="icon-search icon"></i></button>
-        <button class="btn dropdown-toggle" data-toggle="dropdown">
-        <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <li><a href="#">All</a></li>
-          <li><a href="#">Title</a></li>
-          <li><a href="#">Author</a></li>
-          <li><a href="#">ISBN</a></li>
-        </ul>
-    </div>
+         <%= render :partial => 'home_search_form' %>
 </div>
-<!--    
-
-<select id="select01" class="input-small">
-                <option>All</option>
-                <option>Title</option>
-                <option>Author</option>
-                <option>ISBN</option>
-              </select>
-
-            <button type="submit" class="btn"><i class="icon-search icon"></i></button> -->
-
-
-          </form>
-
-       </div>
-    </div>  
+</div>  
   </div>
 </div>
 
@@ -172,7 +107,7 @@
 </div>
 
 <!-- Desktop -->
-
+<!--http://localhost:3000/catalog/facet/subject_topic_facet?q=test&search_field=all_fields&utf8=%E2%9C%93-->
       <div id="tile-row1" class="row visible-desktop">
         <div class="span4 offset2">
         <div id="browse-tile">
@@ -180,22 +115,13 @@
           <h2>Browse the catalog</h2>
            <p>You can browse the catalog by...</p>
            <p>
-            <a href="#">
-              <i class="icon-tags"></i>
-              Topic
-            </a>
+             <%= render_home_page_link('/catalog/facet/subject_topic_facet', 'Topic', {:i_class => 'icon-tags'}) %>
            </p>
            <p>
-              <a href="#">
-                <i class="icon-user"></i>
-              Author
-             </a>
-          </p>
+             <%= render_home_page_link('/catalog/facet/library', 'Library', {:i_class => 'icon-home'}) %>
+           </p>
           <p>
-            <a href="#">
-                <i class="icon-book"></i>
-              Format
-            </a>
+              <%= render_home_page_link('/catalog/facet/format', 'Format', {:i_class => 'icon-user'}) %>
           </p>
 <p>
             <a href="#">
@@ -216,31 +142,31 @@
           <h2>Quick links</h2>
           <p>Links to useful resources...
             <p>
-            <a href="#">
+            <a target="_blank" href="https://library.hull.ac.uk/patroninfo">
               <i class="icon-eye-open"></i>
               My Library account
             </a>
            </p>
           <p>
-              <a href="#">
+              <a target="_blank" href="http://www2.hull.ac.uk/lli/help-feedback.aspx">
                 <i class="icon-question-sign"></i>
-              Help and feedback
+              Help
              </a>
           </p>
            <p>
-              <a href="#">
+              <a target="_blank" href="http://libguides.hull.ac.uk">
                 <i class="icon-pencil"></i>
               Libguides
              </a>
           </p>
           <p>
-              <a href="#">
+              <a target="_blank" href="http://www2.hull.ac.uk/acs/library/news_and_events.aspx">
                 <i class="icon-bullhorn"></i>
                 Library News
              </a>
           </p>
           <p>
-              <a href="#">
+              <a target="_blank" href="http://www2.hull.ac.uk/acs/lib/using_our_libraries/services/openinghours.aspx">
                 <i class="icon-time"></i>
               Opening hours
              </a>
@@ -454,90 +380,7 @@
       
     </div> 
 </div>
-    <footer>
-        <div class="navbar navbar-fixed-bottom">
-<div id="footer-container-top" class="navbar-inner">
-  <div class="container">
-  <h4 id="footer-title-top" class="hidden-phone">
-    <a href="#">University of Hull - Library and Learning Innovation</a></h4>
-    <div class="brand-logo pull-right visible-phone">
-    <img src="http://www2.hull.ac.uk/lli/images/logo.gif" alt="Logo"></img>
-          </div>
-</div>
-</div>
-          <div id="footer-container" class="navbar-inner">
-          <div class="container">
-            
-            <div  class="row-fluid">
-<div id="footer-row">
-              <div class="span3">
-<div id="footer-column">
-                <h4>Section</h4>
-                <ul>
-                 <li><a href="#">Link</a></li>
-                 <li>
-                    <ul>
-                       <li><a href="#">Sub-link</a></li>
-                       <li><a href="#">Sub-link</a></liv>
-                    </ul>
-                </li>
-                 <li><a href="#">Link</a></li>
-                 <li><a href="#">Link</a></li>
-                 <li><a href="#">Link</a></li>
-                </ul>
-</div>
-              </div>
-              <div class="span3">
-<div id="footer-column">
-               <h4>Section</h4>
-               <ul>
-                 <li><a href="#">Link</a></li>
-                 <li><a href="#">Link</a></li>
-                 <li><a href="#">Link</a></li>
-                 <li><a href="#">Link</a></li>
-                 <li><a href="#">Link</a></li>
-                </ul>
-</div>
-              </div>
-              <div class="span3 hidden-phone">
-<div id="footer-column">
-                <h4>Section hidden on phone</h4>
-                <ul>
-                 <li><a href="#">Link</a></li>
-                 <li><a href="#">Link</a></li>
-                 <li><a href="#">Link</a></li>
-                 <li><a href="#">Link</a></li>
-                 <li><a href="#">Link</a></li>
-                </ul>
-</div>
-              </div>
-              <div class="span3 visible-desktop">
-<div id="footer-column">
-              <h4>Section hidden on phone and tablet</h4>
-               <ul>
-                 <li><a href="#">Link</a></li>
-                 <li><a href="#">Link</a></li>
-                 <li><a href="#">Link</a></li>
-                 <li><a href="#">Link</a></li>
-                 <li><a href="#">Link</a></li>
-                </ul>
-</div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="span12">
-                  <p class="pull-right">&copy; The University of Hull 2012</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-</div>
-       </div>
-
-
-      
-      </footer>  
+    	<%= render :partial => 'shared/footer' %>
   </body>
 </html>
 
