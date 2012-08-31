@@ -34,6 +34,9 @@ gem 'blacklight_advanced_search'
 gem 'devise'
 gem "devise_cas_authenticatable", "~> 1.1.1"
 
+#Blacklight google analytics plugin by Jason Ronallo
+gem "blacklight_google_analytics", "~> 0.0.1.pre2"
+
 #Zoom Ruby binding to Z40.50 http://rubygems.org/gems/zoom
 gem 'zoom', '~> 0.4.1'
 

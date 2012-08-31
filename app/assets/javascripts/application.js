@@ -20,3 +20,5 @@
 //= require jquery-ui
 //= require blacklight/blacklight
 //= require_tree .
+
+//= require blacklight_google_analytics
