@@ -11,25 +11,18 @@
     <% end %>
 
     <% unless has_search_parameters? %>
-<%# if there are no input/search related params, display the "home" partial -%>
-<%= render 'home' %>
-    <% else %>
+      <%# if there are no input/search related params, display the "home" partial -%>
+        <%= render 'home' %>
+      <% else %>
+        <% @page_title = t('blacklight.search.title', :application_name => application_name) %>
+        <% extra_head_content << render_opensearch_response_metadata.html_safe %>
+        <%= render :partial => 'did_you_mean' %>
 
-      <% @page_title = t('blacklight.search.title', :application_name => application_name) %>
-
-
-      <% extra_head_content << render_opensearch_response_metadata.html_safe %>
-
-
-<%= render :partial => 'did_you_mean' %>
-
-
-      <% topbar_items << capture do %>
-        <%= render 'constraints', :localized_params=>params %>
+        <% topbar_items << capture do %>
+          <%= render 'constraints', :localized_params=>params %>
       <% end %>
 
-
-<%= render 'sort_and_per_page' %>
+      <%= render 'sort_and_per_page' %>
 
       <% #The pagination information is another bootstrap 'row' -%>
       <div class="row-fluid">
@@ -41,14 +34,15 @@
           </div>
       </div>
 
-<%= render :partial => 'document_list' %>
+      <%= render 'results_pagination_top' %>
+      <%= render :partial => 'document_list' %>
 
-<% sidebar_items << capture do %>
-<%= render :partial=>'facets' %>
-<% end %>
+      <% sidebar_items << capture do %>
+      <%= render :partial=>'facets' %>
+    <% end %>
 
-<%= render 'results_pagination' %>
+    <%= render 'results_pagination' %>
 
     <% end %>
-</div>
+  </div>
 </div>

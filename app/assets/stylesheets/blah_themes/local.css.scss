@@ -244,7 +244,11 @@ div#feedback {
 }
 
 
+
+
 /* Search results */
+
+
 .documentFunctions {
     float: none;
     margin-bottom: 0.5em;
@@ -265,6 +269,22 @@ div#feedback {
 .table-container {
     padding: 0 1em 0.5em;
 }
+
+.pagination-top {
+  padding-bottom: 2em;
+  margin: 0;
+}
+
+
+#icon-holding-available {
+  background-color: #468847;
+}
+
+#icon-holding-unavailable {
+  background-color: #F89406;
+}
+
+
 
 
 /* Record show */

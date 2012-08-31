@@ -153,7 +153,7 @@ module BlahHelper
       content_tag(:i, '', :class => 'icon-play')
     when 'Map'
       content_tag(:i, '', :class => 'icon-globe')
-    when 'CD Audio', 'Cassette'
+    when 'CD Audio', 'Cassette', 'Sound record', 'Spoken record'
       content_tag(:i, '', :class => 'icon-volume-up')
     when 'DVD'
       content_tag(:i, '', :class => 'icon-film')
@@ -163,6 +163,8 @@ module BlahHelper
         content_tag(:i, '', :class => 'icon-briefcase')
     when 'Artefact'
         content_tag(:i, '', :class => 'icon-tag')
+    when 'Video'
+        content_tag(:i, '', :class => 'icon-facetime-video')
     else
       content_tag(:i, '', :class => 'icon-book')
     end

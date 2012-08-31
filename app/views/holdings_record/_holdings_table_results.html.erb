@@ -1,19 +1,28 @@
-<dl class="defList">  
-  <% @holdings_records.each do |holding_record| %>
-    <% if @holdings_records.first == holding_record %>
-      <dt>Location</dt>
-    <% else %>
-      <dt></dt>
+<dl class="defList"> 
+  <% unless @holdings_records.empty? %>
+    <% @holdings_records.sort!{ |x,y| x.availability <=> y.availability }%>
+    <% @holdings_records.each do |holding_record| %>
+      <% if @holdings_records.first == holding_record %>
+        <dt>Location</dt>
+      <% else %>
+        <dt></dt>
+      <% end %>
+      <dd>
+          <% if holding_record.availability.downcase =~ /available/ then %>
+            <i title="Available" id="icon-holding-available" class="icon-ok-sign icon-white"></i>
+          <% else %>
+            <i title="Not available" id="icon-holding-unavailable" class="icon-remove-sign icon-white"></i>
+            <%  
+              #Remove extra status information
+              availability = holding_record.availability
+              availability_replacements = [ [/\+[0-9]/, ""], ["HOLD", ""] ]
+              availability_replacements.each {|replacement| availability.gsub!(replacement[0], replacement[1])}
+            %>          
+            &nbsp;<%= availability %>
+          <% end %>
+          &nbsp;<%= holding_record.local_location %>
+      </dd>
     <% end %>
-    <dd>
-        <% if holding_record.availability == "AVAILABLE" then %>
-          <i title="Available" class="icon-ok-sign"></i>
-        <% else %>
-          <i title="Not available" class="icon-remove-sign"></i>
-          &nbsp;<%= holding_record.availability %>
-        <% end %>
-        &nbsp;<%= holding_record.local_location %>
-    </dd>
 <% end %>
 </dl>
 

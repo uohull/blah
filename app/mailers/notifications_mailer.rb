@@ -1,10 +1,9 @@
 class NotificationsMailer < ActionMailer::Base
   default :from => "noreply@hull.ac.uk"
-  default :to => APP_CONFIG['contact_form_email']
 
   def new_message(message)
     @message = message
-    mail(:subject => "Blacklight Feedback: #{message.subject}")
+    mail(:to => APP_CONFIG['contact_form_email'], :bcc => APP_CONFIG['contact_form_bcc'], :subject => "Blacklight Feedback: #{message.subject}")
   end
 
   def email_record(documents, details, url_gen_params)
