@@ -1,5 +1,6 @@
-
 $home_background_image: '/background.jpg' !default;
+$navbarBackgroundHighlight: #000 !default;
+$navbarBackground: #000 !default;
 
 .brand-logo {
     height: 40px;
@@ -9,17 +10,19 @@ $home_background_image: '/background.jpg' !default;
     width: 166px;
 }
 
-.navbar .brand {
-    color: #FFF;
-}
 
 .navbar {
     font-family: inherit;
+
+    .brand {
+      color: #FFF;
+    }    
 }
 
 .navbar-inner {
-    background-color: #000;
-    background-image: none;
+  background-image: -moz-linear-gradient(center top ,$navbarBackgroundHighlight, $navbarBackground);
+  background-image: -webkit-gradient(linear, center top, center bottom, from($navbarBackgroundHighlight), to($navbarBackground));
+  filter :progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#000001', GradientType=0);
 }
 
 .navbar .nav > li > a {
@@ -36,8 +39,12 @@ $home_background_image: '/background.jpg' !default;
     color: #FFF;
     text-decoration: none;
 }
+
 #selected-items #folder {
   color: #999999;
+
+  /* ie7 fix for the selected items counter field */
+  *float: none;
 }
 
 
@@ -46,6 +53,10 @@ $home_background_image: '/background.jpg' !default;
 	border: none;
 }
 
+#main-search select {
+  /* IE7 fix for main-search dropdown */  
+  *margin-right:4px; 
+}
 
 /* Home page */
 
@@ -55,10 +66,12 @@ $home_background_image: '/background.jpg' !default;
 }
 
 #header-navbar-fixed-top { 
-    opacity: 0.8;
+  opacity: 0.8;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 #search-tile-layout {
+    background-color: #51A351;
     background-color: rgba(81, 163, 81, 0.98);
     border-radius: 0 0 0 0;
     margin: 0 0.5em 0.5em;
@@ -87,7 +100,8 @@ $home_background_image: '/background.jpg' !default;
 }
 
 #links-tile {
-    background-color: rgba(255, 255, 255, 0.96);
+  background-color: #FFFFFF;   
+  background-color: rgba(255, 255, 255, 0.93);
 }
 
 #browse-tile, #links-tile, #social-tile {
@@ -97,12 +111,14 @@ $home_background_image: '/background.jpg' !default;
 	
 
 #browse-tile {
-    background-color: rgba(255, 255, 255, 0.96);
+  background-color: #FFFFFF;    
+  background-color: rgba(255, 255, 255, 0.93);
 }
 
 #social-tile {
-    background-color: rgba(91, 192, 222, 0.98);
-    margin-bottom: 0;
+  background-color: #5BC0DE;   
+  background-color: rgba(91, 192, 222, 0.98);
+  margin-bottom: 0;
 }
 
 #footer-title-top a {
@@ -141,9 +157,18 @@ $home_background_image: '/background.jpg' !default;
     margin: 0 0 0 !important;
 }
 
+/* Search results */
+
 
 #documents {
   min-height: 425px;
+}
+
+.label-success {
+  .icon-info-sign {
+    /* Fix for IE7 for View Record label */
+    *margin-right: 0;
+  }
 }
 
 
@@ -191,6 +216,9 @@ div#feedback {
 #footer-container {
     background-color: #222222;
     background-image: -moz-linear-gradient(center top , #2A2A2A, #161616);
+    background-image: -webkit-gradient(linear, center top, center bottom, from( #2A2A2A), to(#161616));
+    /* for ie */
+    filter :progid:DXImageTransform.Microsoft.gradient(startColorstr='#2A2A2A', endColorstr='#161616', GradientType=0);
     box-shadow: 0 1px 3px rgba(255, 0, 0, 0), 0 -1px 0 transparent inset;
     color: #666666;
     padding: 0 40px;
@@ -205,12 +233,14 @@ div#feedback {
 }
 
 #desktop-search-bar {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-image:none;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    background-color: rgba(255, 255, 255, 0.9) !important;
     opacity: 1 !important;
 }
 
 #top-spacer {
-    height: 9em;
+    height: 9em;   
 }
 
 
@@ -219,11 +249,23 @@ div#feedback {
     float: none;
     margin-bottom: 0.5em;
     margin-left: 0em;
+
+    /* IE 7 fix - Select checkbox alignment */
+    *margin-left: 1em;
+}
+
+/* IE 7 fix - Alignment of the Sort by and Show dropdowns */
+#per_page { 
+  *margin-bottom: 0 !important;
+}
+#sort { 
+  *margin-bottom: 0 !important;
 }
 
 .table-container {
     padding: 0 1em 0.5em;
 }
+
 
 /* Record show */
 
@@ -260,6 +302,12 @@ div#feedback {
     border-right: 1px solid #E9E9E9;
   }
 
+}
+
+#tools-nav {
+  .btn {
+    *background-color:transparent;
+  }
 }
 
 form.form-inline {

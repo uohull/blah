@@ -1,5 +1,3 @@
-<h3 class="index_title"><%= t('blacklight.search.documents.counter', :counter => (document_counter + 1 + @response.params[:start].to_i)) %><%= link_to_document document, :label=>document_show_link_field, :counter => (document_counter + 1 + @response.params[:start].to_i) %></h3>
-
 <%= display_field_within_element(document, 'title_series_t' , element='h5') %>
 <%= display_field_within_element(document, 'author_display' , element='h5') %>
 <%= display_field_within_element(document, 'author_addl_t' , element='h5') %>
@@ -7,13 +5,13 @@
 
 <dl class="defList">  
       <% if document.has? 'format' %>
-        <dt class="blacklight-format">Format</dt>
-	      <dd class="blacklight-format"><%= render_format_icon( document ) %>&nbsp;<%= render_index_field_value :document => document, :field => "format" %> </dd>
+        <dt class="blacklight-format-dt">Format</dt>
+	      <dd class="blacklight-format-dd"><%= render_format_icon( document ) %>&nbsp;<%= render_index_field_value :document => document, :field => "format" %> </dd>
       <% end %>
 
       <% if document.has? 'lc_callnum_display' %>
-        <dt class="blacklight-format">Shelved:</dt>
-	      <dd class="blacklight-format"><%= render_shelved_icon %>&nbsp;<%= render_index_field_value :document => document, :field => 'lc_callnum_display' %></dd>
+        <dt class="blacklight-class-no-dt">Class number</dt>
+	      <dd class="blacklight-class-no-dd"><%= render_shelved_icon %>&nbsp;<%= render_index_field_value :document => document, :field => 'lc_callnum_display' %></dd>
       <% end %>
 </dl>
 <%= jquery_holdings_display(document.id) %>

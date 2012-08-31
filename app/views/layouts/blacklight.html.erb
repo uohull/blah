@@ -28,47 +28,38 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
   </head>
- <body>
-  <% onload_text = "$('input#q').focus();" if params[:q].to_s.empty? and params[:f].to_s.empty? and params[:id].nil? %>
-
-  <%= render :partial => 'shared/header_navbar' %>
-
-
-<!-- /container -->
-<div id="background-container">
-  <div class="visible-desktop" id="top-spacer">
-    &nbsp;
-  </div>
-  <div id="main-container" class="container">
-        <div class="inner-container">
-            <!-- Top bar -->
-            <div id="search-found" class="row-fluid hidden-phone">
-              <%= topbar_items.join('').html_safe %>
-            </div>
-            <!-- /Top bar -->
-            <!-- sidebar -->
-            <div class="container">
-                  <div class="row">
-                      <div class="span10">
-                        <%= render :partial=>'/flash_msg' %>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="span12">
-                       <%= yield %>
-                       </div>
-                  </div>
-            </div>
+  <body>
+    <% onload_text = "$('input#q').focus();" if params[:q].to_s.empty? and params[:f].to_s.empty? and params[:id].nil? %>
+    <%= render :partial => 'shared/header_navbar' %>
+    <!-- /container -->
+    <div id="background-container">
+      <div class="visible-desktop" id="top-spacer">
+        &nbsp;
       </div>
-  </div>
-</div>
-	<div id="feedback">
-		<a class="btn btn-primary" href="/contact">
-		  <i class="icon-envelope icon-white"></i>
-		  Feedback
-		</a>
-	</div>
-	<%= render :partial => 'shared/footer' %>
-
-</body>
+      <div id="main-container" class="container">
+            <div class="inner-container">
+                <!-- Top bar -->
+                <div id="search-found" class="row-fluid hidden-phone">
+                  <%= topbar_items.join('').html_safe %>
+                </div>
+                <!-- /Top bar -->
+                <!-- sidebar -->
+                <div class="container">
+                      <div class="row">
+                          <div class="span10">
+                            <%= render :partial=>'/flash_msg' %>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="span12">
+                           <%= yield %>
+                           </div>
+                      </div>
+                </div>
+          </div>
+      </div>
+    </div>
+    <%= render :partial => 'shared/feedback_element' %>
+    <%= render :partial => 'shared/footer' %>
+  </body>
 </html>

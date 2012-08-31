@@ -5,6 +5,9 @@ class CatalogController < ApplicationController
 
   include Blacklight::Catalog
 
+  #Manually add spam tool...
+  before_filter :protect_from_spam, :only => :email  
+
   before_filter :retrieve_holdings, :only => :show
  
 
@@ -56,9 +59,8 @@ class CatalogController < ApplicationController
     # facet bar
     config.add_facet_field 'format', :label => 'Format', :limit => 20  
     config.add_facet_field 'pub_date', :label => 'Publication Year' 
-    config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 20 
+    config.add_facet_field 'subject_topic_facet', :label => 'Subject', :limit => 20 
     config.add_facet_field 'language_facet', :label => 'Language', :limit => true 
-    config.add_facet_field 'lc_1letter_facet', :label => 'Call Number' 
     config.add_facet_field 'subject_geo_facet', :label => 'Region' 
     config.add_facet_field 'subject_era_facet', :label => 'Era'  
 
@@ -174,6 +176,27 @@ class CatalogController < ApplicationController
 
   def home
     render :layout => false
+  end
+
+  # Email Action (this will render the appropriate view on GET requests and process the form and send the email on POST requests)
+  def email
+    @response, @documents = get_solr_response_for_field_values(SolrDocument.unique_key,params[:id])
+    if request.post?
+      if params[:to]
+        url_gen_params = {:host => request.host_with_port, :protocol => request.protocol}
+      
+        if params[:to].match(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/)
+          #Used delayed job to asynchronously deal with message (.delay.)
+          NotificationsMailer.delay.email_record(@documents, {:to => params[:to], :message => params[:message]}, url_gen_params)  
+  #NotificationsMailer.email_record(@documents, {:to => params[:to], :message => params[:message]}, url_gen_params).deliver        
+        else
+          flash[:error] = I18n.t('blacklight.email.errors.to.invalid', :to => params[:to])
+        end        
+        redirect_to :back
+      else
+        flash[:error] = I18n.t('blacklight.email.errors.to.blank')
+      end
+    end
   end
 
 
