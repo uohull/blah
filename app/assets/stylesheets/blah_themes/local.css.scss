@@ -90,6 +90,10 @@ $navbarBackground: #000 !default;
     a {
       color: #FFF !important;
     }
+
+    /* Extra background-color required here for IE7 */ 
+    *background-color: #51A351;
+
 }
 
 #search-tile p {
@@ -102,6 +106,9 @@ $navbarBackground: #000 !default;
 #links-tile {
   background-color: #FFFFFF;   
   background-color: rgba(255, 255, 255, 0.93);
+
+  /* Extra background-color required here for IE7 */ 
+  *background-color: #FFFFFF;   
 }
 
 #browse-tile, #links-tile, #social-tile {
@@ -113,12 +120,18 @@ $navbarBackground: #000 !default;
 #browse-tile {
   background-color: #FFFFFF;    
   background-color: rgba(255, 255, 255, 0.93);
+
+  /* Extra background-color required here for IE7 */ 
+  *background-color: #FFFFFF;   
 }
 
 #social-tile {
   background-color: #5BC0DE;   
   background-color: rgba(91, 192, 222, 0.98);
   margin-bottom: 0;
+
+  /* Extra background-color required here for IE7 */ 
+  *background-color: #5BC0DE;   
 }
 
 #footer-title-top a {
@@ -157,6 +170,7 @@ $navbarBackground: #000 !default;
     margin: 0 0 0 !important;
 }
 
+
 /* Search results */
 
 
@@ -171,6 +185,15 @@ $navbarBackground: #000 !default;
   }
 }
 
+
+dl.defList {
+    dd {
+      float: none;
+    }
+}
+
+
+html body div#background-container div#main-container.container div.inner-container div.container div.row div.span12 div.row div#content.span9 div#documents div.document div.span7 div#holdings-record-element dl.defList dd
 
 footer {
 
@@ -321,7 +344,11 @@ div#feedback {
     border-bottom: 1px solid #E9E9E9;
     border-right: 1px solid #E9E9E9;
   }
-
+  
+  /* IE7 fix for the availability label */
+  i {
+    *margin-right:0;
+  }
 }
 
 #tools-nav {
