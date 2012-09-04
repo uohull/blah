@@ -5,6 +5,20 @@ module BlahHelper
     'Library Catalogue'
   end
 
+  #Override the standard Blacklight helper document_header to include sub_title_display in the header if it exists
+  def document_heading
+    @document['subtitle_display'].nil? ?  @document['title_display'] :  @document['title_display'] << ": " <<  @document['subtitle_display'] || @document.id
+  end  
+
+  #Helper to return a label for document_links - See _document.html.erb :label =>...
+  def document_link_label doc
+    label = nil
+    label_array = doc['subtitle_display'].nil? ?  doc['title_display'] :  doc['title_display'] << ": " <<  doc['subtitle_display'] || doc.id
+     #Make the label a manageable level (for titles with long sub-titles)
+     label = label_array.to_s.length > 100 ? label_array.to_s[0..100] << '...' : label_array.to_s unless label_array.to_s.nil?
+  end 
+
+
   def display_terms_of_use( document )        
     terms = document.get('terms_display', :sep => nil)
     unless terms.nil?
@@ -94,8 +108,8 @@ module BlahHelper
          link_title = ""
          #Journal coverage corresponds to same place in array...
          journal_coverage = journal_url_coverage_display[journal_url_display.index(url)]
-         #If it doesn't exist, use the title for link..  
-         link_title = journal_coverage.nil? ? title_display : journal_coverage
+         #If it doesn't exist, use the title for link (remove 'Full text available from link')..  
+         link_title = journal_coverage.nil? ? title_display : journal_coverage.gsub(/Full text available from/, '')
           render_online_resources << <<-EOS
           <tr>
            <td class="table-td-title">Link</td>
@@ -107,7 +121,6 @@ module BlahHelper
     end
     render_online_resources.html_safe
   end
-
 
   #display e-journal links for _index_e_journal.html.erb page
   def display_e_journal_links(document)
@@ -123,8 +136,8 @@ module BlahHelper
            link_title = ""
            #Journal coverage corresponds to same place in array...
            journal_coverage = journal_url_coverage_display[journal_url_display.index(url)]
-           #If it doesn't exist, use the title for link..  
-           link_title = journal_coverage.nil? ? title_display : journal_coverage
+           #If it doesn't exist, use the title for link (remove 'Full text available from link')..  
+           link_title = journal_coverage.nil? ? title_display : journal_coverage.gsub(/Full text available from/, '')
             display_e_journal_links << <<-EOS
              <dt class="document-link-dd">Online</dt>
              <dd class="document-link-dd"><a target="_blank" href="#{url}">#{link_title}</a></dd>
@@ -187,7 +200,6 @@ module BlahHelper
     else
       content_tag(:a, link, :href => path) 
     end
-  end
-
+  end  
 
 end
