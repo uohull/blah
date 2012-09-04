@@ -2,6 +2,10 @@ $home_background_image: '/background.jpg' !default;
 $navbarBackgroundHighlight: #000 !default;
 $navbarBackground: #000 !default;
 
+#main-container {
+  padding:0;
+}
+
 .brand-logo {
     height: 40px;
     margin: 0;
@@ -165,6 +169,12 @@ $navbarBackground: #000 !default;
     border-radius: 0 0 0 0;
     margin: 0 0 0.5em;
     padding: 3em 0.5em 8em 1.25em;
+
+   h2 {
+      font-size: 24px;
+      line-height: 36px;
+      color:#FFFFFF
+    }
 }
 .generic-tile-layout-phone {
     margin: 0 0 0 !important;
@@ -192,11 +202,12 @@ dl.defList {
     }
 }
 
-
-html body div#background-container div#main-container.container div.inner-container div.container div.row div.span12 div.row div#content.span9 div#documents div.document div.span7 div#holdings-record-element dl.defList dd
-
 footer {
 
+  a:link, a:visited, a:active {
+      color: #C9C9C9;
+      text-decoration: none;
+  }
   
   h4 {
     font-size: 14px;
@@ -206,6 +217,7 @@ footer {
     a {
       color: #999999;
     }
+
     a:hover {
         background-color: transparent;
         color: #FFF;
@@ -308,8 +320,6 @@ div#feedback {
 }
 
 
-
-
 /* Record show */
 
 #document h1 {
@@ -317,8 +327,20 @@ div#feedback {
 }
 
 #document-header {
-    padding: 0 0 1.5em;
+  padding: 0 0 1.5em;
+
+  h2 {
+    margin: 0;
+  }  
+
 }
+
+#cover-art {
+  img {
+    border-radius: 3px;
+  }
+}
+	
 
 
 #sidebar-title {
