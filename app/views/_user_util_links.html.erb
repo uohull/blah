@@ -1,5 +1,7 @@
 <% # User util links are now are list items to fit in the Bootstrap Nav bar menu -%>
-
+<li>
+  <a target="_blank" href="https://library.hull.ac.uk/patroninfo">My Library account</a>
+</li>
 <% if has_user_authentication_provider? %>
   <% if current_user%>
     <li>
@@ -13,7 +15,8 @@
     </li>
 <% else %>
     <li>
-      <%= link_to t('blacklight.header_links.login'), new_user_session_path %>
+      <% #Taken out login link for now... -%>
+      <%# link_to t('blacklight.header_links.login'), new_user_session_path %>
     </li>
 <% end %>
  

@@ -9,9 +9,9 @@
       <% end %>
       <dd>
           <% if holding_record.availability.downcase =~ /available/ then %>
-            <i title="Available" id="icon-holding-available" class="icon-ok-sign icon-white"></i>
+            <i title="Available" id="icon-holding-available" class="icon-ok icon-white"></i>
           <% else %>
-            <i title="Not available" id="icon-holding-unavailable" class="icon-remove-sign icon-white"></i>
+            <i title="Not available" id="icon-holding-unavailable" class="icon-remove icon-white"></i>
             <%  
               #Remove extra status information
               availability = holding_record.availability

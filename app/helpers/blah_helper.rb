@@ -7,13 +7,13 @@ module BlahHelper
 
   #Override the standard Blacklight helper document_header to include sub_title_display in the header if it exists
   def document_heading
-    @document['subtitle_display'].nil? ?  @document['title_display'] :  @document['title_display'] << ": " <<  @document['subtitle_display'] || @document.id
+    @document['subtitle_display'].nil? ?  @document['title_display'] :  @document['title_display'] << " : " <<  @document['subtitle_display'] || @document.id
   end  
 
   #Helper to return a label for document_links - See _document.html.erb :label =>...
   def document_link_label doc
     label = nil
-    label_array = doc['subtitle_display'].nil? ?  doc['title_display'] :  doc['title_display'] << ": " <<  doc['subtitle_display'] || doc.id
+    label_array = doc['subtitle_display'].nil? ?  doc['title_display'] :  doc['title_display'] << " : " <<  doc['subtitle_display'] || doc.id
      #Make the label a manageable level (for titles with long sub-titles)
      label = label_array.to_s.length > 100 ? label_array.to_s[0..100] << '...' : label_array.to_s unless label_array.to_s.nil?
   end 
@@ -121,6 +121,35 @@ module BlahHelper
     end
     render_online_resources.html_safe
   end
+
+  #Convenient helper for display the call number for a document (primary and secondary)
+  def display_call_number(document, opts={})
+    
+    display_field = ""
+
+    #fields for call numbers
+    primary_call_no = 'lc_callnum_display'
+    secondary_call_no = 'alt_lc_callnum_display'
+
+    display_value = []
+    if document.has?(primary_call_no) then  display_value << render_index_field_value(:document => document, :field => primary_call_no) end
+    if document.has?(secondary_call_no) then display_value << render_index_field_value(:document => document, :field => secondary_call_no) end
+
+    if opts[:render_icon]
+      display_field << <<-EOS
+        <dt class="dt-callnumber">Class number</dt>
+        <dd class="dd-callnumber">#{render_shelved_icon}&nbsp;#{display_value.join('; ')}</dd>
+       EOS
+    else
+      display_field << <<-EOS
+        <dt class="dt-callnumber">Class number</dt>
+        <dd class="dd-callnumber">#{display_value.join('; ')}</dd>
+       EOS
+    end  
+    display_field.html_safe
+  end
+
+
 
   #display e-journal links for _index_e_journal.html.erb page
   def display_e_journal_links(document)

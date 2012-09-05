@@ -845,6 +845,7 @@
          isbn_t, 
          language_facet, 
          lc_callnum_display,
+         alt_lc_callnum_display,
          material_type_display, 
          published_display,
          published_vern_display,
@@ -861,6 +862,7 @@
          url_suppl_display,
          journal_url_display,
          journal_url_coverage_display,
+         edition_display,
        </str>
 
        <str name="facet">true</str>

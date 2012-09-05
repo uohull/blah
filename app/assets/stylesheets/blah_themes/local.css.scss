@@ -29,6 +29,19 @@ $navbarBackground: #000 !default;
   filter :progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#000001', GradientType=0);
 }
 
+
+.navbar .btn-navbar {
+    background-color: #0E0E0E;
+    background-image: -moz-linear-gradient(center top , #151515, #040404);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.btn-navbar:hover {
+ background-color:#040404 !important;
+}
+
 .navbar .nav > li > a {
     color: #999999;
     float: none;
@@ -158,14 +171,14 @@ $navbarBackground: #000 !default;
 
 
 .links-tile-phone {
-    background-color: rgba(235, 235, 235, 0.98) !important;
+    background-color: rgba(235, 235, 235, 1) !important;
 }
 .generic-tile-layout-phone {
     margin: 0 0 0 !important;
 }
 
 #search-tile-layout-phone {
-    background-color: rgba(81, 163, 81, 0.98);
+    background-color: rgba(81, 163, 81, 1);
     border-radius: 0 0 0 0;
     margin: 0 0 0.5em;
     padding: 3em 0.5em 8em 1.25em;
@@ -176,6 +189,16 @@ $navbarBackground: #000 !default;
       color:#FFFFFF
     }
 }
+
+#social-tile.generic-tile-layout-phone {
+  background-color: rgba(91, 192, 222, 1);
+}
+
+#browse-tile.generic-tile-layout-phone {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+
 .generic-tile-layout-phone {
     margin: 0 0 0 !important;
 }
@@ -313,10 +336,14 @@ div#feedback {
 
 #icon-holding-available {
   background-color: #468847;
+  border: 2px solid #468847;
+  border-radius: 5px 5px 5px 5px;
 }
 
 #icon-holding-unavailable {
   background-color: #F89406;
+  border: 2px solid #F89406;
+  border-radius: 5px 5px 5px 5px;
 }
 
 
