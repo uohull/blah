@@ -7,11 +7,12 @@ $navbarBackground: #000 !default;
 }
 
 .brand-logo {
-    height: 40px;
+    background: url("/assets/blah/uni-logo-white.png") no-repeat scroll left top transparent;
+    height: 35px;
     margin: 0;
-    min-height: 40px;
-    min-width: 166px;
-    width: 166px;
+    min-height: 35px;
+    min-width: 202px;
+    width: 202px;
 }
 
 
@@ -202,6 +203,17 @@ $navbarBackground: #000 !default;
 .generic-tile-layout-phone {
     margin: 0 0 0 !important;
 }
+
+/* Adds a shadow to tiles.. */
+.tile-shadow 
+{
+  -webkit-box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow:    0px 0px 10px rgba(50, 50, 50, 0.75);
+  box-shadow:         0px 0px 10px rgba(50, 50, 50, 0.75);
+}
+
+
+
 
 
 /* Search results */
