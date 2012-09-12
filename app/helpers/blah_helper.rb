@@ -177,6 +177,35 @@ module BlahHelper
     display_e_journal_links.html_safe 
   end
 
+
+  #delayed_related_items methods takes solr fields continues_display, continues_in_part_display, supersedes_display etc.. 
+  #and displays if they exist for a given document (displays them as link to title_search)
+  #TODO related_fields to go into a config
+  def display_related_items( document )
+
+    document_related_fields = []
+    related_fields = {"continues_display" => "Item continues", "continues_in_part_display" => "Item continues", "supersedes_display" => "Item supersedes", "supersedes_in_part_display" => "Item supersedes", "formed_by_display" => "Item formed by",  "absorbed_display" => "Item absorbed by", "absorbed_in_part_display" => "Item absorbed by" , "s
+ep_from_display" => "Item seperate from", "continued_by_display" => "Item continued by", "continued_in_part_display" => "Item continued by", "superseded_by_display" => "Item superseded by", "superseded_part_by_display" => "Item superseded by", "absorbed_by_display" => "Item absorbed by", "absorbed_in_part_by_display" => "Item absorbed by", "split_into_display" => "Item split into", "merged_with_display" => "Item merged with", "changed_to_display" => "Item changed to"}
+
+    #Add all the matched fields to document_related_fields hash
+    related_fields.each_key do |solr_fname|
+      if document.has? solr_fname
+        document_related_fields << solr_fname if document.has? solr_fname
+      end
+    end
+
+    if document_related_fields.length > 0
+       content_tag(:h4, "Related") + content_tag(:dl, :class => "defList") {
+         document_related_fields.reduce('') { |c , field|
+          c << content_tag(:dt, related_fields.fetch(field), :class => "blacklight-dt-" + field) << content_tag(:dd, :class => "blacklight-dd-" + field) { link_to(render_index_field_value(:document => document, :field => field), {:controller => "catalog", :action => "index", :q=> render_index_field_value(:document => document, :field => field).gsub(" ", "+"), :search_field => "title"}, :target => "_blank" ) }
+        
+        }.html_safe
+       }  
+    end
+  end
+
+
+
   def render_format_icon( document )
     format = document.get('format', :sep => nil)
     
