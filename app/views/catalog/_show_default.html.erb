@@ -32,11 +32,25 @@
               </dl>
               <h4>Publication information</h4>
               <dl class="defList">
+                <%= display_field(document, 'frequency_display', 'Frequency', 'frequency') %>
                 <%= display_field(document, 'format', 'Format', 'format') %>
                 <%= display_field(document, 'published_display', 'Published', 'pub') %>
                 <%= display_field(document, 'published_vern_display', 'Published', 'pub') %>
+                <%= display_field(document, 'periodical_pub_date_display', 'Publish note', 'published') %>
                 <%= display_field(document, 'isbn_t', 'ISBN', 'isbn') %>
-              </dl>
+                <%= display_field(document, 'issn_t', 'ISSN', 'issn') %>
+                <%= display_field(document, 'ismn_t', 'ISMN', 'ismn') %>
+                <%= display_field(document, 'other_display', 'Publisher No', 'other') %>
+                <%= display_field(document, 'description_display', 'Description', 'description') %>
+                <%= display_field(document, 'contents_display', 'Contents', 'contents') %>
+                <%= display_field(document, 'scale_display', 'Scale', 'scale') %>
+                <%= display_field(document, 'performer_display', 'Performer(s)', 'performers') %>
+                <%= display_field(document, 'cast_display', 'Cast', 'cast') %>  
+                <%= display_field(document, 'credits_display', 'Credits', 'credits') %>
+                <%= display_field(document, 'note_display', 'Note', 'note') %>
+                <%= display_field(document, 'with_display', 'With', 'with') %>
+              </dl>             
+              <%= display_related_items( document ) %>        
            </div>
 </div>
 
