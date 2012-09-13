@@ -2,6 +2,8 @@
   <div id="sidebar-title">
     <h4>Availability</h4>
   </div>
+  <% #This will be set to display:block using javascript if no holdings/online resources are present -See holdings_record.js -%>
+  <p id="no-holdings" style="padding-left: 1em; display:none;">Please consult your local library helpdesk.</p>
   <%= render_holdings_html_partial %>
   <%= render_online_resources_partial(@document) %>
 </div>

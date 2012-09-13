@@ -2,6 +2,14 @@ $home_background_image: '/background.jpg' !default;
 $navbarBackgroundHighlight: #000 !default;
 $navbarBackground: #000 !default;
 
+
+body {
+  background-color:#161616;
+}
+#background-container {
+  background-color:white;
+}
+
 #main-container {
   padding:0;
 }
@@ -233,7 +241,8 @@ $navbarBackground: #000 !default;
 
 dl.defList {
     dd {
-      float: none;
+      float: left;
+      width: 75%;
     }
 }
 

@@ -21,9 +21,7 @@ module HoldingsRecordHelper
   #TODO: Tidy up the way it splits holdings into seperate location tables.. 
   def render_holdings_table(holdings_records)
 
-    if holdings_records.empty?
-      content_tag(:p, "Please consult your local library helpdesk")
-    else
+    unless holdings_records.empty?
       render_holdings_table = ""
 
       bjl_items_records = []
