@@ -50,7 +50,7 @@ module BlahHelper
     label = ""
     display_field = ""
 
-    dd_class = "class=\"blacklight-#{dd_class}\"" if dd_class
+    dd_class = "blacklight-#{dd_class}" if dd_class
 
     label = if label_text.length > 0 then label_text end
 
@@ -119,6 +119,21 @@ module BlahHelper
       end
 
     end
+    
+    #Lets check for any supplementary links...
+    suppl_url = document.get('url_suppl_display', :sep => nil)
+
+    unless suppl_url.nil?
+      suppl_url.each do |url|
+        render_online_resources << <<-EOS
+        <tr>
+         <td class="table-td-title">Link</td>
+         <td class="table-td-data"><a target="_blank" href="#{url}">Supplementary online resource</a></td>
+        </tr>
+        EOS
+      end
+     end
+
     render_online_resources.html_safe
   end
 
@@ -135,17 +150,19 @@ module BlahHelper
     if document.has?(primary_call_no) then  display_value << render_index_field_value(:document => document, :field => primary_call_no) end
     if document.has?(secondary_call_no) then display_value << render_index_field_value(:document => document, :field => secondary_call_no) end
 
-    if opts[:render_icon]
-      display_field << <<-EOS
-        <dt class="dt-callnumber">Class number</dt>
-        <dd class="dd-callnumber">#{render_shelved_icon}&nbsp;#{display_value.join('; ')}</dd>
-       EOS
-    else
-      display_field << <<-EOS
-        <dt class="dt-callnumber">Class number</dt>
-        <dd class="dd-callnumber">#{display_value.join('; ')}</dd>
-       EOS
-    end  
+    unless display_value.empty?
+      if opts[:render_icon]
+        display_field << <<-EOS
+          <dt class="dt-callnumber">Class number</dt>
+          <dd class="dd-callnumber">#{render_shelved_icon}&nbsp;#{display_value.join('; ')}</dd>
+         EOS
+      else
+        display_field << <<-EOS
+          <dt class="dt-callnumber">Class number</dt>
+          <dd class="dd-callnumber">#{display_value.join('; ')}</dd>
+         EOS
+      end  
+    end
     display_field.html_safe
   end
 

@@ -15,5 +15,10 @@ $(document).ready(function() {
       } 
   });
 });
-  
 
+//Display the 'content help desk' paragraph if there isn't any holdings content
+$(document).ready(function() {
+   if ($('.availability-table').children().length == 0) {
+      $('#no-holdings').show();
+    }
+});
