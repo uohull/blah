@@ -485,8 +485,8 @@ module Blacklight::Solr::Document::MarcExport
     text += "<i>" + title + "</i> " unless title.nil?
     
      # Edition - Some have trailing / so remove theses
-    edition_data = setup_edition(record).gsub('/', '')
-    text += edition_data + " " unless edition_data.nil?
+    edition_data = setup_edition(record)
+    text += edition_data.gsub('/', '') + " " unless edition_data.nil?
     
     # Publisher info
     text += setup_pub_info(record).gsub(':', ',') unless setup_pub_info(record).nil?
@@ -538,8 +538,8 @@ module Blacklight::Solr::Document::MarcExport
     text += title + " " unless title.nil?   
 
     # Edition - Some have trailing / so remove theses
-    edition_data = setup_edition(record).gsub('/', '')
-    text += edition_data + " " unless edition_data.nil?
+    edition_data = setup_edition(record)
+    text += edition_data.gsub('/', '') + " " unless edition_data.nil?
     
     # Publisher info
     text += setup_pub_info(record) + "; " unless setup_pub_info(record).nil?
