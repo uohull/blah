@@ -118,6 +118,8 @@ en:
       mla: 'MLA'
       apa: 'APA'
       chicago: 'Chicago'
+      harvard: 'Harvard'
+      vancouver: 'Vancouver'
 
     email:
       form:
