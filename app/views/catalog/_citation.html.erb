@@ -1,0 +1,29 @@
+<% @documents.each do |document| %>
+
+<h1><%= citation_title(document) %></h1>
+<p>These citations are provided for guidance only, please check with your Department for additional requirements.</p>
+<% #Local Harvard style citation -%>
+<%- if document.respond_to?(:export_as_harvard_citation_txt) -%>
+  <h4><%= t('blacklight.citation.harvard') %></h4>
+  <%= document.send(:export_as_harvard_citation_txt).html_safe %><br/><br/>
+<%- end -%>
+
+<% #Local Vancouver style citation -%>
+<%- if document.respond_to?(:export_as_vancouver_citation_txt) -%>
+  <h4><%= t('blacklight.citation.vancouver') %></h4>
+  <%= document.send(:export_as_vancouver_citation_txt).html_safe %><br/><br/>
+<%- end -%>
+
+<% if document.respond_to?(:export_as_mla_citation_txt) %>
+  <h4><%= t('blacklight.citation.mla') %></h4>
+  <%= document.send(:export_as_mla_citation_txt).html_safe %><br/><br/>
+<% end %>
+
+<% if document.respond_to?(:export_as_apa_citation_txt) %>
+  <h4><%= t('blacklight.citation.apa') %></h4>
+  <%= document.send(:export_as_apa_citation_txt).html_safe %><br/><br/>
+<% end %>
+
+<% end %>
+
+
