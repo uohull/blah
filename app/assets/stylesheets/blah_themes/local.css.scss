@@ -6,6 +6,12 @@ $navbarBackground: #000 !default;
 body {
   background-color:#161616;
 }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+}
+
+
 #background-container {
   background-color:white;
 }
@@ -92,7 +98,6 @@ body {
 }
 
 #header-navbar-fixed-top { 
-  opacity: 0.8;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -226,7 +231,6 @@ body {
 
 /* Search results */
 
-
 #documents {
   min-height: 425px;
 }
@@ -245,6 +249,14 @@ dl.defList {
       width: 75%;
     }
 }
+
+/* This sorts out the Title for each item on search results */
+h3.index_title {
+  line-height: 20px;
+  padding-bottom: 0.5em;
+  padding-right: 0.5em;
+}
+
 
 footer {
 
@@ -371,6 +383,7 @@ div#feedback {
 /* Record show */
 
 #document h1 {
+    line-height: 25px;
     padding: 0;
 }
 
@@ -384,9 +397,16 @@ div#feedback {
 }
 
 #cover-art {
-  img {
-    border-radius: 3px;
-  }
+
+  background: -moz-linear-gradient(top, rgba(198,198,198,0.65) 10%, rgba(204,204,204,0.65) 20%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(10%,rgba(198,198,198,0.65)), color-stop(20%,rgba(204,204,204,0.65)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(198,198,198,0.65) 10%,rgba(204,204,204,0.65) 20%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(198,198,198,0.65) 10%,rgba(204,204,204,0.65) 20%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(198,198,198,0.65) 10%,rgba(204,204,204,0.65) 20%,rgba(255,255,255,0) 100%); /* IE10+ */
+  background: linear-gradient(to bottom, rgba(198,198,198,0.65) 10%,rgba(204,204,204,0.65) 20%,rgba(255,255,255,0) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6c6c6c6', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+  height:125px; 
+  
 }
 	
 
@@ -402,8 +422,7 @@ div#feedback {
     background-color: #E3E3E3;
     border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 0 0 0 0;
-    margin: 0 0 1em;
-    max-width: 300px;
+    margin: 0 0 1em;  
 
   thead {
     background-color: #E3E3E3;
