@@ -6,6 +6,7 @@ development:
   #catalog address/port used for Z39.50 interface for holdings
   catalog_server_address: libsys.lib.hull.ac.uk
   catalog_server_port: 210
+  syndetics_client_code: dev
 
 test:
   contact_form_email: s.lamb@hull.ac.uk
@@ -15,6 +16,7 @@ test:
   #catalog address/port used for Z39.50 interface for holdings
   catalog_server_address: libsys.lib.hull.ac.uk
   catalog_server_port: 210
+  syndetics_client_code: dev
 
 production:
   contact_form_email: s.lamb@hull.ac.uk
@@ -24,3 +26,4 @@ production:
   #catalog address/port used for Z39.50 interface for holdings
   catalog_server_address: libsys.lib.hull.ac.uk
   catalog_server_port: 210
+  syndetics_client_code: dev

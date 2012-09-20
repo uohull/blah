@@ -4,11 +4,21 @@
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
     <title><%= h(@page_title || application_name) %></title>
     <link href="<%= opensearch_catalog_path(:format => 'xml', :only_path => false) %>" title="<%= application_name%>" type="application/opensearchdescription+xml" rel="search"/>
-    <%= favicon_link_tag asset_path('favicon.ico') %>
+    <%= favicon_link_tag asset_path('blah/uni-favicon.ico') %>
+    <%= favicon_link_tag asset_path('blah/uni-logo-library-green-57.png'), :rel => 'apple-touch-icon', :type => 'image/png'%>
+    <%= favicon_link_tag asset_path('blah/uni-logo-library-green-144.png'), :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => "144x144" %>
+    <%= favicon_link_tag asset_path('blah/uni-logo-library-green-114.png'), :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => "114x114" %>
+    <%= favicon_link_tag asset_path('blah/uni-logo-library-green-72.png'), :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => "72x72" %>
+    <%= favicon_link_tag asset_path('blah/uni-logo-library-green-57.png'), :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
+
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= raw(render_head_content) %>
+
+    <%= stylesheet_link_tag asset_path('blah_themes/add2home.css') %>
+    <%= javascript_include_tag 'add2home' %>
+
     <!-- consider moving -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -19,13 +29,6 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!-- Le fav and touch icons -->
-    <!-- consider moving -->
-    <link rel="shortcut icon" href="assets/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
   </head>
   <body>
       <%= render :partial => 'shared/header_navbar' %>

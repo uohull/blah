@@ -7,8 +7,21 @@ module BlahHelper
 
   #Override the standard Blacklight helper document_header to include sub_title_display in the header if it exists
   def document_heading
-    @document['subtitle_display'].nil? ?  @document['title_display'] :  @document['title_display'] << " : " <<  @document['subtitle_display'] || @document.id
-  end  
+   document_heading =  @document['subtitle_display'].nil? ?  @document['title_display'] :  @document['title_display'] << " : " <<  @document['subtitle_display'] || @document.id
+  end
+  
+  #Uses the Syndetics tool to display book cover
+  def render_book_cover_img( document )    
+    isbn = document.get('isbn_t', :sep => nil)      
+    unless isbn.nil? 
+      isbn_number = if isbn.is_a? Array then isbn.first else isbn end
+      image_tag("http://syndetics.com/index.aspx?isbn=" + isbn_number + "/mc.gif&client=" + APP_CONFIG['syndetics_client_code'], :class => "book-cover-img")
+# + "&type=hwwesterkid"
+    #else 
+    #  image_tag(asset_path('blah/book_cover.jpeg'), :class => "book-cover-img")
+    end
+  end
+
 
   #Helper to return a label for document_links - See _document.html.erb :label =>...
   def document_link_label doc
@@ -83,8 +96,11 @@ module BlahHelper
   def render_online_resources( document )
 
     render_online_resources = ""
-    title_display = render_index_field_value(:document => document, :field => "title_display")
-   
+    full_title_display = render_index_field_value(:document => document, :field => "title_display")
+  
+    #Reduce the title display label if the title is over 50 chars..
+    title_display = full_title_display.length > 50 ? full_title_display[0..50] << '...' : full_title_display unless full_title_display.nil?
+ 
     #Lets look in all the usual fields...
     full_text_url = document.get('url_fulltext_display', :sep => nil)
 
@@ -262,6 +278,11 @@ ep_from_display" => "Item seperate from", "continued_by_display" => "Item contin
 
   def render_shelved_icon
     content_tag(:i, '', :class => 'icon-map-marker') 
+  end
+
+  def get_year
+    t = Time.now   #=> 2007-11-19 08:27:51 -0600
+    t.year         #=> 2007   
   end 
 
 
