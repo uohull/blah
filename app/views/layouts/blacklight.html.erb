@@ -4,7 +4,6 @@
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
     <title><%= h(@page_title || application_name) %></title>
     <link href="<%= opensearch_catalog_path(:format => 'xml', :only_path => false) %>" title="<%= application_name%>" type="application/opensearchdescription+xml" rel="search"/>
-    <%= favicon_link_tag asset_path('uni-favicon.ico') %>
     <%= favicon_link_tag asset_path('blah/uni-favicon.ico') %>
     <%= favicon_link_tag asset_path('blah/uni-logo-library-green-57.png'), :rel => 'apple-touch-icon', :type => 'image/png'%>
     <%= favicon_link_tag asset_path('blah/uni-logo-library-green-144.png'), :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => "144x144" %>

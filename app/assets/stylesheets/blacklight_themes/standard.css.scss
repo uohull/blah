@@ -12,7 +12,7 @@ $navbarBackground: #222222;
 $logo_image: 'blah/logo.gif';
 
 // Currently unused, but this import handles mixins common to blacklight
-@import 'blacklight/mixins';
+// @import 'blacklight/mixins';
 
 // And then this imports the base blacklight stylesheet.
 @import 'blacklight/blacklight_base';
