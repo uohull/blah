@@ -16,7 +16,8 @@
     <%= csrf_meta_tags %>
     <%= raw(render_head_content) %>
 
-    <%= stylesheet_link_tag asset_path('blah_themes/add2home.css') %>
+    <% #Add2Home functionality for iOS devices  -%>
+    <%= stylesheet_link_tag 'add2home' %>
     <%= javascript_include_tag 'add2home' %>
 
     <!-- consider moving -->
