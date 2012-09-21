@@ -16,9 +16,6 @@ module BlahHelper
     unless isbn.nil? 
       isbn_number = if isbn.is_a? Array then isbn.first else isbn end
       image_tag("http://syndetics.com/index.aspx?isbn=" + isbn_number + "/mc.gif&client=" + APP_CONFIG['syndetics_client_code'], :class => "book-cover-img")
-# + "&type=hwwesterkid"
-    #else 
-    #  image_tag(asset_path('blah/book_cover.jpeg'), :class => "book-cover-img")
     end
   end
 

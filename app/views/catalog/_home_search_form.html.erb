@@ -1,15 +1,28 @@
-<div id="main-search" class="search">
-    <%= form_tag search_action_url, :method => :get, :class => 'form-inline search-form' do %>
-      <span class="search-label"><%= t('blacklight.search.form.q') %></span>
+<div id="main-search" class="search visible-desktop">
+    <%= form_tag search_action_url, :method => :get, :class => 'form-inline form-search' do %>
       <%= search_as_hidden_fields(:omit_keys => [:q, :search_field, :qt, :page]).html_safe %>
       <%- search_tag = search_fields.empty? ? "" : select_tag(:search_field, options_for_select(search_fields, h(params[:search_field])), :title => t('blacklight.search.form.search_field.title'), :class=>"search-field") %>
+      <%= search_tag %>
+      <div class='input-append'>      
+        <%= text_field_tag :q, params[:q], :class => "q input-xlarge search-query" %>
+        <%= button_tag 'Search', :class=>'btn' %>
+      </div>
+      <%= link_to 'Advanced search', params.merge(:controller=>"advanced", :action=>"index")%> 
+    <% end %>
+</div>
+<div id="main-search" class="search hidden-desktop">
+    <%= form_tag search_action_url, :method => :get, :class => 'form-inline search-form' do %>
+      <%= search_as_hidden_fields(:omit_keys => [:q, :search_field, :qt, :page]).html_safe %>
+      <%- search_tag = search_fields.empty? ? "" : select_tag(:search_field, options_for_select(search_fields, h(params[:search_field])), :title => t('blacklight.search.form.search_field.title'), :class=>"search-field input-small") %>
       <div class='input-append'>
         <%= search_tag %><%= text_field_tag :q, params[:q], :class => "q input-xlarge search-query" %>
-        <%= submit_tag 'Search', :class=>'btn' %>
-        <%= link_to 'Advanced search', params.merge(:controller=>"advanced", :action=>"index") , :class=>"advanced_search"%> 
+        <%= button_tag(:class=>'btn') do %>
+          <%= content_tag(:i, '', :class=>'icon-search icon') %>
+        <% end %>
+        <br/><br/>
+        <p><%= link_to 'Advanced search', params.merge(:controller=>"advanced", :action=>"index") %> </p>
       </div>
     <% end %>
-   </div>
-
+</div>
 
 

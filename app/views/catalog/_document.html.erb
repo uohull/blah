@@ -1,15 +1,11 @@
 <% # container for a single doc -%>
-<div class="document <%= render_document_class document %> row-fluid">
+<div class="document <%= render_document_class document %> hidden-phone row-fluid">
       <div class="span2">
-        <div id="cover-art" class="visible-desktop">
-          <%= render_book_cover_img(document) %>
-        </div>
-        <div id="cover-art" class="visible-tablet">
-          <%= render_book_cover_img(document) %>
-        </div>
-        <div id="cover-art" class="visible-phone">
-          <%= render_book_cover_img(document) %>
-        </div>
+        <div id="cover-art">
+          <%= link_to document, :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) do %>
+            <%= render_book_cover_img(document) %>
+          <% end %>
+        </div>        
       </div>
       <div class="span7">
         <h3 class="index_title"><%= t('blacklight.search.documents.counter', :counter => (document_counter + 1 + @response.params[:start].to_i)) %><%= link_to_document document, :label=>document_link_label(document), :counter => (document_counter + 1 + @response.params[:start].to_i) %></h3>
@@ -22,3 +18,22 @@
         <%= render :partial => 'document_tools', :locals => { :document => document, :document_counter => document_counter } %>
       </div>  
 </div>
+<div id="document-phone" class="document <%= render_document_class document %> visible-phone row">
+      <div class="span2">
+        <div id="cover-art">
+          <%= link_to document, :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) do %>
+            <%= render_book_cover_img(document) %>
+          <% end %>
+        </div>        
+      </div>
+      <div class="span2">
+        <%= render :partial => 'document_tools', :locals => { :document => document, :document_counter => document_counter } %>
+      </div>  
+      <div class="span7">
+        <h3 class="index_title"><%= t('blacklight.search.documents.counter', :counter => (document_counter + 1 + @response.params[:start].to_i)) %><%= link_to_document document, :label=>document_link_label(document), :counter => (document_counter + 1 + @response.params[:start].to_i) %></h3>
+
+        <% # main container for doc partial view -%>
+        <%= render_document_partial document, :index, :document_counter => document_counter  %>
+      </div>      
+</div>
+
