@@ -4,15 +4,28 @@
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
     <title><%= h(@page_title || application_name) %></title>
     <link href="<%= opensearch_catalog_path(:format => 'xml', :only_path => false) %>" title="<%= application_name%>" type="application/opensearchdescription+xml" rel="search"/>
+
+    <script type="text/javascript">
+          var addthis_config =
+          {
+            ui_click: true,
+            data_ga_property:'UA-34485476-2',
+            data_ga_social : true,
+            services_compact:  'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,favorites'
+          }
+    </script>
+    <link rel="apple-touch-startup-image" href="<%= asset_path('blah/blacklight-splash.png')%>">
     <%= favicon_link_tag asset_path('blah/uni-favicon.ico') %>
-    <%= favicon_link_tag asset_path('blah/uni-logo-library-green-57.png'), :rel => 'apple-touch-icon', :type => 'image/png'%>
-    <%= favicon_link_tag asset_path('blah/uni-logo-library-green-144.png'), :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => "144x144" %>
-    <%= favicon_link_tag asset_path('blah/uni-logo-library-green-114.png'), :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => "114x114" %>
-    <%= favicon_link_tag asset_path('blah/uni-logo-library-green-72.png'), :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => "72x72" %>
-    <%= favicon_link_tag asset_path('blah/uni-logo-library-green-57.png'), :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
+    <%= favicon_link_tag asset_path('blah/blacklight-icon-512-precomposed.png'), :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => "512x512" %>
+    <%= favicon_link_tag asset_path('blah/blacklight-icon-114-precomposed.png'), :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => "114x114" %>
+    <%= favicon_link_tag asset_path('blah/blacklight-icon-72-precomposed.png'), :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => "72x72" %>
+    <%= favicon_link_tag asset_path('blah/blacklight-icon-57-precomposed.png'), :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => "57x57" %>
+    <%= favicon_link_tag asset_path('blah/blacklight-icon-48-precomposed.png'), :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => "48x48" %>
+    <%= favicon_link_tag asset_path('blah/blacklight-icon-29-precomposed.png'), :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => "29x29" %>
 
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "http://s7.addthis.com/js/250/addthis_widget.js" %>
     <%= csrf_meta_tags %>
     <%= raw(render_head_content) %>
 
@@ -20,6 +33,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>

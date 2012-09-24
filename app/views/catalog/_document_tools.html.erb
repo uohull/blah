@@ -1,14 +1,22 @@
   <% # header bar for doc items in index view -%>
       <div class="documentHeader"> 
-        <div class="row">
+        <div class="row hidden-phone">
           <div class="span12">
 				  <%= link_to document, :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) do %>
-       		  <span class="label label-success"><i class="icon-info-sign icon-white"></i>View Record</span> 
+       		  <span class="label label-success"><i class="icon-info-sign icon-white"></i>&nbsp;View Record</span> 
    		    <% end %>
           </div>
         </div>
+        <div class="row visible-phone">
+          <div class="span12">
+				  <%= link_to document, :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) do %>
+       		  <span class="label label-success mobile-view"><i class="icon-info-sign icon-white"></i>&nbsp;View Record</span> 
+   		    <% end %>
+          </div>
+          <div style="padding-top:1em;"></div>
+        </div>
   
-        <div class="row">
+        <div class="row hidden-phone">
           <div class="span12">
           <% # bookmark/folder functions for items/docs -%>
           <%= render_index_doc_actions document %>    

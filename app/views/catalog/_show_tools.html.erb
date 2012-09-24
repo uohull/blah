@@ -36,6 +36,14 @@
         <%= link_to t('blacklight.tools.librarian_view'), librarian_view_catalog_path(@document), {:id => 'librarianLink', :name => 'librarian_view', :class => 'lightboxLink btn'} %>
       </li>
     <% end %>
+    
+      <li class="addthis">
+        <%= link_to "Share", "http://www.addthis.com/bookmark.php?v=20", {:class => 'btn addthis_button', :style => 'text-decoration:none;'} %>
+       <!-- <a href="http://www.addthis.com/bookmark.php?v=20" 
+        class="addthis_button"><img 
+        src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" 
+        width="125" height="16" border="0" alt="Share" /></a>-->
+      </li>
     </ul>
 
     <ul class="nav nav-pills nav-stacked hidden-desktop">
