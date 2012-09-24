@@ -11,6 +11,9 @@ h1, h2, h3, h4, h5, h6 {
     font-family: inherit;
 }
 
+.mobile-view {
+  font-size: 105%;
+}
 
 #background-container {
   background-color:white;
@@ -48,6 +51,7 @@ h1, h2, h3, h4, h5, h6 {
 .navbar .btn-navbar {
     background-color: #0E0E0E;
     background-image: -moz-linear-gradient(center top , #151515, #040404);
+    background-image: -webkit-gradient(linear, center top, center bottom, from(#151515), to(#040404));
     background-repeat: repeat-x;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     color: #FFFFFF;
@@ -231,14 +235,15 @@ div#document-phone.document {
   box-shadow:         0px 0px 10px rgba(50, 50, 50, 0.75);
 }
 
-
-
-
-
 /* Search results */
 
 #documents {
   min-height: 425px;
+}
+
+/* Adds a bit more space to the top of label */
+.label {
+  padding: 3px 4px 2px;
 }
 
 .label-success {
@@ -418,7 +423,11 @@ div#feedback {
   background: linear-gradient(to bottom, rgba(198,198,198,0.65) 10%,rgba(204,204,204,0.65) 20%,rgba(255,255,255,0) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6c6c6c6', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */  
 }
-	
+
+/* Avoids overlapping of the book image on mobiles */	
+#document-phone #cover-art {
+    height: 175px; /* or the largest possible height of a cover */
+}
 
 
 #sidebar-title {
