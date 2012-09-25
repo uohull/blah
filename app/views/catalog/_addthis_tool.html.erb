@@ -1,0 +1,16 @@
+<script type="text/javascript">
+          var addthis_config =
+          {
+            ui_click: true,
+            data_ga_property:'<%= BlacklightGoogleAnalytics.web_property_id %>',
+            data_ga_social : true,
+            services_compact: '<%= addthis_services_compact %>',
+            services_expanded: '<%= addthis_services_expanded %>',
+            services_exclude: '<%= addthis_services_exclude %>'
+          }
+</script>
+<%= javascript_include_tag "http://s7.addthis.com/js/250/addthis_widget.js" %>
+
+<li class="addthis">
+  <%= link_to "Share", "http://www.addthis.com/bookmark.php?v=20", {:class => 'btn addthis_button', :style => 'text-decoration:none;'} %>      
+</li>

@@ -6,8 +6,14 @@ development:
   #catalog address/port used for Z39.50 interface for holdings
   catalog_server_address: libsys.lib.hull.ac.uk
   catalog_server_port: 210
+  
+  #syndetics services for book covers and table of contents
   syndetics_client_code: dev
 
+  #configurations for addthis tool - See http://support.addthis.com/customer/portal/articles/381244-destinations-services
+  addthis_services_compact: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,favorites'
+  addthis_services_expanded: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,favorites'
+  addthis_services_exclude: 'gmail,email'
 test:
   contact_form_email: s.lamb@hull.ac.uk
   contact_form_bcc:
@@ -16,7 +22,15 @@ test:
   #catalog address/port used for Z39.50 interface for holdings
   catalog_server_address: libsys.lib.hull.ac.uk
   catalog_server_port: 210
+  
+  #syndetics services for book covers and table of contents
   syndetics_client_code: dev
+
+
+  #configurations for addthis tool - See http://support.addthis.com/customer/portal/articles/381244-destinations-services
+  addthis_services_compact: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,favorites'
+  addthis_services_expanded: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,favorites'
+  addthis_services_exclude: 'gmail,email'
 
 production:
   contact_form_email: s.lamb@hull.ac.uk
@@ -26,4 +40,11 @@ production:
   #catalog address/port used for Z39.50 interface for holdings
   catalog_server_address: libsys.lib.hull.ac.uk
   catalog_server_port: 210
+  
+  #syndetics services for book covers and table of contents
   syndetics_client_code: dev
+
+  #configurations for addthis tool - See http://support.addthis.com/customer/portal/articles/381244-destinations-services
+  addthis_services_compact: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,favorites'
+  addthis_services_expanded: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,favorites'
+  addthis_services_exclude: 'gmail,email'

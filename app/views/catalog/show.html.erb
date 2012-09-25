@@ -10,12 +10,19 @@
         <%= render 'constraints', :localized_params=>session[:search] %>
       </div>
 
-      <div class="pageEntriesInfo">
+      <div class="pageEntriesInfo hidden-phone">
+        <%= item_page_entry_info %>
+        <%=link_to " (#{t('blacklight.search.start_over')}) ", root_path , :id=>"startOverLink" %>
+      </div>
+      <div class="pageEntriesInfo visible-phone phone-margins">
         <%= item_page_entry_info %>
         <%=link_to " (#{t('blacklight.search.start_over')}) ", root_path , :id=>"startOverLink" %>
       </div>
     </div>
-    <div class="span2">
+    <div class="span2 hidden-phone">
+      <%= render_document_sidebar_partial  %>
+    </div>
+    <div class="span2 visible-phone phone-margins">
       <%= render_document_sidebar_partial  %>
     </div>
 </div>
