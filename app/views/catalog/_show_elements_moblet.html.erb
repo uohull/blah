@@ -3,9 +3,12 @@
     <%# this should be in a partial -%>
     <div id="document" class="<%= render_document_class %>">
       <div id="doc_<%= @document.id.to_s.parameterize %>">                
-        <% # bookmark/folder functions -%>
-        <%= render_show_doc_actions @document %> 
-     
+        
+        <% # bookmark/folder functions - with added phone-margins -%>
+        <div class="phone-margins">
+          <%= render_show_doc_actions @document %> 
+        </div>
+
         <div class="document">
           <%= render_document_partial @document, :show %>
         </div>
@@ -32,7 +35,7 @@
   </div>
 </div>
 <div class="row hidden-desktop">
-  <div class="span12">
+  <div class="span12 phone-margins">
       <%= render 'previous_next_doc' %>
   </div>
 </div>

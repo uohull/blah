@@ -293,6 +293,19 @@ ep_from_display" => "Item seperate from", "continued_by_display" => "Item contin
     else
       content_tag(:a, link, :href => path) 
     end
+  end
+
+  #Accessor methods for the addthis configuraations - See blah_config.yml
+  def addthis_services_compact
+    APP_CONFIG['addthis_services_compact']
   end  
+
+  def addthis_services_expanded
+    APP_CONFIG['addthis_services_expanded']
+  end
+
+  def addthis_services_exclude
+    APP_CONFIG['addthis_services_exclude']
+  end
 
 end
