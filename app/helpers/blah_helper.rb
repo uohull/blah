@@ -69,6 +69,9 @@ module BlahHelper
 
       if opts[:display_as_link] then
         display_value = '<a href="' + field_value + '">' +  opts[:link_text] + '</a>'
+      #if specified that the field contains_encoded_html ie &lt; and &gt; change them back to < and > for correct display
+      elsif opts[:contains_encoded_html] 
+        display_value = field_value.gsub(/&lt\;/, "<").gsub(/&gt\;/, ">")
       else
         display_value = field_value
       end   
