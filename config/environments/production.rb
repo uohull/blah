@@ -62,7 +62,7 @@ Blah::Application.configure do
   config.active_support.deprecation = :notify
 
   #Add the following blah specific js/cs - add2home functionality
-  config.assets.precompile += ['add2home.js', 'add2home.css']
+  config.assets.precompile += ['add2home.js', 'add2home.css', 'stay_standalone.js']
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)

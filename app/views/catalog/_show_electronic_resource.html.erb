@@ -8,7 +8,7 @@
      <div class="span12">
         <h5>Record</h5>
         <dl class="defList">
-          <%= display_field(document, 'description_display', 'Description', 'description') %>
+          <%= display_field(document, 'description_display', 'Description', 'description', {:contains_encoded_html => true}) %>
           <%= display_field(document, 'subject_t', 'Subject', 'subject') %>
           <%= display_field(document, 'lc_callnum_display', 'Call number', 'call') %>
           <%= display_field(document, 'coverage_display', 'Coverage', 'coverage') %>
@@ -16,7 +16,7 @@
         </dl>
         <h5>Access information</h5>
         <dl class="defList">
-          <%= display_field(document, 'access_info_display', 'Access', 'access-info') %>
+          <%= display_field(document, 'access_info_display', 'Access', 'access-info', {:contains_encoded_html => true}) %>
           <%= display_field(document, 'auth_users_display', 'Authorised users', 'auth-users') %>
           <%= display_field(document, 'published_vern_display', 'Published', 'pub') %>
           <%= display_field(document, 'isbn_t', 'ISBN', 'isbn') %>
