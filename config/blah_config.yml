@@ -8,11 +8,11 @@ development:
   catalog_server_port: 210
   
   #syndetics services for book covers and table of contents
-  syndetics_client_code: dev
+  syndetics_client_code: univhull
 
   #configurations for addthis tool - See http://support.addthis.com/customer/portal/articles/381244-destinations-services
-  addthis_services_compact: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,favorites'
-  addthis_services_expanded: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,favorites'
+  addthis_services_compact: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,pocket'
+  addthis_services_expanded: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,pocket,favorites'
   addthis_services_exclude: 'gmail,email'
 test:
   contact_form_email: s.lamb@hull.ac.uk
@@ -28,8 +28,8 @@ test:
 
 
   #configurations for addthis tool - See http://support.addthis.com/customer/portal/articles/381244-destinations-services
-  addthis_services_compact: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,favorites'
-  addthis_services_expanded: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,favorites'
+  addthis_services_compact: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,pocket'
+  addthis_services_expanded: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,pocket,favorites'
   addthis_services_exclude: 'gmail,email'
 
 production:
@@ -45,6 +45,6 @@ production:
   syndetics_client_code: dev
 
   #configurations for addthis tool - See http://support.addthis.com/customer/portal/articles/381244-destinations-services
-  addthis_services_compact: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,favorites'
-  addthis_services_expanded: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,favorites'
+  addthis_services_compact: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,pocket'
+  addthis_services_expanded: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,pocket,favorites'
   addthis_services_exclude: 'gmail,email'
