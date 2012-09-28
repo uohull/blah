@@ -26,4 +26,8 @@ en:
         one: 'You have been sent a link to an item from Blacklight.hull.ac.uk: %{title}'
         other: 'Blacklight.hull.ac.uk catalogue items'
 
+    faq:
+      header_links:
+        faq: 'FAQ'
+
 

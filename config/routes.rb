@@ -15,6 +15,8 @@ Blah::Application.routes.draw do
  
   match 'home' => 'catalog#home'
 
+  resources :faq
+
   devise_for :users
 
   # The priority is based upon order of creation:
