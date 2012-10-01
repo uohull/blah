@@ -1,0 +1,67 @@
+  <!-- Main hero unit for a primary marketing message or call to action -->
+  <div class="row">      
+    <%= render :partial => 'shared/home_search_tile' %>      
+  </div>
+
+  <div class="row"> 
+    <%= render :partial => 'shared/home_announcement_tile' %>    
+  </div>
+
+  <!-- Desktop -->
+  <div id="tile-row1" class="row visible-desktop">
+    <div class="span4 offset2">
+      <div id="browse-tile" class="tile-shadow tile-white generic-tile">
+        <div id="browse-tile-container">
+          <%= render :partial => 'shared/home_browse_tile' %>        
+        </div>
+      </div>
+    </div>
+
+    <div class="span4">
+      <div id="links-tile" class="tile-shadow tile-white generic-tile">
+        <%= render :partial => 'shared/home_quick_links_tile' %>    
+      </div>  
+
+    </div>
+  </div>
+  <!-- EOF Desktop -->
+
+  <!-- Tablet -->
+  <div id="tile-row1" class="row visible-tablet">
+    <div class="span6">
+      <div id="browse-tile" class="tile-shadow tile-white generic-tile">
+        <div id="browse-tile-container">
+          <%= render :partial => 'shared/home_browse_tile' %> 
+        </div>
+      </div>
+    </div>     
+    <!-- Phone browse tile -->
+    <div  class="span6">
+      <div id="links-tile" class="visible-tablet tile-shadow tile-white generic-tile">
+        <%= render :partial => 'shared/home_quick_links_tile' %>    
+      </div>
+    </div>
+  </div>
+  <!-- EOF Tablet -->
+
+  <!-- phone -->
+  <div class="row visible-phone">
+    <div class="span6">
+      <div class="generic-tile-phone generic-tile visible-phone tile-grey" id="browse-tile generic-tile">
+        <div id="browse-tile-container">
+         <%= render :partial => 'shared/home_browse_tile' %>         
+       </div>
+     </div>
+   </div>
+   <div  class="span6">
+    <div class="generic-tile-phone generic-tile links-tile-phone visible-phone tile-white generic-tile" id="links-tile-phone">
+      <%= render :partial => 'shared/home_quick_links_tile' %>   
+    </div>  
+  </div>
+</div>
+
+<div class="row">
+  <%= render :partial => 'shared/home_twitter_tile' %>   
+</div>
+
+

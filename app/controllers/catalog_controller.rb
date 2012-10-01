@@ -177,10 +177,6 @@ class CatalogController < ApplicationController
     config.spell_max = 5
   end
 
-  def home
-    render :layout => false
-  end
-
   # Email Action (this will render the appropriate view on GET requests and process the form and send the email on POST requests)
   def email
     @response, @documents = get_solr_response_for_field_values(SolrDocument.unique_key,params[:id])
