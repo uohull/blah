@@ -3,97 +3,13 @@
 <% end %> 
 
 <div class="row">
-
-<div class="span3 bs-docs-sidebar">
-        <ul class="nav nav-list bs-docs-sidenav affix">
-          <li class=""><a href="#interface"><i class="icon-chevron-right"></i>A change of interface</a></li>
-          <li class=""><a href="#searching"><i class="icon-chevron-right"></i>Searching the catalogue</a></li>
-          <li class=""><a href="#features"><i class="icon-chevron-right"></i>Additional features</a></li>
-          <li class=""><a href="#notthere"><i class="icon-chevron-right"></i>Not quite there yet...</a></li>       
-        </ul>
-</div>
-<div class="span9">
-
-    <h1 class="blacklight-green-color">Blacklight FAQ</h1>
-
-        <!-- Global Bootstrap settings
-        ================================================== -->
-        <section id="interface">
-          <div class="page-header faq-header">
-            <h2>A change of interface</h2>
-          </div>
-
-          <h3>Why have a different interface?</h3>
-          <p>Library catalogues were quick to exploit the web in the 1990s and develop a range of web interfaces that greatly facilitated access to library collections.  As the web has developed the ability to search for almost anything has evolved hugely, and library systems have not always managed to keep up.  This different interface seeks to make use of current web trends in providing access to the library catalogue in ways that our current catalogue cannot provide.  It also makes use of recent design trends in the presentation of search services.</p>
-        
-          <h3>Why run both interfaces alongside each other?</h3>
-          <p>Notwithstanding the introduction of new functionality and design, we don’t wish to pre-judge whether this interface is better than the current one without hearing from you, the people who use the library catalogue to find stuff.  We very much value your feedback on what you like and don’t like about both interfaces, plus what additional functionality and services it would be useful to provide.</p>
-          <h3>How can I give feedback or make suggestions?</h3>
-          <p>Please use the feedback form that is available in the bottom lefthand corner of each page of this interface, or send your feedback to <a href="mailto:libhelp@hull.ac.uk">libhelp@hull.ac.uk</a>. The more feedback we get, the better we can make the library catalogue work for you.</p>
-         
-          <h3>What’s different about this interface?</h3>
-          <p>The main differences are:</p>
-          <ul>
-            <li>A simpler single search box for all materials (with an advanced search where preferred)</li>
-            <li>More extensive indexing of the catalogue records to facilitate access</li>
-            <li>The use of facets to assist with narrowing a search and browsing the collection</li>
-            <li>Clearer indication of the availability of items</li>
-            <li>Guidance on citing items and the ability to share them with others via social media</li>
-          </ul>       
-        </section>
-
-        <!-- Grid system
-        ================================================== -->
-        <section id="searching">
-          <div class="page-header faq-header">
-            <h2>Searching the catalogue</h2>
-          </div>
-
-          <h3>What are facets?</h3>
-          <p>Facets are different views of a collection.  For example, the Library facet on the main search page shows you a view of the collection broken down by the library holding the items; the Format facet shows the same collection viewed by format of the material.  A range of facets are available, and have been made possible by the indexing of the catalogue that this interface supports.  Facets are used by many Internet shopping and other web sites, and work here in similar ways to elsewhere on the web.</p>
-         
-          <h3>Why did I get those results?</h3>
-          <p>Searching the catalogue will search the whole catalogue record, which is often richer than what is displayed.  Hence, you may occasionally retrieve items that don’t appear to match your search.  Don’t worry, they do, but just not as obviously as you might have thought.  One way of checking is to look at the Librarian view for an individual item, as this shows the whole record.</p>         
-        </section>
-
-         <section id="features">
-          <div class="page-header faq-header">
-            <h2>Additonal features</h2>
-          </div>
-
-          <h3>Availability</h3>
-          <p>More detailed, colour-coded, availability information has been included on the search results page to give an instant view of whether the items are accessible.</p>
-
-          <h3>Book covers</h3>
-          <p>Book cover images have been added to provide a guide to items (these will be added to the current interface in due course as well).  Please note that the exact book cover may not always match the image, but the information is kept up-to-date and accurate as far as is possible.</p>
-
-          <h3>Facets</h3>
-          <p>See above for a description of facets and how they can be used</p>
-
-          <h3>Cite</h3>
-          <p>On individual item pages a Cite option displays information on how the item might be cited in a bibliography using a number of commonly used styles.  Please note this is offered as guidance only and detailed citation requirements should be checked with Departments.</p>
-
-          <h3>Share</h3>
-          <p>Individual items can be shared via a range of social media services.</p>
-        </section>
-
-        <section id="notthere">
-          <div class="page-header faq-header">
-            <h2>Not quite there yet...</h2>
-          </div>
-
-          <p>A number catalogue functions are yet to be fully implemented, but will be introduced over the coming weeks.  Please check back occasionally to see the latest changes.</p>    
-
-          <h3>Requesting</h3>
-          <p>It is not yet feasible to request an item that is on loan.  Please repeat your search in the current catalogue interface and request from there.</p>
-
-          <h3>Booking</h3>
-          <p>It is not yet feasible to book an item in shortloan.  Please repeat your search in the current catalogue interface and book from there.</p>    
-
-          <h3>Your library account</h3>
-          <p>Note that the link to this will take you to the current catalogue interface currently to view and manage your library account.</p>   
-
-        </section>
-
-</div>
+  <div class="span3 bs-docs-sidebar">
+    <%= render :partial=>'faq_headings.html.erb' %>    
+  </div>
+  <div class="hidden-phone span9">
+    <%= render :partial=>'faq_text.html.erb' %>    
+  </div>
+  <div class="visible-phone phone-margins span9">
+    <%= render :partial=>'faq_text.html.erb' %>    
+  </div>
 </div>
