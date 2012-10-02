@@ -1,0 +1,71 @@
+#!/bin/bash
+#
+#       /etc/rc.d/init.d/blah_delayed_job
+# blah_delayed_job This shell script takes care of starting and stopping
+#               the blah delayed job daemon - used queuing the e-mail messaging
+#               used within Blacklight at Hull.
+#
+# Author: Simon Lamb
+# s.lamb@hull.ac.uk
+#
+# chkconfig: - 85 15
+# description: blah_delayed_job
+#:q
+# Source function library.
+. /etc/init.d/functions
+
+#Ruby and gem environment variables
+export MY_RUBY_HOME=
+export GEM_PATH=@blah:@global
+export GEM_HOME=@blah
+export BLAH_HOME=/opt/blah
+export RAILS_ENV=production
+export HOME=/usr/local
+
+PATH=$MY_RUBY_HOME/bin:$PATH
+
+
+if [ -f /etc/sysconfig/blah_delayed_job ]; then
+        . /etc/sysconfig/blah_delayed_job
+fi
+
+
+start() {
+        echo -n "Starting Blah delayed job"
+        cd $BLAH_HOME
+        ./script/delayed_job start
+        echo
+}
+
+stop() {
+        echo -n "Stopping Blah delayed job"
+        cd $BLAH_HOME
+        ./script/delayed_job stop
+        echo
+}
+
+status() {
+        cd $BLAH_HOME
+        ./script/delayed_job status
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage:  {start|stop|status|restart}"
+        exit 1
+        ;;
+esac
+exit $?
