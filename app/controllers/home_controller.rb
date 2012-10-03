@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  	include BlacklightGoogleAnalytics::ControllerExtraHead
 	include Blacklight::Configurable
 	include Blacklight::SolrHelper
 
