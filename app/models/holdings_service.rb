@@ -9,13 +9,13 @@ class HoldingsService
   def find_holdings(bib_record_no, chop_last_bib_digit = true)
     holdings = []  
     begin 
-     lib_conn = connection
+     #lib_conn = connection
 
       unless bib_record_no.nil?
         #We need to chop the last digit off (control no) the bib_record to undertake the search... 
         id = chop_last_bib_digit ? bib_record_no.chop : bib_record_no
         #get the holdings 
-        holdings = get_holdings(lib_conn, id)
+        holdings = get_holdings(id)
       end
     rescue HoldingsException => e
       Rails.logger.error e
@@ -26,28 +26,28 @@ class HoldingsService
   
   private
 
-  def connection
-    begin
-      zoom_conn = ZOOM::Connection.new
-      zoom_conn.connect(catalog_server_addr, catalog_server_port)
-      zoom_conn.database_name = 'INNOPAC'
-      zoom_conn.preferred_record_syntax = 'OPAC'  
-
-      return zoom_conn
-
-    rescue => e
-      raise HoldingsException, "A connection cannot be established to the holdings Z39.50 database"
-    end     
-  end
-
-  def get_holdings(zoom_connection, id)
+  def get_holdings(id)
    
     holdings_array = []
+    rset = []
+    connection_attempts = 0
+   
+    begin
+      #Using block to ensure connection is closed for service durability 
+      ZOOM::Connection.open(catalog_server_addr, catalog_server_port) do |conn|
+        conn.database_name = 'INNOPAC'
+        conn.preferred_record_syntax = 'OPAC'
+        rset = conn.search('@attr 1=12 "' + id + '"')
+      end
+    rescue => e
+      #Let's retry two more times before giving up...
+      connection_attempts += 1
+      retry unless connection_attempts > 2
+      raise HoldingsException, "Error connecting or querying the holdings Z39.50 database: " + e.to_s 
+    end   
 
     begin
-     rset = zoom_connection.search('@attr 1=12 "' + id + '"')
-
-     if rset.length > 0
+      if rset.length > 0
        #We expect there to be only one unique bib record
        record_xml = rset[0].xml
 
