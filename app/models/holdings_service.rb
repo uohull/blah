@@ -9,8 +9,6 @@ class HoldingsService
   def find_holdings(bib_record_no, chop_last_bib_digit = true)
     holdings = []  
     begin 
-     #lib_conn = connection
-
       unless bib_record_no.nil?
         #We need to chop the last digit off (control no) the bib_record to undertake the search... 
         id = chop_last_bib_digit ? bib_record_no.chop : bib_record_no
