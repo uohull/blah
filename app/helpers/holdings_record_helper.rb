@@ -84,7 +84,7 @@ module HoldingsRecordHelper
           <tbody>
               <tr>
                 <th>Location</th>
-                <th></th>
+                <th>Class number</th>
                 <th>Status</th>
               </tr>        
         EOS
