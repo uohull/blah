@@ -1,26 +1,32 @@
 <dl class="defList"> 
   <% unless @holdings_records.empty? %>
     <% @holdings_records.sort!{ |x,y| x.availability <=> y.availability }%>
-    <% @holdings_records.each do |holding_record| %>
+    <% @holdings_records.each_with_index do |holding_record, index| %>
       <% if @holdings_records.first == holding_record %>
         <dt>Location</dt>
       <% else %>
         <dt></dt>
       <% end %>
       <dd>
-          <% if holding_record.availability.downcase =~ /available/ then %>
-            <i title="Available" id="icon-holding-available" class="icon-ok icon-white"></i>
-          <% else %>
-            <i title="Not available" id="icon-holding-unavailable" class="icon-remove icon-white"></i>
-            <%  
-              #Remove extra status information
-              availability = holding_record.availability
-              availability_replacements = [ [/\+[0-9]/, ""], ["HOLD", ""] ]
-              availability_replacements.each {|replacement| availability.gsub!(replacement[0], replacement[1])}
-            %>          
-            &nbsp;<%= availability %>
+          <% if index > 20 %>
+            <i title="More available" id="icon-holding-more" class="icon-plus icon-white"></i>
+             &nbsp;View record to check for more items
+            <% break %>
+          <% else %> 
+              <% if holding_record.availability.downcase =~ /available/ then %>
+              <i title="Available" id="icon-holding-available" class="icon-ok icon-white"></i>
+              <% else %>
+                <i title="Not available" id="icon-holding-unavailable" class="icon-remove icon-white"></i>
+                <%  
+                  #Remove extra status information
+                  availability = holding_record.availability
+                  availability_replacements = [ [/\+[0-9]/, ""], ["HOLD", ""] ]
+                  availability_replacements.each {|replacement| availability.gsub!(replacement[0], replacement[1])}
+                %>          
+                &nbsp;<%= availability %>
+              <% end %>
+              &nbsp;<%= holding_record.local_location %>
           <% end %>
-          &nbsp;<%= holding_record.local_location %>
       </dd>
     <% end %>
 <% end %>
