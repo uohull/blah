@@ -1,0 +1,13 @@
+<% [:notice, :error, :alert].each do |type| %>
+    <% if flash[type] %>
+      <div id="homepage-flash" class="visible-desktop alert alert-<%= type == :error ? 'error' : 'info' %>" style=""><%= flash[type] %>
+         <a class="close" data-dismiss="alert" href="#">x</a>
+      </div>
+       <div id="homepage-flash" class="visible-tablet alert alert-<%= type == :error ? 'error' : 'info' %>" ><%= flash[type] %>
+         <a class="close" data-dismiss="alert" href="#">x</a>
+      </div>
+       <div id="homepage-flash" class="visible-phone alert alert-<%= type == :error ? 'error' : 'info' %>" ><%= flash[type] %>
+         <a class="close" data-dismiss="alert" href="#">x</a>
+      </div>
+    <% end %>
+<% end %>
