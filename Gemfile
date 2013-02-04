@@ -31,7 +31,7 @@ gem 'jquery-rails'
 #Point to the Bootstrap version of Blacklight at https://github.com/projectblacklight/blacklight/tree/bootstrap
 gem 'blacklight', :git => "git://github.com/projectblacklight/blacklight.git", :ref => "ff3ab" 
 gem 'blacklight_advanced_search'
-gem 'devise'
+gem 'devise', '2.1.3'
 gem "devise_cas_authenticatable", "~> 1.1.1"
 
 #Blacklight google analytics plugin by Jason Ronallo
