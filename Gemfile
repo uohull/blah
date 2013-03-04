@@ -10,7 +10,7 @@ gem 'sqlite3'
 gem 'json'
 
 group :development do
-  gem 'ruby-debug'
+  gem "debugger", "~> 1.3.3"
 end
 
 
@@ -19,7 +19,7 @@ end
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'bootstrap-sass', '~> 2.0.4.0'
+  gem "bootstrap-sass", "~> 2.2.0"
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platform => :ruby
 
@@ -28,8 +28,7 @@ end
 
 gem 'jquery-rails'
 
-#Point to the Bootstrap version of Blacklight at https://github.com/projectblacklight/blacklight/tree/bootstrap
-gem 'blacklight', :git => "git://github.com/projectblacklight/blacklight.git", :ref => "ff3ab" 
+gem "blacklight", "4.0.1"
 gem 'blacklight_advanced_search'
 gem 'devise', '2.1.3'
 gem "devise_cas_authenticatable", "~> 1.1.1"
@@ -37,8 +36,11 @@ gem "devise_cas_authenticatable", "~> 1.1.1"
 #Blacklight google analytics plugin by Jason Ronallo
 gem "blacklight_google_analytics", "~> 0.0.1.pre2"
 
+gem 'unicode'
+
 #Zoom Ruby binding to Z40.50 http://rubygems.org/gems/zoom
-gem 'zoom', '~> 0.4.1'
+#gem 'zoom', '~> 0.4.1'
+gem 'zoom', :git => 'https://github.com/bricestacey/ruby-zoom.git'
 
 #delayed_job used for comments queuing - https://github.com/collectiveidea/delayed_job
 gem 'delayed_job_active_record'
@@ -65,5 +67,3 @@ gem 'therubyracer'
 # To use debugger
 # gem 'ruby-debug'
 
-gem "compass-rails", "~> 1.0.0", :group => :assets
-gem "compass-susy-plugin", "~> 0.9.0", :group => :assets
