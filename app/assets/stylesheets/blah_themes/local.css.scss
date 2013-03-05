@@ -2,6 +2,8 @@ $home_background_image: '/bg1.jpg' !default;
 $navbarBackgroundHighlight: #000 !default;
 $navbarBackground: #000 !default;
 $blacklight-green-colour: #51A351 !default;
+$navbar_background_color: #000000 !default;
+$logo_image: 'blah/logo.gif';
 
 body {
   background-color:#161616;
@@ -86,6 +88,23 @@ h1, h2, h3, h4, h5, h6 {
     background-color: transparent;
     color: #FFF;
     text-decoration: none;
+}
+
+/* This ensures that any tool pop-up goes infront of the header */
+.navbar-fixed-bottom {
+ z-index:1000;
+}
+
+.navbar-fixed-bottom {
+  margin-right:0px;
+  position: relative;
+  margin-top: 0;
+}
+
+#footer-container-top {
+  background-color:$navbar_background_color;
+  background-image:none;
+
 }
 
 #selected-items #folder {

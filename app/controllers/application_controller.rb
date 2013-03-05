@@ -5,4 +5,9 @@ class ApplicationController < ActionController::Base
   # these methods in order to perform user specific actions. 
 
   protect_from_forgery
+
+
+		# completely Blacklight 3.x-backwards compatible
+		layout :choose_layout
+
 end

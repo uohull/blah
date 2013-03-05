@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <% #meta tags for customising view on Apple devices -%>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <%= render :partial => 'shared/head_favicon_links' %>
+
+    <title><%= h(@page_title || application_name) %></title>
+    <link href="<%= opensearch_catalog_path(:format => 'xml', :only_path => false) %>" title="<%= application_name%>" type="application/opensearchdescription+xml" rel="search"/>    
+  
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag 'stay_standalone' %> 
+
+    <%= csrf_meta_tags %>
+    <%= raw(render_head_content) %>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]--> 
+  </head>
+  <body>
+    <% onload_text = "$('input#q').focus();" if params[:q].to_s.empty? and params[:f].to_s.empty? and params[:id].nil? %>
+    <%= render :partial => 'shared/header_navbar' %>
+    <!-- /container -->
+    <div id="background-container">
+      <div class="visible-desktop" id="top-spacer">
+        &nbsp;
+      </div>
+      <div id="main-container" class="container">
+            <div class="inner-container">
+                <!-- Top bar -->
+                <div id="search-found" class="row-fluid hidden-phone">
+                  <%= topbar_items.join('').html_safe %>
+                </div>
+                <!-- /Top bar -->
+                <!-- sidebar -->
+                <div class="container">
+                      <div class="row">
+                          <div class="span10">
+                            <%= render :partial=>'/flash_msg' %>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="span12">
+                           <%= yield %>
+                           </div>
+                      </div>
+                </div>
+          </div>
+      </div>
+    </div>
+    <%= render :partial => 'shared/feedback_element' %>
+    <%= render :partial => 'shared/footer' %>
+  </body>
+</html>
