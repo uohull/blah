@@ -1,4 +1,7 @@
 class HoldingsRecordController < ApplicationController
+
+  caches_action :index, :expires_in => 60.seconds
+
   def index
     bib_no = params["bib_no"]
 
