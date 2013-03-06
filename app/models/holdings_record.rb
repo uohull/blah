@@ -6,4 +6,4 @@ class HoldingsRecord
     @call_number = call_number
     @availability = availability
   end
-end   
+end

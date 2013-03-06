@@ -26,7 +26,7 @@ class HoldingsService
 
   def get_holdings(id)
    
-    holdings_array = []
+    holdings_records = HoldingsRecordsCollection.new
     rset = []
     connection_attempts = 0
    
@@ -52,19 +52,20 @@ class HoldingsService
        noko_xml = Nokogiri::XML(record_xml)
 
         noko_xml.xpath('//opacRecord/holdings/holding').each do |node|
-          local_location = node.xpath('localLocation').text
-          call_number = node.xpath('callNumber').text
-          public_note = node.xpath('publicNote').text
+          local_location = node.xpath('localLocation').text.strip
+          call_number = node.xpath('callNumber').text.strip
+          public_note = node.xpath('publicNote').text.strip
 
           #Add to holdings array... 
-          holdings_array << HoldingsRecord.new(local_location, call_number, public_note)
+          holdings_records << HoldingsRecord.new(local_location, call_number, public_note)
         end
+
      end 
      rescue => e
        raise HoldingsException, "There was an issue retrieving the holdings information for: " +  id.to_s
      end      
     
-     return holdings_array
+     return holdings_records
   end
 
   def catalog_server_addr

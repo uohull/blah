@@ -14,6 +14,43 @@ development:
   addthis_services_compact: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,pocket'
   addthis_services_expanded: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,pocket,favorites'
   addthis_services_exclude: 'gmail,email'
+
+  #status from holding records
+  record_status:
+    available:
+      - 'available'
+      - 'binding office'
+      - 'in repair'
+      - 'ask circ desk'
+      - 'ask at dept'
+      - 'lib use only'
+      - 'donation'
+      - 'disk missing'
+      - 'in transit'
+      - 'beingprocessed'
+      - 'just catalogued'
+      - 'returned today'
+    not_available:
+      - 'due'
+      - 'lost and paid'
+      - 'on holdshelf'
+      - 'at bindery'
+      - 'to delete'
+      - 'for review'
+      - 'librar/office'
+      - 'fl damage'
+      - 'ill request'
+      - 'not available'
+      - 'lost in lib'
+      - 'missing'
+      - 'billed'
+      - 'damaged copy'
+      - 'on search'
+      - 'lost o/o/p'
+      - 'intersite'
+      - 'to collect'
+      - 'clms retd'
+      - 'requested'
 test:
   contact_form_email: s.lamb@hull.ac.uk
   contact_form_bcc:
@@ -26,11 +63,47 @@ test:
   #syndetics services for book covers and table of contents
   syndetics_client_code: dev
 
-
   #configurations for addthis tool - See http://support.addthis.com/customer/portal/articles/381244-destinations-services
   addthis_services_compact: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,pocket'
   addthis_services_expanded: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,pocket,favorites'
   addthis_services_exclude: 'gmail,email'
+
+   #status from holding records
+  record_status:
+    available:
+      - 'available'
+      - 'binding office'
+      - 'in repair'
+      - 'ask circ desk'
+      - 'ask at dept'
+      - 'lib use only'
+      - 'donation'
+      - 'disk missing'
+      - 'in transit'
+      - 'beingprocessed'
+      - 'just catalogued'
+      - 'returned today'
+    not_available:
+      - 'due'
+      - 'lost and paid'
+      - 'on holdshelf'
+      - 'at bindery'
+      - 'to delete'
+      - 'for review'
+      - 'librar/office'
+      - 'fl damage'
+      - 'ill request'
+      - 'not available'
+      - 'lost in lib'
+      - 'missing'
+      - 'billed'
+      - 'damaged copy'
+      - 'on search'
+      - 'lost o/o/p'
+      - 'intersite'
+      - 'to collect'
+      - 'clms retd'
+      - 'requested'
 
 production:
   contact_form_email: s.lamb@hull.ac.uk
@@ -48,3 +121,40 @@ production:
   addthis_services_compact: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,pocket'
   addthis_services_expanded: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,pocket,favorites'
   addthis_services_exclude: 'gmail,email'
+
+   #status from holding records
+  record_status:
+    available:
+      - 'available'
+      - 'binding office'
+      - 'in repair'
+      - 'ask circ desk'
+      - 'ask at dept'
+      - 'lib use only'
+      - 'donation'
+      - 'disk missing'
+      - 'in transit'
+      - 'beingprocessed'
+      - 'just catalogued'
+      - 'returned today'
+    not_available:
+      - 'due'
+      - 'lost and paid'
+      - 'on holdshelf'
+      - 'at bindery'
+      - 'to delete'
+      - 'for review'
+      - 'librar/office'
+      - 'fl damage'
+      - 'ill request'
+      - 'not available'
+      - 'lost in lib'
+      - 'missing'
+      - 'billed'
+      - 'damaged copy'
+      - 'on search'
+      - 'lost o/o/p'
+      - 'intersite'
+      - 'to collect'
+      - 'clms retd'
+      - 'requested'

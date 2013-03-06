@@ -10,7 +10,7 @@ class CatalogController < ApplicationController
   #Manually add spam tool...
   before_filter :protect_from_spam, :only => :email  
 
-  before_filter :retrieve_holdings, :only => :show
+  before_filter :retrieve_library_item, :only => :show
  
 
   configure_blacklight do |config|
@@ -201,13 +201,19 @@ class CatalogController < ApplicationController
 
   private
 
-  def retrieve_holdings
+  def retrieve_library_item
    
     id = params[:id]  
 
-    if id 
-      holdings_service = HoldingsService.new
-      @holdings_records = holdings_service.find_holdings( id )
+    if id
+      @library_item = LibraryItem.new(id)
+
+       #Use the HoldingsService to retrieve holdings for particurly item
+       holdings_service = HoldingsService.new       
+       #The holdings service returns a HoldingsRecordsCollection
+       holdings_records = holdings_service.find_holdings(id)
+
+       @library_item.holdings_records_collection = holdings_records
     end
  
   end

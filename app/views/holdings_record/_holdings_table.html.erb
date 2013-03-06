@@ -1,4 +1,5 @@
 <div class="table-container">
-  <%= render_holdings_table(@holdings_records) %>
+	<h1><%= @library_item.available?.to_s %></h1>
+  <%= render_holdings_table(@library_item.holdings_records_collection) %>
 </div>
 
