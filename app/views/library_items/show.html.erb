@@ -1,0 +1,8 @@
+<h1>Show item - <%= @library_item.bib_no %></h1>
+
+<h4>Info: <%= @library_item.available?.to_s %></h4>
+
+
+<div class="table-container">
+  <%= render_holdings_table(@library_item.holdings_records_collection) %>
+</div>

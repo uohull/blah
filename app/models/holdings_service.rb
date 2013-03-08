@@ -6,7 +6,7 @@ class HoldingsService
 
   include Blah::Exceptions
   
-  def find_holdings(bib_record_no, chop_last_bib_digit = true)
+  def self.find_holdings(bib_record_no, chop_last_bib_digit = true)
     holdings = []  
     begin 
       unless bib_record_no.nil?
@@ -24,7 +24,7 @@ class HoldingsService
   
   private
 
-  def get_holdings(id)
+  def self.get_holdings(id)
    
     holdings_records = HoldingsRecordsCollection.new
     rset = []
@@ -32,7 +32,7 @@ class HoldingsService
    
     begin
       #Using block to ensure connection is closed for service durability 
-      ZOOM::Connection.open(catalog_server_addr, catalog_server_port) do |conn|
+      ZOOM::Connection.open(catalogue_server_addr, catalogue_server_port) do |conn|
         conn.database_name = 'INNOPAC'
         conn.preferred_record_syntax = 'OPAC'
         rset = conn.search('@attr 1=12 "' + id + '"')
@@ -68,12 +68,12 @@ class HoldingsService
      return holdings_records
   end
 
-  def catalog_server_addr
-    APP_CONFIG['catalog_server_address']
+  def self.catalogue_server_addr
+    APP_CONFIG['catalogue_server_address']
   end
 
-  def catalog_server_port
-    APP_CONFIG['catalog_server_port']
+  def self.catalogue_server_port
+    APP_CONFIG['catalogue_server_port']
   end
 
 end
