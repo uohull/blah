@@ -10,7 +10,7 @@ class CatalogController < ApplicationController
   #Manually add spam tool...
   before_filter :protect_from_spam, :only => :email  
 
-  before_filter :retrieve_library_item, :only => :show
+ # around_filter :retrieve_library_item, :only => :show
  
 
   configure_blacklight do |config|
@@ -198,25 +198,30 @@ class CatalogController < ApplicationController
     end
   end
 
+  # get single document from the solr index
+  def show
+      @response, @document = get_solr_response_for_doc_id   
 
-  private
 
-  def retrieve_library_item
-   
-    id = params[:id]  
+      unless @document[:format] == 'Electronic resource'  
+        #Create a library_item object
+        @library_item = LibraryItem.new(@document.id)
+        #load holdings records into the library_item object
+        @library_item.load_holdings_records_collection 
+      end      
+  
+      respond_to do |format|
+        format.html {setup_next_and_previous_documents}
 
-    if id
-      @library_item = LibraryItem.new(id)
-
-       #Use the HoldingsService to retrieve holdings for particurly item
-       holdings_service = HoldingsService.new       
-       #The holdings service returns a HoldingsRecordsCollection
-       holdings_records = holdings_service.find_holdings(id)
-
-       @library_item.holdings_records_collection = holdings_records
+        # Add all dynamically added (such as by document extensions)
+        # export formats.
+        @document.export_formats.each_key do | format_name |
+          # It's important that the argument to send be a symbol;
+          # if it's a string, it makes Rails unhappy for unclear reasons. 
+          format.send(format_name.to_sym) { render :text => @document.export_as(format_name), :layout => false }
+        end
+        
+      end
     end
- 
-  end
-
 
 end 

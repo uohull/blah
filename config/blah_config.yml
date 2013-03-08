@@ -4,9 +4,12 @@ development:
     - s.lamb@hull.ac.uk
 
   #catalog address/port used for Z39.50 interface for holdings
-  catalog_server_address: libsys.lib.hull.ac.uk
-  catalog_server_port: 210
+  catalogue_server_address: libsys.lib.hull.ac.uk
+  catalogue_server_port: 210
   
+  #Library Catalogue OPAC address
+  catalogue_opac_address: library.hull.ac.uk
+
   #syndetics services for book covers and table of contents
   syndetics_client_code: dev
 
@@ -51,15 +54,25 @@ development:
       - 'to collect'
       - 'clms retd'
       - 'requested'
+  
+  #Used for configuring what constitutes as a 'bookable item' - location based...
+  bookable_item:
+    location:
+      - 'BJL Short Loan'
+
+
 test:
   contact_form_email: s.lamb@hull.ac.uk
   contact_form_bcc:
     - s.lamb@hull.ac.uk
 
   #catalog address/port used for Z39.50 interface for holdings
-  catalog_server_address: libsys.lib.hull.ac.uk
-  catalog_server_port: 210
+  catalogue_server_address: libsys.lib.hull.ac.uk
+  catalogue_server_port: 210
   
+  #Library Catalogue OPAC address
+  catalogue_opac_address: library.hull.ac.uk
+ 
   #syndetics services for book covers and table of contents
   syndetics_client_code: dev
 
@@ -104,6 +117,11 @@ test:
       - 'to collect'
       - 'clms retd'
       - 'requested'
+
+  #Used for configuring what constitutes as a 'bookable item' - location based...
+  bookable_item:
+    location:
+      - 'BJL Short Loan'
 
 production:
   contact_form_email: s.lamb@hull.ac.uk
@@ -111,8 +129,11 @@ production:
     - s.lamb@hull.ac.uk
 
   #catalog address/port used for Z39.50 interface for holdings
-  catalog_server_address: libsys.lib.hull.ac.uk
-  catalog_server_port: 210
+  catalogue_server_address: libsys.lib.hull.ac.uk
+  catalogue_server_port: 210
+
+  #Library Catalogue OPAC address
+  catalogue_opac_address: library.hull.ac.uk
   
   #syndetics services for book covers and table of contents
   syndetics_client_code: dev
@@ -158,3 +179,8 @@ production:
       - 'to collect'
       - 'clms retd'
       - 'requested'
+
+  #Used for configuring what constitutes as a 'bookable item' - location based...
+  bookable_item:
+    location:
+      - 'BJL Short Loan'
