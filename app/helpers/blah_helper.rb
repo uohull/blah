@@ -1,5 +1,6 @@
 module BlahHelper
   include BlacklightHelper
+  include ActionView::Helpers::TextHelper
   
   def application_name
     'Library Catalogue'
@@ -86,12 +87,56 @@ module BlahHelper
 
   end
 
+  #search_catalog_link - creates blacklight search link with the given search_query and search_field
+  def search_catalog_link(text, search_query, search_field, link_class=nil)
+   link_to text, catalog_index_path(:q => search_query, :search_field => search_field ), :class => link_class
+  end
+
+  # display_field_search_link helper produces a search link for given Solr Document field.
+  # Data stored within the solr_fname will be used as the basis for the search query
+  # search_field - specify which search_handler to use for the link - default 'all_fields'  
+  def display_field_search_link(document, solr_fname, label_text='', dd_class=nil, link_class=nil, search_field='all_fields')
+ 
+    label = ""
+    display_field = ""
+
+    dd_class = "blacklight-#{dd_class}" if dd_class
+
+    label = label_text.length > 0 ? label_text : ''
+
+    if document.has? solr_fname
+      values = document[solr_fname] 
+      values = values.kind_of?(Array) ? values : values.to_a
+
+      display_field = <<-EOS
+        <dt class=#{dd_class}>#{label}</dt>
+        <dd class=#{dd_class}>#{values.collect{ |value| search_catalog_link(value, value, search_field, link_class) + '; ' } }</dd>
+      EOS
+    end
+
+    display_field.html_safe
+
+  end 
+
+  # display_field_search_link_within_element produces a search link within a specified element
+  # Data stored within the solr_fname will be used as the basis for the search query
+  # search_field - specify which search_handler to use for the link - default 'all_fields'  
+  def display_field_search_link_within_element(document, solr_fname, element='h1', element_class=nil, link_class=nil,  search_field='all_fields')
+    if document.has? solr_fname
+      values = document[solr_fname] 
+      values = values.kind_of?(Array) ? values : values.to_a
+
+      content_tag element, :class => element_class do       
+          values.collect { |value| concat(search_catalog_link(value, value, search_field, link_class) + '<br/>'.html_safe) }
+      end
+    end
+  end 
+
   def display_field_within_element(document, solr_fname, element='h1', element_class=nil)
     if document.has? solr_fname
       content_tag element, render_index_field_value(:document => document, :field => solr_fname), :class => element_class
     end    
   end
-
 
   def render_online_resources( document )
 
@@ -166,23 +211,23 @@ module BlahHelper
     if document.has?(primary_call_no) then  display_value << render_index_field_value(:document => document, :field => primary_call_no) end
     if document.has?(secondary_call_no) then display_value << render_index_field_value(:document => document, :field => secondary_call_no) end
 
+#<dd class="dd-callnumber">#{render_shelved_icon}&nbsp;#{display_value.join('; ')}</dd>
+#<dd class="dd-callnumber">#{display_value.join('; ')}</dd>
     unless display_value.empty?
       if opts[:render_icon]
         display_field << <<-EOS
-          <dt class="dt-callnumber">Class number</dt>
-          <dd class="dd-callnumber">#{render_shelved_icon}&nbsp;#{display_value.join('; ')}</dd>
+          <dt class="dt-callnumber">#{pluralize_string(display_value.length,"Class number")}</dt>
+          <dd class="dd-callnumber">#{ display_value.map{ |cn| render_shelved_icon  + '&nbsp;'.html_safe + cn + '<br/>'.html_safe}.to_s}</dd>
          EOS
       else
         display_field << <<-EOS
-          <dt class="dt-callnumber">Class number</dt>
-          <dd class="dd-callnumber">#{display_value.join('; ')}</dd>
+          <dt class="dt-callnumber">#{pluralize_string(display_value.length,"Class number")}</dt>
+          <dd class="dd-callnumber">#{ display_value.map{ |cn| cn + '<br/>'.html_safe}.to_s}</dd>
          EOS
       end  
     end
     display_field.html_safe
   end
-
-
 
   #display e-journal links for _index_e_journal.html.erb page
   def display_e_journal_links(document)
@@ -297,6 +342,13 @@ ep_from_display" => "Item seperate from", "continued_by_display" => "Item contin
       content_tag(:a, link, :href => path) 
     end
   end
+
+
+  #Returns a pluralized string
+  def pluralize_string(count, singular)
+    pluralize(count,singular)[2..-1]
+  end
+
 
   #Accessor methods for the addthis configuraations - See blah_config.yml
   def addthis_services_compact

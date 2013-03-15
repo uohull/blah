@@ -6,27 +6,27 @@ class HoldingsService
 
   include Blah::Exceptions
   
-  def self.find_holdings(bib_record_no, chop_last_bib_digit = true)
-    holdings = []  
+  def self.find_holdings(bib_record_no, holdings_collection, chop_last_bib_digit = true)
+    holdings_collection = holdings_collection || [] 
+
     begin 
       unless bib_record_no.nil?
         #We need to chop the last digit off (control no) the bib_record to undertake the search... 
         id = chop_last_bib_digit ? bib_record_no.chop : bib_record_no
         #get the holdings 
-        holdings = get_holdings(id)
+        holdings_collection = get_holdings(id, holdings_collection)
       end
     rescue HoldingsException => e
       Rails.logger.error e
     end  
 
-    return holdings
+    return holdings_collection
   end 
   
   private
 
-  def self.get_holdings(id)
-   
-    holdings_records = HoldingsRecordsCollection.new
+  def self.get_holdings(id, holdings_collection)   
+    
     rset = []
     connection_attempts = 0
    
@@ -40,7 +40,7 @@ class HoldingsService
     rescue => e
       #Let's retry two more times before giving up...
       connection_attempts += 1
-      retry unless connection_attempts > 2
+      retry unless connection_attempts > 3
       raise HoldingsException, "Error connecting or querying the holdings Z39.50 database: " + e.to_s 
     end   
 
@@ -57,7 +57,7 @@ class HoldingsService
           public_note = node.xpath('publicNote').text.strip
 
           #Add to holdings array... 
-          holdings_records << HoldingsRecord.new(local_location, call_number, public_note)
+          holdings_collection << HoldingsRecord.new(local_location, call_number, public_note)
         end
 
      end 
@@ -65,7 +65,7 @@ class HoldingsService
        raise HoldingsException, "There was an issue retrieving the holdings information for: " +  id.to_s
      end      
     
-     return holdings_records
+     return holdings_collection
   end
 
   def self.catalogue_server_addr

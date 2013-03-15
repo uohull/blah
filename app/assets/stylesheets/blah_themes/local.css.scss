@@ -502,8 +502,19 @@ div#feedback {
 
   h2 {
     margin: 0;
-  }  
+  }
 
+    a.author-heading-link {
+      color: #2E4F81;
+      border-bottom: 1px dotted;
+      font-weight:lighter; 
+
+    }
+}
+
+a.subject-link {
+  color: #2E4F81;
+  border-bottom: 1px dotted;
 }
 
 #cover-art {
