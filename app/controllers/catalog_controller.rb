@@ -10,9 +10,6 @@ class CatalogController < ApplicationController
   #Manually add spam tool...
   before_filter :protect_from_spam, :only => :email  
 
- # around_filter :retrieve_library_item, :only => :show
- 
-
   configure_blacklight do |config|
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = { 
@@ -203,13 +200,13 @@ class CatalogController < ApplicationController
       @response, @document = get_solr_response_for_doc_id   
 
 
-      unless @document[:format] == 'Electronic resource'  
-        #Create a library_item object
-        @library_item = LibraryItem.new(@document.id)
-        #load holdings records into the library_item object
-        @library_item.load_holdings_records_collection 
-      end      
-  
+      item_format = @document[:format].blank? ? 'Unknown' : @document[:format]
+      #Create a library_item object
+      @library_item = LibraryItem.new(@document.id, item_format)
+      #load holdings records into the library_item object
+      @library_item.load_holdings_records_collection 
+      
+      
       respond_to do |format|
         format.html {setup_next_and_previous_documents}
 

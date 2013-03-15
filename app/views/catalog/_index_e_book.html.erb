@@ -9,9 +9,7 @@
 	      <dd class="blacklight-format"><%= render_format_icon( document ) %>&nbsp;<%= render_index_field_value :document => document, :field => "format" %> </dd>
       <% end %>
 
-     <%= display_field(document, 'url_fulltext_display', 'Online', 'online', {:display_as_link => true, :link_text => 'Access this resource online'}) %>
-   
+     <%= display_field(document, 'url_fulltext_display', 'Online', 'online', {:display_as_link => true, :link_text => 'Access this resource online'}) %>   
 </dl>
-<%= jquery_holdings_display(document.id) %>
 
 

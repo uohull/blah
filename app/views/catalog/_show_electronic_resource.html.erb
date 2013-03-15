@@ -9,7 +9,8 @@
         <h5>Record</h5>
         <dl class="defList">
           <%= display_field(document, 'description_display', 'Description', 'description', {:contains_encoded_html => true}) %>
-          <%= display_field(document, 'subject_t', 'Subject', 'subject') %>
+          <%#= display_field(document, 'subject_t', 'Subject', 'subject') %>
+          <%= display_field_search_link(document, 'subject_t', 'Subject', 'subject', 'subject-link', 'subject') %>
           <%= display_field(document, 'lc_callnum_display', 'Call number', 'call') %>
           <%= display_field(document, 'coverage_display', 'Coverage', 'coverage') %>
           <%= display_field(document, 'additional_info_display', 'Additional information', 'add-info') %>

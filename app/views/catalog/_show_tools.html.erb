@@ -38,7 +38,7 @@
     <% end %>
 
      <% unless @library_item.nil? %>
-      <% if !@library_item.available? %>
+      <% if @library_item.requestable? %>
         <li class="hold_item">
           <%= render_request_library_item_link(@library_item) %>
         </li>
