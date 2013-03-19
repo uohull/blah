@@ -88,7 +88,8 @@ module BlahHelper
   end
 
   #search_catalog_link - creates blacklight search link with the given search_query and search_field
-  def search_catalog_link(text, search_query, search_field, link_class=nil)
+  def search_catalog_link(text, search_query, search_field, link_class=nil, exact_match=false)
+   search_query = "\"#{search_query}\"".html_safe if exact_match 
    link_to text, catalog_index_path(:q => search_query, :search_field => search_field ), :class => link_class
   end
 
@@ -110,7 +111,7 @@ module BlahHelper
 
       display_field = <<-EOS
         <dt class=#{dd_class}>#{label}</dt>
-        <dd class=#{dd_class}>#{values.collect{ |value| search_catalog_link(value, value, search_field, link_class) + '; ' } }</dd>
+        <dd class=#{dd_class}>#{values.collect{ |value| search_catalog_link(value, value, search_field, link_class, true) + '; ' } }</dd>
       EOS
     end
 
@@ -127,7 +128,7 @@ module BlahHelper
       values = values.kind_of?(Array) ? values : values.to_a
 
       content_tag element, :class => element_class do       
-          values.collect { |value| concat(search_catalog_link(value, value, search_field, link_class) + '<br/>'.html_safe) }
+          values.collect { |value| concat(search_catalog_link(value, value, search_field, link_class, true) + '<br/>'.html_safe) }
       end
     end
   end 
