@@ -18,6 +18,7 @@ development:
   addthis_services_expanded: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,pocket,favorites'
   addthis_services_exclude: 'gmail,email'
 
+  #Do not retrieve holdings for these formats
   holdings:
     ignore:
       - 'E-Book'
@@ -90,6 +91,14 @@ test:
   addthis_services_expanded: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,pocket,favorites'
   addthis_services_exclude: 'gmail,email'
 
+  #Do not retrieve holdings for these formats
+  holdings:
+    ignore:
+      - 'E-Book'
+      - 'E-Journal'
+      - 'Electronic resource'
+      - 'Unknown'
+
    #status from holding records
   record_status:
     available:
@@ -151,6 +160,14 @@ production:
   addthis_services_compact: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,pocket'
   addthis_services_expanded: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,pocket,favorites'
   addthis_services_exclude: 'gmail,email'
+
+  #Do not retrieve holdings for these formats
+  holdings:
+    ignore:
+      - 'E-Book'
+      - 'E-Journal'
+      - 'Electronic resource'
+      - 'Unknown'
 
    #status from holding records
   record_status:
