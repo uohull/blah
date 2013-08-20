@@ -1,20 +1,24 @@
-<h2>Browse the catalogue</h2>
-<p>You can browse the catalogue by...</p>
-<p>
-  <%= render_home_page_link('/catalog/facet/subject_topic_facet', 'Subject', {:i_class => 'icon-tags'}) %>
-</p>
-<p>
-  <%= render_home_page_link('/catalog/facet/library', 'Library', {:i_class => 'icon-home'}) %>
-</p>
-<p>
-  <%= render_home_page_link('/catalog/facet/format', 'Format', {:i_class => 'icon-user'}) %>
-</p>
-<!-- These act as spacers on the desktop and tablet -->
-<p class="hidden-phone">
-   <a href="#">&nbsp;</a>
-</p>
-<p class="hidden-phone">
-  <a href="#">&nbsp;</a>
-</p>
+<div class="span5 offset2">
+	<div class="tile tile-white tile-shadow">
+		<h2>Browse the catalogue</h2>
+		<p>You can browse the catalogue by...</p>
+		<p>
+		  <%= render_home_page_link('/catalog/facet/subject_topic_facet', 'Subject', {:i_class => 'icon-tags'}) %>
+		</p>
+		<p>
+		  <%= render_home_page_link('/catalog/facet/library', 'Library', {:i_class => 'icon-home'}) %>
+		</p>
+		<p>
+		  <%= render_home_page_link('/catalog/facet/format', 'Format', {:i_class => 'icon-user'}) %>
+		</p>
+		<!-- These act as spacers on the desktop and tablet -->
+		<p class="hidden-phone">
+		   <a href="#">&nbsp;</a>
+		</p>
+		<p class="hidden-phone">
+		  <a href="#">&nbsp;</a>
+		</p>
+	</div>
+</div>
 
 

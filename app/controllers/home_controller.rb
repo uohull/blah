@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  	include BlacklightGoogleAnalytics::ControllerExtraHead
+  include BlacklightGoogleAnalytics::ControllerExtraHead
 	include Blacklight::Configurable
 	include Blacklight::SolrHelper
 
@@ -18,7 +18,7 @@ class HomeController < ApplicationController
   		end
   	
   		#show action uses the blacklight-home layout
-  		render :layout => 'blacklight-home'
+  		#render :layout => 'blacklight-home'
   	end
   	
   	# Get the FAQ page

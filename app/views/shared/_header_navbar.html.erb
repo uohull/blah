@@ -1,21 +1,25 @@
-<div id="header-navbar-fixed-top" class="navbar navbar-fixed-top">
-     <div class="navbar-inner">
-            <div class="container">
-              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </a>
-              <%= link_to application_name, root_path, :class => 'brand' %>
-              <div id="logo" class="brand-logo pull-right hidden-phone"></div>
-              <div class="nav-collapse">
-                <ul class="nav">
-                  <%= render :partial=>'/user_util_links' %>
-                </ul>
-              </div>
-            </div>
-      </div>
-      <%= render_search_bar %>    
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+                <a class="btn btn-navbar square-corners" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a> 
+                <%= link_to application_name, root_path, :id => "MenuLink", :class => "brand" %>
+
+                <div class="brand-logo pull-right hidden-phone">                  
+                  <%= link_to image_tag("blah/uoh-logo-white.png"), "http://www.hull.ac.uk", :target => "_blank" %>
+                </div>
+                <div class="nav-collapse collapse">
+                  <ul class="nav">
+                        <%= render :partial=>'/user_util_links' %>
+                    </ul>
+                </div>
+        </div>
+    </div>
 </div>
-<%#= render(:partial => "/catalog/mobile_search_form") unless @search_bar.empty? %>
+<% if !(current_page?(controller: 'home', action: 'show')) %>
+  <%= render_search_bar %>
+<% end %>
 

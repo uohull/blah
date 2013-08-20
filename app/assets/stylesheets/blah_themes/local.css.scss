@@ -1,6 +1,6 @@
-$home_background_image: '/bg1.jpg' !default;
-$navbarBackgroundHighlight: #000 !default;
-$navbarBackground: #000 !default;
+/* $home_background_image: '/bg1.jpg' !default; */
+/*$navbarBackgroundHighlight: #000 !default;
+$navbarBackground: #000 !default;*/
 $blacklight-green-colour: #51A351 !default;
 $navbar_background_color: #000000 !default;
 $logo_image: 'blah/logo.gif';
@@ -23,10 +23,6 @@ h1, h2, h3, h4, h5, h6 {
   padding-right: 1em;
 }
 
-#background-container {
-  background-color:white;
-}
-
 #main-container {
   padding:0;
 }
@@ -35,7 +31,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: $blacklight-green-colour;
 }
 
-
+/*
 .brand-logo {
     background: url("/assets/blah/uni-logo-white.png") no-repeat scroll left top transparent;
     height: 35px;
@@ -45,8 +41,8 @@ h1, h2, h3, h4, h5, h6 {
     width: 202px;
 }
 
-
-.navbar {
+*/
+/*.navbar {
     font-family: inherit;
 
     .brand {
@@ -89,9 +85,9 @@ h1, h2, h3, h4, h5, h6 {
     color: #FFF;
     text-decoration: none;
 }
-
+*/
 /* This ensures that any tool pop-up goes infront of the header */
-.navbar-fixed-bottom {
+/*.navbar-fixed-bottom {
  z-index:1000;
 }
 
@@ -100,12 +96,12 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   margin-top: 0;
 }
-
-#footer-container-top {
+*/
+/*#footer-container-top {
   background-color:$navbar_background_color;
   background-image:none;
 
-}
+}*/
 
 #selected-items #folder {
   color: #999999;
@@ -135,14 +131,16 @@ div#document-phone.document {
 
 /* Home page */
 
+/*
 #home-background-container {
     background-image: url($home_background_image);
     width: 100%;
 }
+*/
 
-#header-navbar-fixed-top { 
+/*#header-navbar-fixed-top { 
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);   
-}
+}*/
 
 
 /* Home page - tiles */
@@ -156,156 +154,6 @@ div#document-phone.document {
   margin-bottom:0;
 }
 
-
-#search-tile {
-    border-radius: 0 0 0 0;
-    margin: 0 0.5em 0.5em;
-
-    h2 {  
-      margin: 0.5em 0 0.75em;
-    }
-
-    select {     
-      width: 120px;
-    }
-   
-    a {
-      color: #FFF !important;
-    }    
-}
-
-
-/* Reduces the padding for tablets */
-#search-tile-tablet {
-
-  border-radius: 0 0 0 0;
-   margin: 0 0.5em 0.5em;
-
-  h2 {  
-    margin: 0.5em 0 0.75em;
-  }
-
-  select {     
-    width: 120px;
-  }
-   
-  a {
-    color: #FFF !important;
-  }  
-  padding: 30px 40px 30px 40px;
-}
-
-
-#search-tile-phone {
-    background-color: rgba(81, 163, 81, 1);
-    border-radius: 0 0 0 0;
-    margin: 0 0 0.5em;
-    padding: 2em 0.5em 3em 1.25em;   
-}
-
-.search-tile {
-  h2 {
-    font-size: 24px !important;
-    line-height: 36px !important;
-    color:#FFFFFF !important;
-  }
-  p {
-    color: #FFFFFF !important;  
-    font-size: 15px !important;
-    line-height: 18px !important;
-  }
-}
-
-.generic-tile {
-  margin: 0.5em;
-  padding: 1em;
-
-  h2 {
-      font-size: 24px;
-      color: #000;
-      margin: 0.5em 0 0.75em;
-  }
-
-
-}
-.generic-tile-phone {
-    margin: 0 0 0 !important;
-}
-	
-/* Tile colours */  
-.tile-green {
-  background-color: #51A351;
-  background-color: rgba(81, 163, 81, 0.98);
-  
-  /* Extra background-color required here for IE7 */ 
-  *background-color: #51A351;
-}
-
-.tile-white {
-  background-color: #FFFFFF;    
-  background-color: rgba(255, 255, 255, 0.93);
-
-  /* Extra background-color required here for IE7 */ 
-  *background-color: #FFFFFF; 
-}
-
-.tile-twitter-blue {
-  background-color: #5BC0DE;   
-  background-color: rgba(91, 192, 222, 0.98);
-  
-  /* Extra background-color required here for IE7 */ 
-  *background-color: #5BC0DE;   
-}
-
-.tile-grey {
-  background-color: #EBEBEB;  
-  background-color: rgba(235, 235, 235, 1) !important;
-
-  /* Extra background-color required here for IE7 */ 
-  *background-color: #EBEBEB;   
-}
-
-#footer-title-top a {
-    color: #FFFFFF;
-    padding: 0 40px;
-}
-#search-tile, #social-tile h2 {
-    color: #FFFFFF;
-}
-#main-search.search p a {
-    color: #FFFFFF;
-}
-
-#announcement-tile-phone {
-  background-color: rgba(255, 255, 255, 1);
-}
-
-#links-tile-phone {
-  background-color: rgba(255, 255, 255, 1);
-}
-
-#social-tile-phone {
-  h2 {
-    color: #FFFFFF;
-  }
-  background-color: rgba(91, 192, 222, 1);
-  margin-bottom: 0;
-}
-
-#social-tile {
-  h2 {
-    color: #FFFFFF;
-  }
-  margin-bottom: 0;
-}
-
-/* Adds a shadow to tiles.. */
-.tile-shadow 
-{
-  -webkit-box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.75);
-  -moz-box-shadow:    0px 0px 10px rgba(50, 50, 50, 0.75);
-  box-shadow:         0px 0px 10px rgba(50, 50, 50, 0.75);
-}
 
 .blacklight-green-color {
   color:$blacklight-green-colour;
@@ -359,7 +207,7 @@ h3.index_title {
 }
 
 
-footer {
+/*footer {
 
   a:link, a:visited, a:active {
       color: #C9C9C9;
@@ -382,7 +230,7 @@ footer {
     }
   }
 
-}
+}*/
 
 div#feedback {
     a {
@@ -404,34 +252,35 @@ div#feedback {
 }
 */
 
-#footer-container {
+/*#footer-container {*/
     /* Old browsers */
     /* FF3.6+ */
     /* Chrome,Safari4+ */
     /* Chrome10+,Safari5.1+ */
     /* Opera 11.10+ */
     /* IE10+ */
-    color: #666666;
+   /* color: #666666;
     box-shadow: 0 1px 3px rgba(255, 0, 0, 0), 0 -1px 0 rgba(0, 0, 0, 0) inset;
     padding: 0 40px;
     max-height: 166px;
     
-    background: #2a2a2a; /* Old browsers */
+    background: #2a2a2a;*/ /* Old browsers */
     /* IE9 SVG, needs conditional override of 'filter' to 'none' */
-    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzJhMmEyYSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyYTJhMmEiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMTYxNjE2IiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
-    background: -moz-linear-gradient(center top , #2A2A2A 0%, #161616 100%) repeat scroll 0 0 transparent !important; /* FF3.6+ */
+   /* background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzJhMmEyYSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyYTJhMmEiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMTYxNjE2IiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+    background: -moz-linear-gradient(center top , #2A2A2A 0%, #161616 100%) repeat scroll 0 0 transparent !important;*/ /* FF3.6+ 
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2a2a2a), color-stop(100%,#161616)) !important; /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(center top,  #2a2a2a 0%, #161616 100%) !important; /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #2a2a2a 0%, #161616 100%) !important; /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #2a2a2a 0%, #161616 100%) !important; /* IE10+ */
-    background: linear-gradient(to bottom,  #2a2a2a 0%, #161616 100%)!important ; /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2a2a2a', endColorstr='#161616',GradientType=0 ) !important; /* IE6-8 */
-}
+    /*background: -webkit-linear-gradient(center top,  #2a2a2a 0%, #161616 100%) !important; *//* Chrome10+,Safari5.1+ */
+   /* background: -o-linear-gradient(top,  #2a2a2a 0%, #161616 100%) !important;*/ /* Opera 11.10+ */
+    /*background: -ms-linear-gradient(top,  #2a2a2a 0%, #161616 100%) !important;*/ /* IE10+ */
+    /*background: linear-gradient(to bottom,  #2a2a2a 0%, #161616 100%)!important ;*/ /* W3C */
+    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2a2a2a', endColorstr='#161616',GradientType=0 ) !important;*/ /* IE6-8 */
+/*}
 
 
 #footer-container-top {
     padding-top: 0.75em;
 }
+*/
 
 #desktop-search-bar.navbar-inner {
     box-shadow: none;
