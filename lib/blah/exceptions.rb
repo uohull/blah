@@ -1,6 +1,2 @@
-module Blah
-  module Exceptions 
-    class HoldingsException < Exception
-    end
-  end
+module Blah::Exceptions
 end

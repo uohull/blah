@@ -1,9 +1,7 @@
 require 'zoom'
 require 'nokogiri'
-require 'lib/blah/exceptions'
 
 class HoldingsService
-
   include Blah::Exceptions
   
   def self.find_holdings(bib_record_no, holdings_collection, chop_last_bib_digit = true)
