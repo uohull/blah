@@ -6,11 +6,10 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-
 gem 'json'
 
 group :development do
-  gem "debugger", "~> 1.3.3"
+  gem 'debugger', '~> 1.3.3'
 end
 
 
@@ -19,7 +18,7 @@ end
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem "bootstrap-sass", "~> 2.2.0"
+  gem 'bootstrap-sass', '~> 2.2.0'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platform => :ruby
 
@@ -28,13 +27,13 @@ end
 
 gem 'jquery-rails'
 
-gem "blacklight", "4.0.1"
-gem 'blacklight_advanced_search'
-gem 'devise', '2.1.3'
-gem "devise_cas_authenticatable", "~> 1.1.1"
-
+gem 'blacklight', '4.0.1'
+gem 'blacklight_advanced_search', '~> 2.1.1'
 #Blacklight google analytics plugin by Jason Ronallo
-gem "blacklight_google_analytics", "~> 0.0.1.pre2"
+gem 'blacklight_google_analytics', '~> 0.0.1.pre2'
+
+gem 'devise', '~> 2.2.7'
+gem 'devise_cas_authenticatable', '~> 1.2.0'
 
 gem 'unicode'
 
