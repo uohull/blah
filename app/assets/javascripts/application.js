@@ -11,14 +11,9 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require 'blacklight_advanced_search'
-
-
 //= require jquery_ujs
-//
 // Required by Blacklight
 //= require jquery-ui
 //= require blacklight/blacklight
-//= require_tree .
-
 //= require blacklight_google_analytics
+//= require_tree .
