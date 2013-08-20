@@ -2,9 +2,9 @@
     <div id="content" class="span10">       
       <% @page_title = t('blacklight.search.show.title', :document_title => document_show_html_title, :application_name => application_name) %>
       <% extra_head_content << render_link_rel_alternates %>     
-      <% search_bar << capture do %>
-        <%= render :partial=>'search_form' %>
-      <% end %>
+      <%# search_bar << capture do %>
+        <%#= render :partial=>'search_form' %>
+      <%# end %>
 
       <div class="show">
         <%= render 'constraints', :localized_params=>session[:search] %>
