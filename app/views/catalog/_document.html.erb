@@ -8,8 +8,7 @@
         </div>        
       </div>
       <div class="span7">
-        <h3 class="index_title"><%= t('blacklight.search.documents.counter', :counter => (document_counter + 1 + @response.params[:start].to_i)) %><%= link_to_document document, :label=>document_link_label(document), :counter => (document_counter + 1 + @response.params[:start].to_i) %></h3>
-
+        <h3 class="index_title"><%= t('blacklight.search.documents.counter', :counter => (document_counter + 1 + @response.params[:start].to_i)) %><%= link_to_document document, :label=>document_show_link_field, :counter => (document_counter + 1 + @response.params[:start].to_i) %></h3>
         <% # main container for doc partial view -%>
         <%= render_document_partial document, :index, :document_counter => document_counter  %>
       </div>
@@ -30,7 +29,7 @@
         <%= render :partial => 'document_tools', :locals => { :document => document, :document_counter => document_counter } %>
       </div>  
       <div class="span7">
-        <h3 class="index_title"><%= t('blacklight.search.documents.counter', :counter => (document_counter + 1 + @response.params[:start].to_i)) %><%= link_to_document document, :label=>document_link_label(document), :counter => (document_counter + 1 + @response.params[:start].to_i) %></h3>
+       <h3 class="index_title"><%= t('blacklight.search.documents.counter', :counter => (document_counter + 1 + @response.params[:start].to_i)) %><%= link_to_document document, :label=>document_show_link_field, :counter => (document_counter + 1 + @response.params[:start].to_i) %></h3>
 
         <% # main container for doc partial view -%>
         <%= render_document_partial document, :index, :document_counter => document_counter  %>

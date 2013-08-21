@@ -8,7 +8,7 @@ module BlahHelper
 
   #Override the standard Blacklight helper document_header to include sub_title_display in the header if it exists
   def document_heading
-   document_heading =  @document['subtitle_display'].nil? ?  @document['title_display'] :  @document['title_display'] << " : " <<  @document['subtitle_display'] || @document.id
+   document_heading =  @document['subtitle_display'].nil? ?  @document['title_display'].join(" : ") :  @document['title_display'].join(" : ") << " : " <<  @document['subtitle_display'].join(" : ") || @document.id
   end
   
   #Uses the Syndetics tool to display book cover
@@ -97,8 +97,7 @@ module BlahHelper
   # Data stored within the solr_fname will be used as the basis for the search query
   # search_field - specify which search_handler to use for the link - default 'all_fields'  
   def display_field_search_link(document, solr_fname, label_text='', dd_class=nil, link_class=nil, search_field='all_fields')
- 
-    label = ""
+     label = ""
     display_field = ""
 
     dd_class = "blacklight-#{dd_class}" if dd_class
@@ -111,7 +110,7 @@ module BlahHelper
 
       display_field = <<-EOS
         <dt class=#{dd_class}>#{label}</dt>
-        <dd class=#{dd_class}>#{values.collect{ |value| search_catalog_link(value, value, search_field, link_class, true) + '; ' } }</dd>
+        <dd class=#{dd_class}>#{values.collect{ |value| search_catalog_link(value, value, search_field, link_class, true)}.join('; ') }</dd>
       EOS
     end
 
@@ -218,12 +217,12 @@ module BlahHelper
       if opts[:render_icon]
         display_field << <<-EOS
           <dt class="dt-callnumber">#{pluralize_string(display_value.length,"Class number")}</dt>
-          <dd class="dd-callnumber">#{ display_value.map{ |cn| render_shelved_icon  + '&nbsp;'.html_safe + cn + '<br/>'.html_safe}.to_s}</dd>
+          <dd class="dd-callnumber">#{ display_value.collect{ |cn| render_shelved_icon  + '&nbsp;'.html_safe + cn}.join('<br/>'.html_safe)}</dd>
          EOS
       else
         display_field << <<-EOS
           <dt class="dt-callnumber">#{pluralize_string(display_value.length,"Class number")}</dt>
-          <dd class="dd-callnumber">#{ display_value.map{ |cn| cn + '<br/>'.html_safe}.to_s}</dd>
+          <dd class="dd-callnumber">#{ display_value.collect{ |cn| cn }.join('<br/>'.html_safe)}</dd>
          EOS
       end  
     end
