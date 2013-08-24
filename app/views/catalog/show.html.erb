@@ -1,7 +1,6 @@
-<div class="row">
-  <div id="content" class="span9 show-document">
-  
-  <%= render 'previous_next_doc' %>
+<div class="row-fluid">
+
+  <%#= removed previous_next_doc from here %>
      
   <% @page_title = t('blacklight.search.show.title', :document_title => document_show_html_title, :application_name => application_name) %>
   <% extra_head_content << render_link_rel_alternates %>
@@ -16,7 +15,6 @@
       <span class="Z3988" title="<%= @document.export_as_openurl_ctx_kev(document_partial_name(@document)) %>"></span>
     <% end %>
 
-  </div>
   <% # Removed sidebar render_document_sidebar_partial from here %>
 </div>
 

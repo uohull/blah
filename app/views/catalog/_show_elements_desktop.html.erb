@@ -1,24 +1,26 @@
-<div class="row visible-desktop">
-  <div id="content" class="span8">
+<div class="row-fluid visible-desktop">
+  <div id="content" class="span10">
     <%# this should be in a partial -%>
     <div id="document" class="<%= render_document_class %>">
       <div id="doc_<%= @document.id.to_s.parameterize %>">
       
-        <!-- Desktop tools go above the document -->
-        <div class="tools">     
-            <%= render :partial => 'show_tools' %>
-        </div>
-         
+      <%= render 'previous_next_doc' %>
+
         <% # bookmark/folder functions -%>
         <%= render_show_doc_actions @document %> 
      
         <div class="document">
           <%= render_document_partial @document, :show %>
         </div>
+
+        <!-- Desktop tools go above the document -->
+        <div class="tools">     
+            <%= render :partial => 'show_tools' %>
+        </div>
       </div>
     </div>
   </div>
-  <div class="span4">
+  <div class="span6">
     <%= render :partial => 'show_availability' %>
   </div>
 </div>

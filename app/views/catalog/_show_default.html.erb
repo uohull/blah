@@ -1,19 +1,25 @@
 <div class="row-fluid">
-  <div id="document-header" class="span12">
-    <%= render_document_heading(:h1).html_safe %>   
+  <div id="document-header" class="span16">
+    <%= render_document_heading(:h2).html_safe %>   
     <%#= display_field_within_element(document, 'author_display' , element='h2') %>
-    <%= display_field_search_link_within_element(document, 'author_display', 'h2', element_class=nil, 'author-heading-link', 'author') %>
+    <%= display_field_search_link_within_element(document, 'author_display', 'h3', element_class=nil, '', 'author') %>
 
     <%= display_field_within_element(document, 'title_series_t' , element='h5') %> 
-    <%= display_field_search_link_within_element(document, 'author_addl_t', 'h5', element_class=nil, 'author-heading-link', 'author') %>
-    <%= display_field_search_link_within_element(document, 'author_vern_display', 'h5', element_class=nil, 'author-heading-link', 'author') %>
+
+    <%= display_field_search_link_within_element(document, 'author_addl_t', 'h5', element_class=nil, '', 'author') %>
+
+    <%= display_field_search_link_within_element(document, 'author_vern_display', 'h5', element_class=nil, '', 'author') %>
+
     <%= display_field_within_element(document, 'corporate_author_display' , element='h5') %>
+
     <%= display_field_within_element(document, 'pub_date' , element='h5') %>
+
     <%= display_field_within_element(document, 'edition_display' , element='h5') %>
+
   </div>
 </div>
 <div class="row-fluid">
-            <div class="span3 hidden-phone">
+            <div class="span4 hidden-phone">
               <div id="cover-art">
                 <%= render_book_cover_img(document) %>
               </div>
@@ -25,15 +31,15 @@
               </div>
             </div><!--/span-->
 
-            <div class="span9">
-              <h4>Record</h4>
-              <dl class="dl-horizontal  dl-invert">
-                <%= display_field_search_link(document, 'subject_t', 'Subject', 'subject', 'subject-link', 'subject') %>
+            <div class="span12">
+              <h3>Record</h3>
+              <dl class="dl-vertical-left  dl-invert">
+                <%= display_field_search_link(document, 'subject_t', 'Subject', 'subject', '', 'subject') %>
                 <%= display_field(document, 'language_facet', 'Language', 'language') %>
                 <%= display_call_number(document) %>
               </dl>
-              <h4>Publication information</h4>
-              <dl class="dl-horizontal dl-invert">
+              <h3>Publication information</h3>
+              <dl class="dl-vertical-left dl-invert">
                 <%= display_field(document, 'frequency_display', 'Frequency', 'frequency') %>
                 <%= display_field(document, 'format', 'Format', 'format') %>
                 <%= display_field(document, 'published_display', 'Published', 'pub') %>

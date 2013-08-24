@@ -1,10 +1,10 @@
-<%= display_field_within_element(document, 'title_series_t' , element='h5') %>
+<%= display_field_within_element(document, 'title_series_t' , element='h5,') %>
 <%= display_field_within_element(document, 'author_display' , element='h5') %>
 <%= display_field_within_element(document, 'author_addl_t' , element='h5') %>
 <%= display_field_within_element(document, 'pub_date' , element='h5') %>
 <%= display_field_within_element(document, 'edition_display' , element='h5') %>
 
-<dl class="dl-horizontal dl-invert">  
+<dl class="dl-horizontal-left dl-invert">  
       <% if document.has? 'format' %>
         <dt class="blacklight-format-dt">Format</dt>
 	      <dd class="blacklight-format-dd"><%= render_format_icon( document ) %>&nbsp;<%= render_index_field_value :document => document, :field => "format" %> </dd>

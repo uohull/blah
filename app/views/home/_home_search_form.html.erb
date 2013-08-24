@@ -1,12 +1,16 @@
 <%= form_tag search_action_url, :method => :get, :class => 'form-inline form-search form-sub-search'  do %>
-  <%= search_as_hidden_fields(:omit_keys => [:q, :search_field, :qt, :page]).html_safe %>
-  <%- search_tag = search_fields.empty? ? "" : select_tag(:search_field, options_for_select(search_fields, h(params[:search_field])), :title => t('blacklight.search.form.search_field.title'), :class=>"search-field") %>
+  
+  <div class='input-prepend input-append'>
+        <%= search_as_hidden_fields(:omit_keys => [:q, :search_field, :qt, :page]).html_safe %>
+  <%- search_tag = search_fields.empty? ? "" : select_tag(:search_field, options_for_select(search_fields, h(params[:search_field])), :title => t('blacklight.search.form.search_field.title'), :class=>"search-field square-corners input-small") %>
   <%= search_tag %>
-  <div class='input-append'>      
     <%= text_field_tag :q, params[:q], :class => "q input-xlarge search-query square-corners" %>
     <button class="btn square-corners" name="button" type="submit"><i class="icon-search icon hidden-phone"></i> Search</button>
   </div>
   <p>
+    <small>
+      <i class="icon icon-white icon-asterisk"></i>
     <%= link_to 'Advanced search', params.merge(:controller=>"advanced", :action=>"index")%> 
+  </small>
   </p>
 <% end %>

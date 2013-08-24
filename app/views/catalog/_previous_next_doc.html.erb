@@ -1,0 +1,25 @@
+<% #Using the Bootstrap Pagination class -%>
+<% if @previous_document || @next_document %>
+<div class="well container-gutter" id="previousNextDocument">
+<h3>
+	<small>
+    <%= link_to_previous_document @previous_document %> 
+
+    <span class="vertical-divider"></span>
+
+    <%= item_page_entry_info %> <span class="vertical-divider"></span>
+
+    <%= link_to_next_document @next_document %>
+
+	<span class="vertical-divider"></span>
+
+	<span>
+      <%= link_back_to_catalog %>
+      <span class="vertical-divider"></span>
+      <%=link_to "#{t('blacklight.search.start_over')}", catalog_index_path, :id=>"startOverLink" %>
+  	</span>
+
+  </small>
+</h3>
+</div>
+<% end %>
