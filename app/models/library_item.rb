@@ -35,7 +35,7 @@ class LibraryItem
     return available
   end 
 
-  #Can the item be booked (short loan items, see: blah_config)
+  #Can the item be booked (see: blah_config - bookable_item.location)
   def bookable?
     bookable = false
 

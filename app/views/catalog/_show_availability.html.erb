@@ -3,7 +3,7 @@
 </div>
 <div id="availability-nav" class="sidebar-nav well">
   <% #This will be set to display:block using javascript if no holdings/online resources are present -See holdings_record.js -%>
-  <p id="no-holdings" style="padding-left: 1em; display:none;">Please consult your local library helpdesk.</p>
+  <p id="no-holdings" class="hide"><%= t('blah.item.holdings.no_holdings_information') %></p>
   <%= render_holdings_html_partial(@library_item) unless @library_item.nil? %>
   <%= render_online_resources_partial(@document) %>
 </div>

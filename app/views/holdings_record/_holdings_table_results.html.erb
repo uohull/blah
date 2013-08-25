@@ -1,5 +1,7 @@
-<dl class="defList"> 
-  <% unless @holdings_records.empty? %>
+<% if @holdings_records.empty? %>
+  <p class="no-holdings"><i title="Check with the Library" id="icon-holding-available" class="icon-asterisk icon-white"> </i>&nbsp;<%= t('blah.item.holdings.no_holdings_information') %></p>
+<% else %>
+  <dl class="defList"> 
     <% @holdings_records.sort!{ |x,y| x.availability <=> y.availability }%>
     <% @holdings_records.each_with_index do |holding_record, index| %>
       <% if @holdings_records.first == holding_record %>
@@ -26,6 +28,5 @@
           <% end %>
       </dd>
     <% end %>
+  </dl>
 <% end %>
-</dl>
-

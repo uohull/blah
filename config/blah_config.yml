@@ -68,7 +68,7 @@ development:
   #Used for configuring what constitutes as a 'bookable item' - location based...
   bookable_item:
     location:
-      - 'BJL Short Loan'
+      - 'High Demand 1st Floor'
 
 
 test:
@@ -139,7 +139,7 @@ test:
   #Used for configuring what constitutes as a 'bookable item' - location based...
   bookable_item:
     location:
-      - 'BJL Short Loan'
+      - 'High Demand 1st Floor'
 
 production:
   contact_form_email: s.lamb@hull.ac.uk
@@ -209,4 +209,4 @@ production:
   #Used for configuring what constitutes as a 'bookable item' - location based...
   bookable_item:
     location:
-      - 'BJL Short Loan'
+      - 'High Demand 1st Floor'
