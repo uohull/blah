@@ -1,6 +1,5 @@
 <% @documents.each do |document| %>
-
-<h1><%= citation_title(document) %></h1>
+<h3><%= document_heading(document) %></h3>
 <p>These citations are provided for guidance only, please check with your Department for additional requirements.</p>
 <% #Local Harvard style citation -%>
 <%- if document.respond_to?(:export_as_harvard_citation_txt) -%>

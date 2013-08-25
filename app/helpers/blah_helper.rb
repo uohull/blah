@@ -7,8 +7,8 @@ module BlahHelper
   end
 
   #Override the standard Blacklight helper document_header to include sub_title_display in the header if it exists
-  def document_heading
-   document_heading =  @document['subtitle_display'].nil? ?  @document['title_display'].join(" : ") :  @document['title_display'].join(" : ") << " : " <<  @document['subtitle_display'].join(" : ") || @document.id
+  def document_heading(document=@document)
+   document_heading =  document['subtitle_display'].nil? ?  document['title_display'].join(" : ") :  document['title_display'].join(" : ") << " : " <<  document['subtitle_display'].join(" : ") || document.id
   end
   
   #Uses the Syndetics tool to display book cover
