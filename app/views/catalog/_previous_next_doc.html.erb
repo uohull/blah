@@ -3,15 +3,21 @@
 <div class="well container-gutter" id="previousNextDocument">
 <h3>
 	<small>
-    <%= link_to_previous_document @previous_document %> 
+    	<span class="hidden-phone">
+    	<%= link_to_previous_document @previous_document %>
+    	</span>
 
-    <span class="vertical-divider"></span>
+    <span class="vertical-divider hidden-phone"></span>
 
-    <%= item_page_entry_info %> <span class="vertical-divider"></span>
+    <span class="hidden-phone">
+    	<%= item_page_entry_info %> <span class="vertical-divider"></span>
+    </span>
 
-    <%= link_to_next_document @next_document %>
+    <span class="hidden-phone">
+    	<%= link_to_next_document @next_document %>
+    </span>
 
-	<span class="vertical-divider"></span>
+	<span class="vertical-divider hidden-phone"></span>
 
 	<span>
       <%= link_back_to_catalog %>

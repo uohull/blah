@@ -13,16 +13,16 @@
             <% break %>
           <% else %> 
               <% if holding_record.availability.downcase =~ /available/ then %>
-              <i title="Available" id="icon-holding-available" class="icon-ok icon-white"></i> &nbsp;
+              <i title="Available" id="icon-holding-available" class="icon-ok icon-white"> </i> &nbsp; 
               <% else %>
-                <i title="Not available" id="icon-holding-unavailable" class="icon-remove icon-white"></i> <%  
+                <i title="Not available" id="icon-holding-unavailable" class="icon-remove icon-white"></i> &nbsp; <%  
                   #Remove extra status information
                   availability = holding_record.availability
                   availability_replacements = [ [/\+[0-9]/, ""], ["HOLD", ""] ]
                   availability_replacements.each {|replacement| availability.gsub!(replacement[0], replacement[1])}
-                %> <%= availability %>
+                %> &nbsp; <%= availability %>
               <% end %>
-              &nbsp; <%= holding_record.local_location %>
+               &nbsp; <%= holding_record.local_location %>
           <% end %>
       </dd>
     <% end %>

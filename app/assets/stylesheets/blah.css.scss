@@ -32,30 +32,45 @@ $home_background_image: "blah/bg1.jpg" !default;
 
 /* global */
 
+/* experimenting with fonts */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800,600,400italic&subset=latin,cyrillic-ext,vietnamese,latin-ext,greek-ext,cyrillic,greek);
+
 body {
+  font-family: 'Open Sans', sans-serif !important;
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0; 
 }
 
-h4 
-{
-    font-size: 14px;
+h1 {
+  font-size: 38px !important;
+  font-weight: bold;
 }
+
 
 h2 
 {
-    font-size: 26px !important;
-    line-height: normal !important;
-
+  font-size: 32px !important;
+  line-height: normal !important;
+  font-weight: bold;
 }
 
 h3 
 {
-    font-size: 20px !important;
-    line-height: normal !important;
-    color: #666;
+  font-weight: lighter;
+  font-size: 24px !important;
+  line-height: normal !important;
+  color: #666;
+}
+
+h4 
+{
+  font-size: 16px;
+}
+
+h5 {
+  font-weight: normal;
 }
 
 a {
@@ -108,6 +123,10 @@ a {
   margin: auto;
   max-width: $formMaxWidth;
   min-height: 560px;
+}
+
+.remove-margin-top {
+  margin-top: 0;
 }
 
 /* navbar fixes */
@@ -418,7 +437,7 @@ ul.footer-sub-list {
   background: none repeat scroll 0 0 $altcolorlight;
     border: 1px solid darken($altcolorlight, 10%);
     color: #FFFFFF;
-    margin: 0 0 0.5em;
+    margin: 0 0.5em 0.5em;
     .btnRemove {
       background: url("/assets/blacklight/remove.png") no-repeat scroll 5px 4px transparent;
       border-left: 1px solid darken($altcolorlight, 10%);  
@@ -599,6 +618,36 @@ padding: 0;
   }
 }
 
+.page_links {
+  padding-left: 0.75em;
+}
+
+#cover-art {
+    height: 150px !important;
+    max-width: 132px !important;
+    margin-right: 1em;
+    margin-top: 8px;
+}
+
+#document-phone {
+  #cover-art {
+    clear: both !important;
+    height: calc(200px + 0.5em) !important;
+  }
+  h3 {
+    padding-bottom: 0.15em !important;
+  }
+} 
+
+#document-phone #holdings-record-element .defList {
+dt {
+  font-size: 16px;
+  padding-bottom: 1em;
+}
+dd { font-size: 96%;}
+
+  } 
+
 /* datatables */
 
 .dl-horizontal-left dd {
@@ -648,5 +697,5 @@ padding: 0;
 
 /* fixes & overrides */
 #search_field {
-    width: inherit;
+    min-width: 120px;
 }

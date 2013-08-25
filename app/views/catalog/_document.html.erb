@@ -1,14 +1,15 @@
 <% # container for a single doc -%>
 <div class=" <%= render_document_class document %> hidden-phone row-fluid">
-      <div class="span2">
+  <div class="page-gutter">
+      <div class="span3">
         <div id="cover-art">
           <%= link_to document, :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) do %>
             <%= render_book_cover_img(document) %>
           <% end %>
         </div>        
       </div>
-      <div class="span11 page-gutter">
-        <h3><%= t('blacklight.search.documents.counter', :counter => (document_counter + 1 + @response.params[:start].to_i)) %><%= link_to_document document, :label=>document_show_link_field, :counter => (document_counter + 1 + @response.params[:start].to_i) %></h3>
+      <div class="span10 page-gutter">
+        <h3 class="remove-margin-top"><%= t('blacklight.search.documents.counter', :counter => (document_counter + 1 + @response.params[:start].to_i)) %><%= link_to_document document, :label=>document_show_link_field, :counter => (document_counter + 1 + @response.params[:start].to_i) %></h3>
         <% # main container for doc partial view -%>
         <%= render_document_partial document, :index, :document_counter => document_counter  %>
       </div>
@@ -16,24 +17,33 @@
       <div class="span3">
         <%= render :partial => 'document_tools', :locals => { :document => document, :document_counter => document_counter } %>
       </div> 
+  </div>
 </div>
-<hr/>
-<div id="document-phone" class="document <%= render_document_class document %> visible-phone row">
-      <div class="span2">
-        <div id="cover-art">
-          <%= link_to document, :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) do %>
-            <%= render_book_cover_img(document) %>
-          <% end %>
-        </div>        
-      </div>
-      <div class="span2">
-        <%= render :partial => 'document_tools', :locals => { :document => document, :document_counter => document_counter } %>
-      </div>  
-      <div class="span7">
-       <h3 class="index_title"><%= t('blacklight.search.documents.counter', :counter => (document_counter + 1 + @response.params[:start].to_i)) %><%= link_to_document document, :label=>document_show_link_field, :counter => (document_counter + 1 + @response.params[:start].to_i) %></h3>
 
-        <% # main container for doc partial view -%>
-        <%= render_document_partial document, :index, :document_counter => document_counter  %>
-      </div>      
+<hr class="hidden-phone" />
+
+<div id="document-phone" class="document <%= render_document_class document %> visible-phone row well">
+  <div class="span7">
+    <h3><%= t('blacklight.search.documents.counter', :counter => (document_counter + 1 + @response.params[:start].to_i)) %><%= link_to_document document, :label=>document_show_link_field, :counter => (document_counter + 1 + @response.params[:start].to_i) %>
+    </h3>
+  </div>  
+
+  <div class="span2">
+    <div id="cover-art">
+      <%= link_to document, :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) do %>
+        <%= render_book_cover_img(document) %>
+      <% end %>
+    </div>        
+  </div>
+
+  <div class="span2">
+    <%= render :partial => 'document_tools', :locals => { :document => document, :document_counter => document_counter } %>
+  </div>  
+
+  <div class="span7">
+    <% # main container for doc partial view -%>
+    <%= render_document_partial document, :index, :document_counter => document_counter  %>
+  </div> 
+
 </div>
 
