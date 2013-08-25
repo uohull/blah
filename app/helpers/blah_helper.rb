@@ -343,6 +343,28 @@ ep_from_display" => "Item seperate from", "continued_by_display" => "Item contin
     end
   end
 
+  # Add a hidden field that contains the bibliographic record id
+  # Can be used for Jquery looks based on this id (i.e. reading lists etc..)
+  def bib_record_id_hidden_field
+    unless bib_record_id.nil?
+      hidden_field_tag "bib_record_id", bib_record_id 
+    end
+  end
+
+  # Return the bib_record_id for a record.  
+  # chop based last digit based on the chop_bib_id method
+  def bib_record_id
+    unless params["id"].nil?
+      id = chop_bib_id ? params["id"].chop : params["id"]
+    end    
+  end
+
+  # The id used for records within Blacklight are the catalogue Bibliographic identifier. The
+  # id contains a control character at the end which isn't used when calling external services
+  # This method is simply to decide whether to chop the last char  
+  def chop_bib_id
+    true
+  end
 
   #Returns a pluralized string
   def pluralize_string(count, singular)

@@ -21,6 +21,14 @@
     </div>
   </div>
   <div class="span6">
-    <%= render :partial => 'show_availability' %>
+    <div class="row">
+      <div class="span6">
+        <%= render :partial => 'show_availability' %>
+      </div>
+      <div class="reading-lists-container span6 hide">
+        <%= render :partial => 'show_reading_lists' %>
+      </div>
+    </div>
   </div>
+
 </div>
