@@ -1,10 +1,13 @@
-<%= render :partial=>'catalog/search_form' %>
-
-<div class="row">
-  <div class="span3 bs-docs-sidebar">
-    <%= render :partial=>'faq_headings.html.erb' %>    
+<div class="row-fluid">
+  <div class="span4 hidden-phone">
+  	<div class="affix">
+    	<%= render :partial=>'faq_headings.html.erb' %>
+    </div>
   </div>
-  <div class="hidden-phone span9">
+  <div class="span4 visible-phone">
+    	<%= render :partial=>'faq_headings.html.erb' %>
+  </div>
+  <div class=" span10">
     <%= render :partial=>'faq_text.html.erb' %>    
   </div>
   <div class="visible-phone phone-margins span9">
