@@ -1,10 +1,8 @@
 <div class="row-fluid">
   <div id="document-header" class="span16">
     <%= render_document_heading(:h2).html_safe %>   
-    <%#= display_field_within_element(document, 'author_display' , element='h2') %>
-    <%= display_field_search_link_within_element(document, 'author_display', 'h3', element_class=nil, '', 'author') %>
 
-    <%= display_field_within_element(document, 'title_series_t' , element='h5') %> 
+    <%= display_field_search_link_within_element(document, 'author_display', 'h3', element_class=nil, '', 'author') %>
 
     <%= display_field_search_link_within_element(document, 'author_addl_t', 'h5', element_class=nil, '', 'author') %>
 
@@ -45,6 +43,7 @@
                 <%= display_field(document, 'published_display', 'Published', 'pub') %>
                 <%= display_field(document, 'published_vern_display', 'Published', 'pub') %>
                 <%= display_field(document, 'periodical_pub_date_display', 'Publish note', 'published') %>
+                <%= display_field(document, 'title_series_t', 'Series', 'series') %>
                 <%= display_field(document, 'isbn_t', 'ISBN', 'isbn') %>
                 <%= display_field(document, 'issn_t', 'ISSN', 'issn') %>
                 <%= display_field(document, 'ismn_t', 'ISMN', 'ismn') %>
