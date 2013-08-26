@@ -56,6 +56,10 @@
                 <%= display_field(document, 'credits_display', 'Credits', 'credits') %>
                 <%= display_field(document, 'note_display', 'Note', 'note') %>
                 <%= display_field(document, 'with_display', 'With', 'with') %>
+                <% #RDA Fields %>
+                <%= display_field(document, 'rda_content_display', 'Content', 'content') %>
+                <%= display_field(document, 'rda_media_display', 'Media', 'media') %>
+                <%= display_field(document, 'rda_carrier_display', 'Carrier', 'carrier') %>
               </dl>             
               <%= display_related_items( document ) %>        
            </div>
