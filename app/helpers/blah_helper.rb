@@ -371,7 +371,6 @@ ep_from_display" => "Item seperate from", "continued_by_display" => "Item contin
     pluralize(count,singular)[2..-1]
   end
 
-
   #Accessor methods for the addthis configuraations - See blah_config.yml
   def addthis_services_compact
     APP_CONFIG['addthis_services_compact']
@@ -385,4 +384,8 @@ ep_from_display" => "Item seperate from", "continued_by_display" => "Item contin
     APP_CONFIG['addthis_services_exclude']
   end
 
+  #Accessor methods for twitter widget data id
+  def twitter_widget_data_id
+    APP_CONFIG['twitter_widget_data_id']
+  end
 end

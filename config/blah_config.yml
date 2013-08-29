@@ -13,6 +13,9 @@ development:
   #syndetics services for book covers and table of contents
   syndetics_client_code: dev
 
+  # twitter widget data_id
+  twitter_widget_data_id: 
+
   #configurations for addthis tool - See http://support.addthis.com/customer/portal/articles/381244-destinations-services
   addthis_services_compact: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,pocket'
   addthis_services_expanded: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,pocket,favorites'
@@ -86,6 +89,9 @@ test:
   #syndetics services for book covers and table of contents
   syndetics_client_code: dev
 
+  # twitter widget data_id
+  twitter_widget_data_id:  
+
   #configurations for addthis tool - See http://support.addthis.com/customer/portal/articles/381244-destinations-services
   addthis_services_compact: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,pocket'
   addthis_services_expanded: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,pocket,favorites'
@@ -155,6 +161,9 @@ production:
   
   #syndetics services for book covers and table of contents
   syndetics_client_code: dev
+
+  # twitter widget data_id
+  twitter_widget_data_id:  
 
   #configurations for addthis tool - See http://support.addthis.com/customer/portal/articles/381244-destinations-services
   addthis_services_compact: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,pocket'
