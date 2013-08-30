@@ -33,6 +33,8 @@ en:
     item:
       holdings:
         no_holdings_information: 'Item may be on order - please check with the Library to confirm'
+      qr:
+        qr_text: 'Scan the code with your phone to capture the URL of this record.'
 
     faq:
       header_links:
