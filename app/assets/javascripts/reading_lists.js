@@ -14,7 +14,8 @@ $(document).ready(function () {
   // For Blacklight record pages, we are embedding a hidden field with id bib_record_id that contains the bib id
 	var bibliographic_id = $('#bib_record_id').val();
 
-	if (bibliographic_id !== null) { 
+  // Check for bibliographic_id before attempting a query on readinglists.hull.ac.uk
+	if ( (typeof bibliographic_id !== "undefined") && (bibliographic_id !== null) ) { 
 		reading_list_url = 'http://readinglists.hull.ac.uk/lcn/'+bibliographic_id+'/lists.json?cb=?';
 		retrieve_json(reading_list_url);
 	} 
@@ -26,7 +27,7 @@ function retrieve_json(url) {
 
 	 $.getJSON(url,function(data) { 
 
-	 		//Create an empty reading_lists_array
+	 		//Create an empty reading_lists_array 
        var reading_list_array = new Array();
 
        //In order to allow sorting of the module list, we need to move the return data into a 'sortable' array
