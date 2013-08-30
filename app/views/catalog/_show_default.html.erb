@@ -20,6 +20,8 @@
             <div class="span4 hidden-phone">
               <div id="cover-art">
                 <%= render_book_cover_img(document) %>
+                <%# Adds a google-preview div with a google preview button if preview exists %>
+                <%= render_google_preview_button(document) %>
               </div>
             </div><!--/span-->
             
@@ -28,7 +30,6 @@
                 <span class="cover-art-image"><%= render_book_cover_img(document) %></span>
               </div>
             </div><!--/span-->
-
             <div class="span12">
               <h3>Record</h3>
               <dl class="dl-vertical-left  dl-invert">

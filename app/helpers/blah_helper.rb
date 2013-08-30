@@ -11,15 +11,33 @@ module BlahHelper
    document_heading =  document['subtitle_display'].nil? ?  document['title_display'].join(" : ") :  document['title_display'].join(" : ") << " : " <<  document['subtitle_display'].join(" : ") || document.id
   end
   
-  #Uses the Syndetics tool to display book cover
-  def render_book_cover_img( document )    
-    isbn = document.get('isbn_t', :sep => nil)      
+  # Uses the Syndetics tool to display book cover
+  def render_book_cover_img(document)
+    isbn = isbn_from_document(document)
     unless isbn.nil? 
-      isbn_number = if isbn.is_a? Array then isbn.first else isbn end
-      image_tag("http://syndetics.com/index.aspx?isbn=" + isbn_number + "/mc.gif&client=" + APP_CONFIG['syndetics_client_code'], :class => "book-cover-img")
+      image_tag("http://syndetics.com/index.aspx?isbn=" + isbn + "/mc.gif&client=" + APP_CONFIG['syndetics_client_code'], :class => "book-cover-img")
     end
   end
 
+  # Calls the Google Book Preview Javascript if an ISBN exists.
+  # If Google has a Book preview it will display a Preview button within the 'google-preview' div specified below.
+  def render_google_preview_button(document)
+    isbn = isbn_from_document(document)
+    unless isbn.nil?
+      content_tag "div", id: "google-preview" do
+        javascript_tag "GBS_insertPreviewButtonPopup('ISBN:#{isbn}')"
+      end
+    end 
+  end
+  
+  # Retrieves the ISBN from a SolrDocument
+  # It is configured to look for isbn_t and if multiple ISBN's exist it will return the first available.  
+  def isbn_from_document( document )
+    isbn = document.get('isbn_t', :sep => nil)
+    unless isbn.nil? 
+      isbn = if isbn.is_a? Array then isbn.first else isbn end
+    end
+  end
 
   #Helper to return a label for document_links - See _document.html.erb :label =>...
   def document_link_label doc
