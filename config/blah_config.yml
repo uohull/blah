@@ -11,7 +11,7 @@ development:
   catalogue_opac_address: library.hull.ac.uk
 
   #syndetics services for book covers and table of contents
-  syndetics_client_code: univhull
+  syndetics_client_code: dev
 
   #configurations for addthis tool - See http://support.addthis.com/customer/portal/articles/381244-destinations-services
   addthis_services_compact: 'twitter,facebook,google_plusone,google_plusone_share,pinterest,stumbleupon,delicious,digg,blogger,tumblr,pocket'

@@ -1,41 +1,43 @@
 <div class="row-fluid">
 
-<div id="sidebar" class="span4">
- <%= render :partial=>'facets' %>
-</div><!--/well -->
+  <div id="sidebar" class="span4">
+    <div class="page-gutter">
+     <%= render :partial=>'facets' %>
+    </div>
+  </div><!--/well -->
 
-<div id="content" class="span12">
+  <div id="content" class="span12">
+    <div class="page-gutter">
+      <% unless has_search_parameters? %>
+        <%# if there are no input/search related params, display the "home" partial -%>
+        <%= render 'home' %>
+      <% else %>
 
-    <% unless has_search_parameters? %>
-      <%# if there are no input/search related params, display the "home" partial -%>
-      <%= render 'home' %>
-    <% else %>
+        <h2 class="hide-text top-content-title"><%= t('blacklight.search.search_results_header') %></h2>
 
-      <h2 class="hide-text top-content-title"><%= t('blacklight.search.search_results_header') %></h2>
-
-      <% @page_title = t('blacklight.search.title', :application_name => application_name) %>
-
-
-      <% extra_head_content << render_opensearch_response_metadata.html_safe %>
-
-      <%= render :partial => 'did_you_mean' %>
-
-      <%= render 'sort_and_per_page' %>
-
-      <%= render :partial => 'constraints' %>
-
-      <h2 class="hide-text"><%= t('blacklight.search.search_results') %></h2>
-
-      
-      
-      <%= render_document_index %>
+        <% @page_title = t('blacklight.search.title', :application_name => application_name) %>
 
 
-      <%= render 'results_pagination' %>
+        <% extra_head_content << render_opensearch_response_metadata.html_safe %>
+
+        <%= render :partial => 'did_you_mean' %>
+
+        <%= render 'sort_and_per_page' %>
+
+        <%= render :partial => 'constraints' %>
+
+        <h2 class="hide-text"><%= t('blacklight.search.search_results') %></h2>
+
+        
+        
+        <%= render_document_index %>
 
 
-    <% end %>
+        <%= render 'results_pagination' %>
 
-</div>
+
+      <% end %>
+    </div>
+  </div>
 
 </div>
