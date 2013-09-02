@@ -2,37 +2,54 @@
 
   <%= search_as_hidden_fields(:params => advanced_search_context ) %>  
 
-  <div class="input_columns yui-g">
-	      
+<div class="row-fluid">
+  <div class="span5">
+    <div class="page-gutter">
+    <h3 class="advanced">Categories <small>Limit your search</small></h3>
+      <div class="limit_input">
+        <%= render 'advanced_search_facets' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="span10">
+    <div class="page-gutter">
+    <h3 class="advanced">Advanced search <small>Options</small></h3>
       <div class="query_column column">
-        <h2>Find items that match <%= select_tag(:op, options_for_select({'all'=>'AND','any'=>'OR'}.sort,'all')) %> of the fields below:</h2>
+        <p>Find items that match <%= select_tag(:op, options_for_select({'all'=>'AND','any'=>'OR'}.sort,'all'), :class=>'input-small') %> of the fields below:</p>
         
         <div id="advanced_search">
           <%= render 'advanced/advanced_search_fields' %>
         </div>        
       </div>
-           <div class="limit_column column">      
-        <h2><strong>AND</strong> have these attributes:</h2>
-      
-        <div id="advanced_search_facets" class="limit_input">
-          <%= render 'advanced_search_facets' %>
+
+      <% unless (search_context_str = render_search_to_s( advanced_search_context)).blank? %>
+        <div class="constraints">
+          <h3>Within search</h3>
+          <%= search_context_str %>
         </div>
+      <% end %>
+
+      <div class="limit_column column">      
+        <h3>Sort <small>Results by</small></h3>
+      </div> 
+
+      <div class="sort_submit_buttons">
+        <%= label_tag(:sort, "") %> 
+
+        <%= select_tag(:sort, options_for_select(sort_fields, h(params[:sort]))) %>
+
+      <%= hidden_field_tag(:search_field, blacklight_config.advanced_search[:url_key]) %>
+
+      <hr/>
+
+      <%= submit_tag 'Search', :class=>'advanced_button btn square-corners', :id=>'advanced_search' %>
+      
+      <span class="vertical-divider"></span>
+      <%= link_to "Start again", {:controller => "advanced", :action => "index"}, :class =>"reset advanced_button" %>
+
       </div>
-  </div>
-  
-  <% unless (search_context_str = render_search_to_s( advanced_search_context)).blank? %>
-    <div class="constraints">
-      <h4>Within search:</h4>
-      <%= search_context_str %>
     </div>
-  <% end %>
-  
-  
-  <div class="sort_submit_buttons">
-	<%= label_tag(:sort, "Sort results by") %> 
-    <%= select_tag(:sort, options_for_select(sort_fields, h(params[:sort]))) %>
-	<%= hidden_field_tag(:search_field, blacklight_config.advanced_search[:url_key]) %>
-    <%= submit_tag 'Search', :class=>'advanced_button', :id=>'advanced_search' %>
-	<%= link_to "Start again", {:controller => "advanced", :action => "index"}, :class =>"reset advanced_button" %>
   </div>
+</div>
 <% end %>

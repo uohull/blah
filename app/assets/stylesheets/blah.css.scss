@@ -18,6 +18,7 @@ $lightblue: #75bdbd;
 $lightlink: #fff;
 $darklink: #000;
 $tiletransparency: 0.94;
+$tilerowgutter: 0;
 
 /* highlighters */
 $selectedtextcolor: #842121;
@@ -160,9 +161,13 @@ a {
      border-width: 0;
 }
 
+.navbar .nav {
+    margin: 3px 10px 0 0;
+}
+
 .square-corners 
 {
-    border-radius: 0 !important;
+    border-radius: 2px !important;
 }
 
 /* site nav */
@@ -181,7 +186,7 @@ a {
 
 .brand-logo {
   height:40px;
-  img {  margin: 5px 15px 2px 0; }
+  img {  margin: 7px 15px 2px 0; }
 }
 
 .brand-logo-phone {
@@ -217,7 +222,7 @@ a {
 
 .subnav {
     transition: all 0.35s ease-in-out 0s;
-    top: 40px;
+    top: 43px;
     z-index: 1020;
 }
 
@@ -341,15 +346,15 @@ ul.footer-sub-list {
 }
 
 .tile {
-  padding: 0.2em 1em 0.25em;
-  margin-bottom: 10px;
-  min-height: 244px;
+  padding: 0.75em 1.5em 1.5em;
+  margin-bottom: $tilerowgutter;
+  min-height: 281px;
 }
 
 .hero-tile {
   padding: 20px 30px 20px;
   border-radius: 0 0 0 0;
-  margin-bottom: 10px;
+  margin-bottom: $tilerowgutter;
   p { padding: 1em 0; }
 }
 
@@ -459,11 +464,12 @@ ul.footer-sub-list {
     color: #FFFFFF;
     margin: 0 0.5em 0.5em;
     .btnRemove {
-      background: url("/assets/blacklight/remove.png") no-repeat scroll 5px 4px transparent;
+      background: url("/assets/blacklight/remove.png") no-repeat scroll 5px 5px transparent;
       border-left: 1px solid darken($altcolorlight, 10%);  
   }
   .filterName {
-    background: url("/assets/blacklight/separator.png") no-repeat scroll 63px 0px transparent;
+    background: url("/assets/blacklight/separator.png") no-repeat scroll right center transparent;
+    padding-right: 1.75em;
   }
 }
 
@@ -506,6 +512,18 @@ ul.footer-sub-list {
     .facet_limit:last-child > h5 {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
+  }
+}
+
+.sidenav-alt {
+  background-color: #efefef;
+  border: 0 none;
+  border-radius: 0;
+  transition: all 0.2s ease-in-out 0s;
+  text-shadow:0px 1px 0px #efefef;
+  &:hover { background: #d9d9d9;}
+  label.checkbox {
+    font-size: 96%;
   }
 }
 
@@ -671,7 +689,7 @@ dd { font-size: 96%;}
 /* datatables */
 
 .dl-horizontal-left dd {
-    margin-left: 100px;
+    margin-left: 110px;
 }
 
 .dl-horizontal-left dt {
@@ -728,10 +746,19 @@ ul.nav li.menu-item {
 }
 
 
+/* Generic form controls */
 
+.form-label {
+  color: #888888;
+  font-weight: normal;
+}
 
 
 /* fixes & overrides */
 #search_field {
     min-width: 120px;
+}
+
+.form-search .input-prepend .search-query {
+    margin-left: -1px;
 }
