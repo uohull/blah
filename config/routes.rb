@@ -1,17 +1,31 @@
 Blah::Application.routes.draw do
 
-  get "library_items/holdings"
+  get 'library_items/holdings'
 
   #Overide the feedback controller of Blacklight to our Contact view
   match 'feedback' => 'contact#new'
 
-  Blacklight.add_routes(self)
+  Blacklight.add_routes(self, :except => [:catalog, :solr_document])
+  # We don't add the Blacklight catalog/solr_document routes so that...
+  # ... we can override url route with 'catalogue'...
+  match 'catalogue/opensearch', :to => 'catalog#opensearch',  :as => 'opensearch_catalog'
+  match 'catalogue/citation', :to => 'catalog#citation', :as => 'citation_catalog'
+  match 'catalogue/email', :to => 'catalog#email',  :as => 'email_catalog'
+  match 'catalogue/sms', :to => 'catalog#sms',  :as => 'sms_catalog'
+  match 'catalogue/endnote', :to => 'catalog#endnote', :as => 'endnote_catalog'
+  match 'catalogue/send_email_record', :to => 'catalog#send_email_record',  :as => 'send_email_record_catalog'
+  match 'catalogue/facet/:id', :to => 'catalog#facet', :as => 'catalog_facet'
+  match 'catalogue', :to => 'catalog#index', :as => 'catalog_index'
+  match 'catalogue/:id/librarian_view', :to => 'catalog#librarian_view', :as => 'librarian_view_catalog'
 
-  #root :to => "catalog#index"
-  root :to => "home#show"
+  resources :solr_document,  :path => 'catalogue', :controller => 'catalog', :only => [:show, :update] 
+  resources :catalog, :path => 'catalogue', :controller => 'catalog', :only => [:show, :update]
+  # End of catalog/solr_document overides 
+
+  root :to => 'home#show'
 
   match 'items/:bib_no' => 'library_items#show'
-  match "holdings_record/:bib_no" => "holdings_record#index"
+  match 'holdings_record/:bib_no' => 'holdings_record#index'
 
   match 'contact' => 'contact#new', :as => 'contact', :via => :get
   match 'contact' => 'contact#create', :as => 'contact', :via => :post
@@ -69,11 +83,11 @@ Blah::Application.routes.draw do
   #     resources :products
   #   end
 
-  # You can have the root of your site routed with "root"
+  # You can have the root of your site routed with 'root'
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
 
-  # See how all your routes lay out with "rake routes"
+  # See how all your routes lay out with 'rake routes'
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
