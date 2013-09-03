@@ -1,16 +1,22 @@
-<% search_bar << capture do %>
-  <%= render :partial=>'catalog/search_form' %>
-<% end %> 
-
-<div class="row">
-  <div class="span3 bs-docs-sidebar">
-    <%= render :partial=>'cookies_headings.html.erb' %>    
+<div class="row-fluid">
+  <div class="span4 hidden-phone">
+    <div class="page-gutter">
+      <div class="affix">
+        <%= render :partial=>'cookies_headings.html.erb' %>  
+      </div>
+    </div>
   </div>
-  <div class="hidden-phone span9">
-    <%= render :partial=>'cookies_text.html.erb' %>    
+  <div class="span4 visible-phone">
+    <%= render :partial=>'cookies_headings.html.erb' %>  
+  </div>
+
+  <div class=" span10">
+    <div class="page-gutter">
+      <%= render :partial=>'cookies_text.html.erb' %>   
+    </div> 
   </div>
   <div class="visible-phone phone-margins span9">
-    <%= render :partial=>'cookies_text.html.erb' %>    
-  </div>
+     <%= render :partial=>'cookies_text.html.erb' %>   
+  </div>  
 </div>
 
