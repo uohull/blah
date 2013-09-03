@@ -1,14 +1,18 @@
 <div class="row-fluid">
   <div class="span4 hidden-phone">
-  	<div class="affix">
-    	<%= render :partial=>'faq_headings.html.erb' %>
+  	<div class="page-gutter">
+	  	<div class="affix">
+	    	<%= render :partial=>'faq_headings.html.erb' %>
+	    </div>
     </div>
   </div>
   <div class="span4 visible-phone">
-    	<%= render :partial=>'faq_headings.html.erb' %>
+  	<%= render :partial=>'faq_headings.html.erb' %>
   </div>
   <div class=" span10">
-    <%= render :partial=>'faq_text.html.erb' %>    
+  	<div class="page-gutter">
+    	<%= render :partial=>'faq_text.html.erb' %>
+    </div> 
   </div>
   <div class="visible-phone phone-margins span9">
     <%= render :partial=>'faq_text.html.erb' %>    

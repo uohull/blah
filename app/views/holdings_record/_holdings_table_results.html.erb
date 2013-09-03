@@ -5,11 +5,12 @@
     <% @holdings_records.sort!{ |x,y| x.availability <=> y.availability }%>
     <% @holdings_records.each_with_index do |holding_record, index| %>
       <% if @holdings_records.first == holding_record %>
-        <dt>Location</dt>
+        <dt><h4>Location</h4></dt>
       <% else %>
         <dt></dt>
       <% end %>
       <dd>
+        <small>
           <% if index > 20 %>
             <i title="More available" id="icon-holding-more" class="icon-plus icon-white"></i> View record to check for more items
             <% break %>
@@ -26,6 +27,7 @@
               <% end %>
                &nbsp; <%= holding_record.local_location %>
           <% end %>
+        </small>
       </dd>
     <% end %>
   </dl>

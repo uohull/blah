@@ -60,7 +60,7 @@ h2
   
   font-weight: 400;
   color: #333;
-  margin-bottom: 1em;
+  margin-bottom: 0.75em;
 }
 
 h3 
@@ -753,6 +753,21 @@ ul.nav li.menu-item {
   a { padding: 8px 14px; color: #666;}
 }
 
+/* holding */
+
+#icon-holding-available {
+  background-color: #468847 !important;
+  border-radius: 2px 2px 2px 2px !important;
+  border-style: solid !important;
+  border-width: 2px 3px 3px !important;
+}
+
+#icon-holding-unavailable {
+  background-color: #F89406 !important;
+  border-radius: 2px 2px 2px 2px !important;
+  border-style: solid !important;
+  border-width: 2px 3px 3px !important;
+}
 
 /* Generic form controls */
 
@@ -769,4 +784,23 @@ ul.nav li.menu-item {
 
 .form-search .input-prepend .search-query {
     margin-left: -1px;
+}
+
+.actions form {
+	margin: 0;
+	text-align: center;
+}
+
+#holdings-record-element dd {
+  margin-left: 0;
+}
+
+.label {
+    border-radius: 2px 2px 2px 2px !important;
+}
+
+/* Twitter widget overrides */
+
+.new-tweet {
+  color: red !important;
 }

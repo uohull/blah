@@ -1,24 +1,23 @@
-<div class="span5 offset2">
-	<div class="tile tile-white tile-shadow">
+<div class="span4 offset3">
+	<div class="tile tile-light-green">
 		<h2>Browse</h2>
 		<p>You can browse the catalogue by...</p>
 		<p>
-		  <%= render_home_page_link('/catalogue/facet/author_facet', 'Author', {:i_class => 'icon-user'}) %>
+		  <i class="icon-user"></i>
+		  <%= render_home_page_link('/catalogue/facet/author_facet', 'Author') %>
 		</p>
 		<p>
-		  <%= render_home_page_link('/catalogue/facet/subject_topic_facet', 'Subject', {:i_class => 'icon-tags'}) %>
+			<i class="icon-tags"></i>
+		  	<%= render_home_page_link('/catalogue/facet/subject_topic_facet', 'Subject') %>
 		</p>
 		<p>
-		  <%= render_home_page_link('/catalogue/facet/library', 'Library', {:i_class => 'icon-home'}) %>
+		<i class="icon-home"></i>
+		  <%= render_home_page_link('/catalogue/facet/library', 'Library') %>
 		</p>
 		<p>
-		  <%= render_home_page_link('/catalogue/facet/format', 'Format', {:i_class => 'icon-book'}) %>
+		<i class="icon-book"></i>
+		  <%= render_home_page_link('/catalogue/facet/format', 'Format') %>
 		</p>
-		<!-- These act as spacers on the desktop and tablet -->
-		<p class="hidden-phone">
-		   <a href="#">&nbsp;</a>
-		</p>
-
 	</div>
 </div>
 
