@@ -16,8 +16,9 @@
     <div class="page-gutter">
     <h3 class="advanced">Advanced search <small>Options</small></h3>
       <div class="query_column column">
-        <p>Find items that match <%= select_tag(:op, options_for_select({'all'=>'AND','any'=>'OR'}.sort,'all'), :class=>'input-small') %> of the fields below:</p>
-        
+        <div class="well">
+          <p>Find items that match <%= select_tag(:op, options_for_select({'all'=>'AND','any'=>'OR'}.sort,'all'), :class=>'input-small') %> of the fields below</p>
+        </div>
         <div id="advanced_search">
           <%= render 'advanced/advanced_search_fields' %>
         </div>        
@@ -43,11 +44,11 @@
 
       <hr/>
 
-      <%= submit_tag 'Search', :class=>'advanced_button btn square-corners', :id=>'advanced_search' %>
+      <%= submit_tag 'Search', :class=>'advanced_button btn btn-success square-corners', :id=>'advanced_search' %>
       
-      <span class="vertical-divider"></span>
-      <%= link_to "Start again", {:controller => "advanced", :action => "index"}, :class =>"reset advanced_button" %>
-
+      <span class="pull-right">
+        <%= link_to "Start again", {:controller => "advanced", :action => "index"}, :class =>"reset advanced_button" %>
+      </span>
       </div>
     </div>
   </div>
