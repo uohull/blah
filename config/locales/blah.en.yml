@@ -4,7 +4,9 @@ en:
 
     header_links:
       feedback: 'Feedback'
-    
+      faq: 'FAQ'
+      millen_catalogue: 'Classic catalogue'
+
     contact_form:
       title: 'Contact us'
       description: 'You can use this form to make comments or ask questions about the Library catalogue interface.'
@@ -12,7 +14,6 @@ en:
       email: 'E-mail:'
       subject: 'Subject:'
       body: 'Feedback:'
-
 
     email_record:
       form:
@@ -35,9 +36,4 @@ en:
         no_holdings_information: 'Item may be on order - please check with the Library to confirm'
       qr:
         qr_text: 'Scan the code with your phone to capture the URL of this record.'
-
-    faq:
-      header_links:
-        faq: 'FAQ'
-
 
