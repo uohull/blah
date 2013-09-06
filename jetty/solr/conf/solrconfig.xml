@@ -753,6 +753,8 @@
          title_series_unstem_search^25
          title_series_t^10
          isbn_t
+         lc_callnum_display
+         alt_lc_callnum_display
          text
        </str>
        <str name="pf">
