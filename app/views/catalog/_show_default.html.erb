@@ -1,6 +1,8 @@
 <div class="row-fluid">
   <div id="document-header" class="span16">
-    <%= render_document_heading(:h2).html_safe %>   
+    <%= render_document_heading(:h2).html_safe %>
+
+    <%= display_field_within_element(document, 'title_uniform_display' , element='h3') %>   
 
     <%= display_field_search_link_within_element(document, 'author_display', 'h3', element_class=nil, '', 'author') %>
 
