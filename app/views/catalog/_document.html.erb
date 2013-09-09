@@ -8,14 +8,16 @@
           <% end %>
         </div>        
       </div>
-      <div class="span10 page-gutter">
+      <div class="span9 page-gutter">
         <h3 class="remove-margin-top"><%= t('blacklight.search.documents.counter', :counter => (document_counter + 1 + @response.params[:start].to_i)) %><%= link_to_document document, :label=>document_show_link_field, :counter => (document_counter + 1 + @response.params[:start].to_i) %></h3>
         <% # main container for doc partial view -%>
         <%= render_document_partial document, :index, :document_counter => document_counter  %>
       </div>
          
-      <div class="span3">
-        <%= render :partial => 'document_tools', :locals => { :document => document, :document_counter => document_counter } %>
+      <div class="span4"> 
+        <span class="pull-right">
+          <%= render :partial => 'document_tools', :locals => { :document => document, :document_counter => document_counter } %>
+        </span>
       </div> 
   </div>
 </div>
