@@ -538,8 +538,6 @@
    <field name="subject_topic_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="subject_era_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="subject_geo_facet" type="string" indexed="true" stored="true" multiValued="true" />
-   <field name="lc_callnum_display" type="string" indexed="true" stored="true" multiValued="true" />
-   <field name="alt_lc_callnum_display" type="string" indexed="true" stored="true" multiValued="true" />
 
    <!-- pub_date is used for facet and display so it must be indexed and stored -->
    <field name="pub_date" type="string" indexed="true" stored="true" multiValued="true"/>
@@ -670,6 +668,10 @@
    <copyField source="subject_t" dest="opensearch_display"/>
    <copyField source="subject_addl_t" dest="opensearch_display"/>  
 
+   <!-- We want searchable call numbers - place into _t to avoid any issues with stop words in dismax -->
+   <copyField source="lc_callnum_display" dest="lc_callnum_t" />
+   <copyField source="alt_lc_callnum_display" dest="alt_lc_callnum_t" />
+   
 
    <!-- Above, multiple source fields are copied to the [text] field. 
 	  Another way to map multiple source fields to the same 
