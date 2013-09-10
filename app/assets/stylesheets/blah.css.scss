@@ -29,7 +29,7 @@ $infocolor: #9ebe5e;
 
 /* images */
 $logo_image: 'blah/logo.gif';
-$home_background_image: "blah/bg1.jpg" !default;
+$home_background_image: "blah/bjl-1c.jpg" !default;
 
 /* global */
 
@@ -183,11 +183,10 @@ a {
 
 #background-container {
   background-image: url($home_background_image);
+  background-repeat: repeat-x;
+  background-color: #F6F6F6;
   width: 100%;
-
   box-shadow: 0 10px 10px -2px #090909;
-  min-height: 814px;
-  position: relative;
 }
 
 #background-container-form
@@ -427,9 +426,26 @@ ul.footer-sub-list {
 
 .tile-shadow 
 {
+/*
     -webkit-box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.15);
     -moz-box-shadow:    0px 0px 10px rgba(50, 50, 50, 0.15);
     box-shadow:         0px 0px 10px rgba(50, 50, 50, 0.15);
+*/
+  -webkit-box-shadow: 0px 0 10px -10px rgba(50, 50, 50, 0.15), -10px 0 10px -10px rgba(50, 50, 50, 0.15);
+  -moz-box-shadow: 10px 0 10px -10px rgba(50, 50, 50, 0.15), -10px 0 10px -10px rgba(50, 50, 50, 0.15);
+  box-shadow: 10px 0 10px -10px rgba(50, 50, 50, 0.15), -10px 0 10px -10px rgba(50, 50, 50, 0.15);
+}
+
+.tile-shadow-right {
+  -webkit-box-shadow: 0px 0 10px -10px rgba(50, 50, 50, 0.15);
+  -moz-box-shadow: 10px 0 10px -10px rgba(50, 50, 50, 0.15);
+  box-shadow: 10px 0 10px -10px rgba(50, 50, 50, 0.15);
+}
+
+.tile-shadow-left {
+-webkit-box-shadow: -10px 0 10px -10px rgba(50, 50, 50, 0.15);
+  -moz-box-shadow: -10px 0 10px -10px rgba(50, 50, 50, 0.15);
+  box-shadow: -10px 0 10px -10px rgba(50, 50, 50, 0.15);
 }
 
 .tile-shadow-high
@@ -440,6 +456,7 @@ ul.footer-sub-list {
 }
 
 .tile-white {
+  background-color: #fff;
 	background-color: tile-transparency($cleanwhite);
 	color: tile-text-color($cleanwhite);
 }
@@ -454,6 +471,7 @@ ul.footer-sub-list {
 }
 
 .tile-light-grey {
+  background-color: #ebebeb;
 	background-color: tile-transparency($lightgrey);
 	color: tile-text-color($lightgrey);
 	a { 
@@ -472,6 +490,7 @@ ul.footer-sub-list {
 }
 
 .tile-light-green {
+  background-color: #EDFFC4;
   background-color: tile-transparency($lightgreen);
   color: tile-text-colour($lightgreen);
   a { 

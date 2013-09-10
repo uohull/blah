@@ -1,7 +1,7 @@
 <div class="row visible-phone">
   <div id="content" class="span12">
     <%# this should be in a partial -%>
-    <div id="document" class="<%= render_document_class %>">
+    <div id="document" class="<%= render_document_class %> page-gutter">
       <div id="doc_<%= @document.id.to_s.parameterize %>">                
         
         <%= render 'previous_next_doc' %>
