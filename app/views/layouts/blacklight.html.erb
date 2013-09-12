@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <!-- Mobile viewport optimization h5bp.com/ad -->
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <% #meta tags for customising view on Apple devices -%>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -32,6 +33,15 @@
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]--> 
+
+    <!--[if lt IE 9]>
+    <style type="text/css">
+      #feedback {
+        display: none;
+      }
+    </style>
+    <![endif]-->
+
   </head>
   <% onload_text = "$('input#q').focus();" if params[:q].to_s.empty? and params[:f].to_s.empty? and params[:id].nil? %>
   <body onload="<%= onload_text %>" class="<%= render_body_class %>">
@@ -52,14 +62,14 @@
           <% if !(current_page?(controller: 'home', action: 'show')) %>
             <div id="form-container">
           <% end %>
-          <div class="container-fluid">
+
             <!-- Top bar 
             <div id="search-found" class="row hidden-phone">
               <%#= topbar_items.join('').html_safe %>
             </div>
             -->
             <!-- /Top bar -->
-            <div class="row-fluid">
+            <div class="row">
               <% if !(current_page?(controller: 'home', action: 'show')) %>
                 <div class="desktop-top-spacer visible-desktop"></div>
                 <div class="tablet-top-spacer visible-tablet"></div>
@@ -67,7 +77,6 @@
               <%= render :partial=>'/flash_msg' %>
             </div>
             <%= yield %>
-          </div>
 
           <% if !(current_page?(controller: 'home', action: 'show')) %>
             </div>

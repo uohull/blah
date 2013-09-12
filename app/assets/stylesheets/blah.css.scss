@@ -24,6 +24,7 @@ $tilerowgutter: 0;
 $selectedtextcolor: #842121;
 $alertcolor: #4E9799;
 $errorcolor: #cc6565;
+$successcolor: #51A351 ;
 $noticecolor: #3d7a7a;
 $infocolor: #9ebe5e;
 
@@ -191,14 +192,12 @@ a {
 
 #background-container-form
 {
-   background: #fff;
-   width: 100%;
-
-    box-shadow: 0 10px 10px -2px #090909;
-    min-height: 814px;
-    padding-bottom: 24px;
-    position: relative;
-
+  background: #fff;
+  width: 100%;
+  box-shadow: 0 10px 10px -2px #090909;
+  min-height: 814px;
+  padding-bottom: 24px;
+  position: relative;
 }
 
 #form-container{
@@ -218,35 +217,35 @@ a {
 /* navbar fixes */
 
 .navbar-fixed-top, .navbar-fixed-bottom {
-    margin-bottom: 0px !important;
+  margin-bottom: 0px !important;
 }
 
 .navbar-fixed-bottom .navbar-inner 
 {
-     border-width: 0;
+  border-width: 0;
 }
 
 .navbar .nav {
-    margin: 3px 10px 0 0;
+  margin: 3px 10px 0 0;
 }
 
 .square-corners 
 {
-    border-radius: 2px !important;
+  border-radius: 2px !important;
 }
 
 /* site nav */
 .navbar .brand {
 	background: none repeat scroll 0 0 transparent;
-    color: #FFFFFF;
-    display: inline-block;
-    margin-left: 10px;
-    margin-right: 0;
-    padding-left: 0;
-    padding-right: 0;
-    text-indent: 0;
-    white-space: nowrap;
-    width: 165px;
+  color: #FFFFFF;
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  text-indent: 0;
+  white-space: nowrap;
+  width: 165px;
 }
 
 .brand-logo {
@@ -268,11 +267,11 @@ a {
 
 .navbar-fixed-top {
   margin: 0;
-  opacity: 0.96;
+  /*opacity: 0.96;*/
   filter:alpha(opacity=92); /* For IE8 and earlier */
    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  /*box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);*/
 }
 
 #navbar-fixed-results-top {
@@ -297,6 +296,10 @@ a {
 }
 
 /* footer */
+
+#footer {
+  background: #1f1f1f;
+}
 
 footer {
     bottom: 0;
@@ -383,11 +386,11 @@ ul.footer-sub-list {
 }
 
 .desktop-top-spacer {
-  margin-top: 120px;
+  padding-top: 120px;
 }
 
 .tablet-top-spacer {
-  margin-top: 20px;
+  padding-top: 20px;
 }
 
 .form-sub-search {
@@ -515,7 +518,6 @@ ul.footer-sub-list {
       &:hover { color: darken($lightlink, 15%);}
     }
 }
-
 
 .tile-orange {
   color: #fff;
@@ -716,6 +718,64 @@ padding: 0;
   }
 }
 
+/* flash message */
+.flash-message-container {
+  padding: 1em;
+  background: $alertcolor;
+  color: #fff;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 2em;
+  h3 {
+   color: #fff;
+   margin-top: 0;
+  }
+  p {
+    font-size: 0.96em;
+  }
+  button.close{
+    right: 0;
+    color: #fff;
+    opacity: 1;
+  }
+  /*.alert-error { background: $errorcolor; }*/
+/*  .alert-info { background: $infocolor; }
+  .alert-notice { background: $noticecolor; }
+  .alert-success { background: $successcolor; }*/
+}
+
+.flash-message-container.alert-info {
+  background: $infocolor;
+}
+ 
+.flash-message-container.alert-error {
+  background: $errorcolor;
+}
+
+.flash-message-container.alert-notice {
+   background: $noticecolor;
+}
+
+.flash-message-container.alert-success {
+   background: $successcolor;
+}
+
+/*.flash-message-container h3 {
+   color: #fff;
+   margin-top: 0;
+}*/
+
+/*.flash-message-container p {
+  font-size: 0.96em;
+}*/
+
+/*.flash-message-container.alert button.close{
+  right: 0;
+  color: #fff;
+  opacity: 1;
+}*/
+
 /* document */
 
 #document {
@@ -884,6 +944,42 @@ ul.nav li.menu-item {
   padding-left: 1em;
 }
 
+/* feedback */
+
+#feedback { 
+  /*height: 104px; */
+  width: 104px !important; 
+  /*position: fixed !important; */
+  top: 30%;
+  right: -36px;
+  float: none !important;
+  left: inherit !important;
+  z-index: 999 !important;
+  bottom: inherit !important;
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg); 
+  -moz-transform: rotate(-90deg); 
+  -o-transform: rotate(-90deg); 
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  border: none;
+  a { 
+    display: block; 
+    background: $altcolor; 
+    height: 15px; 
+    width: 70px; 
+    padding: 8px 16px;
+    color: #fff; 
+    font-family: 'open_sansrbold', sans-serif; 
+    font-size: 14px; 
+    /*font-weight: bold; */
+    text-decoration: none; 
+    &:hover { 
+      background: $altcolorlight; 
+      transition: all 0.35s ease-in-out 0s;
+    }
+  }
+}
+
 
 /* fixes & overrides */
 #search_field {
@@ -905,6 +1001,10 @@ ul.nav li.menu-item {
 
 .label {
     border-radius: 2px 2px 2px 2px !important;
+}
+
+.container-fluid-fix {
+  min-width: 100%;
 }
 
 /* Twitter widget overrides */

@@ -3,6 +3,14 @@
   <%= search_as_hidden_fields(:params => advanced_search_context ) %>  
 
 <div class="row-fluid">
+  <div class="span16">
+    <div class="page-gutter">
+      <h1>Advanced search</h1>
+    </div>
+  </div>
+</div>
+
+<div class="row-fluid">
   <div class="span5">
     <div class="page-gutter">
     <h3 class="advanced">Categories <small>Limit your search</small></h3>
@@ -14,7 +22,7 @@
 
   <div class="span10">
     <div class="page-gutter">
-    <h3 class="advanced">Advanced search <small>Options</small></h3>
+    <h3 class="advanced">Search <small>Options</small></h3>
       <div class="query_column column">
         <div class="well">
           <p>Find items that match <%= select_tag(:op, options_for_select({'all'=>'AND','any'=>'OR'}.sort,'all'), :class=>'input-small') %> of the fields below</p>
