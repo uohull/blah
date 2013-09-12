@@ -1,7 +1,13 @@
 module BlahHelper
   include BlacklightHelper
   include ActionView::Helpers::TextHelper
-  
+
+  #########################################################
+  #                                                       #
+  #  Blacklight Helper over-rides                         #
+  #   * Overrides methods within BlacklightHelperBehavior #                      
+  #                                                       # 
+  #########################################################
   def application_name
     'Library Catalogue'
   end
@@ -10,6 +16,41 @@ module BlahHelper
   def document_heading(document=@document)
    document_heading =  document['subtitle_display'].nil? ?  document['title_display'].join(" : ") :  document['title_display'].join(" : ") << " : " <<  document['subtitle_display'].join(" : ") || document.id
   end
+
+  # Default seperator change
+  def field_value_separator
+    '; '
+  end
+
+   # Overide blacklight_helper_bahaviour#render_index_field_value to enable dynamic setting of field seperator 
+   # using the args [:seperator]
+  def render_index_field_value args
+    value = args[:value]
+
+    if args[:field] and blacklight_config.index_fields[args[:field]]
+      field_config = blacklight_config.index_fields[args[:field]]
+      value ||= send(blacklight_config.index_fields[args[:field]][:helper_method], args) if field_config.helper_method
+      value ||= args[:document].highlight_field(args[:field]) if field_config.highlight
+    end
+
+    value ||= args[:document].get(args[:field], :sep => nil) if args[:document] and args[:field]
+    render_field_value(value, args)
+  end
+
+  # Overide blacklight_helper_bahaviour#render_field_value to enable dynamic setting of field seperator 
+  # Added args method property to pass through :seperator
+  def render_field_value (value=nil, args={})
+    seperator = args[:seperator] ? args[:seperator] :  field_value_separator
+    #field_value_separator = args[:seperator] if args[:seperator]
+    value = [value] unless value.is_a? Array
+    value = value.collect { |x| x.respond_to?(:force_encoding) ? x.force_encoding("UTF-8") : x}
+    return value.map { |v| html_escape v }.join(seperator).html_safe
+  end
+
+  #######################################################
+  # - End of Blacklight Helper over-rides               #
+  #######################################################
+
   
   # Uses the Syndetics tool to display book cover
   def render_book_cover_img(document)
@@ -69,11 +110,6 @@ module BlahHelper
 
   end
 
-  def field_value_separator
-    '; '
-  end
-
-
   def display_field(document, solr_fname, label_text='', dd_class=nil, opts={} )
 
     label = ""
@@ -84,7 +120,7 @@ module BlahHelper
     label = if label_text.length > 0 then label_text end
 
     if document.has? solr_fname
-      field_value = render_index_field_value(:document => document, :field => solr_fname)
+      field_value = render_index_field_value(:document => document, :field => solr_fname, :seperator => opts[:seperator])
 
       if opts[:display_as_link] then
         display_value = '<a href="' + field_value + '">' +  opts[:link_text] + '</a>'
@@ -291,7 +327,7 @@ ep_from_display" => "Item seperate from", "continued_by_display" => "Item contin
     end
 
     if document_related_fields.length > 0
-       content_tag(:h4, "Related") + content_tag(:dl, :class => "defList") {
+       content_tag(:h3, "Related") + content_tag(:dl, :class => "dl-vertical-left  dl-invert") {
          document_related_fields.reduce('') { |c , field|
           c << content_tag(:dt, related_fields.fetch(field), :class => "blacklight-dt-" + field) << content_tag(:dd, :class => "blacklight-dd-" + field) { link_to(render_index_field_value(:document => document, :field => field), {:controller => "catalog", :action => "index", :q=> render_index_field_value(:document => document, :field => field).gsub(" ", "+"), :search_field => "title"}, :target => "_blank" ) }
         
