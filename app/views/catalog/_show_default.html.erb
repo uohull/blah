@@ -2,6 +2,12 @@
   <div id="document-header" class="span16">
     <%= render_document_heading(:h2).html_safe %>
 
+    <%= display_field_within_element(document, 'resp_statement_display' , element='h3') %>
+
+    <%= display_field_within_element(document, 'work_part_display' , element='h3') %>    
+
+    <%= display_field_within_element(document, 'alt_title_display' , element='h3') %>   
+
     <%= display_field_within_element(document, 'title_uniform_display' , element='h3') %>   
 
     <%= display_field_search_link_within_element(document, 'author_display', 'h3', element_class=nil, '', 'author') %>
@@ -15,7 +21,6 @@
     <%= display_field_within_element(document, 'pub_date' , element='p') %>
 
     <%= display_field_within_element(document, 'edition_display' , element='p') %>
-
   </div>
 </div>
 <div class="row-fluid">
@@ -38,6 +43,7 @@
     <h3>Record</h3>
     <dl class="dl-vertical-left  dl-invert">
       <%= display_field_search_link(document, 'subject_t', 'Subject', 'subject', '', 'subject') %>
+      <%= display_field_search_link(document, 'subject_addl_t', 'Added subject', 'subject', '', 'subject') %>
       <%= display_field(document, 'language_facet', 'Language', 'language') %>
       <%= display_call_number(document) %>
     </dl>
@@ -48,10 +54,10 @@
       <%= display_field(document, 'published_display', 'Published', 'pub') %>
       <%= display_field(document, 'published_vern_display', 'Published', 'pub') %>
       <%= display_field(document, 'periodical_pub_date_display', 'Publish note', 'published') %>
-      <%= display_field(document, 'title_series_t', 'Series', 'series') %>
-      <%= display_field(document, 'isbn_t', 'ISBN', 'isbn') %>
-      <%= display_field(document, 'issn_t', 'ISSN', 'issn') %>
-      <%= display_field(document, 'ismn_t', 'ISMN', 'ismn') %>
+      <%= display_field(document, 'title_series_t', 'Series', 'series', { seperator: "<br/>" }) %>
+      <%= display_field(document, 'isbn_t', 'ISBN', 'isbn', { seperator: "<br/>" }) %>
+      <%= display_field(document, 'issn_t', 'ISSN', 'issn', { seperator: "<br/>" }) %>
+      <%= display_field(document, 'ismn_t', 'ISMN', 'ismn', { seperator: "<br/>" }) %>
       <%= display_field(document, 'other_display', 'Publisher No', 'other') %>
       <%= display_field(document, 'description_display', 'Description', 'description') %>
       <%= display_field(document, 'contents_display', 'Contents', 'contents') %>
@@ -59,7 +65,7 @@
       <%= display_field(document, 'performer_display', 'Performer(s)', 'performers') %>
       <%= display_field(document, 'cast_display', 'Cast', 'cast') %>  
       <%= display_field(document, 'credits_display', 'Credits', 'credits') %>
-      <%= display_field(document, 'note_display', 'Note', 'note') %>
+      <%= display_field(document, 'note_display', 'Note', 'note', { seperator: "<br/>" }) %>
       <%= display_field(document, 'with_display', 'With', 'with') %>
       <% #RDA Fields %>
       <%= display_field(document, 'rda_content_display', 'Content', 'content') %>
