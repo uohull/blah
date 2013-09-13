@@ -417,7 +417,7 @@ ep_from_display" => "Item seperate from", "continued_by_display" => "Item contin
   # id contains a control character at the end which isn't used when calling external services
   # This method is simply to decide whether to chop the last char  
   def chop_bib_id
-    true
+    false
   end
 
   #Returns a pluralized string

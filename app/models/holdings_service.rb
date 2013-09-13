@@ -4,7 +4,7 @@ require 'nokogiri'
 class HoldingsService
   include Blah::Exceptions
   
-  def self.find_holdings(bib_record_no, holdings_collection, chop_last_bib_digit = true)
+  def self.find_holdings(bib_record_no, holdings_collection, chop_last_bib_digit = false)
     holdings_collection = holdings_collection || [] 
 
     begin 
