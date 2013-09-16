@@ -17,7 +17,7 @@ $lightgreen: #EDFFC4;
 $lightblue: #75bdbd;
 $lightlink: #fff;
 $darklink: #000;
-$tiletransparency: 0.94;
+$tiletransparency: 1;
 $tilerowgutter: 0;
 
 /* highlighters */
@@ -34,62 +34,50 @@ $home_background_image: "blah/bjl-1c.jpg" !default;
 
 /* global */
 
-/* experimenting with fonts */
-/*@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800,600,400italic&subset=latin,cyrillic-ext,vietnamese,latin-ext,greek-ext,cyrillic,greek);*/
-
-/*@font-face {
-  font-family: 'Open Sans Semi-Bold';
-  src: url('OpenSans-Semibold.ttf') format('truetype');
-}*/
-
 /* fonts - split out into seperate file? */
 
 @font-face {
-    font-family: 'open_sansbold';
-    src: url('opensans-bold-webfont.eot');
-    src: url('opensans-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('opensans-bold-webfont.woff') format('woff'),
-         url('opensans-bold-webfont.ttf') format('truetype'),
-         url('opensans-bold-webfont.svg#open_sansbold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: 'open_sansbold';
+  src: url('opensans-bold-webfont.eot');
+  src: url('opensans-bold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('opensans-bold-webfont.woff') format('woff'),
+       url('opensans-bold-webfont.ttf') format('truetype'),
+       url('opensans-bold-webfont.svg#open_sansbold') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'open_sanslight';
-    src: url('opensans-light-webfont.eot');
-    src: url('opensans-light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('opensans-light-webfont.woff') format('woff'),
-         url('opensans-light-webfont.ttf') format('truetype'),
-         url('opensans-light-webfont.svg#open_sanslight') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: 'open_sanslight';
+  src: url('opensans-light-webfont.eot');
+  src: url('opensans-light-webfont.eot?#iefix') format('embedded-opentype'),
+       url('opensans-light-webfont.woff') format('woff'),
+       url('opensans-light-webfont.ttf') format('truetype'),
+       url('opensans-light-webfont.svg#open_sanslight') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'open_sansregular';
-    src: url('opensans-regular-webfont.eot');
-    src: url('opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('opensans-regular-webfont.woff') format('woff'),
-         url('opensans-regular-webfont.ttf') format('truetype'),
-         url('opensans-regular-webfont.svg#open_sansregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: 'open_sansregular';
+  src: url('opensans-regular-webfont.eot');
+  src: url('opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('opensans-regular-webfont.woff') format('woff'),
+       url('opensans-regular-webfont.ttf') format('truetype'),
+       url('opensans-regular-webfont.svg#open_sansregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'open_sanssemibold';
-    src: url('opensans-semibold-webfont.eot');
-    src: url('opensans-semibold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('opensans-semibold-webfont.woff') format('woff'),
-         url('opensans-semibold-webfont.ttf') format('truetype'),
-         url('opensans-semibold-webfont.svg#open_sanssemibold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: 'open_sanssemibold';
+  src: url('opensans-semibold-webfont.eot');
+  src: url('opensans-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('opensans-semibold-webfont.woff') format('woff'),
+       url('opensans-semibold-webfont.ttf') format('truetype'),
+       url('opensans-semibold-webfont.svg#open_sanssemibold') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
@@ -110,7 +98,6 @@ h1 {
   line-height: 1.1em;
   margin-bottom: 0.5em;
 }
-
 
 h2 
 {
@@ -167,7 +154,6 @@ a {
 /* layout */
 
 .page-wrapper {
-  margin-bottom: 272px;
   position: relative;
   z-index: 1
 }
@@ -297,43 +283,49 @@ a {
 
 /* footer */
 
-#footer {
-  background: #1f1f1f;
+/* mobile footer adjustment */
+@media (max-width: 480px), (max-width: 767px) { 
+  footer #footer{
+    position: relative !important;
+    } 
 }
 
 footer {
-    bottom: 0;
+  position: absolute;
+  width: 100%;
+  z-index: -20;
+  height: 272px;
+  #footer {
+    background: #1f1f1f;
     position: fixed;
-    width: 100%;
-    z-index: -20;
-}
-
-#footer-container {
+  }
+  #footer-container {
     color: #999;
     /*background-color: #0d0d0d;*/
     background-color: #1f1f1f;
     padding-top: 2em;
+  }
+  #footer-title {
+    padding-bottom:10px;
+  }
+  #footer-row {
+    color: #999;
+    margin: 0.5em 0 0;
+    text-shadow: 1px 1px #1A1A1A
+  }
+  #footer-container-top {
+    max-height: 30px;
+    min-height: 5px;
+  }
+  #footer-container-bottom {
+    background: #000;
+    max-height: 30px;
+    min-height: 5px;
+  }
 }
 
-#footer-title {
-  padding-bottom:10px;
-}
-
-#footer-row {
-  color: #999;
-  margin: 0.5em 0 0;
-  text-shadow: 1px 1px #1A1A1A
-}
-
-#footer-container-top {
-  max-height: 30px;
-  min-height: 5px;
-}
-
-#footer-container-bottom {
-  background: #000;
-  max-height: 30px;
-  min-height: 5px;
+.navbar-fixed-bottom .navbar-inner {
+  padding: 1em 0.5em 1em 1em;
 }
 
 .footer-column {
@@ -720,13 +712,12 @@ padding: 0;
 
 /* flash message */
 .flash-message-container {
-  padding: 1em;
+  padding: 2em 1.75em 2em 1em;
   background: $alertcolor;
   color: #fff;
   text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
   border: 0;
   border-radius: 0;
-  margin-bottom: 2em;
   h3 {
    color: #fff;
    margin-top: 0;
@@ -776,12 +767,16 @@ padding: 0;
   opacity: 1;
 }*/
 
+.desktop-top-margin {
+  margin-top: 44px;
+}
+
 /* document */
 
 #document {
   margin-top: 0em;
   #previousNextDocument {
-    margin-bottom: 0;
+    margin-bottom: 2em;
   }
   #previousNextDocument.well {
     background: transparent;
