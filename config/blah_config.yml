@@ -6,6 +6,11 @@ development:
   #catalog address/port used for Z39.50 interface for holdings
   catalogue_server_address: libsys.lib.hull.ac.uk
   catalogue_server_port: 210
+
+  #Z39.50 connection pool configurations
+  #5 appears to be an optimal poolsize
+  z39_connection_pool_size: 5
+  z39_connection_timeout: 5
   
   #Library Catalogue OPAC address
   catalogue_opac_address: library.hull.ac.uk
@@ -82,7 +87,12 @@ test:
   #catalog address/port used for Z39.50 interface for holdings
   catalogue_server_address: libsys.lib.hull.ac.uk
   catalogue_server_port: 210
-  
+
+  #Z39.50 connection pool configurations
+  #5 appears to be an optimal poolsize
+  z39_connection_pool_size: 5
+  z39_connection_timeout: 5
+
   #Library Catalogue OPAC address
   catalogue_opac_address: library.hull.ac.uk
  
@@ -156,6 +166,11 @@ production:
   catalogue_server_address: libsys.lib.hull.ac.uk
   catalogue_server_port: 210
 
+  #Z39.50 connection pool configurations
+  #5 appears to be an optimal poolsize
+  z39_connection_pool_size: 5
+  z39_connection_timeout: 5
+  
   #Library Catalogue OPAC address
   catalogue_opac_address: library.hull.ac.uk
   

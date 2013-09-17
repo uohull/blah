@@ -29,18 +29,32 @@ class HoldingsService
     connection_attempts = 0
    
     begin
-      #Using block to ensure connection is closed for service durability 
-      ZOOM::Connection.open(catalogue_server_addr, catalogue_server_port) do |conn|
+      # Uses Z39Connection Singleton to get the conn_pool - See z39_connection.rb 
+      @conn_pool = Z39Connection.instance.conn_pool
+
+      # using @conn_pool.with to get a connection from the pool 
+      @conn_pool.with do |conn|
         conn.database_name = 'INNOPAC'
         conn.preferred_record_syntax = 'OPAC'
         rset = conn.search('@attr 1=12 "' + id + '"')
       end
+
     rescue => e
       #Let's retry two more times before giving up...
       connection_attempts += 1
-      retry unless connection_attempts > 3
-      raise HoldingsException, "Error connecting or querying the holdings Z39.50 database: " + e.to_s 
-    end   
+      Rails.logger.error "Problem connecting to Z39.50, reloading connection pool...Retrying"
+      
+      # Try to reload the connection pool...
+      begin
+        # RubyZoom isn't self healing, so attempt to reload the connection_pool 
+        Z39Connection.instance.reload_connection_pool
+      rescue
+        Rails.logger.error "Failed to reload connection pool"
+      end
+
+      retry unless connection_attempts > 3      
+      raise HoldingsException, "Error connecting or querying the holdings Z39.50 database: " + e.to_s
+    end
 
     begin
       if rset.length > 0

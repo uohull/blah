@@ -45,3 +45,6 @@ gem 'daemons'
 
 #Honeypot captcha - See https://github.com/curtis/honeypot-captcha
 gem 'honeypot-captcha'
+
+#connection_pool gem that enables us to pool Z39.50 connections - https://github.com/mperham/connection_pool
+gem 'connection_pool', '~> 1.1.0'
