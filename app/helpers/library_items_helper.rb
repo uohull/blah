@@ -113,16 +113,23 @@ module LibraryItemsHelper
 
           #Remove extra status information
           availability = record.availability
-          availability_replacements = [ [/\+[0-9]/, ""], ["HOLD", ""] ]
-          availability_replacements.each {|replacement| availability.gsub!(replacement[0], replacement[1])}
+          #availability_replacements = [ [/\+[0-9]/, ""], ["HOLD", ""] ]
+          #availability_replacements.each {|replacement| availability.gsub!(replacement[0], replacement[1])}
 
           status = ""
+          due=""
+          hold=""
           if availability.downcase.include? "available"
-            status = '<span class="label label-success"><i class="icon-ok icon-white"></i>Available</span>'
+            status = '<span class="holdings-label label alert-success"><i class="icon-ok icon-white"></i> Available</span>'
           elsif availability.downcase.include? "due"
-            status = '<span class="label label-warning">Due:' + availability.sub(/DUE/, '') + '</span>'
+            due =  availability.sub(/DUE/, '')[1,8]
+            hold = availability.sub(/DUE/, '')[9..-1]
+            status = '<span class="holdings-label label alert-warning">Due ' + due + '<br/>' + hold + '</span>'
+          elsif availability.downcase.include? "lost"
+            hold = availability.sub(/DUE/, '')[11..-1]
+            status = '<span class="holdings-label label alert-error">Lost in lib<br/>' + hold + '</span>'
           elsif availability.downcase.include? "lib use"
-            status = '<span class="label label-important"><i class="icon-remove icon-white"></i>Library use</span>'
+            status = '<span class="holdings-label label alert-error"><i class="icon-remove icon-white"></i> Library use</span>'
           else
             status = availability
           end

@@ -21,8 +21,8 @@
                 <i title="Not available" id="icon-holding-unavailable" class="icon-remove icon-white"></i> &nbsp; <%  
                   #Remove extra status information
                   availability = holding_record.availability
-                  availability_replacements = [ [/\+[0-9]/, ""], ["HOLD", ""] ]
-                  availability_replacements.each {|replacement| availability.gsub!(replacement[0], replacement[1])}
+                  #availability_replacements = [ [/\+[0-9]/, ""], ["HOLD", ""] ]
+                  #availability_replacements.each {|replacement| availability.gsub!(replacement[0], replacement[1])}
                 %> &nbsp; <%= availability %>
               <% end %>
                &nbsp; <%= holding_record.local_location %>

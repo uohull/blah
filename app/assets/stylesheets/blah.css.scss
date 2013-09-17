@@ -27,6 +27,7 @@ $errorcolor: #cc6565;
 $successcolor: #51A351 ;
 $noticecolor: #3d7a7a;
 $infocolor: #9ebe5e;
+$warningcolor: #F89406;
 
 /* images */
 $logo_image: 'blah/logo.gif';
@@ -329,7 +330,6 @@ footer {
 }
 
 .footer-column {
-
 	ul {
 	  list-style: none inside;
 	  margin-left: 0.5em;
@@ -752,6 +752,11 @@ padding: 0;
    background: $successcolor;
 }
 
+.flash-message-container.alert-warning {
+   background: $warningcolor;
+}
+
+
 /*.flash-message-container h3 {
    color: #fff;
    margin-top: 0;
@@ -810,6 +815,10 @@ div#document-phone.document {
     font-size: 90%;
     padding: 0;
   }
+}
+
+.holdings-label {
+  width: 79%;
 }
 
 .page_links {
@@ -975,6 +984,13 @@ ul.nav li.menu-item {
   }
 }
 
+/* alerts */
+
+.alert-error { background: $errorcolor; }
+.alert-info { background: $infocolor; }
+.alert-notice { background: $noticecolor; }
+.alert-success { background: $successcolor; }
+.alert-warning { background: $warningcolor; }
 
 /* fixes & overrides */
 #search_field {
