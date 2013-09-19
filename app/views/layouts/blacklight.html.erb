@@ -18,6 +18,7 @@
     <![endif]-->
  
     <%= render :partial => 'shared/head_favicon_links' %>
+    <%= render :partial => 'shared/head_add_to_home' %>
 
     <title><%= h(@page_title || application_name) %></title>
     <link href="<%= opensearch_catalog_path(:format => 'xml', :only_path => false) %>" title="<%= application_name%>" type="application/opensearchdescription+xml" rel="search"/>    

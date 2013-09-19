@@ -288,7 +288,10 @@ a {
 @media (max-width: 480px), (max-width: 767px) { 
   footer #footer{
     position: relative !important;
-    } 
+  } 
+  #background-container {
+  	background: transparent;
+  }
 }
 
 footer {
