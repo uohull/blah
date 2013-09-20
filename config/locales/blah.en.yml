@@ -27,10 +27,6 @@ en:
         one: 'You have been sent a link to an item from Blacklight.hull.ac.uk: %{title}'
         other: 'Blacklight.hull.ac.uk catalogue items'
 
-    home:
-      notice:
-        opac_warning: '<strong>Please note:</strong> On the dedicated library catalogue terminals book covers will not display (they will, through other access points). This is a known issue that is currently being investigated'
-    
     item:
       holdings:
         no_holdings_information: 'Item may be on order - please check with the Library to confirm'
