@@ -51,6 +51,15 @@ module BlahHelper
   # - End of Blacklight Helper over-rides               #
   #######################################################
 
+  # Return the Blah version - see config/application.rb for origin of config.version
+  def blah_version
+    if Blah::Application.config.respond_to? :version
+      return Blah::Application.config.version.to_s.chop.html_safe
+    else
+      return ""
+    end    
+  end
+
   
   # Uses the Syndetics tool to display book cover
   def render_book_cover_img(document)
