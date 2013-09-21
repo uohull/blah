@@ -60,6 +60,11 @@ module BlahHelper
     end    
   end
 
+  # Returns a link to the equivalent record in Millennium 
+  # bib_record_id assumes the same id for Millennium
+  def render_millennium_record_link label="Record"
+    link_to label, "http://library.hull.ac.uk/record=#{bib_record_id}~S3"
+  end
   
   # Uses the Syndetics tool to display book cover
   def render_book_cover_img(document)
