@@ -35,7 +35,8 @@ class LibraryItem
     return available
   end 
 
-  #Can the item be booked (see: blah_config - bookable_item.location)
+  #DEPRECATED: This should no longer be used to determine the whether an item is bookable# Use LibraryItemsHelper#item_bookable?(document)
+  #Can the item be booked (see: blah_config - bookable_item.location) - Bases bookability based upon the location stored within the item_locations field
   def bookable?
     bookable = false
 

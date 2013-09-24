@@ -44,7 +44,7 @@
         </li>
       <% end %>
 
-      <% if @library_item.bookable? %>
+      <% if item_bookable?(@document) %>
         <li class="book_item">
           <%= render_bookable_library_item_link(@library_item) %>
         </li>

@@ -75,6 +75,7 @@ development:
   
   #Used for configuring what constitutes as a 'bookable item' - location based...
   bookable_item:
+    loan_type: '24HR'
     location:
       - 'High Demand 1st Floor'
 
@@ -154,6 +155,7 @@ test:
 
   #Used for configuring what constitutes as a 'bookable item' - location based...
   bookable_item:
+    loan_type: '24HR'
     location:
       - 'High Demand 1st Floor'
 
@@ -232,5 +234,6 @@ production:
 
   #Used for configuring what constitutes as a 'bookable item' - location based...
   bookable_item:
+    loan_type: '24HR'
     location:
       - 'High Demand 1st Floor'

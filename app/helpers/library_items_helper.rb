@@ -10,6 +10,17 @@ module LibraryItemsHelper
     link_to "Book Item", "http://#{ catalogue_opac_addr }/webbook?/#{ library_item.bib_no.to_s }&back=/search".html_safe, {:class => "btn btn-small square-corners"}
   end 
 
+  # item_bookable?(document)
+  # This method will determine whether an item is 'bookable' based upon the the string stored in the loan_type_display. 
+  # The string to match is stored in the blah_config.yml file.
+  def item_bookable?(document)
+    if document.has?("loan_type_display") && document["loan_type_display"].include?(bookable_item_loan_type)
+      return true
+    else
+      return false
+    end
+  end
+
   # Display holdings information for a given doc_id
   # Creates a invisible div with the document_id that the jquery script uses to query the holdings_controller#index and populate
   # ...the empty holding-records-element
@@ -154,6 +165,10 @@ module LibraryItemsHelper
 
   def catalogue_opac_addr
     APP_CONFIG['catalogue_opac_address']
+  end
+
+  def bookable_item_loan_type
+    APP_CONFIG['bookable_item']['loan_type']
   end
 
 end
