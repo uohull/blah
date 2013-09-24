@@ -14,6 +14,11 @@ group :development do
   gem 'debugger', '~> 1.3.3'
 end
 
+group :production do
+  # Uncomment for production
+  # Add mysql config to database.yml
+  #gem "mysql2", "~> 0.3.13"
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
