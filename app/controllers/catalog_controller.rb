@@ -183,9 +183,7 @@ class CatalogController < ApplicationController
         url_gen_params = {:host => request.host_with_port, :protocol => request.protocol}
       
         if params[:to].match(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/)
-          #Used delayed job to asynchronously deal with message (.delay.)
-          NotificationsMailer.delay.email_record(@documents, {:to => params[:to], :message => params[:message]}, url_gen_params)  
-  #NotificationsMailer.email_record(@documents, {:to => params[:to], :message => params[:message]}, url_gen_params).deliver        
+          NotificationsMailer.email_record(@documents, {:to => params[:to], :message => params[:message]}, url_gen_params).deliver        
         else
           flash[:error] = I18n.t('blacklight.email.errors.to.invalid', :to => params[:to])
         end        

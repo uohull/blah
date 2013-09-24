@@ -44,10 +44,6 @@ gem 'unicode'
 #gem 'zoom', '~> 0.4.1'
 gem 'zoom', :git => 'https://github.com/bricestacey/ruby-zoom.git'
 
-#delayed_job used for comments queuing - https://github.com/collectiveidea/delayed_job
-gem 'delayed_job_active_record'
-gem 'daemons' 
-
 #Honeypot captcha - See https://github.com/curtis/honeypot-captcha
 gem 'honeypot-captcha'
 

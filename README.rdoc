@@ -41,18 +41,7 @@ Start the Bl@h rails application:
 
 	$ rails server
 	
-
-Bl@h uses delayed_job - https://github.com/collectiveidea/delayed_job to asynchronously deal with the contact form.  To run the delayed_job daemon service, run:
-
-	$ script/delayed_job start
-
-To run in the production environment:
-
-	$ RAILS_ENV=production script/delayed_job start
-	$ RAILS_ENV=production script/delayed_job stop
-
 == Indexing test data
-
 
   e-resources are indexed into solr from a locally produced csv file. A sample file is located in test/fixtures/e-resource.csv - To index this into the local solr instance, execute:
 
