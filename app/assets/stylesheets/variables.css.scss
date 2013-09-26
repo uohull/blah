@@ -1,8 +1,41 @@
-/* bootstrap variable overrides */
+/* uoh - bootstrap variables */
 $gridColumns: 16;
 $gridGutterWidth: 0px;
 $gridGutterWidth768: 0px;
 $gridGutterWidth1200: 0px;
 $inputBorderRadius: 2px;
 
+/* site */
+$primarycolor: #51A351;
+$primarycolordark: #1a6a1a;
+$altcolor: #3d7a7a;
+$altcolorlight: #75bdbd;
+$neutralcolordark: #333;
+$neutralcolorlight: #ccc;
+$primarylinkcolor: $primarycolor;
+$primarylinkhovercolor: $neutralcolordark;
+$formMaxWidth: 1200px;
 
+/* tiles */
+$greenishblue: #4e9799;
+$cleanwhite: #fff;
+$lightgrey: #ebebeb;
+$lightgreen: #EDFFC4;
+$lightblue: #75bdbd;
+$lightlink: #fff;
+$darklink: #000;
+$tiletransparency: 1;
+$tilerowgutter: 0;
+
+/* highlighters */
+$selectedtextcolor: #842121;
+$alertcolor: #4E9799;
+$errorcolor: #cc6565;
+$successcolor: #51A351 ;
+$noticecolor: #3d7a7a;
+$infocolor: #9ebe5e;
+$warningcolor: #F89406;
+
+/* images */
+$logo_image: 'blah/logo.gif';
+$home_background_image: "blah/bjl-1c.jpg" !default;
