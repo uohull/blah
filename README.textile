@@ -1,0 +1,67 @@
+h1. Bl@h - Blacklight at Hull
+
+Bl@h is the University of Hull's instance of the blacklight search and discovery interface.  For more information about Blacklight...
+
+Blacklight Project site: "http://projectblacklight.org/":http://projectblacklight.org/
+Blacklight github: "https://github.com/projectblacklight/blacklight:":https://github.com/projectblacklight/blacklight
+
+h2. Requirements
+
+ruby-1.9.3-p448
+java 1.5 or higher (in order to run solr under a jetty)
+RVM (recommended for development)
+
+In addition, you should have Bundler and Rails ruby gems installed:
+
+<pre>gem install bundler
+gem install rails
+</pre>
+
+h2. Installation guide
+
+<pre>
+git checkout git@github.com:uohull/blah.git
+</pre>
+
+Change the current directory to "blah"
+
+The project includes a .rvmrc file which will define a Ruby version and gemset that should be used for the project.  In this case ruby-1.9.3-p448 and gemset 'blah'.  
+
+To install the required gems, execute:
+<pre>
+bundle install
+</pre>
+
+To create the necessary blacklight database tables, run the database migrations:
+<pre>
+rake db:migrate
+</pre>
+
+h2. Running...
+
+The configurations for the Blah application are stored in config/blah_config.yml.
+
+To run you must first ensure that the local Solr server is running, by navigating blah/jetty directory and..
+<pre>
+java -jar start.jar &
+</pre>
+
+Index test MARC records using the existing rake task...
+<pre>
+rake solr:marc:index_test_data
+</pre>
+
+Start the rails application:
+<pre>
+rails server
+</pre>
+
+h2. Indexing test data
+
+e-resources are indexed into solr from a locally produced csv file. A sample file is located in test/fixtures/e-resource.csv - To index this into the local solr instance, execute...
+
+<pre>
+curl "http://localhost:8983/solr/update/csv?f.subject_topic_facet.split=true&f.subject_topic_facet.separator=%5E&f.subject_t.split=true&f.subject_t.separator=%5E&commit=true" --data-binary @eresources.csv -H 'Content-type:text/plain; charset=utf-8'
+</pre>
+
+This utilises the solr csv update manager, and splits the subject_topic_facet and subject_t column based upon the %5E char (^). 
