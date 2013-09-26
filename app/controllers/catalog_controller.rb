@@ -56,14 +56,14 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the 
     # facet bar
-    config.add_facet_field 'author_facet', :label => 'Author', :limit => 20
-    config.add_facet_field 'format', :label => 'Format', :limit => 20  
-    config.add_facet_field 'pub_date', :label => 'Publication Year' 
-    config.add_facet_field 'subject_topic_facet', :label => 'Subject', :limit => 20 
-    config.add_facet_field 'language_facet', :label => 'Language', :limit => true 
-    config.add_facet_field 'subject_geo_facet', :label => 'Region' 
-    config.add_facet_field 'subject_era_facet', :label => 'Era'
-    config.add_facet_field 'library', :label => 'Location'    
+    config.add_facet_field 'author_facet', :label => 'Author', :limit => 10
+    config.add_facet_field 'format', :label => 'Format', :limit => 10
+    config.add_facet_field 'pub_date', :label => 'Publication Year', :limit => 10
+    config.add_facet_field 'subject_topic_facet', :label => 'Subject', :limit => 10
+    config.add_facet_field 'language_facet', :label => 'Language', :limit => 10
+    config.add_facet_field 'subject_geo_facet', :label => 'Region', :limit => 10
+    config.add_facet_field 'subject_era_facet', :label => 'Era', :limit => 10
+    config.add_facet_field 'library', :label => 'Location', :limit => 10
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
