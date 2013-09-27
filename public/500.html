@@ -1,25 +1,275 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>We're sorry, but something went wrong (500)</title>
-  <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-    div.dialog {
-      width: 25em;
-      padding: 0 4em;
-      margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
-    }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
-  </style>
-</head>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <meta name="description" content="Search the library's holdings for books, e-books and other electronic resources, images, journals and other periodicals, plus more.">
+    <meta name="author" content="The University of Hull">
+    <meta name="keywords" content="Library, Catalogue, search, holdings, books, e-books, electronic resources, images, journals, periodicals, Hull, University, blacklight, libsearch">
+    <!-- Mobile viewport optimization h5bp.com/ad -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-<body>
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <h1>We're sorry, but something went wrong.</h1>
+    <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
+    <!--[if IEMobile]>
+      <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+ 
+    <link href="/assets/blah/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+    <title>Library Catalogue</title>
+    <link href="http://localhost:3000/catalogue/opensearch.xml" title="Library Catalogue" type="application/opensearchdescription+xml" rel="search"/>    
+  
+    <link href="/assets/application.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/assets/jquery.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery_ujs.js?body=1" type="text/javascript"></script>
+
+<script src="/assets/bootstrap-transition.js?body=1" type="text/javascript"></script>
+<script src="/assets/bootstrap-collapse.js?body=1" type="text/javascript"></script>
+<script src="/assets/bootstrap-alert.js?body=1" type="text/javascript"></script>
+
+<script src="/assets/stay_standalone.js?body=1" type="text/javascript"></script>
+<script src="/assets/application.js?body=1" type="text/javascript"></script>
+    <script src="/assets/stay_standalone.js?body=1" type="text/javascript"></script> 
+
+    <meta content="authenticity_token" name="csrf-param" />
+<meta content="C8hi3zGktw9vVjqjgv+nVbSqp7Z/nA5PLZjJF7S0gdI=" name="csrf-token" />
+    
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]--> 
+
+    <!--[if lt IE 9]>
+    <style type="text/css">
+      #feedback {
+        display: none;
+      }
+    </style>
+    <![endif]-->
+
+  </head>
+  <body class="blacklight-home blacklight-home-show">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container container-fluid-fix">
+        <a class="btn btn-navbar square-corners" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a> 
+        <a href="/" class="brand" id="MenuLink">Library Catalogue</a>
+
+        <div class="brand-logo pull-right hidden-phone">                  
+          <a href="http://www.hull.ac.uk" target="_blank"><img alt="Uoh-logo-white" src="/assets/blah/uoh-logo-white.png" /></a>
+        </div>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="javascript:history.back()">Back</a>
+            </li>
+          </ul>
+        </div>
+    </div>
   </div>
-</body>
+</div>
+
+
+<div class="subnav navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container container-fluid-fix">
+      <div class="row-fluid">
+          <div class="subnav-position">
+
+            <form method="get" class="form-inline form-search form-sub-search" action="/catalogue" accept-charset="UTF-8"><div style="margin:0;padding:0;display:inline"><input type="hidden" value="✓" name="utf8"></div>
+
+            <div class="input-prepend input-append">
+
+              <input type="hidden" value="✓" name="utf8">
+<input type="hidden" value="" name="button"> 
+
+                <select title="Targeted search options" name="search_field" id="search_field" class="search-field square-corners input-medium"><option selected="selected" value="all_fields">All Fields</option>
+<option value="title">Title</option>
+<option value="author">Author</option>
+<option value="subject">Subject</option></select>
+
+              <input type="text" value="code complete" placeholder="Search the catalogue..." name="q" id="q" class="q input-xlarge search-query square-corners">
+
+              <button type="submit" name="button" class="btn square-corners"><i class="icon-search icon hidden-phone"></i> Search</button>
+ 
+            </div>
+            <span class="hidden-phone">
+              <span class="vertical-divider hidden-phone"></span>
+
+              <a class="advanced_search row-spacer" href="/advanced?button=&amp;q=code+complete&amp;search_field=all_fields&amp;utf8=%E2%9C%93">Advanced search</a>
+            </span>
+            <div class="visible-phone">
+              <hr style="margin-bottom: 10px;">
+              <span>
+<a class="advanced_search row-spacer" href="/advanced?button=&amp;q=code+complete&amp;search_field=all_fields&amp;utf8=%E2%9C%93">Advanced search</a>
+</span>
+            </div>
+           
+          </form></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="ajax-modal" class="modal hide fade" tabindex="-1"></div>
+  <div class="page-wrapper">
+    <div id="background-container" class="container">
+      <div class="inner-container">    
+        <!-- /Top bar -->
+        <div class="row">    
+          <div class="flash_messages"> </div>
+        </div>
+
+          <div class="row-fluid">      
+            <!-- Main hero unit for primary  action -->
+            <div class="span10 offset3">
+              <div class="hero-tile tile-light-green tile-shadow">
+                <div class="row-spacer visible-desktop">
+                &nbsp;
+                </div>
+                <div class="row-spacer visible-desktop">
+                &nbsp;
+                </div>
+                <div class="row-spacer visible-desktop">
+                &nbsp;
+                </div>
+                <h1>We're sorry, but something went wrong...</h1>
+                <div class="row-spacer visible-desktop">
+                &nbsp;
+                </div>
+              </div>
+            </div>      
+          </div>
+
+          <div class="row-fluid"> 
+            <div class="span10 offset3">
+              <div class="tile tile-white tile-shadow" style="min-height:1050px;">
+              <p></p>
+                <p>
+                  &nbsp;</p>	
+                <p>
+                <p>Actions...</p>
+                <p>
+                  <i class="icon-asterisk"></i> Press <a href="/"><em>Home</em></a> to take you to the Library Catalogue home page.</p> 
+                <p>
+                <p>
+                  <i class="icon-asterisk"></i> If you clicked a link prior to seeing this page press <a href="javascript:history.back()"><em>Back</em></a> to return to that page.</p> 
+                <p>
+                <p>
+                  <i class="icon-asterisk"></i> Use the search bar above to search for an item.</p> 
+                <p>
+              </div>
+            </div>    
+          </div>
+
+        </div>  
+      </div>
+    </div>
+
+
+
+  <footer>
+    <div id="footer" class="navbar navbar-fixed-bottom">
+      <div id="footer-container-bottom" class="navbar-inner">
+        <div class="container">
+          <div id="footer-title-top" class="hidden-phone"></div>
+          <div class="brand-logo-phone pull-right visible-phone">
+            <a href="http://www.hull.ac.uk" target="_blank"><img alt="Uoh-logo-white" src="/assets/blah/uoh-logo-white.png" /></a>
+          </div>
+        </div>
+      </div>
+      <div id="footer-container" class="container">
+          <div class="row-fluid">
+            <div class="span4">
+              <div class="footer-column">
+                <ul>
+                  <li>                  
+                    <h4>Library</h4>
+                  </li>
+                 <li><a href="http://www.hull.ac.uk/lib">Library Website</a></li>
+                 <li><a href="http://www2.hull.ac.uk/lli/library-services/opening-hours.aspx">Opening hours</a></li>
+                 <li><a href="http://libguides.hull.ac.uk">LibGuides</a></li>
+                 <li><a href="http://www2.hull.ac.uk/lli/library-services/books/interlibrary-loan.aspx">Inter-library loans</a></li>
+                 <li><a href="http://www2.hull.ac.uk/lli/library-services/books/intersite.aspx">Inter-site requests</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="span4">
+              <div class="footer-column">
+                <ul>
+                  <li>                  
+                    <h4>Learning</h4>
+                  </li>
+                   <li><a href="http://ebridge.hull.ac.uk">eBridge</a></li>
+                   <li><a href="http://readinglists.hull.ac.uk">Readinglists@Hull</a></li>
+                   <li><a href="http://digitaltexts.hull.ac.uk">Digital Texts</a></li>
+                   <li><a href="http://libcal.hull.ac.uk">Room & course bookings</a></li>
+                   <li><a href="http://www2.hull.ac.uk/lli/library-services/help_and_support.aspx">Ask us a question</a></li>
+                </ul>
+            </div>
+              </div>
+              <div class="span4">
+                <div class="footer-column">
+                  <ul>
+                    <li>                  
+                      <h4>Skills</h4>
+                    </li>
+                    <li><a href="http://www2.hull.ac.uk/lli/skills-development.aspx">Skills website</a></li>
+                    <ul class="footer-sub-list">
+                      <li><a href="http://www.skills4studycampus.com/orglogin.aspx">skills4studycampus</a></li>
+                      <li><a href="http://libguides.hull.ac.uk/studentworkshops">Study Skills Workshop</a></li>
+                      <li><a href="https://myadmin.hull.ac.uk/Students/DiaryBookings/AppointmentCriteria.aspx">Book an Appointment</a></li>
+                    </ul>                    
+                  </ul>
+                </div>
+              </div>
+            <div class="span4">
+              <div class="footer-column">                    
+                <ul style="border-right: none;">
+                  <li>
+                    <h4>University</h4>
+                  </li>
+                  <li><a href="http://www.hull.ac.uk">University website</a></li>
+                  <li><a href="http://portal.hull.ac.uk">University portal</a></li>
+                  <li><a href="https://hull.avedas.com/converis/area/3734">Research portal</a></li>
+                  <li><a href="http://www2.hull.ac.uk/departments.aspx">Departments and faculties</a></li>
+                  <li><a href="http://hydra.hull.ac.uk">Hydra digital repository</a></li>
+                </ul>
+              </div>
+           </div>
+        </div>
+        <div class="row-fluid">
+          <div class="span16 footer-horizontal">
+            <div class="page-gutter pull-right">
+              <div class="outer-spacer-bottom">
+                <span>
+                  <small>
+                    &nbsp; &copy; <a href="http://www.hull.ac.uk">The University of Hull</a> 2013&nbsp; 
+                  </small>
+                </span>
+                <span>
+                <a href="http://localhost:3000/"><img alt="Logo" src="/assets/blacklight/logo.png" /></a>&nbsp;
+                </span>
+                <span>|&nbsp; 86243c5</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </body>
 </html>
