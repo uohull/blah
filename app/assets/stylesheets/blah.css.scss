@@ -255,7 +255,7 @@ a {
 .navbar-fixed-top {
   margin: 0;
   /*opacity: 0.96;*/
-  filter:alpha(opacity=92); /* For IE8 and earlier */
+  /* filter:alpha(opacity=92); For IE8 and earlier */
    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   /*box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);*/
