@@ -27,3 +27,9 @@
 .container-fluid-fix {
   min-width: 100%;
 }
+
+/* bootstrap icon placement */
+[class^="icon-"], [class*=" icon-"] {
+  margin-top: 3px;
+  vertical-align: top;
+}

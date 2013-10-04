@@ -20,14 +20,14 @@
   background-repeat: repeat-x;
   background-color: #F6F6F6;
   width: 100%;
-  box-shadow: 0 10px 10px -2px #090909;
+  box-shadow: 0 10px 10px -2px darken($footerColor, 50%);
 }
 
 #background-container-form
 {
   background: #fff;
   width: 100%;
-  box-shadow: 0 10px 10px -2px #090909;
+  box-shadow: 0 10px 10px -2px darken($footerColor, 50%);
   min-height: 814px;
   padding-bottom: 24px;
   position: relative;
@@ -76,8 +76,8 @@
 /* Generic form controls */
 
 .form-label {
-  color: #888888;
-  font-weight: normal;
+  color: $neutralcolordark;
+  font-style: italic;
 }
 
 body {
@@ -88,21 +88,21 @@ body {
   padding: 0; 
   line-height: 1.65em;
   font-size: 14px;
-  color: #333333;
 }
 
-a {
+p a, dd a, h3 a, h5 a, td a {
   color: $primarylinkcolor;
   text-decoration: none;
-  &:hover { color: $primarylinkhovercolor; }
+  border-bottom:1px dotted;
+  &:hover { color: $primarylinkhovercolor; text-decoration: none;}
 }
 
 ::selection {
-  background: $primarycolor;
+  background: $primarylinkcolor;
   color: #fff
 }
 ::-moz-selection {
-  background: $primarycolor;
+  background: $primarylinkcolor;
   color: #fff;
 }
 

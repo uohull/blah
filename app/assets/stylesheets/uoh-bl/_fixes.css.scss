@@ -13,3 +13,13 @@
 .form-search .input-prepend .search-query {
   margin-left: -1px;
 }
+
+.search_history .filterName, .search_history .label {
+    color: $neutralcolordark;
+    font-style: italic;
+}
+
+ul.nav li.menu-item a {
+    color: $neutralcolordark;
+    padding: 8px 14px;
+}

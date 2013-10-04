@@ -23,7 +23,7 @@
 	border: none;
 }
 
-div#document-phone.document {
+.document-phone.document {
   background-color: #EFEFEF;
   margin-top: 1em !important;
   padding: 1em !important;
@@ -87,7 +87,7 @@ div#document-phone.document {
   text-align: center;
 }
 
-#document-phone {
+.document-phone {
   #cover-art {
     clear: both !important;
     height: calc(200px + 0.5em) !important;
@@ -97,7 +97,7 @@ div#document-phone.document {
   }
 } 
 
-#document-phone #holdings-record-element .defList {
+.document-phone #holdings-record-element .defList {
   dt { font-size: 16px; padding-bottom: 0; }
   dd { font-size: 96%;}
 } 

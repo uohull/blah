@@ -2,6 +2,10 @@
 
 /* Twitter widget overrides */
 
+
 .new-tweet {
-  color: red !important;
+  color: $primarylinkcolor;
+  text-decoration: none;
+  border-bottom:1px dotted;
+  &:hover { color: $primarylinkhovercolor; text-decoration: none;}
 }

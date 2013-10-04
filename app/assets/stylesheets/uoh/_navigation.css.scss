@@ -11,6 +11,7 @@
   text-indent: 0;
   white-space: nowrap;
   width: 165px;
+  text-decoration: none;
 }
 
 .brand-logo {
@@ -32,7 +33,7 @@
 
 .navbar-fixed-top {
   margin: 0;
-  filter:alpha(opacity=92); /* For IE8 and earlier */
+  /* filter:alpha(opacity=92);  For IE8 and earlier */
    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
