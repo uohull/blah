@@ -9,14 +9,15 @@
     <button id="main-search-submit" class="btn square-corners" name="button" type="submit"><i class="icon-search icon visible-desktop"></i> Search</button>
   </div>
 </span>
-  <p>
-    <%= check_box_tag 'search-journals' %>
-    <%= label_tag 'search-journals', 'Limit search to Journal titles' %> 
-  </p>
-  <p>
-    <small>
-      <i class="icon icon-white icon-asterisk"></i>
-    <%= link_to 'Advanced search', params.merge(:controller=>"advanced", :action=>"index")%> 
-  </small>
-  </p>
+<p>
+  <%= label_tag 'search-journals', :class => "checkbox" do %>
+    <%= check_box_tag 'search-journals' %>&nbsp;Limit search to <strong>Journal titles</strong>
+  <% end %>
+</p>
+<p>
+  <small>
+    <i class="icon icon-white icon-asterisk"></i>
+  <%= link_to 'Advanced search', params.merge(:controller=>"advanced", :action=>"index")%> 
+</small>
+</p>
 <% end %>
