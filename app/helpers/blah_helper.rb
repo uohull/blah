@@ -206,6 +206,8 @@ module BlahHelper
     end    
   end
 
+  # Renders the Online resources available for a particular document/record
+  # Looks in various Marc fields for different online resource types.. 
   def render_online_resources( document )
 
     render_online_resources = ""
@@ -213,8 +215,13 @@ module BlahHelper
   
     #Reduce the title display label if the title is over 50 chars..
     title_display = full_title_display.length > 50 ? full_title_display[0..50] << '...' : full_title_display unless full_title_display.nil?
- 
+        
     #Lets look in all the usual fields...
+
+    ###########################################################################
+    # Full Text URLs - Some resources link to Full text                       #
+    ###########################################################################
+
     full_text_url = document.get('url_fulltext_display', :sep => nil)
 
     unless full_text_url.nil?
@@ -222,33 +229,33 @@ module BlahHelper
         render_online_resources << <<-EOS
         <tr>
          <td class="table-td-title">Link</td>
-         <td class="table-td-data"><a target="_blank" href="#{url}">#{title_display}</a></td>
+         <td class="table-td-data"><a href="#{url}">#{title_display}</a></td>
         </tr>
         EOS
       end
      end
 
-    #Lets now check the journal fields...
-    journal_url_display = document.get('journal_url_display', :sep => nil)
-    journal_url_coverage_display = document.get('journal_url_coverage_display', :sep => nil)
-    
-    unless journal_url_display.nil?
-      journal_url_display.each do |url|
-         link_title = ""
-         #Journal coverage corresponds to same place in array...
-         journal_coverage = journal_url_coverage_display[journal_url_display.index(url)]
-         #If it doesn't exist, use the title for link (remove 'Full text available from link')..  
-         link_title = journal_coverage.nil? ? title_display : journal_coverage.gsub(/Full text available from/, '')
-          render_online_resources << <<-EOS
+    ###########################################################################
+    # Electronic Journal Links - Usually just in E-Journals                   #
+    ###########################################################################
+
+    # Check the document for electronic_journal_links using get_electronic_journal_links_from_document helper
+    electronic_journal_links = get_electronic_journal_links_from_document(document)
+    unless electronic_journal_links.empty?
+      electronic_journal_links.each do |link|
+        render_online_resources << <<-EOS
           <tr>
            <td class="table-td-title">Link</td>
-           <td class="table-td-data"><a target="_blank" href="#{url}">#{link_title}</a></td>
+           <td class="table-td-data">#{link}</td>
           </tr>
         EOS
       end
-
     end
-    
+
+    ###########################################################################
+    # Supplementary links - Some resources link to supplementary material    #
+    ###########################################################################
+
     #Lets check for any supplementary links...
     suppl_url = document.get('url_suppl_display', :sep => nil)
 
@@ -257,7 +264,7 @@ module BlahHelper
         render_online_resources << <<-EOS
         <tr>
          <td class="table-td-title">Link</td>
-         <td class="table-td-data"><a target="_blank" href="#{url}">Supplementary online resource</a></td>
+         <td class="table-td-data"><a href="#{url}">Supplementary online resource</a></td>
         </tr>
         EOS
       end
@@ -279,8 +286,6 @@ module BlahHelper
     if document.has?(primary_call_no) then  display_value << render_index_field_value(:document => document, :field => primary_call_no) end
     if document.has?(secondary_call_no) then display_value << render_index_field_value(:document => document, :field => secondary_call_no) end
 
-#<dd class="dd-callnumber">#{render_shelved_icon}&nbsp;#{display_value.join('; ')}</dd>
-#<dd class="dd-callnumber">#{display_value.join('; ')}</dd>
     unless display_value.empty?
       if opts[:render_icon]
         display_field << <<-EOS
@@ -297,30 +302,43 @@ module BlahHelper
     display_field.html_safe
   end
 
-  #display e-journal links for _index_e_journal.html.erb page
-  def display_e_journal_links(document)
-
-      display_e_journal_links = ""
-
-      #Lets now check the journal fields...
-      journal_url_display = document.get('journal_url_display', :sep => nil)
-      journal_url_coverage_display = document.get('journal_url_coverage_display', :sep => nil)
-      
-      unless journal_url_display.nil?
-        journal_url_display.each do |url|
-           link_title = ""
-           #Journal coverage corresponds to same place in array...
-           journal_coverage = journal_url_coverage_display[journal_url_display.index(url)]
-           #If it doesn't exist, use the title for link (remove 'Full text available from link')..  
-           link_title = journal_coverage.nil? ? title_display : journal_coverage.gsub(/Full text available from/, '')
-            display_e_journal_links << <<-EOS
-             <dt class="document-link-dd">Online</dt>
-             <dd class="document-link-dd"><a target="_blank" href="#{url}">#{link_title}</a></dd>
-          EOS
-        end
-      end  
+  # Display Electronic Journals Links with dt/dd fields
+  # This is primarily used in the _index_e_journal partial
+  def display_electronic_journal_links(document)
+    display_electronic_journal_links = ""
     
-    display_e_journal_links.html_safe 
+    links = get_electronic_journal_links_from_document(document)
+    unless links.empty?
+      links.each do |link|
+        display_electronic_journal_links << <<-EOS
+          <dt class="document-link-dd">Online</dt>
+          <dd class="document-link-dd">#{link}</dd>
+        EOS
+      end
+    end
+
+    display_electronic_journal_links.html_safe
+  end
+
+  # Returns an array of electronic Journal 'a' tag links from the Solr document
+  # Uses the 'journal_url_display' multi solr field which stores in the form: url|link_label
+  def get_electronic_journal_links_from_document(document)
+    electronic_journal_links = []
+
+    journal_url_display = document.get('journal_url_display', :sep => nil)
+
+    unless journal_url_display.nil?
+      journal_url_display.each do |url_display|      
+        if url_display.include? "|"
+          url_label = url_display.split("|")          
+          electronic_journal_links << "<a href='#{url_label.first}'>#{url_label.last}</a>"
+        else
+          electronic_journal_links << "<a href='#{url_display}'>Link</a>"
+        end
+      end
+    end
+
+    return electronic_journal_links
   end
 
 

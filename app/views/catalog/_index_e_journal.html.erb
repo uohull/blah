@@ -6,8 +6,7 @@
 <dl class="dl-horizontal-left dl-invert">  
       <% if document.has? 'format' %>
         <dt class="blacklight-format">Format</dt>
-	      <dd class="blacklight-format"><%= render_format_icon( document ) %>&nbsp;<%= render_index_field_value :document => document, :field => "format" %> </dd>
+          <dd class="blacklight-format"><%= render_format_icon( document ) %>&nbsp;<%= render_index_field_value :document => document, :field => "format" %> </dd>
       <% end %>
-
-      <%= display_e_journal_links(document) %>
+      <%= display_electronic_journal_links(document) %>
 </dl>
