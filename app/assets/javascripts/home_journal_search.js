@@ -21,7 +21,7 @@ $(document).ready(function() {
 
     if (search_journals) {
       $(search_form_id).append('<input type="hidden" id="f_inclusive_format_E-Journal" name="f_inclusive[format][E-Journal]"  value="1" />');
-      $(search_form_id).append('<input type="hidden" id="f_inclusive_format_Periodical" name="f_inclusive[format][Periodical]" value="1" />');
+      $(search_form_id).append('<input type="hidden" id="f_inclusive_format_Journal" name="f_inclusive[format][Journal]" value="1" />');
       $(search_form_id).append('<input type="hidden" id="search_field" name="search_field" value="advanced" />');
       $(search_form_id).append('<input type="hidden" id="title" name="title" value="' + query_text + '" />');
     }
