@@ -1,7 +1,5 @@
 Blah::Application.routes.draw do
 
-  get 'library_items/holdings'
-
   #Overide the feedback controller of Blacklight to our Contact view
   match 'feedback' => 'contact#new'
 
@@ -24,8 +22,8 @@ Blah::Application.routes.draw do
 
   root :to => 'home#show'
 
+  # Use to retrieve library item and its holdings
   match 'items/:bib_no' => 'library_items#show'
-  match 'holdings_record/:bib_no' => 'holdings_record#index'
 
   match 'contact' => 'contact#new', :as => 'contact', :via => :get
   match 'contact' => 'contact#create', :as => 'contact', :via => :post

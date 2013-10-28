@@ -1,12 +1,13 @@
 class LibraryItem
 	#bib_no - Bibliographic reference number used by Millenium 
-  attr_accessor :bib_no, :item_format, :holdings_records_collection
-
-
+  attr_accessor :bib_no, :item_format, :holdings_records_collection, :ignore_item_format
+  # ignore_item_format set to true; will allow code to load holdings without checking whether the format has holdings available
+ 
   def initialize(bib_no, item_format='Unknown', options={})
   	self.bib_no = bib_no
     self.item_format = item_format
   	self.holdings_records_collection = options[:holdings_records_collection] || nil
+    self.ignore_item_format = options[:ignore_item_format] || false
   end
 
 
@@ -55,8 +56,9 @@ class LibraryItem
   end
 
   #Will populated the holdings_records_collection if holdings are available
-  def load_holdings_records_collection 
-    if self.holdings_available?
+  def load_holdings_records_collection
+    # ignore_item_format - true will disregard whether holdings are available for that type of library item
+    if ignore_item_format || self.holdings_available?
       #HoldingsRecordCollections gives us some handy methods... 
       @holdings_records_collection = HoldingsRecordsCollection.new
       #Pass in a reference to the HoldingsRecordCollections otherwise the HoldingsService defaults to using a standard array
@@ -71,6 +73,23 @@ class LibraryItem
   def holdings_available? 
     ignore_items = LibraryItem.holdings_ignore_list        
     ignore_items.include?(@item_format) ? false : true
+  end
+
+  # Is the item available for inter_library_loan? 
+  def inter_library_loan?
+    inter_library_loan = false
+
+    # unless there isn't holdings_record_collection or it is empty...
+    unless self.holdings_records_collection.nil? || self.holdings_records_collection.empty?
+      item_locations  = self.holdings_records_collection.local_locations
+
+      item_locations.each do |location|
+        inter_library_loan = location.include? "Via Inter Library Loan"
+        break if inter_library_loan
+      end
+    end
+
+    return inter_library_loan
   end
  
 

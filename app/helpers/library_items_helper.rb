@@ -34,7 +34,7 @@ module LibraryItemsHelper
   def render_holdings_html_partial(library_item)
     unless library_item.holdings_records_collection.nil?
       content_tag(:div, :class => "holdings") do
-        render :partial => 'holdings_record/holdings_table'
+        render :partial => 'library_items/holdings_table'
       end
     end
   end

@@ -15,6 +15,9 @@ development:
   #Library Catalogue OPAC address
   catalogue_opac_address: library.hull.ac.uk
 
+  #Library Inter-library loan url
+  inter_library_loan_address: http://www2.hull.ac.uk/lli/library-services/books/interlibrary-loan.aspx
+
   #syndetics services for book covers and table of contents
   syndetics_client_code: dev
 
@@ -96,6 +99,9 @@ test:
 
   #Library Catalogue OPAC address
   catalogue_opac_address: library.hull.ac.uk
+
+  #Library Inter-library loan url
+  inter_library_loan_address: http://www2.hull.ac.uk/lli/library-services/books/interlibrary-loan.aspx
  
   #syndetics services for book covers and table of contents
   syndetics_client_code: dev
@@ -175,6 +181,9 @@ production:
   
   #Library Catalogue OPAC address
   catalogue_opac_address: library.hull.ac.uk
+
+  #Library Inter-library loan url
+  inter_library_loan_address: http://www2.hull.ac.uk/lli/library-services/books/interlibrary-loan.aspx
   
   #syndetics services for book covers and table of contents
   syndetics_client_code: dev

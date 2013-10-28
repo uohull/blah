@@ -474,4 +474,10 @@ ep_from_display" => "Item seperate from", "continued_by_display" => "Item contin
   def twitter_widget_data_id
     APP_CONFIG['twitter_widget_data_id']
   end
+
+  #Url for the inter_library_loan page
+  def inter_library_loan_url
+    APP_CONFIG['inter_library_loan_address']
+  end
+
 end

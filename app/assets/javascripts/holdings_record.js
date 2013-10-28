@@ -6,7 +6,7 @@ $(document).ready(function() {
       if (id.length > 0) {
         //If it exists, retrieve holdings and add to #holdings-record-element     
         $.ajax({
-          url:  "/holdings_record/" + id,
+          url:  "/items/" + id,
           cache: false, 
           success: function(html) {
             $(element).find("#holdings-record-element").append(html);
