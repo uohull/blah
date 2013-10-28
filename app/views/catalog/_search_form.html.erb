@@ -4,7 +4,7 @@
       <div class="row-fluid">
           <div class="subnav-position">
 
-            <%= form_tag search_action_url, :method => :get, :class => 'form-inline form-search form-sub-search'  do %>
+            <%= form_tag catalog_index_path, :method => :get, :class => 'form-inline form-search form-sub-search'  do %>
 
             <div class="input-prepend input-append">
 
@@ -21,16 +21,16 @@
             </div>
             <span class="hidden-phone">
               <span class="vertical-divider hidden-phone"></span>
-
               <%= link_to 'Advanced search', params.merge(:controller=>"advanced", :action=>"index") , :class=>"advanced_search row-spacer"%>
             </span>
+
             <div class="visible-phone">
               <hr style="margin-bottom: 10px;"/>
               <span>
-<%= link_to 'Advanced search', params.merge(:controller=>"advanced", :action=>"index") , :class=>"advanced_search row-spacer"%>
-</span>
-            </div>
-           
+                <%= link_to 'Advanced search', params.merge(:controller=>"advanced", :action=>"index") , :class=>"advanced_search row-spacer"%>
+              </span>              
+            </div>  
+                     
           </div>
       </div>
     </div>
