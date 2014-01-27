@@ -73,14 +73,17 @@ development:
       - 'to collect'
       - 'clms retd'
       - 'requested'
-
-
   
   #Used for configuring what constitutes as a 'bookable item' - location based...
   bookable_item:
     loan_type: '24HR'
     location:
       - 'High Demand 1st Floor'
+
+  # Location prefixes for holdings items (checks will be made for items availability at locations independently) 
+  requestable_locations:
+    - 'bjl'
+    - 'kdl'
 
 
 test:
@@ -165,6 +168,11 @@ test:
     location:
       - 'High Demand 1st Floor'
 
+  # Location prefixes for holdings items (checks will be made for items availability at locations independently) 
+  requestable_locations:
+    - 'bjl'
+    - 'kdl'
+
 production:
   contact_form_email: s.lamb@hull.ac.uk
   contact_form_bcc:
@@ -246,3 +254,9 @@ production:
     loan_type: '24HR'
     location:
       - 'High Demand 1st Floor'
+
+  # Location prefixes for holdings items (checks will be made for items availability at locations independently) 
+  requestable_locations:
+    - 'bjl'
+    - 'kdl'
+

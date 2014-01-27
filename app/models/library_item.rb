@@ -11,30 +11,19 @@ class LibraryItem
   end
 
 
-  #Can the item be request/put on hold.. The item availaility needs to be false and there needs to be holding information stored for the item
+  # Can the item be request/put on hold.. The item availaility needs to be false and there needs to be holding information stored for the item
+  # Item is requestable if any of the requestable_locations (See blah config file) copies are unavailable
   def requestable?
-    !self.available?.nil? && !self.available? ? true : false 
+    requestable = false
+
+    LibraryItem.requestable_locations.each do |location_prefix|
+      available = self.send("available_at_#{location_prefix}?")
+      requestable = !available.nil? && !available ? true : false
+      break if requestable
+    end
+    requestable
   end
 
-  #available? returns boolean for availability. This will return nil if no availbility information is available
-  def available?
-  	 available = nil
-
-     if holdings_available? 
-       available = false
-
-    	 availability = self.holdings_records_collection.availabilities 
-       available_statuses = LibraryItem.available_status_list
-
-       unless availability.nil?
-     			available_statuses.each do |status| 
-     			   available = availability.any? { |s| s.downcase.include?(status) }
-     			   break if available   		
-     			end
-        end
-    end
-    return available
-  end 
 
   #DEPRECATED: This should no longer be used to determine the whether an item is bookable# Use LibraryItemsHelper#item_bookable?(document)
   #Can the item be booked (see: blah_config - bookable_item.location) - Bases bookability based upon the location stored within the item_locations field
@@ -92,6 +81,7 @@ class LibraryItem
     return inter_library_loan
   end
  
+  private
 
   def self.available_status_list
     APP_CONFIG['record_status']['available']
@@ -105,4 +95,35 @@ class LibraryItem
     APP_CONFIG['holdings']['ignore']
   end
 
-end   
+  def self.requestable_locations
+    APP_CONFIG['requestable_locations']
+  end
+
+  # Method based upon the requestable_locations config
+  # Builds available_at_#{location_prefix}? methods to determine whether an item is available at particular location
+  # Location_prefix is loaded from list stored in the config requestable_locations in blah_config.yml
+  LibraryItem.requestable_locations.each do |location_prefix|
+    define_method("available_at_#{location_prefix}?") do |*args| 
+      available = nil
+
+      if holdings_available? 
+        availability = self.holdings_records_collection.holdings_at(location_prefix).availabilities
+
+        # availability is empty when the item doesn't exist at that particular location (so no availability processing needed)
+        unless availability.empty? 
+          available_statuses = LibraryItem.available_status_list
+          available = false
+
+          unless availability.nil?
+            available_statuses.each do |status| 
+              available = availability.any? { |s| s.downcase.include?(status) }
+              break if available       
+            end
+          end
+        end
+      end
+      return available
+    end
+  end
+
+end
