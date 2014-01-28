@@ -751,7 +751,9 @@
          subject_addl_t^50
          title_series_unstem_search^25
          title_series_t^10
-         isbn_t
+         isbn_t^7500
+         issn_t^7500
+         ismn_t^7500
          lc_callnum_t
          alt_lc_callnum_t
          text
