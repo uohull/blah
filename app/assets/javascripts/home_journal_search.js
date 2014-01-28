@@ -17,7 +17,8 @@ $(document).ready(function() {
   $(search_form_submit).click(function() {
     
     var search_journals = $(search_journals_checkbox_id).is(':checked');
-    var query_text = $(query_text_box_id).val();
+    // Escape characters that can cause problems (partic "" and '')
+    var query_text = htmlEscape($(query_text_box_id).val());
 
     if (search_journals) {
       $(search_form_id).append('<input type="hidden" id="f_inclusive_format_E-Journal" name="f_inclusive[format][E-Journal]"  value="1" />');
@@ -28,3 +29,12 @@ $(document).ready(function() {
 
   });
 });
+
+function htmlEscape(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
