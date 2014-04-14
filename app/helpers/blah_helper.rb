@@ -48,9 +48,16 @@ module BlahHelper
   end
 
   # Returns a proc that calls BlahHelper#document_heading method to retrieve correct title/subtitle combo
-  def document_show_link_proc
+  # optional truncate param
+  def document_show_link_proc(options = {})
+    options = {:truncate => nil}.merge(options)
+
     return Proc.new do |document, opts|
-      document_heading(document)
+      if options[:truncate].nil?
+        document_heading(document)
+      else
+        truncate(document_heading(document), length: options[:truncate], separator: ' ')
+      end
     end
   end
 
