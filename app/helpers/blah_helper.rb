@@ -47,6 +47,13 @@ module BlahHelper
     return value.map { |v| html_escape v }.join(seperator).html_safe
   end
 
+  # Returns a proc that calls BlahHelper#document_heading method to retrieve correct title/subtitle combo
+  def document_show_link_proc
+    return Proc.new do |document, opts|
+      document_heading(document)
+    end
+  end
+
   #######################################################
   # - End of Blacklight Helper over-rides               #
   #######################################################
