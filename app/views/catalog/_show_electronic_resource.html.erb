@@ -21,7 +21,7 @@
           <%= display_field(document, 'auth_users_display', 'Authorised users', 'auth-users') %>
           <%= display_field(document, 'published_vern_display', 'Published', 'pub') %>
           <%= display_field(document, 'isbn_t', 'ISBN', 'isbn') %>
-          <%= display_field(document, 'terms_display', 'Terms of use', 'terms', {:display_as_link => true, :link_text => 'View license terms'}) %>
+          <%= display_field(document, 'terms_display', 'Terms of use', 'terms', {:contains_encoded_html => true}) %>
         </dl>
      </div>
 </div>
