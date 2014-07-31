@@ -47,21 +47,26 @@ java -jar start.jar &
 </pre>
 
 Index test MARC records using the existing rake task...
-<pre>
-rake solr:marc:index_test_data
-</pre>
+<pre>rake solr:marc:index_test_data</pre>
 
 Start the rails application:
-<pre>
-rails server
-</pre>
+<pre>rails server</pre>
 
 h2. Indexing test data
 
-e-resources are indexed into solr from a locally produced csv file. A sample file is located in test/fixtures/e-resource.csv - To index this into the local solr instance, execute...
+h3. Electronic resources
 
-<pre>
-curl "http://localhost:8983/solr/update/csv?f.subject_topic_facet.split=true&f.subject_topic_facet.separator=%5E&f.subject_t.split=true&f.subject_t.separator=%5E&commit=true" --data-binary @eresources.csv -H 'Content-type:text/plain; charset=utf-8'
-</pre>
+Electronic resources are indexed into solr from a locally produced csv file. A sample file is located in test/fixtures/e-resource.csv (this is used in the examples below).  The following rake tasks exist.  
 
-This utilises the solr csv update manager, and splits the subject_topic_facet and subject_t column based upon the %5E char (^). 
+To index electronic resources... 
+<pre>rake blah:electronic_resources:index_data  CSV_FILE_PATH=./test/fixtures/e-resources.csv</pre>
+
+To Delete electronic resources from the index...
+<pre>rake blah:electronic_resources:delete_data</pre>
+
+To delete, and then re-index a csv...
+<pre>rake blah:electronic_resources:delete_and_index_data  CSV_FILE_PATH=./test/fixtures/e-resources.csv</pre>
+
+Setting the RAILS_ENV variable will utilise the Solr instance attached to the rails env (defined in config/solr.yml) i.e.
+<pre># This will delete existing electronic resources and then index the electronic resources data into the production instance of solr specified in solr.yml
+  RAILS_ENV=production rake blah:electronic_resources:delete_and_index_data  CSV_FILE_PATH=./test/fixtures/e-resources.csv</pre>
