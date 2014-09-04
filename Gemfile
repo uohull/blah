@@ -11,13 +11,12 @@ gem 'sqlite3'
 gem 'json'
 
 group :development do
-  gem 'debugger', '~> 1.3.3'
+  gem 'debugger', '~> 1.5.0'
 end
 
 group :production do
-  # Uncomment for production
   # Add mysql config to database.yml
-  #gem "mysql2", "~> 0.3.13"
+  gem "mysql2", "~> 0.3.13"
 end
 
 # Gems used only for assets and not required

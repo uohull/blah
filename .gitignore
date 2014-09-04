@@ -32,6 +32,5 @@ config/SolrMarc/*.log*
 rerun.txt
 solr_marc/solrmarc.log
 .bundle
-Gemfile.lock
 pkg/*
 *.swp
