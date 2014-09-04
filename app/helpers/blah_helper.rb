@@ -148,25 +148,28 @@ module BlahHelper
     label = if label_text.length > 0 then label_text end
 
     if document.has? solr_fname
-      field_value = render_index_field_value(:document => document, :field => solr_fname, :seperator => opts[:seperator])
-
-      if opts[:display_as_link] then
-        display_value = '<a href="' + field_value + '">' +  opts[:link_text] + '</a>'
-      #if specified that the field contains_encoded_html ie &lt; and &gt; change them back to < and > for correct display
-      elsif opts[:contains_encoded_html] 
-        display_value = field_value.gsub(/&lt\;/, "<").gsub(/&gt\;/, ">")
+      # if we are display it as a link....    
+      if opts[:display_as_link]
+        # We deal with multi-valued fields (multi-links)
+        field_value = document.get(solr_fname, sep: nil)        
+        unless field_value.nil? || field_value.empty?
+          display_value = "" 
+          field_value.each_with_index { |v,i| display_value.concat( "<a href='#{v}' >#{opts[:link_text]} #{i+1 if field_value.size > 1 }</a><br/>") }
+        end
       else
-        display_value = field_value
-      end   
+        # Normal display (with the options of displaying encoded html)
+        field_value = render_index_field_value(:document => document, :field => solr_fname, :seperator => opts[:seperator])
+        display_value = opts[:contains_encoded_html] ? field_value.gsub(/&lt\;/, "<").gsub(/&gt\;/, ">") : field_value
+      end
 
      display_field = <<-EOS
         <dt class=#{dd_class}>#{label}</dt>
         <dd class=#{dd_class}>#{display_value}</dd>
       EOS
+
     end
 
     display_field.html_safe
-
   end
 
   #search_catalog_link - creates blacklight search link with the given search_query and search_field

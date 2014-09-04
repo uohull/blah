@@ -7,7 +7,7 @@ Blacklight github: "https://github.com/projectblacklight/blacklight:":https://gi
 
 h2. Requirements
 
-ruby-1.9.3-p448
+ruby-1.9.3-p547 (recommended)
 java 1.5 or higher (in order to run solr under a jetty)
 RVM (recommended for development)
 
@@ -20,12 +20,12 @@ gem install rails
 h2. Installation guide
 
 <pre>
-git checkout git@github.com:uohull/blah.git
+git clone git@github.com:uohull/blah.git
 </pre>
 
 Change the current directory to "blah"
 
-The project includes a .rvmrc file which will define a Ruby version and gemset that should be used for the project.  In this case ruby-1.9.3-p448 and gemset 'blah'.  
+The project includes a .rvmrc file which will define a Ruby version and gemset that should be used for the project.  In this case ruby-1.9.3-p547 and gemset 'blah'.  
 
 To install the required gems, execute:
 <pre>
