@@ -131,16 +131,16 @@ module LibraryItemsHelper
           due=""
           hold=""
           if availability.downcase.include? "available"
-            status = '<span class="holdings-label label alert-success"><i class="icon-ok icon-white"></i> Available</span>'
+            status = '<div class="holdings-label label alert-success"><i class="icon-ok icon-white"></i> Available</div>'
           elsif availability.downcase.include? "due"
             due =  availability.sub(/DUE/, '')[1,8]
             hold = availability.sub(/DUE/, '')[9..-1]
-            status = '<span class="holdings-label label alert-warning">Due ' + due + '<br/>' + hold + '</span>'
+            status = '<div class="holdings-label label alert-warning">Due ' + due + '<br/>' + hold + '</div>'
           elsif availability.downcase.include? "lost"
             hold = availability.sub(/DUE/, '')[11..-1]
-            status = '<span class="holdings-label label alert-error">Lost in lib<br/>' + hold + '</span>'
+            status = '<div class="holdings-label label alert-error">Lost in lib<br/>' + hold + '</div>'
           elsif availability.downcase.include? "lib use"
-            status = '<span class="holdings-label label alert-error"><i class="icon-remove icon-white"></i> Library use</span>'
+            status = '<div class="holdings-label label alert-error">Use in Library only</div>'
           else
             status = availability
           end
