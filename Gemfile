@@ -1,23 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 3.2.16'
-
-gem 'blacklight', '4.0.1'
-gem 'blacklight_advanced_search', '~> 2.1.1'
-#Blacklight google analytics plugin by Jason Ronallo
-gem 'blacklight_google_analytics', '~> 0.0.1.pre2'
-
-gem 'sqlite3'
-gem 'json'
-
-group :development do
-  gem 'debugger', '~> 1.5.0'
-end
-
-group :production do
-  # Add mysql config to database.yml
-  gem "mysql2", "~> 0.3.13"
-end
+gem 'rails', '~> 3.2.19'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -33,10 +16,10 @@ group :assets do
 end
 
 
+gem 'json'
 gem 'devise', '~> 2.2.7'
 #devise_cas_authenticable is used to enable CAS integration
 gem 'devise_cas_authenticatable', '~> 1.2.0'
-
 gem 'unicode'
 
 #Zoom Ruby binding to Z40.50 http://rubygems.org/gems/zoom
@@ -48,3 +31,18 @@ gem 'honeypot-captcha'
 
 #connection_pool gem that enables us to pool Z39.50 connections - https://github.com/mperham/connection_pool
 gem 'connection_pool', '~> 1.1.0'
+
+gem 'blacklight', '4.0.1'
+gem 'blacklight_advanced_search', '~> 2.1.1'
+#Blacklight google analytics plugin by Jason Ronallo
+gem 'blacklight_google_analytics', '~> 0.0.1.pre2'
+
+group :development, :test do
+  gem 'sqlite3'
+  gem 'byebug'
+end
+
+group :production do
+  # Add mysql config to database.yml
+  gem "mysql2", "~> 0.3.13"
+end
