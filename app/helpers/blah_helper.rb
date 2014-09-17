@@ -13,7 +13,8 @@ module BlahHelper
   end
 
   #Override the standard Blacklight helper document_header to include sub_title_display in the header if it exists
-  def document_heading(document=@document)
+  def document_heading(document=nil)
+   document ||= @document
    document_heading =  document['subtitle_display'].nil? ?  document['title_display'].join(" : ") :  document['title_display'].join(" : ") << " : " <<  document['subtitle_display'].join(" : ") || document.id
   end
 
