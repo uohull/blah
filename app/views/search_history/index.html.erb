@@ -16,8 +16,6 @@
           <td class="actions">
             <%- if current_or_guest_user && search.saved? -%>
               <%= button_to t('blacklight.search_history.forget'), forget_search_path(search.id), :class=>'btn square-corners' %>
-            <%- else -%>
-              <%= button_to t('blacklight.search_history.save'), save_search_path(search.id), :method => :put, :class=>'btn square-corners' %>
             <%- end -%>
           </td>
         <%- end -%>
