@@ -12,16 +12,17 @@ module BlahHelper
     'Library Catalogue'
   end
 
-  #Override the standard Blacklight helper document_header to include sub_title_display in the header if it exists
+  #Override the standard Blacklight helper document_header to include display_title the header if it exists
   def document_heading(document=nil)
    document ||= @document
-   document_heading =  document['subtitle_display'].nil? ?  document['title_display'].join(" : ") :  document['title_display'].join(" : ") << " : " <<  document['subtitle_display'].join(" : ") || document.id
+   document_heading = display_title(document) || document.id
   end
 
   # Default seperator change
   def field_value_separator
     '; '
   end
+
 
    # Overide blacklight_helper_bahaviour#render_index_field_value to enable dynamic setting of field seperator 
    # using the args [:seperator]
@@ -65,6 +66,19 @@ module BlahHelper
   #######################################################
   # - End of Blacklight Helper over-rides               #
   #######################################################
+
+  # Helper method to return a main display title for a record (will combine subtitles/alt_titles with main title)
+  def display_title(document)
+    if document['subtitle_display']
+      return document['title_display'].join(" : ") << " : " <<  document['subtitle_display'].join(" : ") 
+    else
+      if document['alt_title_display']
+        return document['title_display'].join(" : ") << " : " <<  document['alt_title_display'].join(" : ")
+      else
+        return document['title_display'].join (" : ")
+      end
+    end
+  end
 
   # Return the Blah version - see config/application.rb for origin of config.version
   def blah_version
