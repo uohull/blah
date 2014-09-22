@@ -487,8 +487,27 @@
     See http://wiki.apache.org/solr/SpatialSearch
    -->
     <fieldtype name="geohash" class="solr.GeoHashField"/>
- </types>
 
+     <!-- callnum_text field for indexing Class/Call numbers
+        Things to note, spaces and non alphanumeric chars are being stripped for indexing/querying
+        EdgeNGramFilterFactory is used on indexing to provide flexibility with search terms,edge is specified from front.
+          see https://wiki.apache.org/solr/AnalyzersTokenizersTokenFilters#solr.EdgeNGramFilterFactory
+     -->
+     <fieldType name="callnum_text" class="solr.TextField" positionIncrementGap="100">
+       <analyzer type="index">
+          <tokenizer class="solr.WhitespaceTokenizerFactory" />
+           <filter class="solr.LowerCaseFilterFactory" />
+           <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="15" side="front"/>
+           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="([\s|\W])" replacement=""/>
+       </analyzer>
+        <analyzer type="query">
+          <tokenizer class="solr.WhitespaceTokenizerFactory" />
+           <filter class="solr.LowerCaseFilterFactory" />
+           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="([\s|\W])" replacement=""/>
+       </analyzer>
+     </fieldType>
+
+ </types>
 
  <fields>
    <!-- Valid attributes for fields:
@@ -553,6 +572,14 @@
 
    <!-- libary is used for facet, and display - stored and indexed -->
    <field name="library" type="string" indexed="true" stored="true" multiValued="true"/>
+
+   <!-- call number text fields -->
+   <field name="lc_callnum_stripped" type="callnum_text" indexed="true" stored="false" multiValued="true"/>
+   <field name="alt_lc_callnum_stripped" type="callnum_text" indexed="true" stored="false" multiValued="true"/>
+   <!-- call numbers indexed as standard text field --> 
+   <field name="lc_callnum" type="text" indexed="true" stored="false" multiValued="true"/>
+   <field name="alt_lc_callnum" type="text" indexed="true" stored="false" multiValued="true"/>
+
 
    <!-- Dynamic field definitions.  If a field name is not found, dynamicFields
         will be used if the name matches any of the patterns.
@@ -668,10 +695,11 @@
    <copyField source="subject_t" dest="opensearch_display"/>
    <copyField source="subject_addl_t" dest="opensearch_display"/>  
 
-   <!-- We want searchable call numbers - place into _t to avoid any issues with stop words in dismax -->
-   <copyField source="lc_callnum_display" dest="lc_callnum_t" />
-   <copyField source="alt_lc_callnum_display" dest="alt_lc_callnum_t" />
-   
+   <!-- We want searchable class/call numbers - two different indexing type strategies used -->
+   <copyField source="lc_callnum_display" dest="lc_callnum" />
+   <copyField source="alt_lc_callnum_display" dest="alt_lc_callnum" />   
+   <copyField source="lc_callnum_display" dest="lc_callnum_stripped" />
+   <copyField source="alt_lc_callnum_display" dest="alt_lc_callnum_stripped" />
 
    <!-- Above, multiple source fields are copied to the [text] field. 
 	  Another way to map multiple source fields to the same 

@@ -161,6 +161,14 @@ class CatalogController < ApplicationController
       }
     end
 
+    # Specific classmark search - See solr schema.xml/solrconfig.xml for the specifics of the indexing
+    config.add_search_field('classmark') do |field|
+      field.solr_local_parameters = { 
+        :qf => '$classmark_qf',
+        :pf => '$classmark_pf'
+      }
+    end
+
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc

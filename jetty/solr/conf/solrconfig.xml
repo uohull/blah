@@ -754,8 +754,10 @@
          isbn_t^7500
          issn_t^7500
          ismn_t^7500
-         lc_callnum_t
-         alt_lc_callnum_t
+         lc_callnum_stripped^100
+         lc_callnum^50
+         alt_lc_callnum_stripped^50
+         alt_lc_callnum^25
          text
        </str>
        <str name="pf">
@@ -778,6 +780,10 @@
          subject_addl_t^500
          title_series_unstem_search^250
          title_series_t^100
+         lc_callnum_stripped^100
+         lc_callnum^50
+         alt_lc_callnum_stripped^50
+         alt_lc_callnum^25
          text^10
        </str>
        <str name="author_qf">
@@ -832,6 +838,20 @@
          subject_addl_unstem_search^100
          subject_addl_t^10
        </str>
+      
+      <!-- for user query terms in classmark text box -->
+      <str name="classmark_qf">
+         lc_callnum_stripped^1000
+         lc_callnum^400
+         alt_lc_callnum_stripped^200
+         alt_lc_callnum^50
+      </str>
+      <str name="classmark_pf">
+        lc_callnum_stripped^10000
+        lc_callnum^4000
+        alt_lc_callnum_stripped^2000
+        alt_lc_callnum^500
+      </str>       
        
        <int name="ps">3</int>
        <float name="tie">0.01</float>
@@ -1029,7 +1049,21 @@
         subject_addl_unstem_search^100
         subject_addl_t^10
       </str>
-      
+
+      <!-- for user query terms in classmark text box -->
+      <str name="classmark_qf">
+         lc_callnum_stripped^1000
+         lc_callnum^400
+         alt_lc_callnum_stripped^200
+         alt_lc_callnum^50
+      </str>
+      <str name="classmark_pf">
+        lc_callnum_stripped^10000
+        lc_callnum^4000
+        alt_lc_callnum_stripped^2000
+        alt_lc_callnum^500
+      </str>     
+    
       <!-- for user query terms in number text box -->
       <str name="qf_number">isbn_t</str>
       
