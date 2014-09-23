@@ -733,7 +733,9 @@
 
        <str name="qf">
          title_unstem_search^100000
+         title_phrase_text^75000
          subtitle_unstem_search^50000
+         subtitle_phrase_text^30000
          title_t^25000
          subtitle_t^10000
          title_addl_unstem_search^5000
@@ -762,7 +764,9 @@
        </str>
        <str name="pf">
          title_unstem_search^1000000
+         title_phrase_text^750000
          subtitle_unstem_search^500000
+         subtitle_phrase_text^300000
          title_t^250000
          subtitle_t^100000
          title_addl_unstem_search^50000
@@ -799,7 +803,9 @@
          author_addl_t^10
        </str>
        <str name="title_qf">
-         title_unstem_search^50000
+         title_phrase_text^200000
+         title_unstem_search^100000
+         subtitle_phrase_text^35000
          subtitle_unstem_search^25000
          title_addl_unstem_search^10000
          title_t^5000
@@ -811,7 +817,9 @@
          title_series_t
        </str>
        <str name="title_pf">
-         title_unstem_search^500000
+         title_phrase_text^2000000
+         title_unstem_search^1000000
+         subtitle_phrase_text^350000
          subtitle_unstem_search^250000
          title_addl_unstem_search^100000
          title_t^50000
@@ -1008,8 +1016,10 @@
       
       <!-- for user query terms in title text box -->
       <str name="qf_title">
-        title_unstem_search^50000
-        subtitle_unstem_search^25000
+        title_phrase_text^200000
+        title_unstem_search^100000
+        subtitle_phrase_text^35000
+        subtitle_unstem_search^250000
         title_addl_unstem_search^10000
         title_t^5000
         subtitle_t^2500
@@ -1020,7 +1030,9 @@
         title_series_t
       </str>
       <str name="pf_title">
-        title_unstem_search^500000
+        title_phrase_text^2000000
+        title_unstem_search^1000000
+        subtitle_phrase_text^350000
         subtitle_unstem_search^250000
         title_addl_unstem_search^100000
         title_t^50000

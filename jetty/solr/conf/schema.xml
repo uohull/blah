@@ -507,6 +507,18 @@
        </analyzer>
      </fieldType>
 
+     <!-- Use to improve indexing/querying of phrases - E.g. The merchant of Venice
+       CommonGramsFilterFactory will create shingles i.e  the_merchant  | of_venice 
+        See https://wiki.apache.org/solr/AnalyzersTokenizersTokenFilters#solr.CommonGramsFilterFactory -->
+     <fieldType name="phrase_text" class="solr.TextField" positionIncrementGap="100">
+       <analyzer>
+          <tokenizer class="solr.WhitespaceTokenizerFactory" />
+           <filter class="solr.LowerCaseFilterFactory" />
+           <filter class="solr.ICUFoldingFilterFactory" />
+           <filter class="solr.CommonGramsFilterFactory" words="stopwords.txt" ignoreCase="true"/>
+       </analyzer>
+     </fieldType>
+
  </types>
 
  <fields>
@@ -572,6 +584,10 @@
 
    <!-- libary is used for facet, and display - stored and indexed -->
    <field name="library" type="string" indexed="true" stored="true" multiValued="true"/>
+
+   <!-- title phrase_text field - see definition for more info -->
+   <field name="title_phrase_text" type="phrase_text" index="true" stored="false" multiValued="true" /> 
+   <field name="subtitle_phrase_text" type="phrase_text" index="true" stored="false" multiValued="true" /> 
 
    <!-- call number text fields -->
    <field name="lc_callnum_stripped" type="callnum_text" indexed="true" stored="false" multiValued="true"/>
@@ -659,10 +675,13 @@
    <copyField source="subject_t" dest="subject_unstem_search"/>
    <copyField source="subject_addl_t" dest="subject_addl_unstem_search"/>
    <copyField source="subject_topic_facet" dest="subject_topic_unstem_search"/>
-   
+
+   <!-- phrase fields -->
+   <copyField source="title_t" dest="title_phrase_text"/>
+   <copyField source="subtitle_t" dest="subtitle_phrase_text"/>
+
    <!-- sort fields -->
-   <copyField source="pub_date" dest="pub_date_sort"/>
-   
+   <copyField source="pub_date" dest="pub_date_sort"/>   
         
    <!-- spellcheck fields -->
    <!-- default spell check;  should match fields for default request handler -->
