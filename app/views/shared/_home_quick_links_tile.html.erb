@@ -1,41 +1,37 @@
 <div class="span6">
-  <div class="tile tile-light-grey tile-shadow-right">
-    <h2>Quick links</h2>
-      <i class="icon-eye-open"></i>
-      <a href="https://library.hull.ac.uk/patroninfo">
-        My Library account
-      </a>
-     </p>
-     <p>
-      <i class="icon-book"></i>
-        <a href="http://zc7xc9dq8b.search.serialssolutions.com/">
-        Electronic journals A-Z list
-       </a>
-    </p>
-
-    <p>
-      <i class="icon-question-sign"></i>
-      <a href="http://www2.hull.ac.uk/lli/library-services/help_and_support.aspx">
-        Help
-      </a>
-    </p>
-     <p>
-      <i class="icon-pencil"></i>
-      <a href="http://libguides.hull.ac.uk">
-        Libguides
-       </a>
-    </p>
-    <p>
-      <i class="icon-info-sign"></i>
-      <a href="cookies">
-        Cookies
-      </a>
-    </p>
-    <p>
-      <i class="icon-time"></i>
-      <a href="http://www2.hull.ac.uk/lli/library-services/opening-hours.aspx">
-        Opening hours
-      </a>
-    </p>
-  </div>
+    <div class="tile tile-light-grey tile-shadow-right" style="height: 338px;">
+        <h2>Quick links</h2>
+        <p>
+            <i class="icon-eye-open"></i>
+            <%= link_to 'My Library account →', 'https://library.hull.ac.uk/patroninfo', :class => 'read-article', :title => 'Click to go to your Library account'  %>
+        </p>
+        <p>
+            <i class="icon-book"></i>
+            <%= link_to 'Electronic journals A-Z list →', 'http://zc7xc9dq8b.search.serialssolutions.com/', :class => 'read-article', :title => 'Click to go to Electronic journals A-Z list'  %>
+        </p>
+        <p>
+            <i class="icon-question-sign"></i>
+            <%= link_to 'Help →', 'http://www2.hull.ac.uk/lli/library-services/help_and_support.aspx', :class => 'read-article', :title => 'Click to go to Help'  %>
+        </p>
+        <p>
+            <i class="icon-pencil"></i>
+            <%= link_to 'Libguides →', 'http://libguides.hull.ac.uk', :class => 'read-article', :title => 'Click to go to Libguides'  %>
+        </p>
+        <p>
+            <i class="icon-info-sign"></i>
+            <%= link_to 'Cookies →', '/cookies', :class => 'read-article', :title => 'Click to go to Opening hours'  %>
+        </p>
+        <p>
+            <i class="icon-time"></i>
+            <%= link_to 'Opening hours →', 'http://www2.hull.ac.uk/lli/library-services/opening-hours.aspx', :class => 'read-article', :title => 'Click to go to Opening hours'  %>
+        </p>
+        <p>
+            <i class="icon-search"></i>
+            <%= link_to 'Summon →', 'http://hull.summon.serialssolutions.com/', :class => 'read-article', :title => 'Click to go to Summon'  %>
+        </p>
+        <p>
+            <i class="icon-bookmark"></i>
+            <%= link_to 'Reading lists →', 'http://readinglists.hull.ac.uk/index.html', :class => 'read-article', :title => 'Click to go to Reading Lists'  %>
+        </p>
+    </div>
 </div>
