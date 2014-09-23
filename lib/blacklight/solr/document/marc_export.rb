@@ -482,24 +482,49 @@ module Blacklight::Solr::Document::MarcExport
     
     # setup title info
     title = setup_title_info(record)
+
+    # edition data, Replace ed with edition  only if "ed" exists, Some have trailing / so remove theses
+    edition_data = setup_edition(record)
+    edition_data = edition_data.include?("edition") ? edition_data : edition_data.gsub(/ed/, "edition") unless edition_data.nil?
+    edition_data = edition_data.gsub('/', '') + " " unless edition_data.nil?
+
+    unless edition_data.nil? 
+      # When edition data exists, change the end of line . to a , 
+     title =  title.gsub(/\.$/, ",")
+    end
+
+    if ebook?(record) || audio_cd?(record)
+      title = title.gsub(/\.$/, "")
+    end 
+
     text += "<i>" + title + "</i> " unless title.nil?
     
-     # Edition - Some have trailing / so remove theses
-    edition_data = setup_edition(record)
-    text += edition_data.gsub('/', '') + " " unless edition_data.nil?
-    
-    # Publisher info
-    text += setup_pub_info(record).gsub(':', ',') unless setup_pub_info(record).nil?
-    unless text.blank?
-      if text[-1,1] != "."
-        text += "."
+    # If a thesis treat differently to all others... 
+    if thesis?(record)
+      text +=  thesis_info(record)
+    else
+      if ebook?(record)
+        text += "[eBook]. "
+      elsif audio_cd?(record)
+        text += "[Audio CD]. "
       end
+
+      text += edition_data + " " unless edition_data.nil?    
+
+      # Publisher info
+      text += setup_pub_info(record) unless setup_pub_info(record).nil?
+      unless text.blank?
+        if text[-1,1] != "."
+          text += "."
+        end
+      end
+
     end
+
     text
   end
 
-
- #Vancouver locally added
+   #Vancouver locally added
   def vancouver_citation(record)
     text = ''
     authors_list = []
@@ -728,5 +753,82 @@ module Blacklight::Solr::Document::MarcExport
     temp_name = name.split(", ")
     return temp_name.last + " " + temp_name.first
   end 
+
+
+   # Thesis helpers
+  def thesis_info(record)
+    text = ''
+    text = thesis_name(record) + thesis_university(record) + thesis_url(record)
+  end
+
+  # For thesis records get the info on the qualification from the call num...
+  def thesis_name(record)
+    text = ''
+    call_num_field = record.find{|f| f.tag == '050'}
+    call_num_code = call_num_field.find{|s| s.code == 'a'} unless call_num_field.nil? 
+    call_num = call_num_code.value unless call_num_code.nil? 
+
+    unless call_num.nil?
+      name = nil
+      call_num = call_num.downcase
+      # Call number of thesis can contain these... We derive a qualification name from it. 
+      if call_num.include? 'm.d'
+        name = 'MD'
+      elsif call_num.include? 'ph.d'
+        name = 'PhD'
+      elsif call_num.include? 'clin.psy.d'
+        name = 'ClinPsyD'
+      end
+      text = "#{name} thesis. " unless name.nil? 
+    end
+
+    text
+  end
+
+  # For thesis records get the University 
+  def thesis_university(record)
+    text = ''
+    corp_name = record.find{|f| f.tag == '710'}
+    corp_name_code = corp_name.find{|s| s.code == 'a'} unless corp_name.nil? 
+    university_name = corp_name_code.value unless corp_name_code.nil?
+
+    text = "#{university_name} " unless university_name.nil?
+
+    text
+  end
+
+  # For thesis records get the url...
+  def thesis_url(record)
+    text = ''
+    location_field = record.find{|f| f.tag == '856'}
+    uri_code = location_field.find{|s| s.code == 'u'} unless location_field.nil? 
+    uri = uri_code.value unless uri_code.nil? 
+
+    unless uri.nil? 
+      text = "Available online: #{uri}"
+    end
+    text
+  end
+
+  # @ is an ebook
+  def ebook?(record)
+    record_format(record) == "@"
+  end 
+
+  def audio_cd?(record)
+    record_format(record) == "k"
+  end
+
+  def thesis?(record)
+    record_format(record) == "t"
+  end
+
+   # Return the record format code - empty string if nil
+  def record_format(record)
+    format_field = record.find{|f| f.tag == '998'}
+    format_code = format_field.find{|s| s.code == 'e'} unless format_field.nil?
+    format = format_code.value unless format_code.nil?
+    format || ""
+  end
   
 end
