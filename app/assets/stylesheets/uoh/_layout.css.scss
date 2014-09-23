@@ -90,7 +90,8 @@ body {
   font-size: 14px;
 }
 
-p a, dd a, h3 a, h5 a, td a {
+
+p a, dd a, h3 a, h5 a, td a, article.news-article div.tile-btn-primary a.read-article {
   color: $primarylinkcolor;
   text-decoration: none;
   border-bottom:1px dotted;
@@ -120,4 +121,33 @@ p a, dd a, h3 a, h5 a, td a {
   font-size: 92%;
   padding: 6px 10px !important;
   vertical-align: baseline;
+}
+
+.news-article {
+  margin: .5rem 0 2rem 0;
+  .bar-time {
+    display: block;
+    font-size: 0.8rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    color: $neutralcolor;
+    margin: 0 0 0.2rem 0;
+  } 
+  > h3 { margin: 0.2rem 0 0.5rem;}
+  .read-article { margin: 0 0 0.2rem 0; }
+}
+
+.hr-alt { 
+  background-image: linear-gradient(to right, #fff, $neutralcolorlight 35%, $neutralcolorlight 65%, #fff);
+
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 40% 1px;
+/*    margin-top: 10px;
+    padding-bottom: 14px;*/
+    padding-top: 20px;
+    text-align: center;
+    color: transparent;
+
+  margin: ($gridGutterWidth * 1.8) 0 $gridGutterWidth 0;
 }
