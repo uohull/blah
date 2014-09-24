@@ -2,12 +2,12 @@ module LibraryItemsHelper
 
 
   #<%= link_to t('blacklight.tools.refworks'), refworks_export_url(:id => @document), {:class => 'btn', :target => '_blank'}  %>   
-  def render_request_library_item_link(library_item)
-	  link_to "Request Item", "http://#{ catalogue_opac_addr }/search?/.#{ library_item.bib_no.to_s }/.#{ library_item.bib_no.to_s }/1%2C1%2C1%2CB/request~".html_safe, {:class => "btn btn-small square-corners"}
+  def render_request_library_item_link(library_item, class_parameter)
+	  link_to "Request Item", "http://#{ catalogue_opac_addr }/search?/.#{ library_item.bib_no.to_s }/.#{ library_item.bib_no.to_s }/1%2C1%2C1%2CB/request~".html_safe, {:class => class_parameter }
   end	
 
-  def render_bookable_library_item_link(library_item)
-    link_to "Book Item", "http://#{ catalogue_opac_addr }/webbook?/#{ library_item.bib_no.to_s }&back=/search".html_safe, {:class => "btn btn-small square-corners"}
+  def render_bookable_library_item_link(library_item, class_parameter)
+    link_to "Book Item", "http://#{ catalogue_opac_addr }/webbook?/#{ library_item.bib_no.to_s }&back=/search".html_safe, {:class => class_parameter }
   end 
 
   # item_bookable?(document)

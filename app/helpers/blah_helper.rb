@@ -321,13 +321,13 @@ module BlahHelper
     unless display_value.empty?
       if opts[:render_icon]
         display_field << <<-EOS
-          <dt class="dt-callnumber">#{pluralize_string(display_value.length,"Class number")}</dt>
-          <dd class="dd-callnumber">#{ display_value.collect{ |cn| render_shelved_icon  + '&nbsp;'.html_safe + cn}.join('<br/>'.html_safe)}</dd>
+
+          <div>#{ display_value.collect{ |cn| render_shelved_icon  + '&nbsp;'.html_safe + cn}.join('<br/>'.html_safe)}</div>
          EOS
       else
         display_field << <<-EOS
-          <dt class="dt-callnumber">#{pluralize_string(display_value.length,"Class number")}</dt>
-          <dd class="dd-callnumber">#{ display_value.collect{ |cn| cn }.join('<br/>'.html_safe)}</dd>
+
+          <div>#{ display_value.collect{ |cn| cn }.join('<br/>'.html_safe)}</div>
          EOS
       end  
     end

@@ -1,7 +1,7 @@
 <div class="container-gutter">
   <h3>Availability</h3> 
 </div>
-<div id="availability-nav" class="sidebar-nav well">
+<div id="availability-nav" class="sidebar-nav well square-corners">
   <% if !@library_item.nil? && @library_item.inter_library_loan? %>
       <p>Available through <%= link_to "Inter-Library Loan", inter_library_loan_url %></p>
   <% else %>

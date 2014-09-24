@@ -1,16 +1,7 @@
 <%= display_field_within_element(document, 'title_series_t' , element='h5') %>
 <%= display_field_within_element(document, 'author_display' , element='h4') %>
 <%= display_field_within_element(document, 'author_addl_t' , element='h5') %>
-<%= display_field_within_element(document, 'pub_date' , element='small') %><br/>
-<%= display_field_within_element(document, 'edition_display' , element='small') %><br/>
-
-<dl class="dl-horizontal-left dl-invert">  
-      <% if document.has? 'format' %>
-        <dt class="blacklight-format-dt">Format</dt>
-	      <dd class="blacklight-format-dd"><%= render_format_icon( document ) %>&nbsp;<%= render_index_field_value :document => document, :field => "format" %> </dd>
-      <% end %>
-      <%= display_call_number(document, {:render_icon => true} ) %>
-      <%= display_field(document, 'url_fulltext_display', 'Online', 'online', {:display_as_link => true, :link_text => 'Access this resource online'}) %>   
-</dl>
+<%= display_field_within_element(document, 'pub_date' , element='small') %>
+<%= display_field_within_element(document, 'edition_display' , element='small') %>
 
 <%= jquery_holdings_display(document.id) %>

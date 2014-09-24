@@ -9,15 +9,17 @@
 
           <% # bookmark/folder functions -%>
           <%= render_show_doc_actions @document %> 
+
+          <!-- Desktop tools go above the document -->
+          <div class="tools">     
+              <%= render :partial => 'show_tools' %>
+          </div>
        
           <div class="document">
             <%= render_document_partial @document, :show %>
           </div>
 
-          <!-- Desktop tools go above the document -->
-          <div class="tools hidden-tablet">     
-              <%= render :partial => 'show_tools' %>
-          </div>
+          
         </div>
       </div>
     </div>

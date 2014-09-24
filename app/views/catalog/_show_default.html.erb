@@ -22,8 +22,8 @@
   </div>
 </div>
 <div class="row-fluid">
-  <div class="span4 hidden-phone">
-    <div id="cover-art">
+  <div class="span3 hidden-phone">
+    <div class="cover-art">
       <div class="row">
         <%= render_book_cover_img(document) %>
         <%# Adds a google-preview div with a google preview button if preview exists %>
@@ -37,39 +37,41 @@
       <span class="cover-art-image"><%= render_book_cover_img(document) %></span>
     </div>
   </div><!--/span-->
-  <div class="span12">
-    <h3>Record</h3>
-    <dl class="dl-vertical-left  dl-invert">
-      <%= display_field_search_link(document, 'subject_t', 'Subject', 'subject', '', 'subject') %>
-      <%= display_field_search_link(document, 'subject_addl_t', 'Added subject', 'subject', '', 'subject') %>
-      <%= display_field(document, 'language_facet', 'Language', 'language') %>
-      <%= display_call_number(document) %>
-    </dl>
-    <h3>Publication information</h3>
-    <dl class="dl-vertical-left dl-invert">
-      <%= display_field(document, 'frequency_display', 'Frequency', 'frequency') %>
-      <%= display_field(document, 'format', 'Format', 'format') %>
-      <%= display_field(document, 'published_display', 'Published', 'pub') %>
-      <%= display_field(document, 'published_vern_display', 'Published', 'pub') %>
-      <%= display_field(document, 'periodical_pub_date_display', 'Publish note', 'published') %>
-      <%= display_field(document, 'title_series_t', 'Series', 'series', { seperator: "<br/>" }) %>
-      <%= display_field(document, 'isbn_t', 'ISBN', 'isbn', { seperator: "<br/>" }) %>
-      <%= display_field(document, 'issn_t', 'ISSN', 'issn', { seperator: "<br/>" }) %>
-      <%= display_field(document, 'ismn_t', 'ISMN', 'ismn', { seperator: "<br/>" }) %>
-      <%= display_field(document, 'other_display', 'Publisher No', 'other') %>
-      <%= display_field(document, 'description_display', 'Description', 'description') %>
-      <%= display_field(document, 'contents_display', 'Contents', 'contents') %>
-      <%= display_field(document, 'scale_display', 'Scale', 'scale') %>
-      <%= display_field(document, 'performer_display', 'Performer(s)', 'performers') %>
-      <%= display_field(document, 'cast_display', 'Cast', 'cast') %>  
-      <%= display_field(document, 'credits_display', 'Credits', 'credits') %>
-      <%= display_field(document, 'note_display', 'Note', 'note', { seperator: "<br/>" }) %>
-      <%= display_field(document, 'with_display', 'With', 'with') %>
-      <% #RDA Fields %>
-      <%= display_field(document, 'rda_content_display', 'Content', 'content') %>
-      <%= display_field(document, 'rda_media_display', 'Media', 'media') %>
-      <%= display_field(document, 'rda_carrier_display', 'Carrier', 'carrier') %>
-    </dl>             
-    <%= display_related_items( document ) %>        
- </div>
+  <div class="span13">
+    <div class="page-gutter">
+      <h3>Record</h3>
+      <dl class="dl-vertical-left  dl-invert">
+        <%= display_field_search_link(document, 'subject_t', 'Subject', 'subject', '', 'subject') %>
+        <%= display_field_search_link(document, 'subject_addl_t', 'Added subject', 'subject', '', 'subject') %>
+        <%= display_field(document, 'language_facet', 'Language', 'language') %>
+        <%= display_call_number(document) %>
+      </dl>
+      <h3>Publication information</h3>
+      <dl class="dl-vertical-left dl-invert">
+        <%= display_field(document, 'frequency_display', 'Frequency', 'frequency') %>
+        <%= display_field(document, 'format', 'Format', 'format') %>
+        <%= display_field(document, 'published_display', 'Published', 'pub') %>
+        <%= display_field(document, 'published_vern_display', 'Published', 'pub') %>
+        <%= display_field(document, 'periodical_pub_date_display', 'Publish note', 'published') %>
+        <%= display_field(document, 'title_series_t', 'Series', 'series', { seperator: "<br/>" }) %>
+        <%= display_field(document, 'isbn_t', 'ISBN', 'isbn', { seperator: "<br/>" }) %>
+        <%= display_field(document, 'issn_t', 'ISSN', 'issn', { seperator: "<br/>" }) %>
+        <%= display_field(document, 'ismn_t', 'ISMN', 'ismn', { seperator: "<br/>" }) %>
+        <%= display_field(document, 'other_display', 'Publisher No', 'other') %>
+        <%= display_field(document, 'description_display', 'Description', 'description') %>
+        <%= display_field(document, 'contents_display', 'Contents', 'contents') %>
+        <%= display_field(document, 'scale_display', 'Scale', 'scale') %>
+        <%= display_field(document, 'performer_display', 'Performer(s)', 'performers') %>
+        <%= display_field(document, 'cast_display', 'Cast', 'cast') %>  
+        <%= display_field(document, 'credits_display', 'Credits', 'credits') %>
+        <%= display_field(document, 'note_display', 'Note', 'note', { seperator: "<br/>" }) %>
+        <%= display_field(document, 'with_display', 'With', 'with') %>
+        <% #RDA Fields %>
+        <%= display_field(document, 'rda_content_display', 'Content', 'content') %>
+        <%= display_field(document, 'rda_media_display', 'Media', 'media') %>
+        <%= display_field(document, 'rda_carrier_display', 'Carrier', 'carrier') %>
+      </dl>             
+      <%= display_related_items( document ) %>        
+   </div>
+  </div>
 </div>

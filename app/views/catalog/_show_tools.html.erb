@@ -8,8 +8,10 @@
 
   #Added Bootstrap class well and 'hidden-phone' for the tools-bar 
 -%>
-  <div id="tools-nav" class="well">
-    <ul class="nav nav-pills visible-desktop visible-tablet">
+
+  <!-- desktop -->
+  <div id="tools-nav">
+    <ul class="nav nav-pills visible-desktop">
       <% if (@document.respond_to?(:export_as_mla_citation_txt) || @document.respond_to?(:export_as_apa_citation_txt)) %>
         <li class="cite">
          <%= link_to t('blacklight.tools.cite'), citation_catalog_path(:id => @document), {:id => 'citeLink', :name => 'citation', :class => 'lightboxLink btn btn-small square-corners'} %></i>
@@ -40,13 +42,13 @@
      <% unless @library_item.nil? %>
       <% if @library_item.requestable? %>
         <li class="hold_item">
-          <%= render_request_library_item_link(@library_item) %>
+          <%= render_request_library_item_link(@library_item, "btn btn-small square-corners") %>
         </li>
       <% end %>
 
       <% if item_bookable?(@document) %>
         <li class="book_item">
-          <%= render_bookable_library_item_link(@library_item) %>
+          <%= render_bookable_library_item_link(@library_item, "btn btn-small square-corners") %>
         </li>
       <% end %>
     <% end %>
@@ -54,6 +56,66 @@
     <%= render :partial => 'addthis_tool' %>
     </ul>
 
+
+    <!-- tablet -->
+    <div class="visible-tablet">
+      <div class="btn-group">
+        <button class="btn btn-large dropdown-toggle square-corners" data-toggle="dropdown">Tools <span class="caret"></span></button>
+          <ul class="dropdown-menu square-corners">
+            <% if (@document.respond_to?(:export_as_mla_citation_txt) || @document.respond_to?(:export_as_apa_citation_txt)) %>
+              <li class="cite">
+                <%= link_to t('blacklight.tools.cite'), citation_catalog_path(:id => @document), {:id => 'citeLink', :name => 'citation'} %></i>
+              </li>
+            <% end %>
+            <% if @document.export_formats.keys.include?( :refworks_marc_txt ) %>
+              <li class="refworks">
+              <%= link_to t('blacklight.tools.refworks'), refworks_export_url(:id => @document), { :target => '_blank'}  %>        
+              </li>
+            <% end %>
+            <% if @document.export_formats.keys.include?( :endnote ) %>
+              <li class="endnote">
+              <%= link_to t('blacklight.tools.endnote'), catalog_path(@document, :format => 'endnote') %>
+              </li>
+            <% end %>
+            <% if @document.respond_to?( :to_email_text ) %>
+              <li class="email">
+              <%= link_to t('blacklight.tools.email'), email_catalog_path(:id => @document), {:id => 'emailLink', :name => 'email', :class => 'lightboxLink square-corners'} %>
+              </li>
+            <%- end -%>
+            <% if @document.respond_to?(:to_marc) %>
+              <li class="librarian_view">
+                <%= link_to t('blacklight.tools.librarian_view'), librarian_view_catalog_path(@document), {:id => 'librarianLink', :name => 'librarian_view', :class => 'lightboxLink square-corners'} %>
+              </li>
+            <% end %>
+
+           <% unless @library_item.nil? %>
+            <% if @library_item.requestable? %>
+              <li class="hold_item">
+                <%= render_request_library_item_link(@library_item, "") %>
+              </li>
+            <% end %>
+
+            <% if item_bookable?(@document) %>
+              <li class="book_item">
+                <%= render_request_library_item_link(@library_item, "") %>
+              </li>
+            <% end %>
+          <% end %>
+
+
+          <li class="qr_code">
+            <%= link_to "QR Code", "#myModal", {:id => 'qr-link', :name => 'qr-view', "data-toggle" => "modal" } %>
+          </li> 
+
+          <li class="addthis">
+            <%= link_to "Share", "http://www.addthis.com/bookmark.php?v=20", {:class => 'addthis_button', :style => 'text-decoration:none;'} %>      
+          </li>
+
+          </ul>
+        </div>
+    </div>
+
+    <!-- mobile-->
     <ul class="nav nav-pills nav-stacked visible-phone">
       <% if (@document.respond_to?(:export_as_mla_citation_txt) || @document.respond_to?(:export_as_apa_citation_txt)) %>
         <li class="cite">
@@ -84,8 +146,6 @@
     <%= render :partial => 'qr_code' %>
     <%= render :partial => 'addthis_tool' %> 
     
-
     </ul>
-  </div>
 
- 
+  </div>

@@ -1,7 +1,7 @@
 <% if @library_item.holdings_records_collection.empty? %>
   <p class="no-holdings"><i title="Check with the Library" id="icon-holding-available" class="icon-asterisk icon-white"> </i>&nbsp;<%= t('blah.item.holdings.no_holdings_information') %></p>
 <% else %>
-  <h4>Location</h4>
+  <strong>Location</strong>
   <% if !@library_item.nil? && @library_item.inter_library_loan? %>
     <p>Available through <%= link_to "Inter-Library Loan", inter_library_loan_url %></p>
   <% end %>

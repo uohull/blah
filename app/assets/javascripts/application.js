@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+// Bootstrap plugin
+//= require bootstrap-tooltip
+//= require bootstrap-dropdown
 // Required by Blacklight
 //= require blacklight/blacklight
 //= require_tree .

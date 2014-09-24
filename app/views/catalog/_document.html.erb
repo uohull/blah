@@ -1,19 +1,19 @@
 <% # container for a single doc -%>
 <div class="document <%= render_document_class document %> hidden-phone row-fluid">
-  <div class="page-gutter">
-      <div class="span3">
-        <div id="cover-art">
+
+      <div class="span2">
+        <div class="cover-art">
           <%= link_to document, :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) do %>
             <%= render_book_cover_img(document) %>
           <% end %>
         </div>        
       </div>
-      <div class="span9 page-gutter">
-        <h3 class="remove-margin-top">
+      <div class="span10 page-gutter">
+        <h4 class="remove-margin-top">
           <%= t('blacklight.search.documents.counter', :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
           <%# document_show_link_proc - See BlahHelper (Returns a title or title/sub-title combined) %>
           <%= link_to_document document, :label=>document_show_link_proc(:truncate => 120), :counter => (document_counter + 1 + @response.params[:start].to_i) %>
-        </h3>
+        </h4>
         <% # main container for doc partial view -%>
         <%= render_document_partial document, :index, :document_counter => document_counter  %>
       </div>
@@ -23,10 +23,8 @@
           <%= render :partial => 'document_tools', :locals => { :document => document, :document_counter => document_counter } %>
         </span>
       </div> 
-  </div>
-</div>
 
-<hr class="hidden-phone" />
+</div>
 
 <div class="document document-phone <%= render_document_class document %> visible-phone row well">
   <div class="span7">
@@ -38,7 +36,7 @@
   </div>  
 
   <div class="span2">
-    <div id="cover-art">
+    <div class="cover-art">
       <%= link_to document, :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) do %>
         <%= render_book_cover_img(document) %>
       <% end %>
@@ -55,4 +53,3 @@
   </div> 
 
 </div>
-

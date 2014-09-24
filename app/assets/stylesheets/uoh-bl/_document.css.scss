@@ -3,7 +3,7 @@
 #document {
   margin-top: 0em;
   #previousNextDocument {
-    margin-bottom: 2em;
+    margin-bottom: 0;
   }
   #previousNextDocument.well {
     background: transparent;
@@ -18,9 +18,15 @@
 }
 
 .document {
-    margin: 0;
-    padding: 0;
-	border: none;
+  margin: 20px 0;
+  padding: 0;
+  border: none;
+  min-height: 165px;
+}
+
+@media (max-width: 480px), (max-width: 767px) { 
+   #document-header > h2 { font-size: 22px !important; }
+   #document-header > h3 { font-size: 18px !important; }
 }
 
 .document-phone.document {
@@ -69,24 +75,42 @@
   padding-left: 0.75em;
 }
 
-#cover-art {
-  height: 150px !important;
-  max-width: 132px !important;
-  margin-right: 1em;
-  margin-top: 8px;
-  background: -moz-linear-gradient(top, rgba(198,198,198,0.65) 10%, rgba(204,204,204,0.65) 20%, rgba(255,255,255,0) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(10%,rgba(198,198,198,0.65)), color-stop(20%,rgba(204,204,204,0.65)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, rgba(198,198,198,0.65) 10%,rgba(204,204,204,0.65) 20%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, rgba(198,198,198,0.65) 10%,rgba(204,204,204,0.65) 20%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, rgba(198,198,198,0.65) 10%,rgba(204,204,204,0.65) 20%,rgba(255,255,255,0) 100%); /* IE10+ */
-  background: linear-gradient(to bottom, rgba(198,198,198,0.65) 10%,rgba(204,204,204,0.65) 20%,rgba(255,255,255,0) 100%); /* W3C */
+.cover-art {
+  height: 146px !important;
+  max-width: 103px !important;
+  /*margin-right: 1em;*/
+  margin-top: 4px;
+  margin-bottom: 20px;
+  background: -moz-linear-gradient(top, rgba(198,198,198,0.35) 10%, rgba(204,204,204,0.35) 20%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(10%,rgba(198,198,198,0.35)), color-stop(20%,rgba(204,204,204,0.35)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(198,198,198,0.35) 10%,rgba(204,204,204,0.35) 20%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(198,198,198,0.35) 10%,rgba(204,204,204,0.35) 20%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(198,198,198,0.35) 10%,rgba(204,204,204,0.35) 20%,rgba(255,255,255,0) 100%); /* IE10+ */
+  background: linear-gradient(to bottom, rgba(198,198,198,0.35) 10%,rgba(204,204,204,0.35) 20%,rgba(255,255,255,0) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6c6c6c6', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */  
 }
 
+/*.cover-art:after {
+    color: #7b7b7b;
+    content: "No cover";
+    font-size: 0.7rem;
+    margin-left: 25px;
+    margin-top: 17px;
+    position: relative;
+    text-align: center;
+    top: 54px;
+    width: 100px;
+}*/
+
+.book-cover-img {
+    max-height: 155px !important;
+}
+
 #google-preview {
-  margin-top: 1.5em;
+  margin-left: 5px;
+  margin-top: 20px;
   position: relative;
-  text-align: center;
+ /* text-align: center;*/
 }
 
 .document-phone {

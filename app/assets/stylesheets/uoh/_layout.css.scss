@@ -91,12 +91,12 @@ body {
 }
 
 
-p a, dd a, h3 a, h5 a, td a, article.news-article div.tile-btn-primary a.read-article {
+/*p a, dd a, h3 a, h5 a, td a, article.news-article div.tile-btn-primary a.read-article {
   color: $primarylinkcolor;
   text-decoration: none;
   border-bottom:1px dotted;
   &:hover { color: $primarylinkhovercolor; text-decoration: none;}
-}
+}*/
 
 ::selection {
   background: $primarylinkcolor;
