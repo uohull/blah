@@ -1,19 +1,20 @@
 /* feedback */
 
 #feedback { 
-  width: 104px !important; 
-  top: 30%;
-  right: -36px;
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-bottom: 0;
+  border-image: none;
+  border-left: medium none;
+  border-right: medium none;
+  border-top: medium none;
+  bottom: -1px;
   float: none !important;
-  left: inherit !important;
+  left: 88px;
+  width: 104px !important;
   z-index: 999 !important;
-  bottom: inherit !important;
-  transform: rotate(-90deg);
-  -webkit-transform: rotate(-90deg); 
-  -moz-transform: rotate(-90deg); 
-  -o-transform: rotate(-90deg); 
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-  border: none;
   a { 
     display: block; 
     background: $altcolor; 
