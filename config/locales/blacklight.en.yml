@@ -113,6 +113,7 @@ en:
       mla: 'MLA'
       apa: 'APA'
       chicago: 'Chicago'
+      oscola: 'OSCOLA'
 
     email:
       form:
