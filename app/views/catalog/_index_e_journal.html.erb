@@ -3,10 +3,4 @@
 <%= display_field_within_element( document, 'author_addl_t' , element='h5') %>
 <%= display_field_within_element(document, 'pub_date' , element='h5') %>
 
-<dl class="dl-horizontal-left dl-invert">  
-      <% if document.has? 'format' %>
-        <dt class="blacklight-format">Format</dt>
-          <dd class="blacklight-format"><%= render_format_icon( document ) %>&nbsp;<%= render_index_field_value :document => document, :field => "format" %> </dd>
-      <% end %>
-      <%= display_electronic_journal_links(document) %>
-</dl>
+<%= display_electronic_journal_links(document) %>
