@@ -49,6 +49,10 @@ module Blacklight::Solr::Document::MarcExport
     harvard_citation( to_marc )
   end
 
+  def export_as_oscola_citation_txt
+    oscola_citation( to_marc )
+  end
+
   def export_as_vancouver_citation_txt
     vancouver_citation( to_marc )
   end
@@ -449,12 +453,173 @@ module Blacklight::Solr::Document::MarcExport
     text
   end
 
-  #Harvard locally added
+  # Local customisation of the Harvard citation type
   def harvard_citation(record)
     text = ''
+
+    if map?(record)
+      pub_info = setup_pub_info(record)
+      map_citation_prefix = pub_info.to_s.downcase.include?("ordnance survey") ?  'Ordnance Survey'  : ''
+      text = "#{map_citation_prefix} #{harvard_formatted_pub_date(record)} #{harvard_formatted_title(record)} #{map_info(record)} #{setup_pub_info(record)}."
+    elsif thesis?(record)
+      text = "#{harvard_formatted_author_list(record)} #{harvard_formatted_pub_date(record)} #{harvard_formatted_title(record)} #{thesis_info(record)}."    
+    elsif audiovisual?(record)
+      text = "#{harvard_formatted_title_field(record)} #{harvard_formatted_pub_date(record)} #{harvard_film_director(record)} #{av_format(record)}. #{setup_pub_info(record)}."    
+    else
+      text = "#{harvard_formatted_author_list(record)} #{harvard_formatted_pub_date(record)} #{harvard_formatted_title(record)} #{harvard_translated_statement(record)} #{setup_pub_info(record)}."    
+    end
+
+    text
+  end
+
+
+  # Local OSCOLA  citation type
+  def oscola_citation(record)
+    text = ''
+    edition = ''
+    publisher = ''
+
+    author_list = harvard_formatted_author_list(record)
+    author_list = "#{author_list.gsub(/&amp;/, 'and')}," unless author_list.empty?
+
+    edition = harvard_formatted_edition(record)
+    edition = "#{edition.gsub(/edition/, 'edn')}," unless edition.empty? 
+
+    # Just need the publisher name...
+    if record["260"] && record["260"]["b"]
+      publisher = "#{clean_end_punctuation(record["260"]["b"]).strip}"
+    end
+
+    if journal?(record)
+      title = setup_title_info(record)
+      # We remove any line ending fullstops for format flexibility
+      title =  title.gsub(/\.$/, '')
+      article_url = e_journal?(record) ?  "< < Article URL > > accessed < access date >" : ''
+      text = "< Article author >, '< Article title >',  (< Article year >) #{title} #{article_url}"
+    else
+      text = "#{author_list} #{harvard_formatted_title_field(record)} (#{edition} #{harvard_translated_statement(record)} #{publisher} #{setup_pub_date(record)})"
+    end
+
+    # remove any erroneous spaces from bracket
+    text = text.gsub(/\(\s*/, '(' ) 
+
+    return text
+   end
+
+
+  def harvard_film_director(record)
+    text = ''
+    director_name = "< Name of Director >"
+
+    statement = statement_of_responsibility(record)
+    if !statement.empty?
+      match_array = /(directed\sby\s)(.*)/.match(statement).to_a 
+      director = match_array.size == 3 ? match_array[2] : nil
+      director_name = director.gsub(/\.$/, '') unless director.nil? 
+    end
+    text = "Directed by #{director_name}"
+  end
+
+  # Retrieve the AV Format for a record - at present returns VHS/DVD
+  def av_format(record)
+    text = ''
+    format = "< AV Format >"
+    
+    # Get from 300a - Physcial descrption - Extent 
+    if record["300"] && record["300"]["a"]
+      extent = record["300"]["a"].downcase
+      if extent.include? "videotape"
+        format = "VHS"
+      elsif extent.include? "dvd"
+        format = "DVD"
+      end  
+    end
+
+    text = "[#{format}]"
+  end
+
+  # Combines the harvard formatted title, edition and record format (for certain types)
+  def harvard_formatted_title(record)
+    harvard_title = '' 
+
+    title = harvard_formatted_title_field(record)
+    edition = harvard_formatted_edition(record)
+    record_format = ebook?(record) ? '[eBook]' : audio_cd?(record) ? '[Audio CD]' : nil
+
+    if edition.empty?
+      harvard_title = "#{title}" 
+    else
+      harvard_title = "#{title}, #{edition}"
+    end
+     # Make sure that adding a record format keeps the spacing correct... 
+    if record_format 
+      harvard_title += " #{record_format}."
+    else
+      harvard_title += "."
+    end 
+
+     harvard_title
+  end
+
+  # Harvard formatted title (in italics) 
+  def harvard_formatted_title_field(record)
+    formatted_title = ''
+    # setup title info
+    title = setup_title_info(record)
+    # We remove any line ending fullstops for format flexibility
+    title =  title.gsub(/\.$/, '')
+
+    formatted_title =  '<i>' + title + '</i>' unless title.nil? 
+    formatted_title
+  end
+
+  # Attempt to create harvard translated statement from MARC data
+  def harvard_translated_statement(record)
+    translated_statement = ''
+    translated = false
+
+    statement = statement_of_responsibility(record)
+    translated =  statement.downcase.include?("translated")  unless statement.empty? 
+
+    if translated
+      original_language_from_marc = language_name_by_code( original_language_code(record) )
+      language = original_language_from_marc.nil? ?  "< Original language >" : original_language_from_marc
+      translated_statement = "Translated from #{language} by < Name of translator >, < date >."
+    end
+
+    translated_statement
+  end
+
+  # Format edition information for harvard citation
+  def harvard_formatted_edition(record)
+    edition_text = ''
+
+    # edition data, Replace ed with edition  only if "ed" exists, Some have trailing / so remove theses
+    edition_data = setup_edition(record)
+    edition_data = edition_data.include?("edition") ? edition_data : edition_data.gsub(/ed/, "edition") unless edition_data.nil?
+    edition_data = edition_data.gsub('/', '') unless edition_data.nil?
+    edition_text = edition_data.strip  unless edition_data.nil?
+    # We remove any line ending fullstops for format flexibility
+    edition_text =  edition_text.gsub(/\.$/, '')
+
+    edition_text
+  end
+
+ # Format pub_date for harvard citation
+ def harvard_formatted_pub_date(record)
+    pub_date = ''
+    # Get Pub Date
+    pub_date += "(" + setup_pub_date(record) + ") " unless setup_pub_date(record).nil?
+    pub_date
+ end
+
+  # Author list for the harvard citation
+  def harvard_formatted_author_list(record)
+    formatted_author_list = '' 
+
     authors_list = []
     authors_list_final = []
-    
+
     #setup formatted author list
     authors = get_author_list(record)
     authors.each do |l|
@@ -469,60 +634,12 @@ module Blacklight::Solr::Document::MarcExport
         authors_list_final.push(", " + l.strip)
       end
     end
-    text += authors_list_final.join
-    unless text.blank?
-      if text[-1,1] != "."
-        text += ". "
-      else
-        text += " "
-      end
-    end
-    # Get Pub Date
-    text += "(" + setup_pub_date(record) + ") " unless setup_pub_date(record).nil?
-    
-    # setup title info
-    title = setup_title_info(record)
+    formatted_author_list += authors_list_final.join
 
-    # edition data, Replace ed with edition  only if "ed" exists, Some have trailing / so remove theses
-    edition_data = setup_edition(record)
-    edition_data = edition_data.include?("edition") ? edition_data : edition_data.gsub(/ed/, "edition") unless edition_data.nil?
-    edition_data = edition_data.gsub('/', '') + " " unless edition_data.nil?
-
-    unless edition_data.nil? 
-      # When edition data exists, change the end of line . to a , 
-     title =  title.gsub(/\.$/, ",")
-    end
-
-    if ebook?(record) || audio_cd?(record)
-      title = title.gsub(/\.$/, "")
-    end 
-
-    text += "<i>" + title + "</i> " unless title.nil?
-    
-    # If a thesis treat differently to all others... 
-    if thesis?(record)
-      text +=  thesis_info(record)
-    else
-      if ebook?(record)
-        text += "[eBook]. "
-      elsif audio_cd?(record)
-        text += "[Audio CD]. "
-      end
-
-      text += edition_data + " " unless edition_data.nil?    
-
-      # Publisher info
-      text += setup_pub_info(record) unless setup_pub_info(record).nil?
-      unless text.blank?
-        if text[-1,1] != "."
-          text += "."
-        end
-      end
-
-    end
-
-    text
+    formatted_author_list
   end
+
+
 
    #Vancouver locally added
   def vancouver_citation(record)
@@ -758,7 +875,9 @@ module Blacklight::Solr::Document::MarcExport
    # Thesis helpers
   def thesis_info(record)
     text = ''
-    text = thesis_name(record) + thesis_university(record) + thesis_url(record)
+    url = thesis_url(record)
+    accessed_text = url.empty? ? '' : ' [< Accessed date >]'
+    text = thesis_name(record) + thesis_university(record) + url + accessed_text
   end
 
   # For thesis records get the info on the qualification from the call num...
@@ -810,6 +929,71 @@ module Blacklight::Solr::Document::MarcExport
     text
   end
 
+  def map_info(record)
+    text = ''
+
+    map_number = map_number(record)
+    map_scale = map_scale(record)
+    map_series = map_series(record)
+
+    text += map_number
+    text += ', '  unless map_number.empty? 
+    text += map_scale
+    text += '.' unless map_number.empty? && map_scale.empty?
+    text += " #{map_series}." unless map_series.empty? 
+    text  += ' '
+    text
+  end
+
+  def map_number(record)
+    text = ''
+    series_field = record.find{|f| f.tag == '440'}
+    number_field = series_field.find{|s| s.code == 'v'} unless series_field.nil? 
+    text = number_field.value unless number_field.nil? 
+    text
+  end
+
+  def map_scale(record)
+    text = ''
+    cart_field = record.find{|f| f.tag == '255'}
+    scale_field = cart_field.find{|s| s.code == 'a'} unless cart_field.nil? 
+    text = scale_field.value.gsub(/\.$/, "").strip unless scale_field.nil? 
+    text
+  end
+
+  def map_series(record)
+    text = ''
+    series_field = record.find{|f| f.tag == '440'}
+    series = series_field.find{|s| s.code == 'a'} unless series_field.nil? 
+    text = series.value unless series.nil? 
+    text = text.gsub(';', '').strip 
+    text
+  end
+
+  def statement_of_responsibility(record)
+    text = ''
+    title_statement_field = record.find{|f| f.tag == '245'}
+    statement_of_responsibility = title_statement_field.find{|s| s.code == 'c'} unless title_statement_field.nil? 
+    text = statement_of_responsibility.value unless statement_of_responsibility.nil? 
+    text
+  end
+
+  def original_language_code(record)
+    text = ''
+    language_field = record.find{|f| f.tag == '041'}
+    original_langauge_field = language_field.find{|s| s.code == 'h'} unless language_field.nil? 
+    text = original_langauge_field.value unless original_langauge_field.nil? 
+    text
+  end
+
+  def language_name_by_code(language_code)
+    begin 
+       return Blah::Utils::Language.find_by_code(language_code).name
+    rescue
+      return nil
+    end
+  end
+
   # @ is an ebook
   def ebook?(record)
     record_format(record) == "@"
@@ -821,6 +1005,22 @@ module Blacklight::Solr::Document::MarcExport
 
   def thesis?(record)
     record_format(record) == "t"
+  end
+
+  def map?(record)
+    record_format(record) == "f" ||  record_format(record) == "e"
+  end
+
+  def audiovisual?(record)
+    record_format(record) == "v" ||  record_format(record) == "d"
+  end
+
+  def journal?(record)
+    record_format(record) == "b" || record_format(record) == "o"
+  end
+
+  def e_journal?(record)
+    record_format(record) == "o"
   end
 
    # Return the record format code - empty string if nil
