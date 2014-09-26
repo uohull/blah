@@ -14,10 +14,8 @@
     <%= check_box_tag 'search-journals' %>&nbsp;Limit search to <strong>Journal titles</strong>
   <% end %>
 </p>
-<p>
-  <small>
-    <i class="icon icon-white icon-asterisk"></i>
-  <%= link_to 'Advanced search', params.merge(:controller=>"advanced", :action=>"index")%> 
-</small>
-</p>
+
+<div>
+  <%= link_to 'Advanced search', params.merge(:controller=>"advanced", :action=>"index"), :class => 'btn square-corners advanced-search-link' %> 
+</div>
 <% end %>

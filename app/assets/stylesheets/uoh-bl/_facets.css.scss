@@ -39,6 +39,10 @@
   }
   h5 {
     color: $neutralcolordark;
+    a { 
+      background: #efefef;
+      &hover { background: #d9d9d9 };
+    }
   }
 }
 
@@ -86,14 +90,16 @@
     vertical-align: baseline;
 }
 
-
 /* Adds space around the Blacklight Limit facet panel */
 .limit_content {
-    padding-left: 1em !important;
-    padding-right: 1em !important;
-    padding-top: 0.5em !important;
+  padding-left: 1em !important;
+  padding-right: 1em !important;
+  padding-top: 0.5em !important;
 
-    .current {
-        padding-bottom: 0.5em;
-    }
+  .current {
+      padding-bottom: 0.5em;
+}
+
+.twiddle > a {
+    background: none repeat scroll 0 0 transparent !important;
 }

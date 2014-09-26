@@ -187,6 +187,38 @@ module BlahHelper
     display_field.html_safe
   end
 
+  def display_online_link(document, solr_fname, opts={} )
+
+    display_field = ""
+
+    if document.has? solr_fname
+      # if we are display it as a link....    
+      if opts[:display_as_link]
+        # We deal with multi-valued fields (multi-links)
+        field_value = document.get(solr_fname, sep: nil)        
+        unless field_value.nil? || field_value.empty?
+          display_value = "" 
+          if opts[:render_icon]
+            field_value.each_with_index { |v,i| display_value.concat( "<i class='icon-globe'></i>  <a href='#{v}' >#{opts[:link_text]} #{i+1 if field_value.size > 1 }</a><br/>") }
+          else
+            field_value.each_with_index { |v,i| display_value.concat( "<a href='#{v}' >#{opts[:link_text]} #{i+1 if field_value.size > 1 }</a><br/>") }
+          end
+        end
+      else
+        # Normal display (with the options of displaying encoded html)
+        field_value = render_index_field_value(:document => document, :field => solr_fname, :seperator => opts[:seperator])
+        display_value = opts[:contains_encoded_html] ? field_value.gsub(/&lt\;/, "<").gsub(/&gt\;/, ">") : field_value
+      end
+
+     display_field = <<-EOS
+        <div>#{display_value}</div>
+      EOS
+
+    end
+
+    display_field.html_safe
+  end
+
   #search_catalog_link - creates blacklight search link with the given search_query and search_field
   def search_catalog_link(text, search_query, search_field, link_class=nil, exact_match=false)
    search_query = "\"#{search_query}\"".html_safe if exact_match 
