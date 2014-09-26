@@ -8,7 +8,7 @@
           <% end %>
         </div>        
       </div>
-      <div class="span10 page-gutter">
+      <div class="span11 page-gutter">
         <h4 class="remove-margin-top">
           <%= t('blacklight.search.documents.counter', :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
           <%# document_show_link_proc - See BlahHelper (Returns a title or title/sub-title combined) %>
@@ -18,10 +18,8 @@
         <%= render_document_partial document, :index, :document_counter => document_counter  %>
       </div>
          
-      <div class="span4"> 
-        <span class="pull-right">
-          <%= render :partial => 'document_tools', :locals => { :document => document, :document_counter => document_counter } %>
-        </span>
+      <div class="span3 item-panel-right">
+        <%= render :partial => 'document_tools', :locals => { :document => document, :document_counter => document_counter } %>
       </div> 
 
 </div>

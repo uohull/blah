@@ -60,7 +60,7 @@
         <div id="background-container-form" class="container">
       <% end %>
 
-        <div class="container">    
+  
           <% if !(current_page?(controller: 'home', action: 'show')) %>
             <div id="form-container">
           <% end %>
@@ -83,7 +83,7 @@
           <% if !(current_page?(controller: 'home', action: 'show')) %>
             </div>
           <% end %>
-        </div>  
+
       </div>
         <%= render :partial => 'shared/feedback_element' %>
     </div>
