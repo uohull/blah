@@ -23,3 +23,17 @@ ul.nav li.menu-item a {
     color: $neutralcolordark;
     padding: 8px 14px;
 }
+
+
+/*@media (max-width: 769px), (max-width: 1200px) { 
+   .profile { display: none !important }
+}*/
+
+
+/* Fix for date range limit - remove display on tablet due to sizing issues */
+@media (max-width: 1200px) and (min-width: 769px) { 
+   .profile { display: none !important }
+   form.range_limit input.range_begin, form.range_limit input.range_end {
+    width: 40px !important;
+  }
+}
