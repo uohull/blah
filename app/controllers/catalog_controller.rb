@@ -3,8 +3,6 @@ require 'blacklight/catalog'
 
 class CatalogController < ApplicationController
   include BlacklightGoogleAnalytics::ControllerExtraHead
-  
-
   include Blacklight::Catalog
 
   #Manually add spam tool...
@@ -59,7 +57,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'author_facet', :label => 'Author', :limit => 10
     config.add_facet_field 'format', :label => 'Format', :limit => 10
     config.add_facet_field 'library', :label => 'Library Location', :limit => 10
-    config.add_facet_field 'pub_date', :label => 'Publication Year', :limit => 10
+    config.add_facet_field 'pub_date_sort', :label => 'Publication Year', :range => true
     config.add_facet_field 'subject_topic_facet', :label => 'Subject', :limit => 10
     config.add_facet_field 'language_facet', :label => 'Language', :limit => 10
     config.add_facet_field 'subject_geo_facet', :label => 'Region', :limit => 10

@@ -49,6 +49,10 @@ GEM
       blacklight (~> 4.0)
       parslet
     blacklight_google_analytics (0.0.1.pre3)
+    blacklight_range_limit (2.2.0)
+      blacklight (~> 4.0)
+      jquery-rails
+      rails (>= 3.0, < 5.0)
     blankslate (2.1.2.4)
     bootstrap-sass (2.2.2.0)
       sass (~> 3.2)
@@ -178,6 +182,7 @@ DEPENDENCIES
   blacklight (= 4.7.0)
   blacklight_advanced_search (~> 2.1.1)
   blacklight_google_analytics (~> 0.0.1.pre2)
+  blacklight_range_limit (~> 2.2.0)
   bootstrap-sass (~> 2.2.0)
   byebug
   coffee-rails (~> 3.2.1)

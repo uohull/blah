@@ -34,8 +34,8 @@ gem 'connection_pool', '~> 1.1.0'
 
 gem 'blacklight', '4.7.0'
 gem 'blacklight_advanced_search', '~> 2.1.1'
-#Blacklight google analytics plugin by Jason Ronallo
 gem 'blacklight_google_analytics', '~> 0.0.1.pre2'
+gem 'blacklight_range_limit', '~> 2.2.0'
 
 group :development, :test do
   gem 'sqlite3'

@@ -39,6 +39,17 @@
         </div>
       <% end %>
 
+      <div class="form-group advanced-search-facet">
+        <%= label_tag "publication_date", :class => "col-sm-3 control-label" do %>
+            Date range:
+        <% end %>
+
+        <div class="col-sm-9">
+            <%= render_range_input("pub_date_sort", :begin) %> - <%= render_range_input("pub_date_sort", :end) %>      
+        </div>
+      </div>
+
+
       <div class="limit_column column">      
         <h3>Sort <small>Results by</small></h3>
       </div> 

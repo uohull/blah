@@ -85,3 +85,15 @@
     padding: 6px 10px !important;
     vertical-align: baseline;
 }
+
+
+/* Adds space around the Blacklight Limit facet panel */
+.limit_content {
+    padding-left: 1em !important;
+    padding-right: 1em !important;
+    padding-top: 0.5em !important;
+
+    .current {
+        padding-bottom: 0.5em;
+    }
+}
