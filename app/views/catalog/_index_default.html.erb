@@ -5,5 +5,4 @@
 <%= display_field_within_element(document, 'edition_display' , element='small') %>
 
 <%= jquery_holdings_display(document.id) %>
-
-<%= display_field(document, 'url_fulltext_display', 'Online', 'online', {:display_as_link => true, :link_text => 'Access this resource online'}) %>
+<%= display_full_text_links(document) %>

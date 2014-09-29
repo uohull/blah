@@ -141,16 +141,13 @@ module BlahHelper
   end
 
   def render_online_resources_partial(document)
-
     #Get the url fields...        
-    journal_url_display = document.get('journal_url_display', :sep => nil)
-    full_text_url = document.get('url_fulltext_display', :sep => nil)
-    
+    full_text_url_display = document.get('url_fulltext_display', :sep => nil)
+
     #Check online resources exist...
-    unless journal_url_display.nil? && full_text_url.nil?
+    unless full_text_url_display.nil?
       render :partial => 'catalog/online_resources'
     end
-
   end
 
   def display_field(document, solr_fname, label_text='', dd_class=nil, opts={} )
@@ -283,30 +280,13 @@ module BlahHelper
     #Lets look in all the usual fields...
 
     ###########################################################################
-    # Full Text URLs - Some resources link to Full text                       #
-    ###########################################################################
-
-    full_text_url = document.get('url_fulltext_display', :sep => nil)
-
-    unless full_text_url.nil?
-      full_text_url.each do |url|
-        render_online_resources << <<-EOS
-        <tr>
-         <td class="table-td-title">Link</td>
-         <td class="table-td-data"><a href="#{url}">#{title_display}</a></td>
-        </tr>
-        EOS
-      end
-     end
-
-    ###########################################################################
-    # Electronic Journal Links - Usually just in E-Journals                   #
+    # Full Text URLs - E-Journals, E-Books, and others..                                   #
     ###########################################################################
 
     # Check the document for electronic_journal_links using get_electronic_journal_links_from_document helper
-    electronic_journal_links = get_electronic_journal_links_from_document(document)
-    unless electronic_journal_links.empty?
-      electronic_journal_links.each do |link|
+   full_text_links = get_full_text_links_from_document(document)
+    unless full_text_links.empty?
+      full_text_links.each do |link|
         render_online_resources << <<-EOS
           <tr>
            <td class="table-td-title">Link</td>
@@ -368,41 +348,43 @@ module BlahHelper
 
   # Display Electronic Journals Links with dt/dd fields
   # This is primarily used in the _index_e_journal partial
-  def display_electronic_journal_links(document)
-    display_electronic_journal_links = ""
+  def display_full_text_links(document)
+    display_full_text_links = ""
     
-    links = get_electronic_journal_links_from_document(document)
+    links = get_full_text_links_from_document(document)
     unless links.empty?
+      display_full_text_links += '<h4>Online</h4>'
+      display_full_text_links += '<ul>'
       links.each do |link|
-        display_electronic_journal_links << <<-EOS
-          <dt class="document-link-dd">Online</dt>
-          <dd class="document-link-dd">#{link}</dd>
+        display_full_text_links << <<-EOS
+          <li>#{link}</li>
         EOS
       end
+      display_full_text_links += '</ul>'
     end
 
-    display_electronic_journal_links.html_safe
+    display_full_text_links.html_safe
   end
 
   # Returns an array of electronic Journal 'a' tag links from the Solr document
-  # Uses the 'journal_url_display' multi solr field which stores in the form: url|link_label
-  def get_electronic_journal_links_from_document(document)
-    electronic_journal_links = []
+  # Uses the 'url_fulltext_display' multi solr field which stores in the form: url|link_label
+  def get_full_text_links_from_document(document)
+    full_text_links = []
 
-    journal_url_display = document.get('journal_url_display', :sep => nil)
+    fulltext_url_display = document.get('url_fulltext_display', :sep => nil)
 
-    unless journal_url_display.nil?
-      journal_url_display.each do |url_display|      
+    unless fulltext_url_display.nil?
+      fulltext_url_display.each do |url_display|      
         if url_display.include? "|"
           url_label = url_display.split("|")          
-          electronic_journal_links << "<a href='#{url_label.first}'>#{url_label.last}</a>"
+          full_text_links << "<a href='#{url_label.first}'>#{url_label.last}</a>"
         else
-          electronic_journal_links << "<a href='#{url_display}'>Link</a>"
+          full_text_links << "<a href='#{url_display}'>Link</a>"
         end
       end
     end
 
-    return electronic_journal_links
+    return full_text_links
   end
 
 

@@ -129,3 +129,12 @@
 }
 
 .item-panel-right hr { width: 124px;}
+
+/* List style for the download links in search results */
+.document { 
+  ul {
+    margin-left: 0;
+    list-style: none;
+
+  }
+}

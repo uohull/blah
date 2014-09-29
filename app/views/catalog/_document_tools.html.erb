@@ -1,17 +1,13 @@
 <div>
+  <%= link_to document, :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) do %>
+      <span class="label label-success"><i class="icon-info-sign icon-white"></i>&nbsp;View Record</span>
+  <% end %>
 
-    <%= link_to document, :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) do %>
-        <span class="label label-success"><i class="icon-info-sign icon-white"></i>&nbsp;View Record</span>
-    <% end %>
+  <hr>
 
-    <hr>
+  <% if document.has? 'format' %>
+    <%= render_format_icon( document ) %>&nbsp; <%= render_index_field_value :document => document, :field => "format" %>
+  <% end %>
 
-    <% if document.has? 'format' %>
-      <%= render_format_icon( document ) %>&nbsp; <%= render_index_field_value :document => document, :field => "format" %>
-    <% end %>
-
-    <%= display_call_number(document, {:render_icon => true} ) %>
-
-    <%#= display_field(document, 'url_fulltext_display', 'Online', 'online', {:display_as_link => true, :link_text => 'Access this resource online'}) %>
-
+  <%= display_call_number(document, {:render_icon => true} ) %>
 </div>

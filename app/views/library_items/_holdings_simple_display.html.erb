@@ -8,7 +8,7 @@
   <dl class="defList"> 
     <% @library_item.holdings_records_collection.sort!{ |x,y| x.availability <=> y.availability }%>
     <% @library_item.holdings_records_collection.each_with_index do |holding_record, index| %>
-      <dt></dt>
+    <dt></dt>
       <dd>
         <small>
           <% if index > 20 %>
@@ -20,7 +20,9 @@
               <% if available then %>
                 <i title="Available" id="icon-holding-available" class="icon-ok icon-white"> </i> &nbsp; 
               <% else %>
-                <i title="Not available" id="icon-holding-unavailable" class="icon-remove icon-white"></i>&nbsp; <%= holding_record.availability %> &nbsp; 
+                <% # Set the availability statement %>
+                <% availability = holding_record.availability.downcase.include?("lib use only")  ? "Use in Library only -" : holding_record.availability  %>
+                <i title="Not available" id="icon-holding-unavailable" class="icon-remove icon-white"></i>&nbsp; <%= availability %> &nbsp; 
               <% end %>
               <% # Display the local location (class number) only if it is available %>
               <%= holding_record.local_location %>&nbsp;<%= "- #{ holding_record.call_number }" if available  %>

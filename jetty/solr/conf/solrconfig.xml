@@ -892,7 +892,6 @@
          subtitle_vern_display,
          url_fulltext_display,
          url_suppl_display,
-         journal_url_display,
          journal_url_coverage_display,
          edition_display,
        </str>
