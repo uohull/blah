@@ -379,7 +379,7 @@ module BlahHelper
           url_label = url_display.split("|")          
           full_text_links << "<a href='#{url_label.first}'>#{url_label.last}</a>"
         else
-          full_text_links << "<a href='#{url_display}'>Link</a>"
+          full_text_links << "<a href='#{url_display}'>Access this resource online</a>"
         end
       end
     end
