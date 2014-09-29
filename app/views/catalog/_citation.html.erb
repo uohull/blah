@@ -6,7 +6,7 @@
   <hr/>
   <h4><%= t('blacklight.citation.harvard') %></h4>
   <%= document.send(:export_as_harvard_citation_txt).html_safe %><br/><br/>
-  <p>Further information about Harvard Referencing can be found <%= link_to "here", "http://www2.hull.ac.uk/lli/referencing/harvard.html",  :target => "_blank" %></p>
+  <p><%= link_to "Harvard Referencing assistance", "http://www2.hull.ac.uk/lli/referencing/harvard.html" %></p>
 <%- end -%>
 
 <% #Local OSCOLA Law style citation -%>
@@ -14,14 +14,14 @@
    <hr/>
   <h4><%= t('blacklight.citation.oscola') %></h4>
   <%= document.send(:export_as_oscola_citation_txt).html_safe %><br/><br/>
-  <p>Further information about OSCOLA Referencing can be found <%= link_to "here", "http://www2.hull.ac.uk/lli/skills_team/referencing/oscola.aspx",  :target => "_blank"  %></p>
+  <p><%= link_to "OSCOLA Referencing assistance", "http://www2.hull.ac.uk/lli/skills_team/referencing/oscola.aspx" %></p>
 <%- end -%>
 
 <% if document.respond_to?(:export_as_apa_citation_txt) %>
    <hr/>
   <h4><%= t('blacklight.citation.apa') %></h4>
   <%= document.send(:export_as_apa_citation_txt).html_safe %><br/><br/>
-  <p>Further information about APA Referencing can be found <%= link_to "here", "http://www2.hull.ac.uk/lli/skills_team/referencing/apa.aspx",  :target => "_blank"  %></p>
+  <p><%= link_to "APA Referencing assistance", "http://www2.hull.ac.uk/lli/skills_team/referencing/apa.aspx" %></p>
 <% end %>
 
 <% end %>
