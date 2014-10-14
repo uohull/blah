@@ -555,7 +555,6 @@
     <!-- These files have been localised to be multi-valued -->
    <field name="title_display" type="string" indexed="false" stored="true" multiValued="true"/>
    <field name="subtitle_display" type="string" indexed="false" stored="true" multiValued="true"/>
-   <field name="author_display" type="string" indexed="false" stored="true" multiValued="true"/>
 
    <!-- these display fields are NOT multi-valued -->
    <field name="marc_display" type="string" indexed="false" stored="true" multiValued="false"/>
@@ -671,7 +670,6 @@
    <copyField source="title_series_t" dest="title_series_unstem_search"/>
    <copyField source="author_t" dest="author_unstem_search"/>
    <copyField source="author_addl_t" dest="author_addl_unstem_search"/>
-   <copyField source="author_t" dest="author_facet"/>
    <copyField source="subject_t" dest="subject_unstem_search"/>
    <copyField source="subject_addl_t" dest="subject_addl_unstem_search"/>
    <copyField source="subject_topic_facet" dest="subject_topic_unstem_search"/>

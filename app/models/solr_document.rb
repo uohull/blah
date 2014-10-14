@@ -26,7 +26,7 @@ class SolrDocument
   use_extension( Blacklight::Solr::Document::DublinCore)    
   field_semantics.merge!(    
                          :title => "title_display",
-                         :author => "author_display",
+                         :author => "author_t",
                          :language => "language_facet",
                          :format => "format"
                          )

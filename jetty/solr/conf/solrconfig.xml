@@ -868,7 +868,7 @@
        <str name="fl">
          id, 
          score,
-         author_display,
+         author_t,
          author_vern_display,
          author_addl_t,
          format, 
@@ -1087,7 +1087,7 @@
       <str name="fl">
         id, 
         score,
-        author_display,
+        author_t,
         author_vern_display, 
         format, 
         isbn_t, 
