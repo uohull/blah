@@ -107,7 +107,7 @@ module LibraryItemsHelper
           <tbody>
               <tr>
                 <th>Location</th>
-                <th>Class number</th>
+                <th>Classmark</th>
                 <th>Status</th>
               </tr>        
         EOS
