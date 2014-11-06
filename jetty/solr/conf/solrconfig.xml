@@ -894,6 +894,7 @@
          url_suppl_display,
          journal_url_coverage_display,
          edition_display,
+         access_info_display
        </str>
 
        <str name="facet">true</str>
