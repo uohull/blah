@@ -5,8 +5,9 @@
   <% if !@library_item.nil? && @library_item.inter_library_loan? %>
     <p>Available through <%= link_to "Inter-Library Loan", inter_library_loan_url %></p>
   <% end %>
-  <dl class="defList"> 
-    <% @library_item.holdings_records_collection.sort!{ |x,y| x.availability <=> y.availability }%>
+  <dl class="defList">
+    <% sort_holdings_collection(@library_item.holdings_records_collection) %>
+    
     <% @library_item.holdings_records_collection.each_with_index do |holding_record, index| %>
     <dt></dt>
       <dd>

@@ -163,6 +163,14 @@ module LibraryItemsHelper
 
   end
 
+  # Holdings are now sorted based upon Call number + availability 
+  # This will sort the collection itself (does not copy)
+  def sort_holdings_collection(holdings_collection)
+    unless holdings_collection.nil? && !holdings_collection.respond_to?(:sort)
+      holdings_collection.sort!{ |x,y| "#{x.call_number} #{x.availability}" <=> "#{y.call_number} #{y.availability}" }
+    end
+  end
+
   def catalogue_opac_addr
     APP_CONFIG['catalogue_opac_address']
   end
