@@ -13,7 +13,7 @@
           <%= display_field_search_link(document, 'subject_t', 'Subject', 'subject', 'subject-link', 'subject') %>
           <%= display_field(document, 'lc_callnum_display', 'Call number', 'call') %>
           <%= display_field(document, 'coverage_display', 'Coverage', 'coverage') %>
-          <%= display_field(document, 'additional_info_display', 'Additional information', 'add-info') %>
+          <%= display_field(document, 'additional_info_display', 'Additional information', 'add-info', {:contains_encoded_html => true}) %>
         </dl>
         <h5>Access information</h5>
         <dl class="dl-horizontal dl-invert">
