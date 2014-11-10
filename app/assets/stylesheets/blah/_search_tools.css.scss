@@ -1,0 +1,7 @@
+
+#searchHelp {
+    margin: 0;
+    .accordion-group { border: none; }
+    .accordion-heading .accordion-toggle { padding: 8px 15px 8px 0px; text-decoration: none; &:hover { text-decoration: none; }}
+    .accordion-inner { border: none; padding: 8px 15px 8px 0px; }
+}

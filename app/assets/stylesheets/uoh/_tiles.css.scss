@@ -112,6 +112,15 @@
     }
 }
 
+.tile-flat-green {
+  color: #fff;
+  background-color: #51a351;
+  a {
+      color: $lightlink;
+      &:hover { color: darken($lightlink, 15%);}
+    }
+}
+
 .tile-orange {
   color: #fff;
   background-color: #cb812a;

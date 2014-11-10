@@ -1,34 +1,37 @@
 <% #Using the Bootstrap Pagination class -%>
-<% if @previous_document || @next_document %>
 <div class="well" id="previousNextDocument">
-<h3>
-	<small>
-    	<span class="hidden-phone">
-    	<%= link_to_previous_document @previous_document %>
+  <h3>
+  	<small>
+
+          <% if @previous_document || @next_document %>
+
+              <span class="hidden-phone">
+               <%= link_to_previous_document @previous_document %>
+              </span>
+
+              <span class="vertical-divider hidden-phone"></span>
+
+              <span class="hidden-phone">
+                <span>
+                  <%= item_page_entry_info %>
+                </span>
+                <span class="vertical-divider"></span>
+              </span>
+
+              <span class="hidden-phone">
+              	<%= link_to_next_document @next_document %>
+              </span>
+
+              <span class="vertical-divider hidden-phone"></span>
+
+        <% end %>
+
+  	<span>
+          <%= link_back_to_catalog %>
+          <span class="vertical-divider"></span>
+          <%=link_to "#{t('blacklight.search.start_over')}", root_path, :id=>"startOverLink" %>
     	</span>
-
-    <span class="vertical-divider hidden-phone"></span>
-
-    <span class="hidden-phone">
-      <span>
-        <%= item_page_entry_info %>
-      </span>
-      <span class="vertical-divider"></span>
-    </span>
-
-    <span class="hidden-phone">
-    	<%= link_to_next_document @next_document %>
-    </span>
-
-	<span class="vertical-divider hidden-phone"></span>
-
-	<span>
-      <%= link_back_to_catalog %>
-      <span class="vertical-divider"></span>
-      <%=link_to "#{t('blacklight.search.start_over')}", root_path, :id=>"startOverLink" %>
-  	</span>
-
-  </small>
-</h3>
+      
+    </small>
+  </h3>
 </div>
-<% end %>

@@ -15,6 +15,8 @@
 // Bootstrap plugin
 //= require bootstrap-tooltip
 //= require bootstrap-dropdown
+//= require bootstrap-transition
+//= require bootstrap-collapse
 // Required by Blacklight
 //= require blacklight/blacklight
 //= require_tree .
