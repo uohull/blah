@@ -101,3 +101,19 @@ ul.nav li.menu-item {
 .advanced-search-link {
     color: #333 !important;
 }
+
+p a, dd a, h3 a, h4 a, h5 a, td a, article.news-article div.tile-btn-primary a.read-article{
+  color: $primarylinkcolor;
+  text-decoration: none;
+  border-bottom:1px dotted transparent;
+  &:hover { color: $primarylinkhovercolor; text-decoration: none; border-bottom:1px dotted;}
+}
+
+.link-hover { 
+  border-bottom: 1px dotted transparent; 
+  text-decoration: none; 
+  &:hover { 
+    text-decoration: none;  
+    border-bottom: 1px dotted; 
+  }
+}

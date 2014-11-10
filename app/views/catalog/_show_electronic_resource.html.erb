@@ -1,33 +1,27 @@
 <div class="row-fluid">
-  <div id="document-header" class="span12">
-    <%= render_document_heading.html_safe %>
-    <%= display_field_within_element(document, 'format' , element='h5') %>
+  <div id="document-header" class="span16">
+    <%= render_document_heading(:h2).html_safe %> 
   </div>
 </div>
 <div class="row-fluid">
      <div class="span12">
-        <h5>Record</h5>
-        <dl class="dl-horizontal dl-invert">
+        <h3>Record</h3>
+        <dl class="dl-vertical-left  dl-invert">
           <%= display_field(document, 'description_display', 'Description', 'description', {:contains_encoded_html => true}) %>
           <%#= display_field(document, 'subject_t', 'Subject', 'subject') %>
           <%= display_field_search_link(document, 'subject_t', 'Subject', 'subject', 'subject-link', 'subject') %>
+          <%= display_field(document, 'format', 'Format', 'format') %>
           <%= display_field(document, 'lc_callnum_display', 'Call number', 'call') %>
           <%= display_field(document, 'coverage_display', 'Coverage', 'coverage') %>
-          <%= display_field(document, 'additional_info_display', 'Additional information', 'add-info', {:contains_encoded_html => true}) %>
         </dl>
-        <h5>Access information</h5>
-        <dl class="dl-horizontal dl-invert">
+        <h3>Access information</h3>
+        <dl class="dl-vertical-left  dl-invert">
           <%= display_field(document, 'access_info_display', 'Access', 'access-info', {:contains_encoded_html => true}) %>
           <%= display_field(document, 'auth_users_display', 'Authorised users', 'auth-users') %>
           <%= display_field(document, 'published_vern_display', 'Published', 'pub') %>
           <%= display_field(document, 'isbn_t', 'ISBN', 'isbn') %>
           <%= display_field(document, 'terms_display', 'Terms of use', 'terms', {:contains_encoded_html => true}) %>
+          <%= display_field(document, 'additional_info_display', 'Additional information', 'add-info', {:contains_encoded_html => true}) %>
         </dl>
      </div>
 </div>
-
-
-
-
-
-
