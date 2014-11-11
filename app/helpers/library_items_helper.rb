@@ -163,6 +163,27 @@ module LibraryItemsHelper
 
   end
 
+  # Returns a holdings icon and appropiate text for a given availability, location, call_number
+  def holdings_icon(availability_status, location, call_number)
+    holdings_icon = ''
+
+    available = availability_status.downcase =~ /available/
+
+    if available
+       holdings_icon = '<i title="Available" id="icon-holding-available" class="icon-ok icon-white"> </i>&nbsp; '
+     else
+        if  availability_status.downcase.include?("lib use only")
+         holdings_icon = '<i title="Use in Library only" id="icon-holding-unavailable" class="icon-chevron-right icon-white"> </i> &nbsp;Use in Library only -&nbsp;'
+        else
+         holdings_icon = '<i title="Not available" id="icon-holding-unavailable" class="icon-remove icon-white"></i>&nbsp;' + availability_status + '&nbsp;' 
+        end
+     end
+     holdings_icon << location
+     holdings_icon <<  "&nbsp;- #{call_number}"  if available 
+
+     holdings_icon.html_safe  
+  end
+
   # Holdings are now sorted based upon Call number + availability 
   # This will sort the collection itself (does not copy)
   def sort_holdings_collection(holdings_collection)

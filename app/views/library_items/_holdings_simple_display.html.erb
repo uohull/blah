@@ -16,17 +16,7 @@
             <i title="More available" id="icon-holding-more" class="icon-plus icon-white"></i><%= link_to "View record", catalog_path(@library_item.bib_no) %> to check for more items
             <% break %>
           <% else %>
-              <% # Set available to true if availability is 'available' else false... %>
-              <%  holding_record.availability.downcase =~ /available/ ? available = true : available = false %>
-              <% if available then %>
-                <i title="Available" id="icon-holding-available" class="icon-ok icon-white"> </i> &nbsp; 
-              <% else %>
-                <% # Set the availability statement %>
-                <% availability = holding_record.availability.downcase.include?("lib use only")  ? "Use in Library only -" : holding_record.availability  %>
-                <i title="Not available" id="icon-holding-unavailable" class="icon-remove icon-white"></i>&nbsp; <%= availability %> &nbsp; 
-              <% end %>
-              <% # Display the local location (class number) only if it is available %>
-              <%= holding_record.local_location %>&nbsp;<%= "- #{ holding_record.call_number }" if available  %>
+              <%= holdings_icon(holding_record.availability, holding_record.local_location, holding_record.call_number) %> 
           <% end %>
         </small>
       </dd>
