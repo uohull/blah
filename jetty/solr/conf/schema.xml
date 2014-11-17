@@ -504,6 +504,8 @@
           <tokenizer class="solr.WhitespaceTokenizerFactory" />
            <filter class="solr.LowerCaseFilterFactory" />
            <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="([\s|\W])" replacement=""/>
+             <!-- Added the stopword factory - we were running into the issue described here http://bibwild.wordpress.com/2010/04/14/solr-stop-wordsdismax-gotcha/  -->
+           <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt"/>
        </analyzer>
      </fieldType>
 
