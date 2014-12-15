@@ -1,60 +1,54 @@
-h1. Bl@h - Blacklight at Hull
+h1. Blah - Blacklight at Hull
 
-Bl@h is the University of Hull's instance of the blacklight search and discovery interface.  For more information about Blacklight...
+Blah is the University of Hull's instance of the blacklight search and discovery interface.  For more information about Blacklight...
 
 Blacklight Project site: "http://projectblacklight.org/":http://projectblacklight.org/
 Blacklight github: "https://github.com/projectblacklight/blacklight:":https://github.com/projectblacklight/blacklight
 
-h2. Requirements
+h2. Requirements/recommendations
 
-ruby-1.9.3-p547 (recommended)
+ruby-2.1.2 (recommended)
 java 1.5 or higher (in order to run solr under a jetty)
 RVM (recommended for development)
 
 In addition, you should have Bundler and Rails ruby gems installed:
 
 <pre>gem install bundler
-gem install rails
-</pre>
+  gem install rails</pre>
 
 h2. Installation guide
 
-<pre>
-git clone git@github.com:uohull/blah.git
-</pre>
+<pre>git clone git@github.com:uohull/blah.git</pre>
 
 Change the current directory to "blah"
 
-The project includes a .rvmrc file which will define a Ruby version and gemset that should be used for the project.  In this case ruby-1.9.3-p547 and gemset 'blah'.  
+The project includes .ruby-version and .ruby-gemset files which will define a Ruby version and gemset that should be used for the project. In this case ruby-2.1.2 and gemset 'blah' is specified.  
 
 To install the required gems, execute:
-<pre>
-bundle install
-</pre>
+<pre>bundle install</pre>
 
 To create the necessary blacklight database tables, run the database migrations:
-<pre>
-rake db:migrate
-</pre>
+<pre>rake db:migrate</pre>
 
 h2. Running...
 
-The configurations for the Blah application are stored in config/blah_config.yml.
-
 To run you must first ensure that the local Solr server is running, by navigating blah/jetty directory and..
-<pre>
-java -jar start.jar &
-</pre>
-
-Index test MARC records using the existing rake task...
-<pre>rake solr:marc:index_test_data</pre>
+<pre>java -jar start.jar &</pre>
 
 Start the rails application:
 <pre>rails server</pre>
 
-h2. Indexing test data
+h4. Index MARC records
 
-h3. Electronic resources
+For Blacklight at Hull we utilise the popular MARC to Solr utility SolrMarc.  Hull has taken the source distribution of SolrMarc and added some custom indexing routines to deal with local MARC choices, along with a customised index_properties file.  Hull's SolrMarc instance "blah-solrmarc" can be found at "https://github.com/uohull/blah-solrmarc":https://github.com/uohull/blah-solrmarc .
+
+To ease the deployment of Blah in a development environment.  The distribution jars, and configurations from the blah-solrmarc project have been added to this project.  In order to utilise the customised solrmarc configuration; the index MARC records rake task can be run as (from the root of the blah directory):
+
+<pre>rake solr:marc:index MARC_FILE=MARC_RECORDS_FILE CONFIG_PATH=config/SolrMarc/config.properties SOLRMARC_JAR_PATH=config/SolrMarc/SolrMarc.jar</pre>
+
+*Note:* It is recommended that any changes to the Indexing configurations are done via the blah-solrmarc project and then copied to this project to keep in sync.   
+
+h4. Index electronic resources
 
 Electronic resources are indexed into solr from a locally produced csv file. A sample file is located in test/fixtures/e-resource.csv (this is used in the examples below).  The following rake tasks exist.  
 
@@ -66,6 +60,11 @@ To Delete electronic resources from the index...
 
 To delete, and then re-index a csv...
 <pre>rake blah:electronic_resources:delete_and_index_data  CSV_FILE_PATH=./test/fixtures/e-resources.csv</pre>
+
+
+h3. Configurations
+
+The Blah project has a number of configurations for things like contact form email addresses, z39 connections pooling, syndetics client code, available record types etc...  These can be found the config/blah_config.yml file. *Note:* there are options for configuring for the environment, ie. development, test, production.  
 
 Setting the RAILS_ENV variable will utilise the Solr instance attached to the rails env (defined in config/solr.yml) i.e.
 <pre># This will delete existing electronic resources and then index the electronic resources data into the production instance of solr specified in solr.yml
