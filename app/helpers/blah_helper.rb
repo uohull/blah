@@ -526,4 +526,55 @@ ep_from_display" => "Item seperate from", "continued_by_display" => "Item contin
     APP_CONFIG['inter_library_loan_address']
   end
 
+  def render_document_index_with_view view, documents, locals = {}
+#    documents_orig = Array.new
+#    documents_orig = documents.dup
+    #documents holds items returned from search in relevancy order. sorted_documents will hold items after secondary ordering.
+    sorted_documents = Array.new
+
+    #while there are items in the documents array
+    while documents.length != 0 do
+      temp_documents = Array.new #array to temporarily hold documents with same lc_callnum_display which will be sorted 
+      temp_documents.push(documents.shift) #remove first element of documents and add to temp_documents
+
+      element1 = temp_documents[0]
+
+      iter_documents = 0
+      #search document array for items with library catalogue numbers that match the item pushed onto temporary array
+      while iter_documents < documents.length 
+        element2 = documents[count3] 
+
+        #if item with matching catalogue number found, push onto temporary array and delete from document array
+        #could use element2["lc_callnum_display"]
+        if element2.get('lc_callnum_display') != nil && (element2.get('lc_callnum_display') ==  element1.get('lc_callnum_display')) 
+          temp_documents.push documents.delete_at(count3)
+          iter_documents -= 1 #reduce iterator as ab iten has been removed
+        end
+        iter_documents += 1 
+      end #while count3 < documents.length
+
+      #sort temp_documents. Note location of x & y to reverse sort
+      temp_documents = temp_documents.sort {|y, x| x.get('pub_date').to_i <=> y.get('pub_date').to_i}
+
+      #add sorted elements from temp_documents to sorted_documents & remove from temp_documents
+      sorted_documents.push(*temp_documents)
+    end #while documents.length != 0 do 
+
+
+    document_index_path_templates.each do |str|
+      # XXX rather than handling this logic through exceptions, maybe there's a Rails internals method
+      # for determining if a partial template exists..
+      begin
+#        return render(:partial => (str % { :index_view_type => view }), :locals => { :documents => documents_jh1 })
+        return render(:partial => (str % { :index_view_type => view }), :locals => { :documents => sorted_documents })
+#        return render(:partial => (str % { :index_view_type => view }), :locals => { :documents => documents })
+#        return render(:partial => (str % { :index_view_type => view }), :locals => { :documents => documents_orig })
+      rescue ActionView::MissingTemplate
+        nil
+      end
+    end
+
+    return ""
+  end
+
 end
