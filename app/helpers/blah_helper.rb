@@ -542,16 +542,16 @@ ep_from_display" => "Item seperate from", "continued_by_display" => "Item contin
       iter_documents = 0
       #search document array for items with library catalogue numbers that match the item pushed onto temporary array
       while iter_documents < documents.length 
-        element2 = documents[count3] 
+        element2 = documents[iter_documents] 
 
         #if item with matching catalogue number found, push onto temporary array and delete from document array
         #could use element2["lc_callnum_display"]
         if element2.get('lc_callnum_display') != nil && (element2.get('lc_callnum_display') ==  element1.get('lc_callnum_display')) 
-          temp_documents.push documents.delete_at(count3)
+          temp_documents.push documents.delete_at(iter_documents)
           iter_documents -= 1 #reduce iterator as ab iten has been removed
         end
         iter_documents += 1 
-      end #while count3 < documents.length
+      end #while iter_documents < documents.length
 
       #sort temp_documents. Note location of x & y to reverse sort
       temp_documents = temp_documents.sort {|y, x| x.get('pub_date').to_i <=> y.get('pub_date').to_i}
