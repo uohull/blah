@@ -14,7 +14,19 @@ RVM (recommended for development)
 In addition, you should have Bundler and Rails ruby gems installed:
 
 <pre>gem install bundler
-  gem install rails</pre>
+gem install rails</pre>
+
+h2. Yaz Setup
+
+Blah uses Zoom, a Ruby z.3950 library that requires Yaz.
+
+Yaz needs to be installed on the system before running bundle install. It 
+requires the standard package and the development package. Without installing
+these packages first, bundle install will fail.
+
+<pre>
+sudo yum install yaz libyaz4-dev
+</pre>
 
 h2. Installation guide
 
