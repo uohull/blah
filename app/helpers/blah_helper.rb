@@ -527,8 +527,6 @@ ep_from_display" => "Item seperate from", "continued_by_display" => "Item contin
   end
 
   def render_document_index_with_view view, documents, locals = {}
-#    documents_orig = Array.new
-#    documents_orig = documents.dup
     #documents holds items returned from search in relevancy order. sorted_documents will hold items after secondary ordering.
     sorted_documents = Array.new
 
@@ -565,10 +563,7 @@ ep_from_display" => "Item seperate from", "continued_by_display" => "Item contin
       # XXX rather than handling this logic through exceptions, maybe there's a Rails internals method
       # for determining if a partial template exists..
       begin
-#        return render(:partial => (str % { :index_view_type => view }), :locals => { :documents => documents_jh1 })
         return render(:partial => (str % { :index_view_type => view }), :locals => { :documents => sorted_documents })
-#        return render(:partial => (str % { :index_view_type => view }), :locals => { :documents => documents })
-#        return render(:partial => (str % { :index_view_type => view }), :locals => { :documents => documents_orig })
       rescue ActionView::MissingTemplate
         nil
       end
