@@ -266,6 +266,38 @@ module BlahHelper
       content_tag element, render_index_field_value(:document => document, :field => solr_fname), :class => element_class
     end    
   end
+#, resource_title, first_author, resource_type
+  def display_link_to_york_resource(document)
+    title = document.get('title_display')
+    format = document.get('format')
+    # move to config
+    york_link_desc = "This item in University of York Library"
+    york_link_url = "http://yorsearch.york.ac.uk/primo_library/libweb/action/dlSearch.do?institution=44YORK&vid=44YORK&query=any,contains,"
+    params = ""
+    
+    case format
+      when 'Book'   
+        author = document.get('author_t')
+        unless author.nil? || author.empty?
+          author = document.get('author_t').split(",")[0]
+        else
+          author = document.get('author_addl_t').split(",")[0]
+        end
+        params = (title + "&" + author).html_safe
+        target_url = (york_link_url + params).html_safe
+      when 'Journal'
+        # get ISSN :  022 |a field
+        params = document.get('issn_t')     
+        target_url = (york_link_url + params).html_safe
+      end
+
+      link_to(york_link_desc, target_url, :target => "_blank")
+    end
+
+  # def search_catalog_link(text, search_query, search_field, link_class=nil, exact_match=false)
+  #  search_query = "\"#{search_query}\"".html_safe if exact_match 
+  #  link_to text, catalog_index_path(:q => search_query, :search_field => search_field ), :class => link_class
+  # end
 
   # Renders the Online resources available for a particular document/record
   # Looks in various Marc fields for different online resource types.. 
