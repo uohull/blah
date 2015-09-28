@@ -1,6 +1,11 @@
-<div class="container-gutter">
+<div class="container-gutter links">
   <h3>Links</h3> 
-  <p>
-      <%= display_link_to_york_resource(@document)  %>
-  </p>
+  <ul>
+      <% if @document["format"] == "Book" || @document["format"] == "Journal" %>
+        <li><%= display_link_to_york_resource(@document) %></li>
+      <% end %>
+      <li>
+        <%= link_to "Intersite transfer", APP_CONFIG['intersite_transfer_url'], :target => "_blank" %>
+      </li>
+  </ul>
 </div>
