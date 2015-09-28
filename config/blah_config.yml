@@ -18,12 +18,15 @@ development:
   #Library Inter-library loan url
   inter_library_loan_address: http://www2.hull.ac.uk/lli/library-services/books/interlibrary-loan.aspx
 
+  # Intersite transfer url
+  intersite_transfer_url: 'http://www2.hull.ac.uk/lli/library-services/books/intersite.aspx'
+
   #syndetics services for book covers and table of contents
   syndetics_client_code: dev
 
-    # Used for building the link structure for the York 
-  york_link_url: 'http://yorsearch.york.ac.uk/primo_library/libweb/action/dlSearch.do?institution=44YORK&vid=44YORK&query=any,contains,'
+  # Used for building the link structure for the York 
   york_link_desc: 'This item in University of York Library'
+  york_link_url: 'http://yorsearch.york.ac.uk/primo_library/libweb/action/dlSearch.do?institution=44YORK&vid=44YORK&query=any,contains,'
 
   # twitter widget data_id
   twitter_widget_data_id: 

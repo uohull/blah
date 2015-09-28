@@ -102,7 +102,7 @@ ul.nav li.menu-item {
     color: #333 !important;
 }
 
-p a, dd a, h3 a, h4 a, h5 a, td a, article.news-article div.tile-btn-primary a.read-article{
+p a, dd a, h3 a, ul a, h4 a, h5 a, td a, article.news-article div.tile-btn-primary a.read-article{
   color: $primarylinkcolor;
   text-decoration: none;
   border-bottom:1px dotted transparent;
@@ -116,4 +116,8 @@ p a, dd a, h3 a, h4 a, h5 a, td a, article.news-article div.tile-btn-primary a.r
     text-decoration: none;  
     border-bottom: 1px dotted; 
   }
+}
+
+.links {
+  ul { list-style: none; margin-left: 0; }
 }
