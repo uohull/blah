@@ -21,6 +21,10 @@ development:
   #syndetics services for book covers and table of contents
   syndetics_client_code: dev
 
+    # Used for building the link structure for the York 
+  york_link_url: 'http://yorsearch.york.ac.uk/primo_library/libweb/action/dlSearch.do?institution=44YORK&vid=44YORK&query=any,contains,'
+  york_link_desc: 'This item in University of York Library'
+
   # twitter widget data_id
   twitter_widget_data_id: 
 
@@ -259,4 +263,3 @@ production:
   requestable_locations:
     - 'bjl'
     - 'kdl'
-

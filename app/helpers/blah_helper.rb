@@ -270,18 +270,22 @@ module BlahHelper
   def display_link_to_york_resource(document)
     title = document.get('title_display')
     format = document.get('format')
-    # move to config
-    york_link_desc = "This item in University of York Library"
-    york_link_url = "http://yorsearch.york.ac.uk/primo_library/libweb/action/dlSearch.do?institution=44YORK&vid=44YORK&query=any,contains,"
+    york_link_desc = APP_CONFIG['york_link_desc']
+    york_link_url = APP_CONFIG['york_link_url']
     params = ""
     
     case format
       when 'Book'   
         author = document.get('author_t')
+        author_addl = document.get('author_addl_t')
         unless author.nil? || author.empty?
-          author = document.get('author_t').split(",")[0]
+          author = author.split(",")[0]
         else
-          author = document.get('author_addl_t').split(",")[0]
+          if author_addl.nil? || author_addl.empty?
+            author = author_addl.split(",")[0]
+          else
+            author = ""
+          end
         end
         params = (title + "&" + author).html_safe
         target_url = (york_link_url + params).html_safe
