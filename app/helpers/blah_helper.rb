@@ -272,6 +272,7 @@ module BlahHelper
     format = document.get('format')
     york_link_desc = APP_CONFIG['york_link_desc']
     york_link_url = APP_CONFIG['york_link_url']
+    target_url = york_link_url
     params = ""
     
     case format
@@ -291,8 +292,10 @@ module BlahHelper
         target_url = (york_link_url + params).html_safe
       when 'Journal'
         # get ISSN :  022 |a field
-        params = document.get('issn_t')     
-        target_url = (york_link_url + params).html_safe
+        params = document.get('issn_t')
+        if !params.nil? && !params.empty?
+          target_url = (york_link_url + params).html_safe
+        end 
       end
 
       link_to(york_link_desc, target_url, :target => "_blank")
