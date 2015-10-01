@@ -4,8 +4,8 @@
       <% if @document["format"] == "Book" || @document["format"] == "Journal" %>
         <li><%= display_link_to_york_resource(@document) %></li>
       <% end %>
-      <li>
-        <%= link_to "Intersite transfer", APP_CONFIG['intersite_transfer_url'] %>
-      </li>
+      <!-- <li>
+        <%#= link_to "Intersite transfer", APP_CONFIG['intersite_transfer_url'], :target => "_blank" %>
+      </li> -->
   </ul>
 </div>

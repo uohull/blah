@@ -14,4 +14,13 @@
   <p id="no-holdings" class="hide"><%= t('blah.item.holdings.no_holdings_information') %></p>
   <%= render_holdings_html_partial(@library_item) unless @library_item.nil? %>
   <%= render_online_resources_partial(@document) %>
+
+  <% unless @document["format"] == "E-Journal" || 
+    @document["format"] == "E-Book" ||
+    @document["format"] == "Electronic resource" %>
+    <p>
+    <%= link_to "Intersite transfer", APP_CONFIG['intersite_transfer_url'], :target => "_blank" %>
+    </p>
+  <% end %>
+
 </div>
