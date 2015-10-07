@@ -1,11 +1,9 @@
-<div class="container-gutter links">
-  <h3>Links</h3> 
-  <ul>
-      <% if @document["format"] == "Book" || @document["format"] == "Journal" %>
-        <li><%= display_link_to_york_resource(@document) %></li>
-      <% end %>
-      <!-- <li>
-        <%#= link_to "Intersite transfer", APP_CONFIG['intersite_transfer_url'], :target => "_blank" %>
-      </li> -->
-  </ul>
-</div>
+<% if @document["format"] == "Book" || @document["format"] == "Journal" ||
+      @document["format"] == "E-Journal" || @document["format"] == "E-Book" %>  
+  <div class="container-gutter links">
+    <h3>Links</h3> 
+    <ul>
+      <li><%= display_link_to_york_resource(@document) %></li>
+    </ul>
+  </div>
+<% end %>

@@ -266,7 +266,7 @@ module BlahHelper
       content_tag element, render_index_field_value(:document => document, :field => solr_fname), :class => element_class
     end    
   end
-#, resource_title, first_author, resource_type
+
   def display_link_to_york_resource(document)
     title = document.get('title_display')
     format = document.get('format')
@@ -276,7 +276,7 @@ module BlahHelper
     params = ""
     
     case format
-      when 'Book'   
+      when 'Book', 'E-Book'
         author = document.get('author_t')
         author_addl = document.get('author_addl_t')
         unless author.nil? || author.empty?
@@ -288,16 +288,18 @@ module BlahHelper
             author = ""
           end
         end
-        params = (title + "&" + author).html_safe
+        params = (CGI.escape(title) + "&" + author).html_safe
         target_url = (york_link_url + params).html_safe
-      when 'Journal'
+      when 'Journal', 'E-Journal'
         # get ISSN :  022 |a field
-        params = document.get('issn_t')
-        if !params.nil? && !params.empty?
-          target_url = (york_link_url + params).html_safe
-        end 
+        issn = document.get('issn_t')
+        if !issn.nil? && !issn.empty?
+          params = CGI.escape(issn)
+        else
+          params = CGI.escape(title + " journal")
+        end
+        target_url = york_link_url.html_safe + params.html_safe
       end
-
       link_to(york_link_desc, target_url, :target => "_blank")
     end
 
