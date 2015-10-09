@@ -711,7 +711,13 @@ module Blacklight::Solr::Document::MarcExport
   end
   def setup_pub_info(record)
     text = ''
-    pub_info_field = record.find{|f| f.tag == '260'}
+    field_260 = record.find{|f| f.tag == '260'}
+    field_264 = record.find{|f| f.tag == '264'}
+    if !field_260.nil?
+      pub_info_field = field_260
+    else
+      pub_info_field = field_264
+    end
     if !pub_info_field.nil?
       a_pub_info = pub_info_field.find{|s| s.code == 'a'}
       b_pub_info = pub_info_field.find{|s| s.code == 'b'}
