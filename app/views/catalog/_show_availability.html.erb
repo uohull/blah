@@ -5,7 +5,8 @@
   <% if !@library_item.nil? && @library_item.inter_library_loan? %>
       <p>Available through <%= link_to "Inter-Library Loan", inter_library_loan_url %></p>
   <% else %>
-    <% unless @document["format"] == "Electronic resource" %>
+    <% unless @document["format"] == "Electronic resource" 
+      @document["format"] == "Video"%>
       <p><%= render_millennium_record_link "Find loan period information here" %></p>
     <% end %>
   <% end %>
@@ -17,7 +18,8 @@
 
   <% unless @document["format"] == "E-Journal" || 
     @document["format"] == "E-Book" ||
-    @document["format"] == "Electronic resource" %>
+    @document["format"] == "Electronic resource" || 
+    @document["format"] == "Video"%>
     <p>
       <%= link_to "Intersite transfer", APP_CONFIG['intersite_transfer_url'], :target => "_blank" %>
     </p>
