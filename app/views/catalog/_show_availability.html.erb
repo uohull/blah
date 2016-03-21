@@ -5,8 +5,7 @@
   <% if !@library_item.nil? && @library_item.inter_library_loan? %>
       <p>Available through <%= link_to "Inter-Library Loan", inter_library_loan_url %></p>
   <% else %>
-    <% unless @document["format"] == "Electronic resource" 
-      @document["format"] == "Video"%>
+    <% unless @document["format"] == "Electronic resource" %>
       <p><%= render_millennium_record_link "Find loan period information here" %></p>
     <% end %>
   <% end %>
