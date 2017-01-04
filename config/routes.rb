@@ -8,7 +8,6 @@ Blah::Application.routes.draw do
   # ... we can override url route with 'catalogue'...
   match 'catalogue/opensearch', :to => 'catalog#opensearch',  :as => 'opensearch_catalog'
   match 'catalogue/citation', :to => 'catalog#citation', :as => 'citation_catalog'
-  match 'catalogue/email', :to => 'catalog#email',  :as => 'email_catalog'
   match 'catalogue/sms', :to => 'catalog#sms',  :as => 'sms_catalog'
   match 'catalogue/endnote', :to => 'catalog#endnote', :as => 'endnote_catalog'
   match 'catalogue/send_email_record', :to => 'catalog#send_email_record',  :as => 'send_email_record_catalog'
