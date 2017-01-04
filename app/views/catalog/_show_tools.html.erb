@@ -29,7 +29,7 @@
     <% end %>
     <% if @document.respond_to?( :to_email_text ) %>
       <li class="email">
-      <%= link_to t('blacklight.tools.email'), email_catalog_path(:id => @document), {:id => 'emailLink', :name => 'email', :class => 'lightboxLink btn btn-small square-corners'} %>
+      <a class="btn btn-small square-corners" href="mailto:?subject=You have been sent a link for The University of Hull Library Catalogue: <%= @document.get('title_display') %>&body=You have been sent a link to an item at The University of Hull Library Catalogue: %0D%0A%0D%0ATitle: <%= @document.get('title_display') %>, %0D%0AAuthor: <%= @document.get('author_addl_t') %>, %0D%0ALanguage: <%= @document.get('language_facet') %>, %0D%0AURL: http://libsearch.hull.ac.uk/catalogue/<%= @document.get('id') %>">   Email</a>
       </li>
     <%- end -%>
     
@@ -79,7 +79,7 @@
             <% end %>
             <% if @document.respond_to?( :to_email_text ) %>
               <li class="email">
-              <%= link_to t('blacklight.tools.email'), email_catalog_path(:id => @document), {:id => 'emailLink', :name => 'email', :class => 'lightboxLink square-corners'} %>
+                    <a class="square-corners" href="mailto:?subject=You have been sent a link for The University of Hull Library Catalogue: <%= @document.get('title_display') %>&body=You have been sent a link to an item at The University of Hull Library Catalogue: %0D%0A%0D%0ATitle: <%= @document.get('title_display') %>, %0D%0AAuthor: <%= @document.get('author_addl_t') %>, %0D%0ALanguage: <%= @document.get('language_facet') %>, %0D%0AURL: http://libsearch.hull.ac.uk/catalogue/<%= @document.get('id') %>">   Email</a>
               </li>
             <%- end -%>
             <% if @document.respond_to?(:to_marc) %>
@@ -134,7 +134,7 @@
     <% end %>
     <% if @document.respond_to?( :to_email_text ) %>
       <li class="email">
-      <%= link_to t('blacklight.tools.email'), email_catalog_path(:id => @document), {:id => 'emailLink', :name => 'email', :class => 'lightboxLink btn btn-small square-corners'} %>
+            <a class="btn btn-small square-corners" href="mailto:?subject=You have been sent a link for The University of Hull Library Catalogue: <%= @document.get('title_display') %>&body=You have been sent a link to an item at The University of Hull Library Catalogue: %0D%0A%0D%0ATitle: <%= @document.get('title_display') %>, %0D%0AAuthor: <%= @document.get('author_addl_t') %>, %0D%0ALanguage: <%= @document.get('language_facet') %>, %0D%0AURL: http://libsearch.hull.ac.uk/catalogue/<%= @document.get('id') %>">   Email</a>
       </li>
     <%- end -%>     
     <% if @document.respond_to?(:to_marc) %>
