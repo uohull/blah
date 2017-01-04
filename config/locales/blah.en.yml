@@ -15,18 +15,6 @@ en:
       subject: 'Subject:'
       body: 'Feedback:'
 
-    email_record:
-      form:
-        title: 'E-mail record(s)'
-        to: 'E-mail address'
-        message: 'Message'
-        submit: 'Send'
-      text:
-        description: 'You have been sent the following item(s) from Blacklight.hull.ac.uk - The library Catalogue'  
-      subject: 
-        one: 'You have been sent a link to an item from Blacklight.hull.ac.uk: %{title}'
-        other: 'Blacklight.hull.ac.uk catalogue items'
-
     item:
       holdings:
         no_holdings_information: 'Item may be on order - please check with the Library to confirm'

@@ -182,25 +182,6 @@ class CatalogController < ApplicationController
     config.spell_max = 5
   end
 
-  # Email Action (this will render the appropriate view on GET requests and process the form and send the email on POST requests)
-  def email
-    @response, @documents = get_solr_response_for_field_values(SolrDocument.unique_key,params[:id])
-    if request.post?
-      if params[:to]
-        url_gen_params = {:host => request.host_with_port, :protocol => request.protocol}
-      
-        if params[:to].match(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/)
-          NotificationsMailer.email_record(@documents, {:to => params[:to], :message => params[:message]}, url_gen_params).deliver        
-        else
-          flash[:error] = I18n.t('blacklight.email.errors.to.invalid', :to => params[:to])
-        end        
-        redirect_to :back
-      else
-        flash[:error] = I18n.t('blacklight.email.errors.to.blank')
-      end
-    end
-  end
-
   # get single document from the solr index
   def show
       @response, @document = get_solr_response_for_doc_id   

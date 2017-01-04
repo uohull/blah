@@ -10,7 +10,6 @@ Blah::Application.routes.draw do
   match 'catalogue/citation', :to => 'catalog#citation', :as => 'citation_catalog'
   match 'catalogue/sms', :to => 'catalog#sms',  :as => 'sms_catalog'
   match 'catalogue/endnote', :to => 'catalog#endnote', :as => 'endnote_catalog'
-  match 'catalogue/send_email_record', :to => 'catalog#send_email_record',  :as => 'send_email_record_catalog'
   match 'catalogue/facet/:id', :to => 'catalog#facet', :as => 'catalog_facet'
   match 'catalogue/range_limit', :to => 'catalog#range_limit', :as => 'catalog_range_limit'
   match 'catalogue', :to => 'catalog#index', :as => 'catalog_index'
