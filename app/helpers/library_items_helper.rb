@@ -140,7 +140,7 @@ module LibraryItemsHelper
             hold = availability.sub(/DUE/, '')[11..-1]
             status = '<div class="holdings-label label alert-error">Lost in lib<br/>' + hold + '</div>'
           elsif availability.downcase.include? "lib use"
-            status = '<div class="holdings-label label alert-error">Use in Library only</div>'
+            status = '<div class="holdings-label label alert-limited">Use in Library only</div>'
           else
             status = availability
           end
