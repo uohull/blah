@@ -15,3 +15,11 @@
   border-width: 2px 3px 3px !important;
   border-color: $warningcolor;
 }
+
+#icon-holding-limited {
+  background-color: $limitedcolor !important;
+  border-radius: 2px 2px 2px 2px !important;
+  border-style: solid !important;
+  border-width: 2px 3px 3px !important;
+  border-color: $limitedcolor;
+}

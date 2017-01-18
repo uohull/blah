@@ -140,7 +140,7 @@ module LibraryItemsHelper
             hold = availability.sub(/DUE/, '')[11..-1]
             status = '<div class="holdings-label label alert-error">Lost in lib<br/>' + hold + '</div>'
           elsif availability.downcase.include? "lib use"
-            status = '<div class="holdings-label label alert-error">Use in Library only</div>'
+            status = '<div class="holdings-label label alert-limited">Use in Library only</div>'
           else
             status = availability
           end
@@ -173,7 +173,9 @@ module LibraryItemsHelper
        holdings_icon = '<i title="Available" id="icon-holding-available" class="icon-ok icon-white"> </i>&nbsp; '
      else
         if  availability_status.downcase.include?("lib use only")
-         holdings_icon = '<i title="Use in Library only" id="icon-holding-unavailable" class="icon-chevron-right icon-white"> </i> &nbsp;Use in Library only -&nbsp;'
+         holdings_icon = '<i title="Use in Library only" id="icon-holding-limited" class="icon-chevron-right icon-white"> </i> &nbsp;Use in Library only -&nbsp;'
+	elsif availability_status.downcase.include?("ask at")
+	holdings_icon = '<i title="Available on request" id="icon-holding-limited" class="icon-chevron-right icon-white"></i> &nbsp;Available on request -&nbsp;'
         else
          holdings_icon = '<i title="Not available" id="icon-holding-unavailable" class="icon-remove icon-white"></i>&nbsp;' + availability_status + '&nbsp;' 
         end
