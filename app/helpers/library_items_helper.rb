@@ -141,6 +141,8 @@ module LibraryItemsHelper
             status = '<div class="holdings-label label alert-error">Lost in lib<br/>' + hold + '</div>'
           elsif availability.downcase.include? "lib use"
             status = '<div class="holdings-label label alert-limited">Use in Library only</div>'
+	elsif availability.downcase.include? "ask at"
+            status = '<div class="holdings-label label alert-limited">Available on request</div>'
           else
             status = availability
           end
