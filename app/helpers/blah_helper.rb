@@ -477,7 +477,7 @@ ep_from_display" => "Item seperate from", "continued_by_display" => "Item contin
       content_tag(:i, '', :class => 'icon-globe')
     when 'CD Audio', 'Cassette', 'Sound record', 'Spoken record'
       content_tag(:i, '', :class => 'icon-volume-up')
-    when 'DVD'
+    when 'DVD', 'Blu-ray Disc'
       content_tag(:i, '', :class => 'icon-film')
     when 'Computer file'
         content_tag(:i, '', :class => 'icon-hdd')
@@ -485,7 +485,7 @@ ep_from_display" => "Item seperate from", "continued_by_display" => "Item contin
         content_tag(:i, '', :class => 'icon-briefcase')
     when 'Artefact'
         content_tag(:i, '', :class => 'icon-tag')
-    when 'Video'
+    when 'Video', 'Video cassette'
         content_tag(:i, '', :class => 'icon-facetime-video')
     else
       content_tag(:i, '', :class => 'icon-book')
