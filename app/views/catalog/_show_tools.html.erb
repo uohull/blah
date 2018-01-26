@@ -46,11 +46,7 @@
         </li>
       <% end %>
 
-      <% if item_bookable?(@document) %>
-        <li class="book_item">
-          <%= render_bookable_library_item_link(@library_item, "btn btn-small square-corners") %>
-        </li>
-      <% end %>
+      
     <% end %>
     <%= render :partial => 'qr_code' %>
     <%= render :partial => 'addthis_tool' %>
@@ -95,11 +91,7 @@
               </li>
             <% end %>
 
-            <% if item_bookable?(@document) %>
-              <li class="book_item">
-                <%= render_request_library_item_link(@library_item, "") %>
-              </li>
-            <% end %>
+            
           <% end %>
 
 
