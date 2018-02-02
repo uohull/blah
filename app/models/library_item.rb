@@ -13,12 +13,13 @@ class LibraryItem
 
   # Can the item be request/put on hold.. The item availaility needs to be false and there needs to be holding information stored for the item
   # Item is requestable if any of the requestable_locations (See blah config file) copies are unavailable
+  # Modified requestable rules for new reservation service: all items with holdings in a requestable location are requestable regardless of availability
   def requestable?
     requestable = false
 
     LibraryItem.requestable_locations.each do |location_prefix|
       available = self.send("available_at_#{location_prefix}?")
-      requestable = !available.nil? && !available ? true : false
+      requestable = !available.nil?  ? true : false
       break if requestable
     end
     requestable

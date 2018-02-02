@@ -282,13 +282,13 @@ module BlahHelper
         unless author.nil? || author.empty?
           author = author.split(",")[0]
         else
-          if author_addl.nil? || author_addl.empty?
+          unless author_addl.nil? || author_addl.empty?
             author = author_addl.split(",")[0]
           else
             author = ""
           end
         end
-        params = (CGI.escape(title) + "&" + author).html_safe
+        params = (CGI.escape(title) + "+" + author).html_safe
         target_url = (york_link_url + params).html_safe
       when 'Journal', 'E-Journal'
         # get ISSN :  022 |a field
