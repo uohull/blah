@@ -84,7 +84,7 @@ module LibraryItemsHelper
        # end
       
 
-       render_holdings_table << holdings_table(bjl_items_records, "Brynmor Jones Library") <<  holdings_table(kdl_items_records, "Keith Donaldson Library") << holdings_table(wise_items_records, "Wilberforce Institute")  << holdings_table(map_items_records, "Map Library") << holdings_table(blaydes_items_records, "Blaydes house") << holdings_table(chemistry_items_records, "Chemistry Department") << holdings_table(other_records, "Other")
+       render_holdings_table << holdings_table(bjl_items_records, "Brynmor Jones Library") <<  holdings_table(kdl_items_records, "Keith Donaldson Library") << holdings_table(wise_items_records, "Wilberforce Institute")  << holdings_table(map_items_records, "Map Library") << holdings_table(blaydes_items_records, "Blaydes house") << holdings_table(chemistry_items_records, "Chemistry Department") << holdings_table(other_records, "Library / Department Only")
     
        return render_holdings_table.html_safe
     end
@@ -116,7 +116,7 @@ module LibraryItemsHelper
 
           #Filter some words out of the location display
           local_location = record.local_location
-          replacements = [ ["BJL", ""], ["KDL", ""], ["Dept.", ""], ["Via", ""] ]
+          replacements = [ ["KDL", ""], ["Dept.", ""], ["Via", ""] ]
           replacements.each {|replacement| local_location.gsub!(replacement[0], replacement[1])}
 
           #Remove copy number from call_number
