@@ -19,7 +19,7 @@ class LibraryItem
 
     LibraryItem.requestable_locations.each do |location_prefix|
       available = self.send("available_at_#{location_prefix}?")
-      requestable = !available.nil?  ? true : false
+     !available.nil? &&available ? true : false
       break if requestable
     end
     requestable
