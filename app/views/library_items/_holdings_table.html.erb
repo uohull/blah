@@ -3,4 +3,5 @@
   <p class="no-holdings"><i title="Check with the Library" id="icon-holding-available" class="icon-asterisk icon-white"> </i>&nbsp;<%= t('blah.item.holdings.no_holdings_information') %>&nbsp;&nbsp;&nbsp;<%= render_request_library_item_link(@library_item, "") %></p>
 <% else %>
   <%= render_holdings_table(@library_item.holdings_records_collection) %>
+  <% end %>
 </div>
