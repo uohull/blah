@@ -41,6 +41,8 @@ development:
     ignore:
       - 'E-Book'
       - 'E-Journal'
+      - 'E-Thesis'
+      - 'Video'
       - 'Electronic resource'
       - 'Unknown'
 
@@ -131,6 +133,8 @@ test:
     ignore:
       - 'E-Book'
       - 'E-Journal'
+      - 'E-Thesis'
+      - 'Video'
       - 'Electronic resource'
       - 'Unknown'
 
@@ -220,6 +224,8 @@ production:
     ignore:
       - 'E-Book'
       - 'E-Journal'
+      - 'E-Thesis'
+      - 'Video'
       - 'Electronic resource'
       - 'Unknown'
 
