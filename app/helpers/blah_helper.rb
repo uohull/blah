@@ -465,11 +465,11 @@ ep_from_display" => "Item seperate from", "continued_by_display" => "Item contin
       content_tag(:i, '', :class => 'icon-book') 
     when 'Electronic resource'
       content_tag(:i, '', :class => 'icon-list-alt') 
-    when 'Photocopy', 'Playbill', 'Sheet', 'Map', 'Printed Music' 
+    when 'Photocopy', 'Playbill', 'Sheet', 'Map', 'Printed Music', 'Charts' 
       content_tag(:i, '', :class => 'icon-file')
     when 'CD Audio', 'Cassette', 'Sound record', 'Spoken record'
       content_tag(:i, '', :class => 'icon-headphones')
-    when 'DVD', 'Blu-ray Disc', 'Video', 'Video cassette'
+    when 'DVD', 'Blu-ray Disc', 'Video', 'Video cassette', 'Slide'
       content_tag(:i, '', :class => 'icon-film')
     when 'Computer file'
         content_tag(:i, '', :class => 'icon-hdd')
