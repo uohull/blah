@@ -461,32 +461,22 @@ ep_from_display" => "Item seperate from", "continued_by_display" => "Item contin
     format = document.get('format', :sep => nil)
     
     case format
-    when 'Book', 'E-Book', 'E-Journal'
+   when 'Book', 'Thesis', 'Journal', 'E-Thesis', 'E-Book', 'E-Journal'
       content_tag(:i, '', :class => 'icon-book') 
-    when 'Thesis'
-      content_tag(:i, '', :class => 'icon-file') 
-    when 'Photocopy'
-      content_tag(:i, '', :class => 'icon-inbox')
-    when 'Periodical'
-      content_tag(:i, '', :class => 'icon-bullhorn')
-    when 'Printed Music'
-      content_tag(:i, '', :class => 'icon-music')
-    when 'Playbill'
-      content_tag(:i, '', :class => 'icon-play')
-    when 'Map'
-      content_tag(:i, '', :class => 'icon-globe')
+    when 'Electronic resource'
+      content_tag(:i, '', :class => 'icon-list-alt') 
+    when 'Photocopy', 'Playbill', 'Sheet', 'Map', 'Printed Music' 
+      content_tag(:i, '', :class => 'icon-file')
     when 'CD Audio', 'Cassette', 'Sound record', 'Spoken record'
-      content_tag(:i, '', :class => 'icon-volume-up')
-    when 'DVD', 'Blu-ray Disc'
+      content_tag(:i, '', :class => 'icon-headphones')
+    when 'DVD', 'Blu-ray Disc', 'Video', 'Video cassette'
       content_tag(:i, '', :class => 'icon-film')
     when 'Computer file'
         content_tag(:i, '', :class => 'icon-hdd')
-    when 'Kit'
+    when 'Kit', 'Artefact'
         content_tag(:i, '', :class => 'icon-briefcase')
-    when 'Artefact'
-        content_tag(:i, '', :class => 'icon-tag')
-    when 'Video', 'Video cassette'
-        content_tag(:i, '', :class => 'icon-facetime-video')
+    when 'Microform'
+        content_tag(:i, '', :class => 'icon-th')
     else
       content_tag(:i, '', :class => 'icon-book')
     end
