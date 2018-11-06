@@ -239,7 +239,7 @@ module BlahHelper
 
       display_field = <<-EOS
         <dt class=#{dd_class}>#{label}</dt>
-        <dd class=#{dd_class}>#{values.collect{ |value| search_catalog_link(value, value, search_field, link_class, true)}.join('; ') }</dd>
+        <dd class=#{dd_class}>#{values.collect{ |value| search_catalog_link(value, value, search_field, link_class, true) + '.'}.join('<br/>') }</dd>
       EOS
     end
 
