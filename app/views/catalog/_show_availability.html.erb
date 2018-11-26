@@ -5,19 +5,19 @@
   <% if !@library_item.nil? && @library_item.inter_library_loan? %>
       <p>Available through <%= link_to "Inter-Library Loan", inter_library_loan_url %></p>
   <% else %>
-    <% unless @document["format"] == "Electronic resource" %>
+    <% unless @document["format"] == "Electronic resource" || @document["format"]  == "Archival material" %>
       <p><%= render_millennium_record_link "Find loan period information here" %></p>
     <% end %>
   <% end %>
 
+
   <% #This will be set to display:block using javascript if no holdings/online resources are present -See holdings_record.js -%>
   <p id="no-holdings" class="hide"><%= t('blah.item.holdings.no_holdings_information') %></p>
   <%= render_holdings_html_partial(@library_item) unless @library_item.nil? %>
-  <%= render_online_resources_partial(@document) %>
-
-  <% unless @document["format"] == "E-Journal" || 
-    @document["format"] == "E-Book" ||
-    @document["format"] == "Electronic resource" %>
-  <% end %>
-
+<% if @document["format"] == "E-Journal" || @document["format"] == "E-Book" || @document["format"] == "E-Thesis" || @document["format"] == "Electronic resource" %>
+<%= render_online_resources_partial(@document) %>
+<% end %>  
+<% if @document["format"] == "Archival material" %>
+<%= render_archival_material_partial(@document) %>
+<% end %>
 </div>
