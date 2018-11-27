@@ -1,0 +1,3 @@
+<%# default partial to display solr document fields in catalog index view -%>
+<%= display_field_within_element(document, 'id' , element='small') %>
+<%= display_field(document, 'url_fulltext_display', 'Hull History Centre', 'hull history centre', {:display_as_link => true, :link_text => 'View details in the History Centre catalogue'}) %>

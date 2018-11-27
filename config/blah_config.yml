@@ -44,6 +44,7 @@ development:
       - 'E-Thesis'
       - 'Video'
       - 'Electronic resource'
+      - 'Archival material'
       - 'Unknown'
 
   #status from holding records
@@ -136,6 +137,7 @@ test:
       - 'E-Thesis'
       - 'Video'
       - 'Electronic resource'
+      - 'Archival material'
       - 'Unknown'
 
    #status from holding records
@@ -227,6 +229,7 @@ production:
       - 'E-Thesis'
       - 'Video'
       - 'Electronic resource'
+      - 'Archival material'
       - 'Unknown'
 
    #status from holding records

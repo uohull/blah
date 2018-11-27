@@ -149,6 +149,16 @@ module BlahHelper
       render :partial => 'catalog/online_resources'
     end
   end
+  
+  def render_archival_material_partial(document)
+    #Get the url fields...        
+    full_text_url_display = document.get('url_fulltext_display', :sep => nil)
+
+    #Check online resources exist...
+    unless full_text_url_display.nil?
+      render :partial => 'catalog/archival_material'
+    end
+  end
 
   def display_field(document, solr_fname, label_text='', dd_class=nil, opts={} )
 
@@ -477,6 +487,8 @@ ep_from_display" => "Item seperate from", "continued_by_display" => "Item contin
         content_tag(:i, '', :class => 'icon-briefcase')
     when 'Microform'
         content_tag(:i, '', :class => 'icon-th')
+    when 'Archival material'
+        content_tag(:i, '', :class => 'icon-folder-close')
     else
       content_tag(:i, '', :class => 'icon-book')
     end
